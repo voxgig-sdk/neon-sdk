@@ -1,6 +1,6 @@
 # Neon: the Voxgig SDK and the Hey API SDK compared
 
-Vergleich: Hey API. Compared with neondatabase/neon-pkgs packages/sdk (@neon/sdk 6.1.2, @hey-api/openapi-ts 0.98.2). Spec: neon.com/api_spec/release/v2.json, OAS 3.0.3, 122 paths / 179 ops, Apache-2.0, inherited from neondatabase/neon-pkgs, which carries it (the definition's own info.license says Proprietary). Added 2026-09-28.
+Vergleich: Hey API. Compared with neondatabase/neon-pkgs packages/sdk (@neon/sdk 6.1.2, @hey-api/openapi-ts 0.98.2). Spec: neon.com/api_spec/release/v2.json, OAS 3.0.3, 122 paths / 179 ops, Apache-2.0 (inherited from neondatabase/neon-pkgs, over info.license Proprietary). Added 2026-09-28.
 
 This repository is on the admin **vergleich** list. It is built only to be compared, and it is not published.
 
