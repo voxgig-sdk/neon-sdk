@@ -1,6 +1,6 @@
 # Neon: the Voxgig SDK and the Hey API SDK compared
 
-Vergleich: Hey API. Compared with neondatabase/neon-pkgs packages/sdk (@neon/sdk 6.1.2, @hey-api/openapi-ts 0.98.2). Spec: neon.com/api_spec/release/v2.json, OAS 3.0.3, 122 paths / 179 ops, licence stated as proprietary. Added 2026-09-28.
+Vergleich: Hey API. Compared with neondatabase/neon-pkgs packages/sdk (@neon/sdk 6.1.2, @hey-api/openapi-ts 0.98.2). Spec: neon.com/api_spec/release/v2.json, OAS 3.0.3, 122 paths / 179 ops, Apache-2.0, inherited from neondatabase/neon-pkgs, which carries it (the definition's own info.license says Proprietary). Added 2026-09-28.
 
 This repository is on the admin **vergleich** list. It is built only to be compared, and it is not published.
 
@@ -8,7 +8,7 @@ This repository is on the admin **vergleich** list. It is built only to be compa
 
 | | Voxgig | Hey API |
 |---|---|---|
-| SDK | this repository, commit `1965332`: eight targets (go, go-cli, go-mcp, ts, py, rb, lua, php) | `@neon/sdk@6.1.2` (TypeScript) |
+| SDK | this repository, commit `d16e29e`: eight targets (go, go-cli, go-mcp, ts, py, rb, lua, php) | `@neon/sdk@6.1.2` (TypeScript) |
 | Input | `neon-openapi.json`: OAS 3.0.3, `info.version` v2, 122 paths, 179 operations | the vendor's own generation; the note above names the definition version it came from |
 | Operations callable | 178 of 179 (1 modelled as `patch` but not generated) | 177 operation methods |
 | Entities | 75 | not applicable |
@@ -92,10 +92,11 @@ Each SDK lists one resource, loads and removes the first item it listed, and cre
 
 ## Voxgig toolchain findings
 
-- **TS-NAMES** (@voxgig/sdkgen 4.30.2). An entity named operation, context or control collided with the SDK types the ts entity file imports (TS2300: Neon, Novu). An entity named eval produced `const eval` in the README examples (TS1215: Vapi). Fixed in voxgig/sdkgen#210 (open). The three SDKs were built on that branch.
-- **PATCH-OP** (@voxgig/apidef 8.17.2 + @voxgig/sdkgen 4.30.2). apidef resolves a PATCH beside a PUT on the same entity as a sixth op, `patch`. sdkgen generates only load, list, create, update and remove, so those operations are modelled but have no method. The coverage gate counts entities, so it passes anyway. Here: neon: PATCH /projects/{project_id} (Neon's real project update; `update` was mapped to PUT /projects/{project_id}/transfer_requests/{request_id}). Reported, not changed: a design decision across both tools.
+- **TS-NAMES** (@voxgig/sdkgen 4.30.2). An entity named operation, context or control collided with the SDK types the ts entity file imports (TS2300: Neon, Novu). An entity named eval produced `const eval` in the README examples (TS1215: Vapi). Fixed in voxgig/sdkgen#210, released in 4.30.3. All eight SDKs are built on 4.30.3.
+- **PATCH-OP** (@voxgig/apidef 8.17.2 + @voxgig/sdkgen 4.30.3). apidef resolves a PATCH beside a PUT on the same entity as a sixth op, `patch`. sdkgen generates only load, list, create, update and remove, so those operations are modelled but have no method. The coverage gate counts entities, so it passes anyway. Here: neon: PATCH /projects/{project_id} (Neon's real project update; `update` was mapped to PUT /projects/{project_id}/transfer_requests/{request_id}). Reported, not changed: a design decision across both tools.
 - **UNWRAP** (@voxgig/apidef 8.17.2). The response transform that says where an operation's data sits is inferred wrongly for several resources, in both directions. A schema whose one object-valued property is ordinary data is taken for an envelope (Apicurio's `labels`, SaladCloud's `container`), and a real envelope is missed when it is composed with allOf (Lob) or sits beside another property (Neon's `projects` beside `pagination`). The SDKs' own tests cannot see it, because they mock from the same model; a mock built from the vendor definition does. Here: neon project list: `body`, but the list is `body.projects`; list yields 0 entities. Create returns the `{ project, ... }` wrapper while load unwraps `body.project`. Reported, not changed: heuristic design in apidef.
-- **QUERY-ECHO** (@voxgig/sdkgen 4.30.2 (PrepareQuery: ts, js and rb read the field; other targets not checked)). Every match field, path parameters included, is also sent as a query parameter: GET /video/v1/assets/a1?id=a1 (Mux), GET /assistant/asst_1?id=asst_1 (Vapi), DELETE .../containers/web?id=web&organization_name=acme&project_id=demo (SaladCloud). prepareQuery excludes names in point.params, but the generated config carries path parameters in point.args.params (which prepareParams reads), so nothing is excluded. Harmless to a lenient server, rejected by a strict one. Prism logs paths without query strings, so its runs did not show it. Reported, not changed: the same exclusion exists per target.
+- **QUERY-ECHO** (@voxgig/sdkgen 4.30.3 (PrepareQuery: ts, js and rb read the field; other targets not checked)). Every match field, path parameters included, is also sent as a query parameter: GET /video/v1/assets/a1?id=a1 (Mux), GET /assistant/asst_1?id=asst_1 (Vapi), DELETE .../containers/web?id=web&organization_name=acme&project_id=demo (SaladCloud). prepareQuery excludes names in point.params, but the generated config carries path parameters in point.args.params (which prepareParams reads), so nothing is excluded. Harmless to a lenient server, rejected by a strict one. Prism logs paths without query strings, so its runs did not show it. Reported, not changed: the same exclusion exists per target.
+- **DOCS-QA** (@voxgig/docgen 0.29.2 (the generated Documentation workflow)). The generated API pages quote each vendor's own descriptions, and the Documentation workflow runs its prose checks over them. Vale reads identifiers such as `asset_id` as misspellings (272 errors on Mux, 44 on Neon), and docgen's own rules reject the vendor's repeated words and first-person prose (Apicurio). Vapi and Maxio fail the same step. Every SDK's tests pass on every target; only the documentation check fails. Reported, not changed: whether a vendor's text is prose-checked is docgen's design. Lob and Novu fail earlier, at generation, on the unpatched YAML parser (Y1-Y3). SaladCloud's pages pass the check; only the deploy fails, because GitHub Pages is not enabled for the repository.
 
 ## Hey API SDK notes
 
