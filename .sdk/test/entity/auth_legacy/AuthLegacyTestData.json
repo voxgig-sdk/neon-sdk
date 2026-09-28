@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "auth_legacy": {
+      "AUTH_LEGACY00": {
+        "auth_provider": "s14",
+        "domain": "s15",
+        "project_id": "PROJECT01",
+        "auth_user_id": "AUTH_USER01",
+        "oauth_provider_id": "OAUTH_PROVIDER01",
+        "id": "AUTH_LEGACY00"
+      },
+      "AUTH_LEGACY01": {
+        "auth_provider": "s28",
+        "domain": "s29",
+        "project_id": "PROJECT01",
+        "auth_user_id": "AUTH_USER01",
+        "oauth_provider_id": "OAUTH_PROVIDER01",
+        "id": "AUTH_LEGACY01"
+      },
+      "AUTH_LEGACY02": {
+        "auth_provider": "s3c",
+        "domain": "s3d",
+        "project_id": "PROJECT01",
+        "auth_user_id": "AUTH_USER01",
+        "oauth_provider_id": "OAUTH_PROVIDER01",
+        "id": "AUTH_LEGACY02"
+      }
+    }
+  },
+  "new": {
+    "auth_legacy": {
+      "auth_legacy_ref01": {
+        "auth_provider": "s50",
+        "domain": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/auth/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/auth/integration/{auth_provider}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/auth/users/{auth_user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/auth/oauth_providers/{oauth_provider_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/auth/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

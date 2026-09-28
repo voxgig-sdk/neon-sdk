@@ -1,0 +1,102 @@
+# BasicBucketFlow
+
+main: kit: flow: BasicBucketFlow:
+{
+  entity: "bucket",
+  kind: "basic",
+  name: "BasicBucketFlow",
+  step: [
+    {
+      i: {
+        ref: "bucket_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        bucket_id: "bucket01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bucket_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bucket_ref01",
+        srcdatavar: "bucket_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        bucket_id: "bucket01",
+        id: "bucket01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bucket_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bucket_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        id: "bucket01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "bucket_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBucketFlow"
+}

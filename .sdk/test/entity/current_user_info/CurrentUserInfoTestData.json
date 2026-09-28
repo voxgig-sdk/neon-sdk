@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "current_user_info": {
+      "CURRENT_USER_INFO00": {
+        "email": "s32",
+        "image": "s33",
+        "login": "s34",
+        "name": "s35",
+        "provider": "s36"
+      },
+      "CURRENT_USER_INFO01": {
+        "email": "s64",
+        "image": "s65",
+        "login": "s66",
+        "name": "s67",
+        "provider": "s68"
+      },
+      "CURRENT_USER_INFO02": {
+        "email": "s96",
+        "image": "s97",
+        "login": "s98",
+        "name": "s99",
+        "provider": "s9a"
+      }
+    }
+  },
+  "new": {
+    "current_user_info": {
+      "current_user_info_ref01": {
+        "email": "sc8",
+        "image": "sc9",
+        "login": "sca",
+        "name": "scb",
+        "provider": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /users/me": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

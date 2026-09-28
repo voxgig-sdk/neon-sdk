@@ -1,0 +1,346 @@
+# Entity: consumption
+
+main: kit: entity: consumption: {
+
+  alias: field: {}
+
+  fields: {
+    branches: {
+      h: "Branches"
+      n: "branches"
+      r: true
+      sh: "Per-branch consumption history records returned for the requested time range."
+      t: "`$ARRAY`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      sh: "Cursor-based pagination."
+      t: "`$OBJECT`"
+    }
+    projects: {
+      h: "Projects"
+      n: "projects"
+      r: true
+      sh: "Per-project consumption history records included in the response."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "consumption"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /consumption_history/v2/branches"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "branch_id"
+                or: "branch_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: true
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "org_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/consumption_history/v2/branches"
+          q: {
+            exist: [
+              "branch_id"
+              "cursor"
+              "from"
+              "granularity"
+              "limit"
+              "metric"
+              "org_id"
+              "project_id"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "consumption_history"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "branches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /consumption_history/projects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "include_v1_metric"
+                or: "include_v1_metric"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "org_id"
+                or: "org_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/consumption_history/projects"
+          q: {
+            exist: [
+              "cursor"
+              "from"
+              "granularity"
+              "include_v1_metric"
+              "limit"
+              "metric"
+              "org_id"
+              "project_id"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "consumption_history"
+            }
+            {
+              lit: "projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /consumption_history/v2/projects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: true
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "org_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/consumption_history/v2/projects"
+          q: {
+            exist: [
+              "cursor"
+              "from"
+              "granularity"
+              "limit"
+              "metric"
+              "org_id"
+              "project_id"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "consumption_history"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

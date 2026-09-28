@@ -1,0 +1,23 @@
+# BasicProjectBranchLogsQueryFlow
+
+main: kit: flow: BasicProjectBranchLogsQueryFlow:
+{
+  entity: "project_branch_logs_query",
+  kind: "basic",
+  name: "BasicProjectBranchLogsQueryFlow",
+  step: [
+    {
+      i: {
+        ref: "project_branch_logs_query_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProjectBranchLogsQueryFlow"
+}

@@ -1,0 +1,405 @@
+# Entity: function
+
+main: kit: entity: function: {
+
+  alias: field: {}
+
+  fields: {
+    custom_domains: {
+      h: "Custom Domains"
+      n: "custom_domains"
+      r: true
+      t: "`$ARRAY`"
+    }
+    functions: {
+      h: "Functions"
+      n: "functions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: false
+      sh: "To paginate the response, issue an initial request with `limit` value."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "function"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/custom-domains"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/custom-domains"
+          q: {
+            exist: [
+              "branch_id"
+              "cursor"
+              "limit"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "custom-domains"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/functions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/functions"
+          q: {
+            exist: [
+              "branch_id"
+              "cursor"
+              "limit"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "functions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/custom-domains/{domain}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "domain"
+                or: "domain"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/custom-domains/{domain}"
+          q: {
+            exist: [
+              "branch_id"
+              "domain"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "custom-domains"
+            }
+            {
+              var: "domain"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/functions/{slug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/functions/{slug}"
+          q: {
+            exist: [
+              "branch_id"
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              slug: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "trigger_id"
+                or: "trigger_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+              "trigger_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "trigger_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch") path("$.main.kit.entity.custom_domain")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch") path("$.main.kit.entity.trigger")]
+  ]
+
+}

@@ -1,0 +1,358 @@
+# Entity: role
+
+main: kit: entity: role: {
+
+  alias: field: {}
+
+  fields: {
+    authentication_method: {
+      h: "Authentication Method"
+      n: "authentication_method"
+      r: false
+      sh: "Authentication method configured for this role: `password`, `oauth`, or `no_login`."
+      t: "`$STRING`"
+    }
+    branch_id: {
+      h: "Branch Id"
+      n: "branch_id"
+      r: true
+      sh: "The ID of the branch this role belongs to."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicating when the role was created"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Postgres role name within the branch."
+      t: "`$STRING`"
+    }
+    password: {
+      h: "Password"
+      n: "password"
+      r: false
+      sh: "The role password"
+      t: "`$STRING`"
+    }
+    protected: {
+      h: "Protected"
+      n: "protected"
+      r: false
+      sh: "Whether or not the role is system-protected"
+      t: "`$BOOLEAN`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: true
+      sh: "Properties of the role to create."
+      t: "`$OBJECT`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "A timestamp indicating when the role was last updated"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "role"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/roles"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/roles"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "roles"
+            }
+          ]
+          t: {
+            req: {
+              role: "`reqdata`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/roles"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/roles"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "roles"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.roles`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/roles/{role_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "role_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}"
+          q: {
+            exist: [
+              "branch_id"
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              role_name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "roles"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.role`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/roles/{role_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "role_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}"
+          q: {
+            exist: [
+              "branch_id"
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              role_name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "roles"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

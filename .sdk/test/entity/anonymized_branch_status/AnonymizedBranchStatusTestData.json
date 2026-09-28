@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "anonymized_branch_status": {
+      "ANONYMIZED_BRANCH_STATUS00": {
+        "completed_at": "s32",
+        "masked_columns": 51,
+        "started_at": "s34",
+        "triggered_by": "s35",
+        "triggered_by_username": "s36",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "ANONYMIZED_BRANCH_STATUS00"
+      },
+      "ANONYMIZED_BRANCH_STATUS01": {
+        "completed_at": "s64",
+        "masked_columns": 101,
+        "started_at": "s66",
+        "triggered_by": "s67",
+        "triggered_by_username": "s68",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "ANONYMIZED_BRANCH_STATUS01"
+      },
+      "ANONYMIZED_BRANCH_STATUS02": {
+        "completed_at": "s96",
+        "masked_columns": 151,
+        "started_at": "s98",
+        "triggered_by": "s99",
+        "triggered_by_username": "s9a",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "ANONYMIZED_BRANCH_STATUS02"
+      }
+    }
+  },
+  "new": {
+    "anonymized_branch_status": {
+      "anonymized_branch_status_ref01": {
+        "completed_at": "sc8",
+        "masked_columns": 201,
+        "started_at": "sca",
+        "triggered_by": "scb",
+        "triggered_by_username": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/anonymized_status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

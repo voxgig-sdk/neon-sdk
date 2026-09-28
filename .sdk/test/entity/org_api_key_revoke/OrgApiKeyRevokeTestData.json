@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "org_api_key_revoke": {
+      "ORG_API_KEY_REVOKE00": {
+        "key_id": "KEY01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ORG_API_KEY_REVOKE00"
+      },
+      "ORG_API_KEY_REVOKE01": {
+        "key_id": "KEY01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ORG_API_KEY_REVOKE01"
+      },
+      "ORG_API_KEY_REVOKE02": {
+        "key_id": "KEY01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ORG_API_KEY_REVOKE02"
+      }
+    }
+  },
+  "new": {
+    "org_api_key_revoke": {
+      "org_api_key_revoke_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /organizations/{org_id}/api_keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

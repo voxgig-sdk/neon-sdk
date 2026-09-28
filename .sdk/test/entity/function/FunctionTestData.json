@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "function": {
+      "FUNCTION00": {
+        "custom_domains": [],
+        "functions": [],
+        "id": "FUNCTION00",
+        "pagination": {},
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "domain": "DOMAIN01",
+        "trigger_id": "TRIGGER01"
+      },
+      "FUNCTION01": {
+        "custom_domains": [],
+        "functions": [],
+        "id": "FUNCTION01",
+        "pagination": {},
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "domain": "DOMAIN01",
+        "trigger_id": "TRIGGER01"
+      },
+      "FUNCTION02": {
+        "custom_domains": [],
+        "functions": [],
+        "id": "FUNCTION02",
+        "pagination": {},
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "domain": "DOMAIN01",
+        "trigger_id": "TRIGGER01"
+      }
+    }
+  },
+  "new": {
+    "function": {
+      "function_ref01": {
+        "custom_domains": [],
+        "functions": [],
+        "pagination": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/custom-domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/functions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/custom-domains/{domain}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/functions/{slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "project_branch_log_field": {
+      "PROJECT_BRANCH_LOG_FIELD00": {
+        "fields": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_BRANCH_LOG_FIELD01": {
+        "fields": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_BRANCH_LOG_FIELD02": {
+        "fields": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_branch_log_field": {
+      "project_branch_log_field_ref01": {
+        "fields": []
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/logs/fields": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

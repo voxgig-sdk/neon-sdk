@@ -1,0 +1,27 @@
+# BasicNeonAuthPluginConfigFlow
+
+main: kit: flow: BasicNeonAuthPluginConfigFlow:
+{
+  entity: "neon_auth_plugin_config",
+  kind: "basic",
+  name: "BasicNeonAuthPluginConfigFlow",
+  step: [
+    {
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "neon_auth_plugin_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeonAuthPluginConfigFlow"
+}

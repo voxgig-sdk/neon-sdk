@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "trigger": {
+      "TRIGGER00": {
+        "id": "TRIGGER00",
+        "triggers": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "TRIGGER01": {
+        "id": "TRIGGER01",
+        "triggers": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "TRIGGER02": {
+        "id": "TRIGGER02",
+        "triggers": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "trigger": {
+      "trigger_ref01": {
+        "triggers": []
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

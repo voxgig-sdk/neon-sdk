@@ -1,0 +1,50 @@
+# BasicMaskingRuleFlow
+
+main: kit: flow: BasicMaskingRuleFlow:
+{
+  entity: "masking_rule",
+  kind: "basic",
+  name: "BasicMaskingRuleFlow",
+  step: [
+    {
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "masking_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "masking_rule_ref01",
+        srcdatavar: "masking_rule_ref01_data",
+        suffix: "_up0",
+        textfield: "column_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-masking_rule_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMaskingRuleFlow"
+}

@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "neon_auth_plugin_config": {
+      "NEON_AUTH_PLUGIN_CONFIG00": {
+        "client_id": "CLIENT01",
+        "client_secret": "s29",
+        "id": "NEON_AUTH_PLUGIN_CONFIG00",
+        "type": "s2b",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_AUTH_PLUGIN_CONFIG01": {
+        "client_id": "CLIENT01",
+        "client_secret": "s51",
+        "id": "NEON_AUTH_PLUGIN_CONFIG01",
+        "type": "s53",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_AUTH_PLUGIN_CONFIG02": {
+        "client_id": "CLIENT01",
+        "client_secret": "s79",
+        "id": "NEON_AUTH_PLUGIN_CONFIG02",
+        "type": "s7b",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_plugin_config": {
+      "neon_auth_plugin_config_ref01": {
+        "client_id": "CLIENT01",
+        "client_secret": "sa1",
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/auth/plugins": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

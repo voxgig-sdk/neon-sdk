@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "database": {
+      "DATABASE00": {
+        "branch_id": "BRANCH01",
+        "created_at": "s47",
+        "database": {},
+        "id": "DATABASE00",
+        "name": "s4a",
+        "owner_name": "s4b",
+        "updated_at": "s4c",
+        "project_id": "PROJECT01"
+      },
+      "DATABASE01": {
+        "branch_id": "BRANCH01",
+        "created_at": "s8d",
+        "database": {},
+        "id": "DATABASE01",
+        "name": "s90",
+        "owner_name": "s91",
+        "updated_at": "s92",
+        "project_id": "PROJECT01"
+      },
+      "DATABASE02": {
+        "branch_id": "BRANCH01",
+        "created_at": "sd3",
+        "database": {},
+        "id": "DATABASE02",
+        "name": "sd6",
+        "owner_name": "sd7",
+        "updated_at": "sd8",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "database": {
+      "database_ref01": {
+        "branch_id": "BRANCH01",
+        "created_at": "s119",
+        "database": {},
+        "name": "s11c",
+        "owner_name": "s11d",
+        "updated_at": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/databases/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/databases/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/databases/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

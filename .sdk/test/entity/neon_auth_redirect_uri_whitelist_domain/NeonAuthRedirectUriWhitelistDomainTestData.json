@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "neon_auth_redirect_uri_whitelist_domain": {
+      "NEON_AUTH_REDIRECT_URI_WHITELIST_DOMAIN00": {
+        "auth_provider": "s14",
+        "domain": "s15",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_AUTH_REDIRECT_URI_WHITELIST_DOMAIN01": {
+        "auth_provider": "s28",
+        "domain": "s29",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_AUTH_REDIRECT_URI_WHITELIST_DOMAIN02": {
+        "auth_provider": "s3c",
+        "domain": "s3d",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_redirect_uri_whitelist_domain": {
+      "neon_auth_redirect_uri_whitelist_domain_ref01": {
+        "auth_provider": "s50",
+        "domain": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/auth/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/auth/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

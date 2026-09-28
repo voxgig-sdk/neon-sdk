@@ -1,0 +1,942 @@
+# Entity: project
+
+main: kit: entity: project: {
+
+  alias: field: {}
+
+  fields: {
+    active_time_seconds: {
+      fo: "int64"
+      h: "Active Time Seconds"
+      n: "active_time_seconds"
+      r: true
+      sh: "Seconds."
+      t: "`$INTEGER`"
+    }
+    applications: {
+      h: "Applications"
+      n: "applications"
+      r: true
+      sh: "Map of project IDs to their installed applications."
+      t: "`$OBJECT`"
+    }
+    branch_logical_size_limit: {
+      fo: "int64"
+      h: "Branch Logical Size Limit"
+      n: "branch_logical_size_limit"
+      r: true
+      sh: "The logical size limit for a branch."
+      t: "`$INTEGER`"
+    }
+    branch_logical_size_limit_bytes: {
+      fo: "int64"
+      h: "Branch Logical Size Limit Bytes"
+      n: "branch_logical_size_limit_bytes"
+      r: true
+      sh: "The logical size limit for a branch."
+      t: "`$INTEGER`"
+    }
+    compute_last_active_at: {
+      fo: "date-time"
+      h: "Compute Last Active At"
+      n: "compute_last_active_at"
+      r: false
+      sh: "The most recent time when any endpoint of this project was active."
+      t: "`$STRING`"
+    }
+    compute_time_seconds: {
+      fo: "int64"
+      h: "Compute Time Seconds"
+      n: "compute_time_seconds"
+      r: true
+      sh: "Seconds."
+      t: "`$INTEGER`"
+    }
+    consumption_period_end: {
+      fo: "date-time"
+      h: "Consumption Period End"
+      n: "consumption_period_end"
+      r: true
+      sh: "A date-time indicating when Neon Cloud plans to stop measuring consumption for current consumption period."
+      t: "`$STRING`"
+    }
+    consumption_period_start: {
+      fo: "date-time"
+      h: "Consumption Period Start"
+      n: "consumption_period_start"
+      r: true
+      sh: "A date-time indicating when Neon Cloud started measuring consumption for current consumption period."
+      t: "`$STRING`"
+    }
+    cpu_used_sec: {
+      de: true
+      fo: "int64"
+      h: "Cpu Used Sec"
+      n: "cpu_used_sec"
+      r: true
+      sh: "Deprecated."
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicating when the project was created"
+      t: "`$STRING`"
+    }
+    creation_source: {
+      h: "Creation Source"
+      n: "creation_source"
+      r: true
+      sh: "The project creation source"
+      t: "`$STRING`"
+    }
+    data_storage_bytes_hour: {
+      fo: "int64"
+      h: "Data Storage Bytes Hour"
+      n: "data_storage_bytes_hour"
+      r: true
+      sh: "Bytes-Hour."
+      t: "`$INTEGER`"
+    }
+    data_transfer_bytes: {
+      fo: "int64"
+      h: "Data Transfer Bytes"
+      n: "data_transfer_bytes"
+      r: true
+      sh: "Bytes."
+      t: "`$INTEGER`"
+    }
+    default_endpoint_settings: {
+      h: "Default Endpoint Settings"
+      n: "default_endpoint_settings"
+      r: false
+      sh: "A collection of settings for a Neon endpoint"
+      t: "`$OBJECT`"
+    }
+    effective_project_permission: {
+      h: "Effective Project Permission"
+      n: "effective_project_permission"
+      r: false
+      t: "`$STRING`"
+    }
+    hipaa_enabled_at: {
+      fo: "date-time"
+      h: "Hipaa Enabled At"
+      n: "hipaa_enabled_at"
+      r: false
+      sh: "A timestamp indicating when HIPAA was enabled for this project"
+      t: "`$STRING`"
+    }
+    history_retention_seconds: {
+      fo: "int32"
+      h: "History Retention Seconds"
+      n: "history_retention_seconds"
+      r: true
+      sh: "The number of seconds to retain the shared history for all branches in this project."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The Neon project ID."
+      t: "`$STRING`"
+    }
+    integrations: {
+      h: "Integrations"
+      n: "integrations"
+      r: true
+      sh: "Map of project IDs to their associated integration details."
+      t: "`$OBJECT`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: true
+      sh: "Human-readable name for the VPC endpoint assignment, used to identify it within the organization."
+      t: "`$STRING`"
+    }
+    maintenance_scheduled_for: {
+      fo: "date-time"
+      h: "Maintenance Scheduled For"
+      n: "maintenance_scheduled_for"
+      r: false
+      sh: "A timestamp indicating when project update begins."
+      t: "`$STRING`"
+    }
+    maintenance_starts_at: {
+      fo: "date-time"
+      h: "Maintenance Starts At"
+      n: "maintenance_starts_at"
+      r: false
+      sh: "A timestamp indicating when project maintenance begins."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The project name"
+      t: "`$STRING`"
+    }
+    org_id: {
+      h: "Org Id"
+      n: "org_id"
+      r: false
+      sh: "The Neon organization ID."
+      t: "`$STRING`"
+    }
+    owner: {
+      h: "Owner"
+      n: "owner"
+      r: true
+      sh: "Ownership details for the project, including the owner's name and email."
+      t: "`$OBJECT`"
+    }
+    owner_id: {
+      h: "Owner Id"
+      n: "owner_id"
+      r: true
+      sh: "ID of the organization that owns the project."
+      t: "`$STRING`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      sh: "Cursor-based pagination."
+      t: "`$OBJECT`"
+    }
+    pg_version: {
+      h: "Pg Version"
+      n: "pg_version"
+      r: true
+      sh: "The major Postgres version number."
+      t: "`$INTEGER`"
+    }
+    platform_id: {
+      h: "Platform Id"
+      n: "platform_id"
+      r: true
+      sh: "The cloud platform identifier."
+      t: "`$STRING`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      sh: "Configuration for the new project, including name, region, and Postgres compute and storage settings."
+      t: "`$OBJECT`"
+    }
+    projects: {
+      h: "Projects"
+      n: "projects"
+      r: true
+      sh: "List of projects accessible to the caller."
+      t: "`$ARRAY`"
+    }
+    provisioner: {
+      h: "Provisioner"
+      n: "provisioner"
+      r: true
+      sh: "Compute provisioner."
+      t: "`$STRING`"
+    }
+    proxy_host: {
+      h: "Proxy Host"
+      n: "proxy_host"
+      r: true
+      sh: "The proxy host for the project."
+      t: "`$STRING`"
+    }
+    quota_reset_at: {
+      de: true
+      fo: "date-time"
+      h: "Quota Reset At"
+      n: "quota_reset_at"
+      r: false
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    region_id: {
+      h: "Region Id"
+      n: "region_id"
+      r: true
+      sh: "Cloud region where the resource's Postgres compute and storage reside (for example, `aws-us-east-1`)."
+      t: "`$STRING`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: false
+      sh: "Project-level settings, for example `quota`, `allowed_ips`, `enable_logical_replication`, and `maintenance_window`."
+      t: "`$OBJECT`"
+    }
+    store_passwords: {
+      h: "Store Passwords"
+      n: "store_passwords"
+      r: true
+      sh: "Whether or not passwords are stored for roles in the Neon project."
+      t: "`$BOOLEAN`"
+    }
+    synthetic_storage_size: {
+      fo: "int64"
+      h: "Synthetic Storage Size"
+      n: "synthetic_storage_size"
+      r: false
+      sh: "The current space occupied by the project in Postgres storage, in bytes."
+      t: "`$INTEGER`"
+    }
+    unavailable_project_ids: {
+      h: "Unavailable Project Ids"
+      n: "unavailable_project_ids"
+      r: false
+      sh: "A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit"
+      t: "`$ARRAY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "A timestamp indicating when the project was last updated"
+      t: "`$STRING`"
+    }
+    written_data_bytes: {
+      fo: "int64"
+      h: "Written Data Bytes"
+      n: "written_data_bytes"
+      r: true
+      sh: "Bytes."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "project"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "vpc_endpoint_id"
+                or: "vpc_endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "vpc_endpoint_id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+            {
+              var: "vpc_endpoint_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /projects/{project_id}/branch_anonymized"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branch_anonymized"
+          q: {
+            "$action": "branch_anonymized"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "branch_anonymized"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /projects"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/projects"
+          s: [
+            {
+              lit: "projects"
+            }
+          ]
+          t: {
+            req: {
+              project: "`reqdata`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "org_id"
+                or: "org_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: false
+                k: "query"
+                n: "recoverable"
+                or: "recoverable"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "timeout"
+                or: "timeout"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects"
+          q: {
+            exist: [
+              "cursor"
+              "limit"
+              "org_id"
+              "recoverable"
+              "search"
+              "timeout"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /projects/{project_id}/advisors"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "branch_id"
+                or: "branch_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "database_name"
+                or: "database_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "min_severity"
+                or: "min_severity"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/advisors"
+          q: {
+            "$action": "advisor"
+            exist: [
+              "branch_id"
+              "category"
+              "database_name"
+              "id"
+              "min_severity"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "advisors"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.issues`"
+          }
+        }
+        {
+          co: {
+            id: "GET /projects/shared"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "timeout"
+                or: "timeout"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/shared"
+          q: {
+            "$action": "shared"
+            exist: [
+              "cursor"
+              "limit"
+              "search"
+              "timeout"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              lit: "shared"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.project`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /projects/{project_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/projects/{project_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              project: "`reqdata`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "vpc_endpoint_id"
+                or: "vpc_endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "vpc_endpoint_id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+            {
+              var: "vpc_endpoint_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /projects/{project_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.project`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /projects/{project_id}/transfer_requests/{request_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "request_id"
+                or: "request_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/projects/{project_id}/transfer_requests/{request_id}"
+          q: {
+            exist: [
+              "id"
+              "request_id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "transfer_requests"
+            }
+            {
+              var: "request_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.vpc_endpoint")]
+  ]
+
+}

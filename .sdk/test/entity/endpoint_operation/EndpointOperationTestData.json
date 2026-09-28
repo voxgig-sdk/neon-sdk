@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "endpoint_operation": {
+      "ENDPOINT_OPERATION00": {
+        "endpoint": {},
+        "id": "ENDPOINT_OPERATION00",
+        "operations": [],
+        "project_id": "PROJECT01"
+      },
+      "ENDPOINT_OPERATION01": {
+        "endpoint": {},
+        "id": "ENDPOINT_OPERATION01",
+        "operations": [],
+        "project_id": "PROJECT01"
+      },
+      "ENDPOINT_OPERATION02": {
+        "endpoint": {},
+        "id": "ENDPOINT_OPERATION02",
+        "operations": [],
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "endpoint_operation": {
+      "endpoint_operation_ref01": {
+        "endpoint": {},
+        "operations": []
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/endpoints/{endpoint_id}/restart": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/{project_id}/endpoints/{endpoint_id}/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/{project_id}/endpoints/{endpoint_id}/suspend": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

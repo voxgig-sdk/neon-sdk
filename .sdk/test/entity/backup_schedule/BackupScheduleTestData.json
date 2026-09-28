@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "backup_schedule": {
+      "BACKUP_SCHEDULE00": {
+        "day": 50,
+        "frequency": "s33",
+        "hour": 52,
+        "month": 53,
+        "retention_seconds": 54,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "BACKUP_SCHEDULE01": {
+        "day": 100,
+        "frequency": "s65",
+        "hour": 102,
+        "month": 103,
+        "retention_seconds": 104,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "BACKUP_SCHEDULE02": {
+        "day": 150,
+        "frequency": "s97",
+        "hour": 152,
+        "month": 153,
+        "retention_seconds": 154,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "backup_schedule": {
+      "backup_schedule_ref01": {
+        "day": 200,
+        "frequency": "sc9",
+        "hour": 202,
+        "month": 203,
+        "retention_seconds": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/backup_schedule": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

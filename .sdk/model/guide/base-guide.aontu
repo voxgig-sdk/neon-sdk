@@ -1,0 +1,821 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 75
+  metrics: count: path: 122
+  metrics: count: method: 179
+
+  entity: anonymize: {
+    path: "/projects/{project_id}/branches/{branch_id}/anonymize": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.last_run`")|top
+    }
+  }
+
+  entity: anonymized_branch_status: {
+    path: "/projects/{project_id}/branches/{branch_id}/anonymized_status": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.last_run`")|top
+    }
+  }
+
+  entity: api_key: {
+    path: "/api_keys": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/api_keys/{key_id}": {
+      rename: param: "key_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: auth: {
+    path: "/auth": {
+      op: load: method: *GET
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth": {
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/domains": {
+      action: "domain": {}
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/users/{auth_user_id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: auth_legacy: {
+    path: "/projects/{project_id}/auth/domains": {
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/auth/integration/{auth_provider}": {
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/auth/oauth_providers/{oauth_provider_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/auth/users/{auth_user_id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: available_preload_library: {
+    path: "/projects/{project_id}/available_preload_libraries": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.libraries`")|top
+    }
+  }
+
+  entity: backup_schedule: {
+    path: "/projects/{project_id}/branches/{branch_id}/backup_schedule": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.schedule`")|top
+    }
+  }
+
+  entity: branch: {
+    path: "/projects/{project_id}/branches": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/projects/{project_id}/branches/count": {
+      action: "count": {}
+      op: load: method: *GET
+    }
+    path: "/projects/{project_id}/branches/{branch_id}": {
+      rename: param: "branch_id": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: patch: transform: req: "branch": *("`reqdata`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: branch_ai_gateway: {
+    path: "/projects/{project_id}/branches/{branch_id}/ai_gateway": {
+      rename: param: "branch_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: branch_operation: {
+    path: "/projects/{project_id}/branches/{branch_id}/restore": {
+      action: "restore": {}
+      rename: param: "branch_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/set_as_default": {
+      action: "set_as_default": {}
+      rename: param: "branch_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: branch_schema: {
+    path: "/projects/{project_id}/branches/{branch_id}/schema": {
+      rename: param: "branch_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.json`")|top
+    }
+  }
+
+  entity: branch_schema_compare: {
+    path: "/projects/{project_id}/branches/{branch_id}/compare_schema": {
+      action: "compare_schema": {}
+      rename: param: "branch_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: branch_storage: {
+    path: "/projects/{project_id}/branches/{branch_id}/storage": {
+      rename: param: "branch_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: bucket: {
+    path: "/projects/{project_id}/branches/{branch_id}/buckets": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.bucket`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.buckets`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}": {
+      rename: param: "bucket_name": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects-by-prefix": {
+      action: "objects_by_prefix": {}
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}": {
+      rename: param: "bucket_name": *"bucket_id"
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/download": {
+      rename: param: "bucket_name": *"bucket_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: bucket_objects_list: {
+    path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: connection_uri: {
+    path: "/projects/{project_id}/connection_uri": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: consumption: {
+    path: "/consumption_history/projects": {
+      op: list: method: *GET
+    }
+    path: "/consumption_history/v2/branches": {
+      op: list: method: *GET
+    }
+    path: "/consumption_history/v2/projects": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: create_credential: {
+    path: "/projects/{project_id}/branches/{branch_id}/credentials": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: credential: {
+    path: "/projects/{project_id}/branches/{branch_id}/credentials": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.credentials`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/credentials/{token_id}": {
+      rename: param: "token_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/credentials/{token_id}/reveal": {
+      action: "reveal": {}
+      rename: param: "token_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/credentials/{token_id}/rotate": {
+      action: "rotate": {}
+      rename: param: "token_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: current_user_info: {
+    path: "/users/me": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: custom_domain: {
+    path: "/projects/{project_id}/branches/{branch_id}/custom-domains": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: data_api: {
+    path: "/projects/{project_id}/branches/{branch_id}/data-api/{database_name}": {
+      rename: param: "database_name": *"id"
+      op: create: method: *POST
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: database: {
+    path: "/projects/{project_id}/branches/{branch_id}/databases": {
+      op: create: method: *POST
+      op: create: transform: req: "database": *("`reqdata`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.databases`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/databases/{database_name}": {
+      rename: param: "database_name": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.database`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: req: "database": *("`reqdata`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: email_provider: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/email_provider": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: email_server: {
+    path: "/projects/{project_id}/auth/email_server": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: empty: {
+    path: "/organizations/{org_id}/billing/spending_limit": {
+      rename: param: "org_id": *"organization_id"
+      op: remove: method: *DELETE
+    }
+    path: "/organizations/{source_org_id}/projects/transfer": {
+      rename: param: "source_org_id": *"organization_id"
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/backup_schedule": {
+      op: update: method: *PUT
+    }
+    path: "/users/me/projects/transfer": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: endpoint: {
+    path: "/projects/{project_id}/branches/{branch_id}/endpoints": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.endpoints`")|top
+    }
+    path: "/projects/{project_id}/endpoints": {
+      op: create: method: *POST
+      op: create: transform: req: "endpoint": *("`reqdata`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.endpoints`")|top
+    }
+    path: "/projects/{project_id}/endpoints/{endpoint_id}": {
+      rename: param: "endpoint_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.endpoint`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: req: "endpoint": *("`reqdata`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: endpoint_operation: {
+    path: "/projects/{project_id}/endpoints/{endpoint_id}/restart": {
+      action: "restart": {}
+      rename: param: "endpoint_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/endpoints/{endpoint_id}/start": {
+      action: "start": {}
+      rename: param: "endpoint_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/endpoints/{endpoint_id}/suspend": {
+      action: "suspend": {}
+      rename: param: "endpoint_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: function: {
+    path: "/projects/{project_id}/branches/{branch_id}/custom-domains": {
+      op: list: method: *GET
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/custom-domains/{domain}": {
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/functions": {
+      op: list: method: *GET
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/functions/{slug}": {
+      rename: param: "slug": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: jwk: {
+    path: "/projects/{project_id}/jwks": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.jwks`")|top
+    }
+    path: "/projects/{project_id}/jwks/{jwks_id}": {
+      rename: param: "jwks_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: masking_rule: {
+    path: "/projects/{project_id}/branches/{branch_id}/masking_rules": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.masking_rules`")|top
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: member: {
+    path: "/organizations/{org_id}/members/{member_id}": {
+      rename: param: "member_id": *"id"
+      rename: param: "org_id": *"organization_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: neon_auth_allow_localhost: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/allow_localhost": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/config": {
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_create_integration: {
+    path: "/projects/auth/create": {
+      op: create: method: *POST
+    }
+    path: "/projects/auth/keys": {
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: neon_auth_create_new_user: {
+    path: "/projects/auth/user": {
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/users": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: neon_auth_email_and_password_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/email_and_password": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_email_server_config: {
+    path: "/projects/{project_id}/auth/email_server": {
+      op: patch: method: *PATCH
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/email_provider": {
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_integration: {
+    path: "/projects/{project_id}/auth/integrations": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: neon_auth_magic_link_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/magic-link": {
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_oauth_provider: {
+    path: "/projects/{project_id}/auth/oauth_providers": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.providers`")|top
+    }
+    path: "/projects/{project_id}/auth/oauth_providers/{oauth_provider_id}": {
+      rename: param: "oauth_provider_id": *"id"
+      op: patch: method: *PATCH
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.providers`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}": {
+      rename: param: "oauth_provider_id": *"id"
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_organization_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/organization": {
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_phone_number_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/phone-number": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: neon_auth_plugin_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/plugins": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: neon_auth_redirect_uri_whitelist_domain: {
+    path: "/projects/{project_id}/auth/domains": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.domains`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/domains": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.domains`")|top
+    }
+  }
+
+  entity: neon_auth_transfer_auth_provider_project: {
+    path: "/projects/auth/transfer_ownership": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: neon_auth_webhook_config: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/webhooks": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.enabled_events`")|top
+      op: update: method: *PUT
+    }
+  }
+
+  entity: neon_function: {
+    path: "/projects/{project_id}/branches/{branch_id}/functions/{slug}": {
+      rename: param: "slug": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.function`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.function`")|top
+    }
+  }
+
+  entity: neon_function_deployment: {
+    path: "/projects/{project_id}/branches/{branch_id}/functions/{slug}/deployments": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deployment`")|top
+    }
+  }
+
+  entity: operation: {
+    path: "/projects/{project_id}/branches/{branch_id}/finalize_restore": {
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/operations": {
+      op: list: method: *GET
+    }
+    path: "/projects/{project_id}/operations/{operation_id}": {
+      rename: param: "operation_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.operation`")|top
+    }
+  }
+
+  entity: org_api_key_create: {
+    path: "/organizations/{org_id}/api_keys": {
+      rename: param: "org_id": *"organization_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: org_api_key_revoke: {
+    path: "/organizations/{org_id}/api_keys/{key_id}": {
+      rename: param: "org_id": *"organization_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: org_api_keys_list_response_item: {
+    path: "/organizations/{org_id}/api_keys": {
+      rename: param: "org_id": *"organization_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: organization: {
+    path: "/organizations/{org_id}": {
+      rename: param: "org_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/organizations/{org_id}/members": {
+      action: "member": {}
+      rename: param: "org_id": *"id"
+      op: list: method: *GET
+    }
+    path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}": {
+      rename: param: "org_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/users/me/organizations": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.organizations`")|top
+    }
+  }
+
+  entity: organization_invitation: {
+    path: "/organizations/{org_id}/invitations": {
+      rename: param: "org_id": *"id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.invitations`")|top
+    }
+  }
+
+  entity: presign: {
+    path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/presign": {
+      rename: param: "bucket_name": *"bucket_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.headers`")|top
+    }
+  }
+
+  entity: project: {
+    path: "/projects": {
+      op: create: method: *POST
+      op: create: transform: req: "project": *("`reqdata`")|top
+      op: list: method: *GET
+    }
+    path: "/projects/shared": {
+      action: "shared": {}
+      op: list: method: *GET
+    }
+    path: "/projects/{project_id}": {
+      rename: param: "project_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.project`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: req: "project": *("`reqdata`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.project`")|top
+    }
+    path: "/projects/{project_id}/advisors": {
+      action: "advisor": {}
+      rename: param: "project_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.issues`")|top
+    }
+    path: "/projects/{project_id}/branch_anonymized": {
+      action: "branch_anonymized": {}
+      rename: param: "project_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/transfer_requests/{request_id}": {
+      rename: param: "project_id": *"id"
+      op: update: method: *PUT
+    }
+    path: "/projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}": {
+      rename: param: "project_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: project_branch_log_field: {
+    path: "/projects/{project_id}/branches/{branch_id}/logs/fields": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.fields`")|top
+    }
+  }
+
+  entity: project_branch_log_field_value: {
+    path: "/projects/{project_id}/branches/{branch_id}/logs/fields/{field_name}/values": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: project_branch_logs_query: {
+    path: "/projects/{project_id}/branches/{branch_id}/logs/query": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: project_member: {
+    path: "/projects/{project_id}/members": {
+      rename: param: "project_id": *"id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: project_member_role: {
+    path: "/projects/{project_id}/members/{member_id}/role": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: project_permission: {
+    path: "/projects/{project_id}/permissions": {
+      rename: param: "project_id": *"id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.project_permissions`")|top
+    }
+    path: "/projects/{project_id}/permissions/{permission_id}": {
+      rename: param: "permission_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: project_recover: {
+    path: "/projects/{project_id}/recover": {
+      rename: param: "project_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: project_transfer_request: {
+    path: "/projects/{project_id}/transfer_requests": {
+      rename: param: "project_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: region: {
+    path: "/regions": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.regions`")|top
+    }
+  }
+
+  entity: role: {
+    path: "/projects/{project_id}/branches/{branch_id}/roles": {
+      op: create: method: *POST
+      op: create: transform: req: "role": *("`reqdata`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.roles`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}": {
+      rename: param: "role_name": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.role`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: role_operation: {
+    path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reset_password": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: role_password: {
+    path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reveal_password": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: send_neon_auth_test_email: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/email_provider/test": {
+      op: create: method: *POST
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/auth/send_test_email": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: snapshot: {
+    path: "/projects/{project_id}/branches/{branch_id}/snapshot": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.snapshot`")|top
+    }
+    path: "/projects/{project_id}/snapshots": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.snapshots`")|top
+    }
+    path: "/projects/{project_id}/snapshots/{snapshot_id}": {
+      rename: param: "snapshot_id": *"id"
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.snapshot`")|top
+      op: patch: transform: req: "snapshot": *("`reqdata`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/projects/{project_id}/snapshots/{snapshot_id}/restore": {
+      action: "restore": {}
+      rename: param: "snapshot_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: spending_limit: {
+    path: "/organizations/{org_id}/billing/spending_limit": {
+      rename: param: "org_id": *"organization_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: trigger: {
+    path: "/projects/{project_id}/branches/{branch_id}/triggers": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.trigger`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.triggers`")|top
+    }
+    path: "/projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}": {
+      rename: param: "trigger_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.trigger`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.trigger`")|top
+    }
+  }
+
+  entity: update_neon_auth_user_role: {
+    path: "/projects/{project_id}/branches/{branch_id}/auth/users/{auth_user_id}/role": {
+      rename: param: "auth_user_id": *"user_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: vpc_endpoint: {
+    path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints": {
+      rename: param: "org_id": *"organization_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.endpoints`")|top
+    }
+    path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}": {
+      rename: param: "org_id": *"organization_id"
+      rename: param: "vpc_endpoint_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/organizations/{org_id}/vpc/vpc_endpoints": {
+      rename: param: "org_id": *"organization_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.endpoints`")|top
+    }
+    path: "/projects/{project_id}/vpc_endpoints": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.endpoints`")|top
+    }
+  }
+
+}

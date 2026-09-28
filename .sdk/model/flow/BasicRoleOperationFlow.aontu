@@ -1,0 +1,24 @@
+# BasicRoleOperationFlow
+
+main: kit: flow: BasicRoleOperationFlow:
+{
+  entity: "role_operation",
+  kind: "basic",
+  name: "BasicRoleOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "role_operation_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01",
+        role_name: "role_name01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRoleOperationFlow"
+}

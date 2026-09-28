@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "neon_function": {
+      "NEON_FUNCTION00": {
+        "active_deployment": "s46",
+        "created_at": "s47",
+        "current_deployment": "s48",
+        "id": "NEON_FUNCTION00",
+        "invocation_url": "s4a",
+        "name": "s4b",
+        "slug": "s4c",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_FUNCTION01": {
+        "active_deployment": "s8c",
+        "created_at": "s8d",
+        "current_deployment": "s8e",
+        "id": "NEON_FUNCTION01",
+        "invocation_url": "s90",
+        "name": "s91",
+        "slug": "s92",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_FUNCTION02": {
+        "active_deployment": "sd2",
+        "created_at": "sd3",
+        "current_deployment": "sd4",
+        "id": "NEON_FUNCTION02",
+        "invocation_url": "sd6",
+        "name": "sd7",
+        "slug": "sd8",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "neon_function": {
+      "neon_function_ref01": {
+        "active_deployment": "s118",
+        "created_at": "s119",
+        "current_deployment": "s11a",
+        "invocation_url": "s11c",
+        "name": "s11d",
+        "slug": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/functions/{slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/functions/{slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

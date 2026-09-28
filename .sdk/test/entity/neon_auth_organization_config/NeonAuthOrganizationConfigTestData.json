@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "neon_auth_organization_config": {
+      "NEON_AUTH_ORGANIZATION_CONFIG00": {
+        "creator_role": "s32",
+        "enabled": false,
+        "membership_limit": 52,
+        "organization_limit": 53,
+        "send_invitation_email": true,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_ORGANIZATION_CONFIG00"
+      },
+      "NEON_AUTH_ORGANIZATION_CONFIG01": {
+        "creator_role": "s64",
+        "enabled": false,
+        "membership_limit": 102,
+        "organization_limit": 103,
+        "send_invitation_email": true,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_ORGANIZATION_CONFIG01"
+      },
+      "NEON_AUTH_ORGANIZATION_CONFIG02": {
+        "creator_role": "s96",
+        "enabled": false,
+        "membership_limit": 152,
+        "organization_limit": 153,
+        "send_invitation_email": true,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_ORGANIZATION_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_organization_config": {
+      "neon_auth_organization_config_ref01": {
+        "creator_role": "sc8",
+        "enabled": false,
+        "membership_limit": 202,
+        "organization_limit": 203,
+        "send_invitation_email": true
+      }
+    }
+  },
+  "requests": {
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/plugins/organization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

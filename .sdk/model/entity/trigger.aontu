@@ -1,0 +1,304 @@
+# Entity: trigger
+
+main: kit: entity: trigger: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    triggers: {
+      h: "Triggers"
+      n: "triggers"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "trigger"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/triggers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/triggers"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "triggers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trigger`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/triggers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/triggers"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "triggers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.triggers`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "trigger_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}"
+          q: {
+            exist: [
+              "branch_id"
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              trigger_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trigger`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "trigger_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/projects/{project_id}/branches/{branch_id}/triggers/{trigger_id}"
+          q: {
+            exist: [
+              "branch_id"
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              trigger_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trigger`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "branch_schema": {
+      "BRANCH_SCHEMA00": {
+        "id": "BRANCH_SCHEMA00",
+        "tables": [],
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_SCHEMA01": {
+        "id": "BRANCH_SCHEMA01",
+        "tables": [],
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_SCHEMA02": {
+        "id": "BRANCH_SCHEMA02",
+        "tables": [],
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "branch_schema": {
+      "branch_schema_ref01": {
+        "tables": []
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/schema": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

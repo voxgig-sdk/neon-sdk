@@ -1,0 +1,72 @@
+# BasicJwkFlow
+
+main: kit: flow: BasicJwkFlow:
+{
+  entity: "jwk",
+  kind: "basic",
+  name: "BasicJwkFlow",
+  step: [
+    {
+      i: {
+        ref: "jwk_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "jwk_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "jwk_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "jwk01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "jwk_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicJwkFlow"
+}

@@ -1,0 +1,1815 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Endpoint | Neon API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Neon API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/neon-sdk">voxgig-sdk/neon-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Neon API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/anonymize.html">Anonymize</a>
+<a href="../api/anonymized_branch_status.html">AnonymizedBranchStatus</a>
+<a href="../api/api_key.html">ApiKey</a>
+<a href="../api/auth.html">Auth</a>
+<a href="../api/auth_legacy.html">AuthLegacy</a>
+<a href="../api/available_preload_library.html">AvailablePreloadLibrary</a>
+<a href="../api/backup_schedule.html">BackupSchedule</a>
+<a href="../api/branch.html">Branch</a>
+<a href="../api/branch_ai_gateway.html">BranchAiGateway</a>
+<a href="../api/branch_operation.html">BranchOperation</a>
+<a href="../api/branch_schema.html">BranchSchema</a>
+<a href="../api/branch_schema_compare.html">BranchSchemaCompare</a>
+<a href="../api/branch_storage.html">BranchStorage</a>
+<a href="../api/bucket.html">Bucket</a>
+<a href="../api/bucket_objects_list.html">BucketObjectsList</a>
+<a href="../api/connection_uri.html">ConnectionUri</a>
+<a href="../api/consumption.html">Consumption</a>
+<a href="../api/create_credential.html">CreateCredential</a>
+<a href="../api/credential.html">Credential</a>
+<a href="../api/current_user_info.html">CurrentUserInfo</a>
+<a href="../api/custom_domain.html">CustomDomain</a>
+<a href="../api/data_api.html">DataApi</a>
+<a href="../api/database.html">Database</a>
+<a href="../api/email_provider.html">EmailProvider</a>
+<a href="../api/email_server.html">EmailServer</a>
+<a href="../api/empty.html">Empty</a>
+<a aria-current="page" href="../api/endpoint.html">Endpoint</a><div class="nav-sections"><a class="nav-section" href="#post-projectsproject_idendpoints">POST /projects/{project_id}/endpoints</a>
+<a class="nav-section" href="#get-projectsproject_idbranchesbranch_idendpoints">GET /projects/{project_id}/branches/{branch_id}/endpoints</a>
+<a class="nav-section" href="#get-projectsproject_idendpoints">GET /projects/{project_id}/endpoints</a>
+<a class="nav-section" href="#get-projectsproject_idendpointsendpoint_id">GET /projects/{project_id}/endpoints/{endpoint_id}</a>
+<a class="nav-section" href="#delete-projectsproject_idendpointsendpoint_id">DELETE /projects/{project_id}/endpoints/{endpoint_id}</a>
+<a class="nav-section" href="#patch-projectsproject_idendpointsendpoint_id">PATCH /projects/{project_id}/endpoints/{endpoint_id}</a></div>
+<a href="../api/endpoint_operation.html">EndpointOperation</a>
+<a href="../api/function.html">Function</a>
+<a href="../api/jwk.html">Jwk</a>
+<a href="../api/masking_rule.html">MaskingRule</a>
+<a href="../api/member.html">Member</a>
+<a href="../api/neon_auth_allow_localhost.html">NeonAuthAllowLocalhost</a>
+<a href="../api/neon_auth_config.html">NeonAuthConfig</a>
+<a href="../api/neon_auth_create_integration.html">NeonAuthCreateIntegration</a>
+<a href="../api/neon_auth_create_new_user.html">NeonAuthCreateNewUser</a>
+<a href="../api/neon_auth_email_and_password_config.html">NeonAuthEmailAndPasswordConfig</a>
+<a href="../api/neon_auth_email_server_config.html">NeonAuthEmailServerConfig</a>
+<a href="../api/neon_auth_integration.html">NeonAuthIntegration</a>
+<a href="../api/neon_auth_magic_link_config.html">NeonAuthMagicLinkConfig</a>
+<a href="../api/neon_auth_oauth_provider.html">NeonAuthOauthProvider</a>
+<a href="../api/neon_auth_organization_config.html">NeonAuthOrganizationConfig</a>
+<a href="../api/neon_auth_phone_number_config.html">NeonAuthPhoneNumberConfig</a>
+<a href="../api/neon_auth_plugin_config.html">NeonAuthPluginConfig</a>
+<a href="../api/neon_auth_redirect_uri_whitelist_domain.html">NeonAuthRedirectUriWhitelistDomain</a>
+<a href="../api/neon_auth_transfer_auth_provider_project.html">NeonAuthTransferAuthProviderProject</a>
+<a href="../api/neon_auth_webhook_config.html">NeonAuthWebhookConfig</a>
+<a href="../api/neon_function.html">NeonFunction</a>
+<a href="../api/neon_function_deployment.html">NeonFunctionDeployment</a>
+<a href="../api/operation.html">Operation</a>
+<a href="../api/org_api_key_create.html">OrgApiKeyCreate</a>
+<a href="../api/org_api_key_revoke.html">OrgApiKeyRevoke</a>
+<a href="../api/org_api_keys_list_response_item.html">OrgApiKeysListResponseItem</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_invitation.html">OrganizationInvitation</a>
+<a href="../api/presign.html">Presign</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_branch_log_field.html">ProjectBranchLogField</a>
+<a href="../api/project_branch_log_field_value.html">ProjectBranchLogFieldValue</a>
+<a href="../api/project_branch_logs_query.html">ProjectBranchLogsQuery</a>
+<a href="../api/project_member.html">ProjectMember</a>
+<a href="../api/project_member_role.html">ProjectMemberRole</a>
+<a href="../api/project_permission.html">ProjectPermission</a>
+<a href="../api/project_recover.html">ProjectRecover</a>
+<a href="../api/project_transfer_request.html">ProjectTransferRequest</a>
+<a href="../api/region.html">Region</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/role_operation.html">RoleOperation</a>
+<a href="../api/role_password.html">RolePassword</a>
+<a href="../api/send_neon_auth_test_email.html">SendNeonAuthTestEmail</a>
+<a href="../api/snapshot.html">Snapshot</a>
+<a href="../api/spending_limit.html">SpendingLimit</a>
+<a href="../api/trigger.html">Trigger</a>
+<a href="../api/update_neon_auth_user_role.html">UpdateNeonAuthUserRole</a>
+<a href="../api/vpc_endpoint.html">VpcEndpoint</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="endpoint">Endpoint</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projectsproject_idendpoints"><code>/projects/{project_id}/endpoints</code></a></td>
+<td><code>create</code></td>
+<td>Created a compute endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsproject_idbranchesbranch_idendpoints"><code>/projects/{project_id}/branches/{branch_id}/endpoints</code></a></td>
+<td><code>list</code></td>
+<td>Returned a list of endpoints for the specified branch</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsproject_idendpoints"><code>/projects/{project_id}/endpoints</code></a></td>
+<td><code>list</code></td>
+<td>Returned a list of endpoints for the specified project</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsproject_idendpointsendpoint_id"><code>/projects/{project_id}/endpoints/{endpoint_id}</code></a></td>
+<td><code>load</code></td>
+<td>Returned information about the specified endpoint</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-projectsproject_idendpointsendpoint_id"><code>/projects/{project_id}/endpoints/{endpoint_id}</code></a></td>
+<td><code>remove</code></td>
+<td>Deleted the specified compute endpoint</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-projectsproject_idendpointsendpoint_id"><code>/projects/{project_id}/endpoints/{endpoint_id}</code></a></td>
+<td><code>update</code></td>
+<td>Updated the specified compute endpoint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">endpoints, err := client.Endpoint(nil).List(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(endpoints)
+endpoint, err := client.Endpoint(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(endpoint)
+created, err := client.Endpoint(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot;: 1, &quot;autoscaling_limit_min_cu&quot;: 1, &quot;branch_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;creation_source&quot;: &quot;example&quot;, &quot;current_state&quot;: &quot;example&quot;, &quot;disabled&quot;: true, &quot;endpoint&quot;: map[string]any{}, &quot;host&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;passwordless_access&quot;: true, &quot;pooler_enabled&quot;: true, &quot;pooler_mode&quot;: &quot;example&quot;, &quot;provisioner&quot;: &quot;example&quot;, &quot;proxy_host&quot;: &quot;example&quot;, &quot;region_id&quot;: &quot;example&quot;, &quot;settings&quot;: map[string]any{}, &quot;suspend_timeout_seconds&quot;: 1, &quot;type&quot;: &quot;example&quot;, &quot;updated_at&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Endpoint(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Endpoint(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local endpoints, err = client:Endpoint():list({ project_id = &quot;example&quot; })
+local endpoint, err = client:Endpoint():load({ id = &quot;example_id&quot;, project_id = &quot;example&quot; })
+local created, err = client:Endpoint():create({ project_id = &quot;example&quot;, autoscaling_limit_max_cu = 1, autoscaling_limit_min_cu = 1, branch_id = &quot;example&quot;, created_at = &quot;example&quot;, creation_source = &quot;example&quot;, current_state = &quot;example&quot;, disabled = true, endpoint = {}, host = &quot;example&quot;, id = &quot;example&quot;, passwordless_access = true, pooler_enabled = true, pooler_mode = &quot;example&quot;, provisioner = &quot;example&quot;, proxy_host = &quot;example&quot;, region_id = &quot;example&quot;, settings = {}, suspend_timeout_seconds = 1, type = &quot;example&quot;, updated_at = &quot;example&quot; })
+local updated, err = client:Endpoint():update({ id = &quot;example_id&quot;, project_id = &quot;example&quot;, autoscaling_limit_max_cu = 1 })
+local removed, err = client:Endpoint():remove({ id = &quot;example_id&quot;, project_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$endpoints = $client-&gt;Endpoint()-&gt;list([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$endpoint = $client-&gt;Endpoint()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;Endpoint()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot; =&gt; 1, &quot;autoscaling_limit_min_cu&quot; =&gt; 1, &quot;branch_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;creation_source&quot; =&gt; &quot;example&quot;, &quot;current_state&quot; =&gt; &quot;example&quot;, &quot;disabled&quot; =&gt; true, &quot;endpoint&quot; =&gt; [], &quot;host&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;passwordless_access&quot; =&gt; true, &quot;pooler_enabled&quot; =&gt; true, &quot;pooler_mode&quot; =&gt; &quot;example&quot;, &quot;provisioner&quot; =&gt; &quot;example&quot;, &quot;proxy_host&quot; =&gt; &quot;example&quot;, &quot;region_id&quot; =&gt; &quot;example&quot;, &quot;settings&quot; =&gt; [], &quot;suspend_timeout_seconds&quot; =&gt; 1, &quot;type&quot; =&gt; &quot;example&quot;, &quot;updated_at&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;Endpoint()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot; =&gt; 1]);
+$client-&gt;Endpoint()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">endpoints = client.Endpoint().list({&quot;project_id&quot;: &quot;example&quot;})
+endpoint = client.Endpoint().load({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;})
+created = client.Endpoint().create({ &quot;project_id&quot;: &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot;: 1, &quot;autoscaling_limit_min_cu&quot;: 1, &quot;branch_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;creation_source&quot;: &quot;example&quot;, &quot;current_state&quot;: &quot;example&quot;, &quot;disabled&quot;: True, &quot;endpoint&quot;: {}, &quot;host&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;passwordless_access&quot;: True, &quot;pooler_enabled&quot;: True, &quot;pooler_mode&quot;: &quot;example&quot;, &quot;provisioner&quot;: &quot;example&quot;, &quot;proxy_host&quot;: &quot;example&quot;, &quot;region_id&quot;: &quot;example&quot;, &quot;settings&quot;: {}, &quot;suspend_timeout_seconds&quot;: 1, &quot;type&quot;: &quot;example&quot;, &quot;updated_at&quot;: &quot;example&quot; })
+updated = client.Endpoint().update({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot;: 1})
+client.Endpoint().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">endpoints = client.Endpoint.list({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+endpoint = client.Endpoint.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.Endpoint.create({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot; =&gt; 1, &quot;autoscaling_limit_min_cu&quot; =&gt; 1, &quot;branch_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;creation_source&quot; =&gt; &quot;example&quot;, &quot;current_state&quot; =&gt; &quot;example&quot;, &quot;disabled&quot; =&gt; true, &quot;endpoint&quot; =&gt; {}, &quot;host&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;passwordless_access&quot; =&gt; true, &quot;pooler_enabled&quot; =&gt; true, &quot;pooler_mode&quot; =&gt; &quot;example&quot;, &quot;provisioner&quot; =&gt; &quot;example&quot;, &quot;proxy_host&quot; =&gt; &quot;example&quot;, &quot;region_id&quot; =&gt; &quot;example&quot;, &quot;settings&quot; =&gt; {}, &quot;suspend_timeout_seconds&quot; =&gt; 1, &quot;type&quot; =&gt; &quot;example&quot;, &quot;updated_at&quot; =&gt; &quot;example&quot; })
+updated = client.Endpoint.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;autoscaling_limit_max_cu&quot; =&gt; 1 })
+client.Endpoint.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const endpoints = await client.Endpoint().list({ project_id: &quot;example&quot; })
+const endpoint = await client.Endpoint().load({ id: &quot;example_id&quot;, project_id: &quot;example&quot; })
+const created = await client.Endpoint().create({ project_id: &quot;example&quot;, autoscaling_limit_max_cu: 1, autoscaling_limit_min_cu: 1, branch_id: &quot;example&quot;, created_at: &quot;example&quot;, creation_source: &quot;example&quot;, current_state: &quot;example&quot;, disabled: true, endpoint: {}, host: &quot;example&quot;, id: &quot;example&quot;, passwordless_access: true, pooler_enabled: true, pooler_mode: &quot;example&quot;, provisioner: &quot;example&quot;, proxy_host: &quot;example&quot;, region_id: &quot;example&quot;, settings: {}, suspend_timeout_seconds: 1, type: &quot;example&quot;, updated_at: &quot;example&quot; })
+const updated = await client.Endpoint().update({ id: &quot;example_id&quot;, project_id: &quot;example&quot;, autoscaling_limit_max_cu: 1 })
+await client.Endpoint().remove({ id: &quot;example_id&quot;, project_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The maximum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The minimum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>branch_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the branch this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>compute_release_version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Attached compute's release version number.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was created</td>
+</tr>
+<tr>
+<td><code>creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint creation source</td>
+</tr>
+<tr>
+<td><code>current_state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Lifecycle state of the compute endpoint.</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to restrict connections to the compute endpoint.</td>
+</tr>
+<tr>
+<td><code>endpoint</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Configuration for the compute endpoint to create.</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The hostname of the compute endpoint.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint ID.</td>
+</tr>
+<tr>
+<td><code>last_active</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last active</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional name of the compute endpoint</td>
+</tr>
+<tr>
+<td><code>passwordless_access</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to permit passwordless access to the compute endpoint</td>
+</tr>
+<tr>
+<td><code>pending_state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target state the compute endpoint is transitioning to.</td>
+</tr>
+<tr>
+<td><code>pooler_enabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>pooler_mode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>project_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the project this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner.</td>
+</tr>
+<tr>
+<td><code>proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>).</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A collection of settings for a compute endpoint</td>
+</tr>
+<tr>
+<td><code>started_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last started</td>
+</tr>
+<tr>
+<td><code>suspend_timeout_seconds</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends.</td>
+</tr>
+<tr>
+<td><code>suspended_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last suspended</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute endpoint type.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was last updated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-projectsproject_idendpoints" class="operation" data-method="post"><code>POST</code> /projects/{project_id}/endpoints</h3>
+<p>Operation ID: <code>createProjectEndpoint</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpoint</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Configuration for the compute endpoint to create.</td>
+</tr>
+<tr>
+<td><code>endpoint.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum number of Compute Units. See <a href="https://neon.com/docs/manage/endpoints#compute-size-and-autoscaling-configuration">Compute size and Autoscaling configuration</a> for more information.</td>
+</tr>
+<tr>
+<td><code>endpoint.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum number of Compute Units. The minimum value is <code>0.25</code>. See <a href="https://neon.com/docs/manage/endpoints#compute-size-and-autoscaling-configuration">Compute size and Autoscaling configuration</a> for more information.</td>
+</tr>
+<tr>
+<td><code>endpoint.branch_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the branch the compute endpoint will be associated with</td>
+</tr>
+<tr>
+<td><code>endpoint.disabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether to restrict connections to the compute endpoint. Enabling this option schedules a suspend compute operation. A disabled compute endpoint cannot be enabled by a connection or console action. However, the compute endpoint is periodically enabled by <code>check_availability</code> operations.</td>
+</tr>
+<tr>
+<td><code>endpoint.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional name of the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.passwordless_access</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>NOT YET IMPLEMENTED. Whether to permit passwordless access to the compute endpoint.</td>
+</tr>
+<tr>
+<td><code>endpoint.pooler_enabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Deprecated. To enable connection pooling, append <code>-pooler</code> to the endpoint ID in the connection string. See <a href="https://neon.com/docs/connect/connection-pooling#how-to-use-connection-pooling">How to use connection pooling</a></td>
+</tr>
+<tr>
+<td><code>endpoint.pooler_mode</code></td>
+<td><code>enum: transaction</code></td>
+<td>No</td>
+<td>Deprecated. The connection pooler mode. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoint.provisioner</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.region_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The region where the compute endpoint will be created. Only the project's <code>region_id</code> is permitted.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. PgBouncer settings for the compute endpoint. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> uses the plan default; <code>-1</code> disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value.</td>
+</tr>
+<tr>
+<td><code>endpoint.type</code></td>
+<td><code>enum: read_only, read_write</code></td>
+<td>Yes</td>
+<td>Compute endpoint type. <code>read_write</code>: the primary read-write endpoint (one per branch). <code>read_only</code>: a read replica endpoint (multiple allowed per branch).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-created-a-compute-endpoint" class="status" data-status="2xx">201: Created a compute endpoint</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;endpoint&quot;: {
+    &quot;autoscaling_limit_max_cu&quot;: 1,
+    &quot;autoscaling_limit_min_cu&quot;: 1,
+    &quot;branch_id&quot;: &quot;br-proud-paper-090813&quot;,
+    &quot;created_at&quot;: &quot;2022-12-03T15:37:07Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;current_state&quot;: &quot;init&quot;,
+    &quot;disabled&quot;: false,
+    &quot;host&quot;: &quot;ep-shrill-thunder-454069.us-east-2.aws.neon.tech&quot;,
+    &quot;id&quot;: &quot;ep-shrill-thunder-454069&quot;,
+    &quot;passwordless_access&quot;: true,
+    &quot;pending_state&quot;: &quot;active&quot;,
+    &quot;pooler_enabled&quot;: false,
+    &quot;pooler_mode&quot;: &quot;transaction&quot;,
+    &quot;project_id&quot;: &quot;bitter-meadow-966132&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;settings&quot;: {
+      &quot;pg_settings&quot;: {}
+    },
+    &quot;suspend_timeout_seconds&quot;: 10800,
+    &quot;type&quot;: &quot;read_write&quot;,
+    &quot;updated_at&quot;: &quot;2022-12-03T15:37:07Z&quot;
+  },
+  &quot;operations&quot;: [
+    {
+      &quot;action&quot;: &quot;start_compute&quot;,
+      &quot;branch_id&quot;: &quot;br-proud-paper-090813&quot;,
+      &quot;created_at&quot;: &quot;2022-12-03T15:37:07Z&quot;,
+      &quot;endpoint_id&quot;: &quot;ep-shrill-thunder-454069&quot;,
+      &quot;failures_count&quot;: 0,
+      &quot;id&quot;: &quot;874f8bfe-f51d-4c61-85af-a29bea73e0e2&quot;,
+      &quot;project_id&quot;: &quot;bitter-meadow-966132&quot;,
+      &quot;status&quot;: &quot;running&quot;,
+      &quot;total_duration_ms&quot;: 100,
+      &quot;updated_at&quot;: &quot;2022-12-03T15:37:07Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-projectsproject_idbranchesbranch_idendpoints" class="operation" data-method="get"><code>GET</code> /projects/{project_id}/branches/{branch_id}/endpoints</h3>
+<p>Operation ID: <code>listProjectBranchEndpoints</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>branch_id</code> | <code>path</code> | <code>string</code> | Yes | The branch ID |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-returned-a-list-of-endpoints-for-the-specified-branch" class="status" data-status="2xx">200: Returned a list of endpoints for the specified branch</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpoints</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Compute endpoints in the project. Each includes <code>id</code>, <code>branch_id</code>, <code>host</code>, and <code>type</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The maximum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>endpoints[].autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The minimum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>endpoints[].branch_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the branch this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>endpoints[].compute_release_version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Attached compute's release version number.</td>
+</tr>
+<tr>
+<td><code>endpoints[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was created</td>
+</tr>
+<tr>
+<td><code>endpoints[].creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint creation source</td>
+</tr>
+<tr>
+<td><code>endpoints[].current_state</code></td>
+<td><code>enum: init, active, idle</code></td>
+<td>Yes</td>
+<td>Lifecycle state of the compute endpoint. <code>init</code>: being initialized. <code>active</code>: running and accepting connections. <code>idle</code>: suspended (scaled to zero).</td>
+</tr>
+<tr>
+<td><code>endpoints[].disabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to restrict connections to the compute endpoint. Enabling this option schedules a suspend compute operation. A disabled compute endpoint cannot be enabled by a connection or console action.</td>
+</tr>
+<tr>
+<td><code>endpoints[].host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The hostname of the compute endpoint. This is the hostname specified when connecting to a Neon database.</td>
+</tr>
+<tr>
+<td><code>endpoints[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint ID. Compute endpoint IDs have an <code>ep-</code> prefix. For example: <code>ep-little-smoke-851426</code></td>
+</tr>
+<tr>
+<td><code>endpoints[].last_active</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last active</td>
+</tr>
+<tr>
+<td><code>endpoints[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional name of the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoints[].passwordless_access</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to permit passwordless access to the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoints[].pending_state</code></td>
+<td><code>enum: init, active, idle</code></td>
+<td>No</td>
+<td>Target state the compute endpoint is transitioning to. Omitted when no transition is in progress.</td>
+</tr>
+<tr>
+<td><code>endpoints[].pooler_enabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Deprecated. To use connection pooling, append <code>-pooler</code> to the endpoint ID in the connection string.</td>
+</tr>
+<tr>
+<td><code>endpoints[].pooler_mode</code></td>
+<td><code>enum: transaction</code></td>
+<td>Yes</td>
+<td>Deprecated. The connection pooler mode. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoints[].project_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the project this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>endpoints[].provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Deprecated. Use the <code>host</code> property instead.</td>
+</tr>
+<tr>
+<td><code>endpoints[].region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>). Valid values are returned by <code>GET /regions</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A collection of settings for a compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. PgBouncer settings for the compute endpoint. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last started</td>
+</tr>
+<tr>
+<td><code>endpoints[].suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> means the plan default applies; <code>-1</code> means scale-to-zero is disabled (never suspends).</td>
+</tr>
+<tr>
+<td><code>endpoints[].suspended_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last suspended</td>
+</tr>
+<tr>
+<td><code>endpoints[].type</code></td>
+<td><code>enum: read_only, read_write</code></td>
+<td>Yes</td>
+<td>Compute endpoint type. <code>read_write</code>: the primary read-write endpoint (one per branch). <code>read_only</code>: a read replica endpoint (multiple allowed per branch).</td>
+</tr>
+<tr>
+<td><code>endpoints[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was last updated</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;endpoints&quot;: [
+    {
+      &quot;autoscaling_limit_max_cu&quot;: 1,
+      &quot;autoscaling_limit_min_cu&quot;: 1,
+      &quot;branch_id&quot;: &quot;br-aged-salad-637688&quot;,
+      &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;current_state&quot;: &quot;idle&quot;,
+      &quot;disabled&quot;: false,
+      &quot;host&quot;: &quot;ep-little-smoke-851426.us-east-2.aws.neon.tech&quot;,
+      &quot;id&quot;: &quot;ep-little-smoke-851426&quot;,
+      &quot;last_active&quot;: &quot;2022-11-23T17:00:00Z&quot;,
+      &quot;passwordless_access&quot;: true,
+      &quot;pooler_enabled&quot;: false,
+      &quot;pooler_mode&quot;: &quot;transaction&quot;,
+      &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;settings&quot;: {
+        &quot;pg_settings&quot;: {}
+      },
+      &quot;suspend_timeout_seconds&quot;: 10800,
+      &quot;type&quot;: &quot;read_write&quot;,
+      &quot;updated_at&quot;: &quot;2022-11-30T18:25:21Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-1">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-projectsproject_idendpoints" class="operation" data-method="get"><code>GET</code> /projects/{project_id}/endpoints</h3>
+<p>Operation ID: <code>listProjectEndpoints</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-returned-a-list-of-endpoints-for-the-specified-project" class="status" data-status="2xx">200: Returned a list of endpoints for the specified project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpoints</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Compute endpoints in the project. Each includes <code>id</code>, <code>branch_id</code>, <code>host</code>, and <code>type</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The maximum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>endpoints[].autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The minimum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>endpoints[].branch_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the branch this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>endpoints[].compute_release_version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Attached compute's release version number.</td>
+</tr>
+<tr>
+<td><code>endpoints[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was created</td>
+</tr>
+<tr>
+<td><code>endpoints[].creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint creation source</td>
+</tr>
+<tr>
+<td><code>endpoints[].current_state</code></td>
+<td><code>enum: init, active, idle</code></td>
+<td>Yes</td>
+<td>Lifecycle state of the compute endpoint. <code>init</code>: being initialized. <code>active</code>: running and accepting connections. <code>idle</code>: suspended (scaled to zero).</td>
+</tr>
+<tr>
+<td><code>endpoints[].disabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to restrict connections to the compute endpoint. Enabling this option schedules a suspend compute operation. A disabled compute endpoint cannot be enabled by a connection or console action.</td>
+</tr>
+<tr>
+<td><code>endpoints[].host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The hostname of the compute endpoint. This is the hostname specified when connecting to a Neon database.</td>
+</tr>
+<tr>
+<td><code>endpoints[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint ID. Compute endpoint IDs have an <code>ep-</code> prefix. For example: <code>ep-little-smoke-851426</code></td>
+</tr>
+<tr>
+<td><code>endpoints[].last_active</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last active</td>
+</tr>
+<tr>
+<td><code>endpoints[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional name of the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoints[].passwordless_access</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to permit passwordless access to the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoints[].pending_state</code></td>
+<td><code>enum: init, active, idle</code></td>
+<td>No</td>
+<td>Target state the compute endpoint is transitioning to. Omitted when no transition is in progress.</td>
+</tr>
+<tr>
+<td><code>endpoints[].pooler_enabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Deprecated. To use connection pooling, append <code>-pooler</code> to the endpoint ID in the connection string.</td>
+</tr>
+<tr>
+<td><code>endpoints[].pooler_mode</code></td>
+<td><code>enum: transaction</code></td>
+<td>Yes</td>
+<td>Deprecated. The connection pooler mode. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoints[].project_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the project this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>endpoints[].provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Deprecated. Use the <code>host</code> property instead.</td>
+</tr>
+<tr>
+<td><code>endpoints[].region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>). Valid values are returned by <code>GET /regions</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A collection of settings for a compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. PgBouncer settings for the compute endpoint. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>endpoints[].settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>endpoints[].started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last started</td>
+</tr>
+<tr>
+<td><code>endpoints[].suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> means the plan default applies; <code>-1</code> means scale-to-zero is disabled (never suspends).</td>
+</tr>
+<tr>
+<td><code>endpoints[].suspended_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last suspended</td>
+</tr>
+<tr>
+<td><code>endpoints[].type</code></td>
+<td><code>enum: read_only, read_write</code></td>
+<td>Yes</td>
+<td>Compute endpoint type. <code>read_write</code>: the primary read-write endpoint (one per branch). <code>read_only</code>: a read replica endpoint (multiple allowed per branch).</td>
+</tr>
+<tr>
+<td><code>endpoints[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was last updated</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;endpoints&quot;: [
+    {
+      &quot;autoscaling_limit_max_cu&quot;: 1,
+      &quot;autoscaling_limit_min_cu&quot;: 1,
+      &quot;branch_id&quot;: &quot;br-aged-salad-637688&quot;,
+      &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;current_state&quot;: &quot;idle&quot;,
+      &quot;disabled&quot;: false,
+      &quot;host&quot;: &quot;ep-little-smoke-851426.us-east-2.aws.neon.tech&quot;,
+      &quot;id&quot;: &quot;ep-little-smoke-851426&quot;,
+      &quot;last_active&quot;: &quot;2022-11-23T17:00:00Z&quot;,
+      &quot;passwordless_access&quot;: true,
+      &quot;pooler_enabled&quot;: false,
+      &quot;pooler_mode&quot;: &quot;transaction&quot;,
+      &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;settings&quot;: {
+        &quot;pg_settings&quot;: {}
+      },
+      &quot;suspend_timeout_seconds&quot;: 10800,
+      &quot;type&quot;: &quot;read_write&quot;,
+      &quot;updated_at&quot;: &quot;2022-11-30T18:25:21Z&quot;
+    },
+    {
+      &quot;autoscaling_limit_max_cu&quot;: 1,
+      &quot;autoscaling_limit_min_cu&quot;: 1,
+      &quot;branch_id&quot;: &quot;br-raspy-hill-832856&quot;,
+      &quot;created_at&quot;: &quot;2022-11-30T17:36:57Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;current_state&quot;: &quot;idle&quot;,
+      &quot;disabled&quot;: false,
+      &quot;host&quot;: &quot;ep-steep-bush-777093.us-east-2.aws.neon.tech&quot;,
+      &quot;id&quot;: &quot;ep-steep-bush-777093&quot;,
+      &quot;last_active&quot;: &quot;2022-11-30T17:00:00Z&quot;,
+      &quot;passwordless_access&quot;: true,
+      &quot;pooler_enabled&quot;: false,
+      &quot;pooler_mode&quot;: &quot;transaction&quot;,
+      &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;settings&quot;: {
+        &quot;pg_settings&quot;: {}
+      },
+      &quot;suspend_timeout_seconds&quot;: 10800,
+      &quot;type&quot;: &quot;read_write&quot;,
+      &quot;updated_at&quot;: &quot;2022-11-30T18:42:58Z&quot;
+    },
+    {
+      &quot;autoscaling_limit_max_cu&quot;: 1,
+      &quot;autoscaling_limit_min_cu&quot;: 1,
+      &quot;branch_id&quot;: &quot;br-sweet-breeze-497520&quot;,
+      &quot;created_at&quot;: &quot;2022-11-30T19:09:48Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;current_state&quot;: &quot;idle&quot;,
+      &quot;disabled&quot;: false,
+      &quot;host&quot;: &quot;ep-soft-violet-752733.us-east-2.aws.neon.tech&quot;,
+      &quot;id&quot;: &quot;ep-soft-violet-752733&quot;,
+      &quot;last_active&quot;: &quot;2022-11-30T19:00:00Z&quot;,
+      &quot;passwordless_access&quot;: true,
+      &quot;pooler_enabled&quot;: false,
+      &quot;pooler_mode&quot;: &quot;transaction&quot;,
+      &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;settings&quot;: {
+        &quot;pg_settings&quot;: {}
+      },
+      &quot;suspend_timeout_seconds&quot;: 10800,
+      &quot;type&quot;: &quot;read_write&quot;,
+      &quot;updated_at&quot;: &quot;2022-11-30T19:14:51Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-2">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-projectsproject_idendpointsendpoint_id" class="operation" data-method="get"><code>GET</code> /projects/{project_id}/endpoints/{endpoint_id}</h3>
+<p>Operation ID: <code>getProjectEndpoint</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>endpoint_id</code> | <code>path</code> | <code>string</code> | Yes | The endpoint ID |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-returned-information-about-the-specified-endpoint" class="status" data-status="2xx">200: Returned information about the specified endpoint</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpoint</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Compute endpoint created or retrieved, including its current lifecycle state.</td>
+</tr>
+<tr>
+<td><code>endpoint.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The maximum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>endpoint.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The minimum number of Compute Units</td>
+</tr>
+<tr>
+<td><code>endpoint.branch_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the branch this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>endpoint.compute_release_version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Attached compute's release version number.</td>
+</tr>
+<tr>
+<td><code>endpoint.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was created</td>
+</tr>
+<tr>
+<td><code>endpoint.creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint creation source</td>
+</tr>
+<tr>
+<td><code>endpoint.current_state</code></td>
+<td><code>enum: init, active, idle</code></td>
+<td>Yes</td>
+<td>Lifecycle state of the compute endpoint. <code>init</code>: being initialized. <code>active</code>: running and accepting connections. <code>idle</code>: suspended (scaled to zero).</td>
+</tr>
+<tr>
+<td><code>endpoint.disabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to restrict connections to the compute endpoint. Enabling this option schedules a suspend compute operation. A disabled compute endpoint cannot be enabled by a connection or console action.</td>
+</tr>
+<tr>
+<td><code>endpoint.host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The hostname of the compute endpoint. This is the hostname specified when connecting to a Neon database.</td>
+</tr>
+<tr>
+<td><code>endpoint.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The compute endpoint ID. Compute endpoint IDs have an <code>ep-</code> prefix. For example: <code>ep-little-smoke-851426</code></td>
+</tr>
+<tr>
+<td><code>endpoint.last_active</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last active</td>
+</tr>
+<tr>
+<td><code>endpoint.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional name of the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.passwordless_access</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether to permit passwordless access to the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.pending_state</code></td>
+<td><code>enum: init, active, idle</code></td>
+<td>No</td>
+<td>Target state the compute endpoint is transitioning to. Omitted when no transition is in progress.</td>
+</tr>
+<tr>
+<td><code>endpoint.pooler_enabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Deprecated. To use connection pooling, append <code>-pooler</code> to the endpoint ID in the connection string.</td>
+</tr>
+<tr>
+<td><code>endpoint.pooler_mode</code></td>
+<td><code>enum: transaction</code></td>
+<td>Yes</td>
+<td>Deprecated. The connection pooler mode. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoint.project_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the project this compute endpoint belongs to.</td>
+</tr>
+<tr>
+<td><code>endpoint.provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Deprecated. Use the <code>host</code> property instead.</td>
+</tr>
+<tr>
+<td><code>endpoint.region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>). Valid values are returned by <code>GET /regions</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A collection of settings for a compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. PgBouncer settings for the compute endpoint. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last started</td>
+</tr>
+<tr>
+<td><code>endpoint.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> means the plan default applies; <code>-1</code> means scale-to-zero is disabled (never suspends).</td>
+</tr>
+<tr>
+<td><code>endpoint.suspended_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the compute endpoint was last suspended</td>
+</tr>
+<tr>
+<td><code>endpoint.type</code></td>
+<td><code>enum: read_only, read_write</code></td>
+<td>Yes</td>
+<td>Compute endpoint type. <code>read_write</code>: the primary read-write endpoint (one per branch). <code>read_only</code>: a read replica endpoint (multiple allowed per branch).</td>
+</tr>
+<tr>
+<td><code>endpoint.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the compute endpoint was last updated</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;endpoint&quot;: {
+    &quot;autoscaling_limit_max_cu&quot;: 1,
+    &quot;autoscaling_limit_min_cu&quot;: 1,
+    &quot;branch_id&quot;: &quot;br-aged-salad-637688&quot;,
+    &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;current_state&quot;: &quot;idle&quot;,
+    &quot;disabled&quot;: false,
+    &quot;host&quot;: &quot;ep-little-smoke-851426.us-east-2.aws.neon.tech&quot;,
+    &quot;id&quot;: &quot;ep-little-smoke-851426&quot;,
+    &quot;last_active&quot;: &quot;2022-11-23T17:00:00Z&quot;,
+    &quot;passwordless_access&quot;: true,
+    &quot;pooler_enabled&quot;: false,
+    &quot;pooler_mode&quot;: &quot;transaction&quot;,
+    &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;settings&quot;: {
+      &quot;pg_settings&quot;: {}
+    },
+    &quot;suspend_timeout_seconds&quot;: 10800,
+    &quot;type&quot;: &quot;read_write&quot;,
+    &quot;updated_at&quot;: &quot;2022-11-30T18:25:21Z&quot;
+  }
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-3">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-projectsproject_idendpointsendpoint_id" class="operation" data-method="delete"><code>DELETE</code> /projects/{project_id}/endpoints/{endpoint_id}</h3>
+<p>Operation ID: <code>deleteProjectEndpoint</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>endpoint_id</code> | <code>path</code> | <code>string</code> | Yes | The endpoint ID |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-deleted-the-specified-compute-endpoint" class="status" data-status="2xx">200: Deleted the specified compute endpoint</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;endpoint&quot;: {
+    &quot;autoscaling_limit_max_cu&quot;: 1,
+    &quot;autoscaling_limit_min_cu&quot;: 1,
+    &quot;branch_id&quot;: &quot;br-raspy-hill-832856&quot;,
+    &quot;created_at&quot;: &quot;2022-12-03T15:37:07Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;current_state&quot;: &quot;idle&quot;,
+    &quot;disabled&quot;: false,
+    &quot;host&quot;: &quot;ep-steep-bush-777093.us-east-2.aws.neon.tech&quot;,
+    &quot;id&quot;: &quot;ep-steep-bush-777093&quot;,
+    &quot;last_active&quot;: &quot;2022-12-03T15:00:00Z&quot;,
+    &quot;passwordless_access&quot;: true,
+    &quot;pooler_enabled&quot;: false,
+    &quot;pooler_mode&quot;: &quot;transaction&quot;,
+    &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;settings&quot;: {
+      &quot;pg_settings&quot;: {}
+    },
+    &quot;suspend_timeout_seconds&quot;: 10800,
+    &quot;type&quot;: &quot;read_write&quot;,
+    &quot;updated_at&quot;: &quot;2022-12-03T15:49:10Z&quot;
+  },
+  &quot;operations&quot;: [
+    {
+      &quot;action&quot;: &quot;suspend_compute&quot;,
+      &quot;branch_id&quot;: &quot;br-proud-paper-090813&quot;,
+      &quot;created_at&quot;: &quot;2022-12-03T15:51:06Z&quot;,
+      &quot;endpoint_id&quot;: &quot;ep-shrill-thunder-454069&quot;,
+      &quot;failures_count&quot;: 0,
+      &quot;id&quot;: &quot;fd11748e-3c68-458f-b9e3-66d409e3eef0&quot;,
+      &quot;project_id&quot;: &quot;bitter-meadow-966132&quot;,
+      &quot;status&quot;: &quot;running&quot;,
+      &quot;total_duration_ms&quot;: 100,
+      &quot;updated_at&quot;: &quot;2022-12-03T15:51:06Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="204-returned-if-the-endpoint-doesn39t-exist-or-has-already-been-deleted" class="status" data-status="2xx">204: Returned if the endpoint doesn't exist or has already been deleted</h5>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-4">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-projectsproject_idendpointsendpoint_id" class="operation" data-method="patch"><code>PATCH</code> /projects/{project_id}/endpoints/{endpoint_id}</h3>
+<p>Operation ID: <code>updateProjectEndpoint</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>endpoint_id</code> | <code>path</code> | <code>string</code> | Yes | The endpoint ID |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpoint</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Parameters for the compute endpoint update.</td>
+</tr>
+<tr>
+<td><code>endpoint.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum number of Compute Units. See <a href="https://neon.com/docs/manage/endpoints#compute-size-and-autoscaling-configuration">Compute size and Autoscaling configuration</a> for more information.</td>
+</tr>
+<tr>
+<td><code>endpoint.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum number of Compute Units. The minimum value is <code>0.25</code>. See <a href="https://neon.com/docs/manage/endpoints#compute-size-and-autoscaling-configuration">Compute size and Autoscaling configuration</a> for more information.</td>
+</tr>
+<tr>
+<td><code>endpoint.branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. The destination branch ID; must not have an existing read-write endpoint.</td>
+</tr>
+<tr>
+<td><code>endpoint.disabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether to restrict connections to the compute endpoint. Enabling this option schedules a suspend compute operation. A disabled compute endpoint cannot be enabled by a connection or console action. However, the compute endpoint is periodically enabled by <code>check_availability</code> operations.</td>
+</tr>
+<tr>
+<td><code>endpoint.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional name of the compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.passwordless_access</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>NOT YET IMPLEMENTED. Whether to permit passwordless access to the compute endpoint.</td>
+</tr>
+<tr>
+<td><code>endpoint.pooler_enabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Deprecated. To enable connection pooling, append <code>-pooler</code> to the endpoint ID in the connection string. See <a href="https://neon.com/docs/connect/connection-pooling#how-to-use-connection-pooling">How to use connection pooling</a></td>
+</tr>
+<tr>
+<td><code>endpoint.pooler_mode</code></td>
+<td><code>enum: transaction</code></td>
+<td>No</td>
+<td>Deprecated. The connection pooler mode. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoint.provisioner</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a compute endpoint</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. PgBouncer settings for the compute endpoint. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>endpoint.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>endpoint.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> uses the plan default; <code>-1</code> disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;endpoint&quot;: {
+    &quot;suspend_timeout_seconds&quot;: 300
+  }
+}
+</code></pre>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-updated-the-specified-compute-endpoint" class="status" data-status="2xx">200: Updated the specified compute endpoint</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;endpoint&quot;: {
+    &quot;autoscaling_limit_max_cu&quot;: 1,
+    &quot;autoscaling_limit_min_cu&quot;: 1,
+    &quot;branch_id&quot;: &quot;br-raspy-hill-832856&quot;,
+    &quot;created_at&quot;: &quot;2022-12-03T15:37:07Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;current_state&quot;: &quot;idle&quot;,
+    &quot;disabled&quot;: false,
+    &quot;host&quot;: &quot;ep-steep-bush-777093.us-east-2.aws.neon.tech&quot;,
+    &quot;id&quot;: &quot;ep-steep-bush-777093&quot;,
+    &quot;last_active&quot;: &quot;2022-12-03T15:00:00Z&quot;,
+    &quot;passwordless_access&quot;: true,
+    &quot;pooler_enabled&quot;: false,
+    &quot;pooler_mode&quot;: &quot;transaction&quot;,
+    &quot;project_id&quot;: &quot;shiny-wind-028834&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;settings&quot;: {
+      &quot;pg_settings&quot;: {}
+    },
+    &quot;suspend_timeout_seconds&quot;: 10800,
+    &quot;type&quot;: &quot;read_write&quot;,
+    &quot;updated_at&quot;: &quot;2022-12-03T15:49:10Z&quot;
+  },
+  &quot;operations&quot;: [
+    {
+      &quot;action&quot;: &quot;apply_config&quot;,
+      &quot;branch_id&quot;: &quot;br-proud-paper-090813&quot;,
+      &quot;created_at&quot;: &quot;2022-12-03T15:51:06Z&quot;,
+      &quot;endpoint_id&quot;: &quot;ep-shrill-thunder-454069&quot;,
+      &quot;failures_count&quot;: 0,
+      &quot;id&quot;: &quot;3fc98ab8-f191-47b8-a427-5eb668ccc5b9&quot;,
+      &quot;project_id&quot;: &quot;bitter-meadow-966132&quot;,
+      &quot;status&quot;: &quot;running&quot;,
+      &quot;total_duration_ms&quot;: 100,
+      &quot;updated_at&quot;: &quot;2022-12-03T15:51:06Z&quot;
+    },
+    {
+      &quot;action&quot;: &quot;suspend_compute&quot;,
+      &quot;branch_id&quot;: &quot;br-proud-paper-090813&quot;,
+      &quot;created_at&quot;: &quot;2022-12-03T15:51:06Z&quot;,
+      &quot;endpoint_id&quot;: &quot;ep-shrill-thunder-454069&quot;,
+      &quot;failures_count&quot;: 0,
+      &quot;id&quot;: &quot;9ffda74b-a582-4cff-b0f0-aaa8d14b8e6a&quot;,
+      &quot;project_id&quot;: &quot;bitter-meadow-966132&quot;,
+      &quot;status&quot;: &quot;scheduling&quot;,
+      &quot;total_duration_ms&quot;: 100,
+      &quot;updated_at&quot;: &quot;2022-12-03T15:51:06Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-5">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

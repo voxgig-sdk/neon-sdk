@@ -1,0 +1,380 @@
+# Entity: auth
+
+main: kit: entity: auth: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      sh: "The ID of the account associated with this authentication record."
+      t: "`$STRING`"
+    }
+    auth_data: {
+      h: "Auth Data"
+      n: "auth_data"
+      r: false
+      t: "`$STRING`"
+    }
+    auth_method: {
+      h: "Auth Method"
+      n: "auth_method"
+      r: true
+      sh: "Authentication method used for the request: - `keycloak`: Keycloak identity provider authentication."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "auth"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/auth/domains"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/domains"
+          q: {
+            "$action": "domain"
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "domains"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /auth"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/auth"
+          s: [
+            {
+              lit: "auth"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/auth/users/{auth_user_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "auth_user_id"
+                or: "auth_user_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/users/{auth_user_id}"
+          q: {
+            exist: [
+              "auth_user_id"
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "auth_user_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "oauth_provider_id"
+                or: "oauth_provider_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}"
+          q: {
+            exist: [
+              "branch_id"
+              "oauth_provider_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "oauth_providers"
+            }
+            {
+              var: "oauth_provider_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/auth"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/auth"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/branches/{branch_id}/auth/domains"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/domains"
+          q: {
+            "$action": "domain"
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "domains"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

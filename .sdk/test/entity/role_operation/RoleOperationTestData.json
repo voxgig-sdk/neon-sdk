@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "role_operation": {
+      "ROLE_OPERATION00": {
+        "operations": [],
+        "role": {},
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "role_name": "ROLE_NAME01",
+        "id": "ROLE_OPERATION00"
+      },
+      "ROLE_OPERATION01": {
+        "operations": [],
+        "role": {},
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "role_name": "ROLE_NAME01",
+        "id": "ROLE_OPERATION01"
+      },
+      "ROLE_OPERATION02": {
+        "operations": [],
+        "role": {},
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "role_name": "ROLE_NAME01",
+        "id": "ROLE_OPERATION02"
+      }
+    }
+  },
+  "new": {
+    "role_operation": {
+      "role_operation_ref01": {
+        "operations": [],
+        "role": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/roles/{role_name}/reset_password": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "data_api": {
+      "DATA_API00": {
+        "add_default_grants": true,
+        "auth_provider": "s6f",
+        "available_schemas": [],
+        "id": "DATA_API00",
+        "jwks_url": "s72",
+        "jwt_audience": "s73",
+        "provider_name": "s74",
+        "settings": {},
+        "skip_auth_schema": true,
+        "status": "s77",
+        "url": "s78",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "DATA_API01": {
+        "add_default_grants": true,
+        "auth_provider": "sdd",
+        "available_schemas": [],
+        "id": "DATA_API01",
+        "jwks_url": "se0",
+        "jwt_audience": "se1",
+        "provider_name": "se2",
+        "settings": {},
+        "skip_auth_schema": true,
+        "status": "se5",
+        "url": "se6",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "DATA_API02": {
+        "add_default_grants": true,
+        "auth_provider": "s14b",
+        "available_schemas": [],
+        "id": "DATA_API02",
+        "jwks_url": "s14e",
+        "jwt_audience": "s14f",
+        "provider_name": "s150",
+        "settings": {},
+        "skip_auth_schema": true,
+        "status": "s153",
+        "url": "s154",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "data_api": {
+      "data_api_ref01": {
+        "add_default_grants": true,
+        "auth_provider": "s1b9",
+        "available_schemas": [],
+        "jwks_url": "s1bc",
+        "jwt_audience": "s1bd",
+        "provider_name": "s1be",
+        "settings": {},
+        "skip_auth_schema": true,
+        "status": "s1c1",
+        "url": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/data-api/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/data-api/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/data-api/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/data-api/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

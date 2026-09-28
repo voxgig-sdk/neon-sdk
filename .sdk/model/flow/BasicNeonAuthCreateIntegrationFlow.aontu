@@ -1,0 +1,18 @@
+# BasicNeonAuthCreateIntegrationFlow
+
+main: kit: flow: BasicNeonAuthCreateIntegrationFlow:
+{
+  entity: "neon_auth_create_integration",
+  kind: "basic",
+  name: "BasicNeonAuthCreateIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "neon_auth_create_integration_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicNeonAuthCreateIntegrationFlow"
+}

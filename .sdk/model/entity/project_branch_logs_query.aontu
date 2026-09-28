@@ -1,0 +1,201 @@
+# Entity: project_branch_logs_query
+
+main: kit: entity: project_branch_logs_query: {
+
+  alias: field: {}
+
+  fields: {
+    body_contains: {
+      h: "Body Contains"
+      n: "body_contains"
+      r: false
+      sh: "Match records whose rendered `message` contains this case-sensitive substring."
+      t: "`$STRING`"
+    }
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "Opaque pagination cursor returned as `next_cursor` by a previous call."
+      t: "`$STRING`"
+    }
+    end_time: {
+      fo: "date-time"
+      h: "End Time"
+      n: "end_time"
+      r: false
+      sh: "Exclusive end of the query window."
+      t: "`$STRING`"
+    }
+    is_truncated: {
+      h: "Is Truncated"
+      n: "is_truncated"
+      r: true
+      sh: "True when more records matched than were returned."
+      t: "`$BOOLEAN`"
+    }
+    limit: {
+      h: "Limit"
+      n: "limit"
+      r: false
+      sh: "Maximum number of log records to return per page."
+      t: "`$INTEGER`"
+    }
+    logql: {
+      h: "Logql"
+      n: "logql"
+      r: false
+      sh: "Escape hatch for selections the structured filters cannot express: a raw LogQL expression, evaluated against this branch's log stream."
+      t: "`$STRING`"
+    }
+    logs: {
+      h: "Logs"
+      n: "logs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    minimum_severity: {
+      h: "Minimum Severity"
+      n: "minimum_severity"
+      r: false
+      sh: "An OpenTelemetry severity level."
+      t: "`$STRING`"
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: false
+      sh: "Pagination cursor to pass as `cursor` on the next request."
+      t: "`$STRING`"
+    }
+    scope_name: {
+      h: "Scope Name"
+      n: "scope_name"
+      r: false
+      sh: "Match the OpenTelemetry instrumentation scope name exactly."
+      t: "`$STRING`"
+    }
+    service_name: {
+      h: "Service Name"
+      n: "service_name"
+      r: false
+      sh: "Match the OpenTelemetry `service.name` resource attribute exactly."
+      t: "`$STRING`"
+    }
+    severity_text: {
+      h: "Severity Text"
+      n: "severity_text"
+      r: false
+      sh: "Match the OpenTelemetry severity text exactly."
+      t: "`$STRING`"
+    }
+    since: {
+      h: "Since"
+      n: "since"
+      r: false
+      sh: "Length of the query window, ending at `end_time` or at the current time when `end_time` is omitted."
+      t: "`$ANY`"
+    }
+    sort_order: {
+      h: "Sort Order"
+      n: "sort_order"
+      r: false
+      sh: "Order matching records by timestamp."
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "The Neon service that emitted the log record."
+      t: "`$STRING`"
+    }
+    start_time: {
+      fo: "date-time"
+      h: "Start Time"
+      n: "start_time"
+      r: false
+      sh: "Inclusive beginning of the query window."
+      t: "`$STRING`"
+    }
+    trace_id: {
+      h: "Trace Id"
+      n: "trace_id"
+      r: false
+      sh: "Match records associated with this OpenTelemetry trace ID."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "project_branch_logs_query"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/logs/query"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/logs/query"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "logs"
+            }
+            {
+              lit: "query"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Snapshot | Neon API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Neon API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/neon-sdk">voxgig-sdk/neon-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Neon API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/anonymize.html">Anonymize</a>
+<a href="../api/anonymized_branch_status.html">AnonymizedBranchStatus</a>
+<a href="../api/api_key.html">ApiKey</a>
+<a href="../api/auth.html">Auth</a>
+<a href="../api/auth_legacy.html">AuthLegacy</a>
+<a href="../api/available_preload_library.html">AvailablePreloadLibrary</a>
+<a href="../api/backup_schedule.html">BackupSchedule</a>
+<a href="../api/branch.html">Branch</a>
+<a href="../api/branch_ai_gateway.html">BranchAiGateway</a>
+<a href="../api/branch_operation.html">BranchOperation</a>
+<a href="../api/branch_schema.html">BranchSchema</a>
+<a href="../api/branch_schema_compare.html">BranchSchemaCompare</a>
+<a href="../api/branch_storage.html">BranchStorage</a>
+<a href="../api/bucket.html">Bucket</a>
+<a href="../api/bucket_objects_list.html">BucketObjectsList</a>
+<a href="../api/connection_uri.html">ConnectionUri</a>
+<a href="../api/consumption.html">Consumption</a>
+<a href="../api/create_credential.html">CreateCredential</a>
+<a href="../api/credential.html">Credential</a>
+<a href="../api/current_user_info.html">CurrentUserInfo</a>
+<a href="../api/custom_domain.html">CustomDomain</a>
+<a href="../api/data_api.html">DataApi</a>
+<a href="../api/database.html">Database</a>
+<a href="../api/email_provider.html">EmailProvider</a>
+<a href="../api/email_server.html">EmailServer</a>
+<a href="../api/empty.html">Empty</a>
+<a href="../api/endpoint.html">Endpoint</a>
+<a href="../api/endpoint_operation.html">EndpointOperation</a>
+<a href="../api/function.html">Function</a>
+<a href="../api/jwk.html">Jwk</a>
+<a href="../api/masking_rule.html">MaskingRule</a>
+<a href="../api/member.html">Member</a>
+<a href="../api/neon_auth_allow_localhost.html">NeonAuthAllowLocalhost</a>
+<a href="../api/neon_auth_config.html">NeonAuthConfig</a>
+<a href="../api/neon_auth_create_integration.html">NeonAuthCreateIntegration</a>
+<a href="../api/neon_auth_create_new_user.html">NeonAuthCreateNewUser</a>
+<a href="../api/neon_auth_email_and_password_config.html">NeonAuthEmailAndPasswordConfig</a>
+<a href="../api/neon_auth_email_server_config.html">NeonAuthEmailServerConfig</a>
+<a href="../api/neon_auth_integration.html">NeonAuthIntegration</a>
+<a href="../api/neon_auth_magic_link_config.html">NeonAuthMagicLinkConfig</a>
+<a href="../api/neon_auth_oauth_provider.html">NeonAuthOauthProvider</a>
+<a href="../api/neon_auth_organization_config.html">NeonAuthOrganizationConfig</a>
+<a href="../api/neon_auth_phone_number_config.html">NeonAuthPhoneNumberConfig</a>
+<a href="../api/neon_auth_plugin_config.html">NeonAuthPluginConfig</a>
+<a href="../api/neon_auth_redirect_uri_whitelist_domain.html">NeonAuthRedirectUriWhitelistDomain</a>
+<a href="../api/neon_auth_transfer_auth_provider_project.html">NeonAuthTransferAuthProviderProject</a>
+<a href="../api/neon_auth_webhook_config.html">NeonAuthWebhookConfig</a>
+<a href="../api/neon_function.html">NeonFunction</a>
+<a href="../api/neon_function_deployment.html">NeonFunctionDeployment</a>
+<a href="../api/operation.html">Operation</a>
+<a href="../api/org_api_key_create.html">OrgApiKeyCreate</a>
+<a href="../api/org_api_key_revoke.html">OrgApiKeyRevoke</a>
+<a href="../api/org_api_keys_list_response_item.html">OrgApiKeysListResponseItem</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_invitation.html">OrganizationInvitation</a>
+<a href="../api/presign.html">Presign</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_branch_log_field.html">ProjectBranchLogField</a>
+<a href="../api/project_branch_log_field_value.html">ProjectBranchLogFieldValue</a>
+<a href="../api/project_branch_logs_query.html">ProjectBranchLogsQuery</a>
+<a href="../api/project_member.html">ProjectMember</a>
+<a href="../api/project_member_role.html">ProjectMemberRole</a>
+<a href="../api/project_permission.html">ProjectPermission</a>
+<a href="../api/project_recover.html">ProjectRecover</a>
+<a href="../api/project_transfer_request.html">ProjectTransferRequest</a>
+<a href="../api/region.html">Region</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/role_operation.html">RoleOperation</a>
+<a href="../api/role_password.html">RolePassword</a>
+<a href="../api/send_neon_auth_test_email.html">SendNeonAuthTestEmail</a>
+<a aria-current="page" href="../api/snapshot.html">Snapshot</a><div class="nav-sections"><a class="nav-section" href="#post-projectsproject_idbranchesbranch_idsnapshot">POST /projects/{project_id}/branches/{branch_id}/snapshot</a>
+<a class="nav-section" href="#post-projectsproject_idsnapshotssnapshot_idrestore">POST /projects/{project_id}/snapshots/{snapshot_id}/restore</a>
+<a class="nav-section" href="#get-projectsproject_idsnapshots">GET /projects/{project_id}/snapshots</a>
+<a class="nav-section" href="#delete-projectsproject_idsnapshotssnapshot_id">DELETE /projects/{project_id}/snapshots/{snapshot_id}</a>
+<a class="nav-section" href="#patch-projectsproject_idsnapshotssnapshot_id">PATCH /projects/{project_id}/snapshots/{snapshot_id}</a></div>
+<a href="../api/spending_limit.html">SpendingLimit</a>
+<a href="../api/trigger.html">Trigger</a>
+<a href="../api/update_neon_auth_user_role.html">UpdateNeonAuthUserRole</a>
+<a href="../api/vpc_endpoint.html">VpcEndpoint</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="snapshot">Snapshot</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projectsproject_idbranchesbranch_idsnapshot"><code>/projects/{project_id}/branches/{branch_id}/snapshot</code></a></td>
+<td><code>create</code></td>
+<td>Successfully created the snapshot</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projectsproject_idsnapshotssnapshot_idrestore"><code>/projects/{project_id}/snapshots/{snapshot_id}/restore</code></a></td>
+<td><code>create</code></td>
+<td>Branch restored from snapshot and its operations</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsproject_idsnapshots"><code>/projects/{project_id}/snapshots</code></a></td>
+<td><code>list</code></td>
+<td>Projects snapshots</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-projectsproject_idsnapshotssnapshot_id"><code>/projects/{project_id}/snapshots/{snapshot_id}</code></a></td>
+<td><code>remove</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-projectsproject_idsnapshotssnapshot_id"><code>/projects/{project_id}/snapshots/{snapshot_id}</code></a></td>
+<td><code>update</code></td>
+<td>Successfully updated the snapshot</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">snapshots, err := client.Snapshot(nil).List(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(snapshots)
+created, err := client.Snapshot(nil).Create(map[string]any{&quot;branch_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;operations&quot;: []any{}, &quot;snapshot&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Snapshot(nil).Update(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Snapshot(nil).Remove(map[string]any{&quot;id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local snapshots, err = client:Snapshot():list({ project_id = &quot;example&quot; })
+local created, err = client:Snapshot():create({ branch_id = &quot;example&quot;, project_id = &quot;example&quot;, created_at = &quot;example&quot;, id = &quot;example&quot;, operations = {}, snapshot = {} })
+local updated, err = client:Snapshot():update({ project_id = &quot;example&quot;, created_at = &quot;example&quot; })
+local removed, err = client:Snapshot():remove({ id = &quot;example&quot;, project_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$snapshots = $client-&gt;Snapshot()-&gt;list([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;Snapshot()-&gt;create([&quot;branch_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;operations&quot; =&gt; [], &quot;snapshot&quot; =&gt; []]);
+$updated = $client-&gt;Snapshot()-&gt;update([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Snapshot()-&gt;remove([&quot;id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">snapshots = client.Snapshot().list({&quot;project_id&quot;: &quot;example&quot;})
+created = client.Snapshot().create({ &quot;branch_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;operations&quot;: [], &quot;snapshot&quot;: {} })
+updated = client.Snapshot().update({&quot;project_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;})
+client.Snapshot().remove({&quot;id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">snapshots = client.Snapshot.list({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.Snapshot.create({ &quot;branch_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;operations&quot; =&gt; [], &quot;snapshot&quot; =&gt; {} })
+updated = client.Snapshot.update({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot; })
+client.Snapshot.remove({ &quot;id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const snapshots = await client.Snapshot().list({ project_id: &quot;example&quot; })
+const created = await client.Snapshot().create({ branch_id: &quot;example&quot;, project_id: &quot;example&quot;, created_at: &quot;example&quot;, id: &quot;example&quot;, operations: [], snapshot: {} })
+const updated = await client.Snapshot().update({ project_id: &quot;example&quot;, created_at: &quot;example&quot; })
+await client.Snapshot().remove({ id: &quot;example&quot;, project_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Timestamp when the snapshot was created, in RFC 3339 format (UTC).</td>
+</tr>
+<tr>
+<td><code>diff_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Incremental Postgres storage size in bytes since the previous scheduled snapshot, when the snapshot is billed on incremental (diff) usage.</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>RFC 3339 timestamp when the snapshot expires and is eligible for deletion.</td>
+</tr>
+<tr>
+<td><code>full_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Full logical size of the snapshot in bytes at the time it was taken.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The snapshot ID.</td>
+</tr>
+<tr>
+<td><code>lsn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>WAL position (Log Sequence Number) at which the snapshot was captured, in Postgres LSN format (for example, <code>0/3000000</code>).</td>
+</tr>
+<tr>
+<td><code>manual</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>True if the snapshot was created manually rather than by a schedule.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable label for the snapshot.</td>
+</tr>
+<tr>
+<td><code>operations</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Operations</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Snapshot resource ID, unique within the project.</td>
+</tr>
+<tr>
+<td><code>snapshot</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Fields to update on the snapshot.</td>
+</tr>
+<tr>
+<td><code>source_branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Branch from which this snapshot was created.</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Point in time captured by the snapshot, in RFC 3339 format (UTC).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-projectsproject_idbranchesbranch_idsnapshot" class="operation" data-method="post"><code>POST</code> /projects/{project_id}/branches/{branch_id}/snapshot</h3>
+<p>Operation ID: <code>createSnapshot</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>branch_id</code> | <code>path</code> | <code>string</code> | Yes | The branch ID |
+| <code>lsn</code> | <code>query</code> | <code>string</code> | No | The target Log Sequence Number (LSN) to take the snapshot from. Must fall within the restore window. Cannot be used with <code>timestamp</code> |
+| <code>timestamp</code> | <code>query</code> | <code>string</code> | No | The target timestamp for the snapshot. Must fall within the restore window. RFC 3339 format. Cannot be used with <code>lsn</code>. |
+| <code>name</code> | <code>query</code> | <code>string</code> | No | A name for the snapshot. |
+| <code>slug</code> | <code>query</code> | <code>string</code> | No | User-defined snapshot resource ID. Must be unique within the project. Must start with a lowercase letter, contain only lowercase letters, numbers, and hyphens, and end with a letter or number. If omitted, the control plane generates a value. |
+| <code>expires_at</code> | <code>query</code> | <code>string</code> | No | The time at which the snapshot will be automatically deleted. RFC 3339 format. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-successfully-created-the-snapshot" class="status" data-status="2xx">200: Successfully created the snapshot</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>operations</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operations[].action</code></td>
+<td><code>enum: create_compute, create_timeline, start_compute, suspend_compute, apply_config, check_availability, ...</code></td>
+<td>Yes</td>
+<td>The action performed by the operation</td>
+</tr>
+<tr>
+<td><code>operations[].branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the branch this operation ran on.</td>
+</tr>
+<tr>
+<td><code>operations[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the operation was created</td>
+</tr>
+<tr>
+<td><code>operations[].endpoint_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the compute endpoint this operation ran on.</td>
+</tr>
+<tr>
+<td><code>operations[].error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable message describing why the operation failed.</td>
+</tr>
+<tr>
+<td><code>operations[].failures_count</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of times the operation failed</td>
+</tr>
+<tr>
+<td><code>operations[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The operation ID</td>
+</tr>
+<tr>
+<td><code>operations[].project_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the project this operation ran on.</td>
+</tr>
+<tr>
+<td><code>operations[].retry_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the operation was last retried</td>
+</tr>
+<tr>
+<td><code>operations[].status</code></td>
+<td><code>enum: scheduling, running, finished, failed, error, cancelling, ...</code></td>
+<td>Yes</td>
+<td>Current lifecycle state of the operation. On <code>failed</code>, see <code>failures_count</code> and <code>retry_at</code> for retry detail.</td>
+</tr>
+<tr>
+<td><code>operations[].total_duration_ms</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The total duration of the operation in milliseconds</td>
+</tr>
+<tr>
+<td><code>operations[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the operation status was last updated</td>
+</tr>
+<tr>
+<td><code>snapshot</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>snapshot.created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Timestamp when the snapshot was created, in RFC 3339 format (UTC).</td>
+</tr>
+<tr>
+<td><code>snapshot.diff_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Incremental Postgres storage size in bytes since the previous scheduled snapshot, when the snapshot is billed on incremental (diff) usage. When absent, either the incremental size has not been calculated yet and the snapshot is not being charged, or the snapshot is charged at full logical size (in that case <code>full_size</code> is set).</td>
+</tr>
+<tr>
+<td><code>snapshot.expires_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>RFC 3339 timestamp when the snapshot expires and is eligible for deletion. Null if the snapshot does not have an expiry.</td>
+</tr>
+<tr>
+<td><code>snapshot.full_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Full logical size of the snapshot in bytes at the time it was taken. When absent, the logical size has not been calculated yet and the snapshot is not being charged. When present, a value of 0 means the snapshot is not being charged.</td>
+</tr>
+<tr>
+<td><code>snapshot.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The snapshot ID.</td>
+</tr>
+<tr>
+<td><code>snapshot.lsn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>WAL position (Log Sequence Number) at which the snapshot was captured, in Postgres LSN format (for example, <code>0/3000000</code>).</td>
+</tr>
+<tr>
+<td><code>snapshot.manual</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>True if the snapshot was created manually rather than by a schedule.</td>
+</tr>
+<tr>
+<td><code>snapshot.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable label for the snapshot.</td>
+</tr>
+<tr>
+<td><code>snapshot.slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Snapshot resource ID, unique within the project. Distinct from the internal snapshot ID and display name.</td>
+</tr>
+<tr>
+<td><code>snapshot.source_branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Branch from which this snapshot was created.</td>
+</tr>
+<tr>
+<td><code>snapshot.timestamp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Point in time captured by the snapshot, in RFC 3339 format (UTC).</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-projectsproject_idsnapshotssnapshot_idrestore" class="operation" data-method="post"><code>POST</code> /projects/{project_id}/snapshots/{snapshot_id}/restore</h3>
+<p>Operation ID: <code>restoreSnapshot</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>snapshot_id</code> | <code>path</code> | <code>string</code> | Yes | The snapshot ID |
+| <code>name</code> | <code>query</code> | <code>string</code> | No | Deprecated. Use the <code>name</code> field in the request body instead. Removal scheduled for November 29, 2025. A name for the newly restored branch. If omitted, a default name will be generated. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>finalize_restore</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Set to <code>true</code> to finalize the restore operation immediately. This will complete the restore and move any associated computes to the new branch, similar to the <code>finalizeRestoreBranch</code> operation. Defaults to <code>false</code> to allow previewing the restored snapshot data first.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A name for the newly restored branch. If not provided, the server generates a unique name for the branch automatically.</td>
+</tr>
+<tr>
+<td><code>target_branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the branch to restore the snapshot into. Defaults to the snapshot's source branch (<code>snapshot.</code>source_branch_id``); fails if that cannot be determined.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-branch-restored-from-snapshot-and-its-operations" class="status" data-status="2xx">200: Branch restored from snapshot and its operations</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object and object</code>.</p>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-1">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-projectsproject_idsnapshots" class="operation" data-method="get"><code>GET</code> /projects/{project_id}/snapshots</h3>
+<p>Operation ID: <code>listSnapshots</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-projects-snapshots" class="status" data-status="2xx">200: Projects snapshots</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshots</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>snapshots[].created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Timestamp when the snapshot was created, in RFC 3339 format (UTC).</td>
+</tr>
+<tr>
+<td><code>snapshots[].diff_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Incremental Postgres storage size in bytes since the previous scheduled snapshot, when the snapshot is billed on incremental (diff) usage. When absent, either the incremental size has not been calculated yet and the snapshot is not being charged, or the snapshot is charged at full logical size (in that case <code>full_size</code> is set).</td>
+</tr>
+<tr>
+<td><code>snapshots[].expires_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>RFC 3339 timestamp when the snapshot expires and is eligible for deletion. Null if the snapshot does not have an expiry.</td>
+</tr>
+<tr>
+<td><code>snapshots[].full_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Full logical size of the snapshot in bytes at the time it was taken. When absent, the logical size has not been calculated yet and the snapshot is not being charged. When present, a value of 0 means the snapshot is not being charged.</td>
+</tr>
+<tr>
+<td><code>snapshots[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The snapshot ID.</td>
+</tr>
+<tr>
+<td><code>snapshots[].lsn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>WAL position (Log Sequence Number) at which the snapshot was captured, in Postgres LSN format (for example, <code>0/3000000</code>).</td>
+</tr>
+<tr>
+<td><code>snapshots[].manual</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>True if the snapshot was created manually rather than by a schedule.</td>
+</tr>
+<tr>
+<td><code>snapshots[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable label for the snapshot.</td>
+</tr>
+<tr>
+<td><code>snapshots[].slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Snapshot resource ID, unique within the project. Distinct from the internal snapshot ID and display name.</td>
+</tr>
+<tr>
+<td><code>snapshots[].source_branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Branch from which this snapshot was created.</td>
+</tr>
+<tr>
+<td><code>snapshots[].timestamp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Point in time captured by the snapshot, in RFC 3339 format (UTC).</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-2">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-projectsproject_idsnapshotssnapshot_id" class="operation" data-method="delete"><code>DELETE</code> /projects/{project_id}/snapshots/{snapshot_id}</h3>
+<p>Operation ID: <code>deleteSnapshot</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>snapshot_id</code> | <code>path</code> | <code>string</code> | Yes | The snapshot ID |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="202-ok" class="status" data-status="2xx">202: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>operations</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operations[].action</code></td>
+<td><code>enum: create_compute, create_timeline, start_compute, suspend_compute, apply_config, check_availability, ...</code></td>
+<td>Yes</td>
+<td>The action performed by the operation</td>
+</tr>
+<tr>
+<td><code>operations[].branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the branch this operation ran on.</td>
+</tr>
+<tr>
+<td><code>operations[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the operation was created</td>
+</tr>
+<tr>
+<td><code>operations[].endpoint_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the compute endpoint this operation ran on.</td>
+</tr>
+<tr>
+<td><code>operations[].error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable message describing why the operation failed.</td>
+</tr>
+<tr>
+<td><code>operations[].failures_count</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of times the operation failed</td>
+</tr>
+<tr>
+<td><code>operations[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The operation ID</td>
+</tr>
+<tr>
+<td><code>operations[].project_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the project this operation ran on.</td>
+</tr>
+<tr>
+<td><code>operations[].retry_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when the operation was last retried</td>
+</tr>
+<tr>
+<td><code>operations[].status</code></td>
+<td><code>enum: scheduling, running, finished, failed, error, cancelling, ...</code></td>
+<td>Yes</td>
+<td>Current lifecycle state of the operation. On <code>failed</code>, see <code>failures_count</code> and <code>retry_at</code> for retry detail.</td>
+</tr>
+<tr>
+<td><code>operations[].total_duration_ms</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The total duration of the operation in milliseconds</td>
+</tr>
+<tr>
+<td><code>operations[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the operation status was last updated</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-3">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-projectsproject_idsnapshotssnapshot_id" class="operation" data-method="patch"><code>PATCH</code> /projects/{project_id}/snapshots/{snapshot_id}</h3>
+<p>Operation ID: <code>updateSnapshot</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>snapshot_id</code> | <code>path</code> | <code>string</code> | Yes | The snapshot ID |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshot</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Fields to update on the snapshot. Updatable fields include <code>name</code> and <code>expires_at</code>.</td>
+</tr>
+<tr>
+<td><code>snapshot.expires_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the snapshot will expire. Omit to leave the current expiration unchanged. Send <code>null</code> to clear the expiration so the snapshot never expires. A future timestamp sets the absolute expiration.</td>
+</tr>
+<tr>
+<td><code>snapshot.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable label for the snapshot.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-successfully-updated-the-snapshot" class="status" data-status="2xx">200: Successfully updated the snapshot</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshot</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>snapshot.created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Timestamp when the snapshot was created, in RFC 3339 format (UTC).</td>
+</tr>
+<tr>
+<td><code>snapshot.diff_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Incremental Postgres storage size in bytes since the previous scheduled snapshot, when the snapshot is billed on incremental (diff) usage. When absent, either the incremental size has not been calculated yet and the snapshot is not being charged, or the snapshot is charged at full logical size (in that case <code>full_size</code> is set).</td>
+</tr>
+<tr>
+<td><code>snapshot.expires_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>RFC 3339 timestamp when the snapshot expires and is eligible for deletion. Null if the snapshot does not have an expiry.</td>
+</tr>
+<tr>
+<td><code>snapshot.full_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Full logical size of the snapshot in bytes at the time it was taken. When absent, the logical size has not been calculated yet and the snapshot is not being charged. When present, a value of 0 means the snapshot is not being charged.</td>
+</tr>
+<tr>
+<td><code>snapshot.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The snapshot ID.</td>
+</tr>
+<tr>
+<td><code>snapshot.lsn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>WAL position (Log Sequence Number) at which the snapshot was captured, in Postgres LSN format (for example, <code>0/3000000</code>).</td>
+</tr>
+<tr>
+<td><code>snapshot.manual</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>True if the snapshot was created manually rather than by a schedule.</td>
+</tr>
+<tr>
+<td><code>snapshot.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable label for the snapshot.</td>
+</tr>
+<tr>
+<td><code>snapshot.slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Snapshot resource ID, unique within the project. Distinct from the internal snapshot ID and display name.</td>
+</tr>
+<tr>
+<td><code>snapshot.source_branch_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Branch from which this snapshot was created.</td>
+</tr>
+<tr>
+<td><code>snapshot.timestamp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Point in time captured by the snapshot, in RFC 3339 format (UTC).</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-4">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

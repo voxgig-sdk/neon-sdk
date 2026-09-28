@@ -1,0 +1,100 @@
+# BasicRoleFlow
+
+main: kit: flow: BasicRoleFlow:
+{
+  entity: "role",
+  kind: "basic",
+  name: "BasicRoleFlow",
+  step: [
+    {
+      i: {
+        ref: "role_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "role_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "role_ref01",
+        srcdatavar: "role_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        id: "role01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-role_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "role_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        id: "role01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "role_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRoleFlow"
+}

@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "consumption": {
+      "CONSUMPTION00": {
+        "branches": [],
+        "pagination": {},
+        "projects": []
+      },
+      "CONSUMPTION01": {
+        "branches": [],
+        "pagination": {},
+        "projects": []
+      },
+      "CONSUMPTION02": {
+        "branches": [],
+        "pagination": {},
+        "projects": []
+      }
+    }
+  },
+  "new": {
+    "consumption": {
+      "consumption_ref01": {
+        "branches": [],
+        "pagination": {},
+        "projects": []
+      }
+    }
+  },
+  "requests": {
+    "GET /consumption_history/v2/branches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /consumption_history/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /consumption_history/v2/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

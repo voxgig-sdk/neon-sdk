@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "project_branch_logs_query": {
+      "PROJECT_BRANCH_LOGS_QUERY00": {
+        "body_contains": "saa",
+        "cursor": "sab",
+        "end_time": "sac",
+        "is_truncated": false,
+        "limit": 174,
+        "logql": "saf",
+        "logs": [],
+        "minimum_severity": "sb1",
+        "next_cursor": "sb2",
+        "scope_name": "sb3",
+        "service_name": "sb4",
+        "severity_text": "sb5",
+        "since": "sb6",
+        "sort_order": "sb7",
+        "source": "sb8",
+        "start_time": "sb9",
+        "trace_id": "TRACE01",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_BRANCH_LOGS_QUERY00"
+      },
+      "PROJECT_BRANCH_LOGS_QUERY01": {
+        "body_contains": "s154",
+        "cursor": "s155",
+        "end_time": "s156",
+        "is_truncated": false,
+        "limit": 344,
+        "logql": "s159",
+        "logs": [],
+        "minimum_severity": "s15b",
+        "next_cursor": "s15c",
+        "scope_name": "s15d",
+        "service_name": "s15e",
+        "severity_text": "s15f",
+        "since": "s160",
+        "sort_order": "s161",
+        "source": "s162",
+        "start_time": "s163",
+        "trace_id": "TRACE01",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_BRANCH_LOGS_QUERY01"
+      },
+      "PROJECT_BRANCH_LOGS_QUERY02": {
+        "body_contains": "s1fe",
+        "cursor": "s1ff",
+        "end_time": "s200",
+        "is_truncated": false,
+        "limit": 514,
+        "logql": "s203",
+        "logs": [],
+        "minimum_severity": "s205",
+        "next_cursor": "s206",
+        "scope_name": "s207",
+        "service_name": "s208",
+        "severity_text": "s209",
+        "since": "s20a",
+        "sort_order": "s20b",
+        "source": "s20c",
+        "start_time": "s20d",
+        "trace_id": "TRACE01",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_BRANCH_LOGS_QUERY02"
+      }
+    }
+  },
+  "new": {
+    "project_branch_logs_query": {
+      "project_branch_logs_query_ref01": {
+        "body_contains": "s2a8",
+        "cursor": "s2a9",
+        "end_time": "s2aa",
+        "is_truncated": false,
+        "limit": 684,
+        "logql": "s2ad",
+        "logs": [],
+        "minimum_severity": "s2af",
+        "next_cursor": "s2b0",
+        "scope_name": "s2b1",
+        "service_name": "s2b2",
+        "severity_text": "s2b3",
+        "since": "s2b4",
+        "sort_order": "s2b5",
+        "source": "s2b6",
+        "start_time": "s2b7",
+        "trace_id": "TRACE01"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/logs/query": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

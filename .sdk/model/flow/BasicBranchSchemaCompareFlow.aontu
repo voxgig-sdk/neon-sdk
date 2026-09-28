@@ -1,0 +1,33 @@
+# BasicBranchSchemaCompareFlow
+
+main: kit: flow: BasicBranchSchemaCompareFlow:
+{
+  entity: "branch_schema_compare",
+  kind: "basic",
+  name: "BasicBranchSchemaCompareFlow",
+  step: [
+    {
+      i: {
+        ref: "branch_schema_compare_ref01",
+        srcdatavar: "branch_schema_compare_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "branch_schema_compare01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-branch_schema_compare_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBranchSchemaCompareFlow"
+}

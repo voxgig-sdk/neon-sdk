@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "org_api_keys_list_response_item": {
+      "ORG_API_KEYS_LIST_RESPONSE_ITEM00": {
+        "created_at": "s46",
+        "created_by": {},
+        "id": "ORG_API_KEYS_LIST_RESPONSE_ITEM00",
+        "last_used_at": "s49",
+        "last_used_from_addr": "s4a",
+        "name": "s4b",
+        "project_id": "PROJECT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORG_API_KEYS_LIST_RESPONSE_ITEM01": {
+        "created_at": "s8c",
+        "created_by": {},
+        "id": "ORG_API_KEYS_LIST_RESPONSE_ITEM01",
+        "last_used_at": "s8f",
+        "last_used_from_addr": "s90",
+        "name": "s91",
+        "project_id": "PROJECT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORG_API_KEYS_LIST_RESPONSE_ITEM02": {
+        "created_at": "sd2",
+        "created_by": {},
+        "id": "ORG_API_KEYS_LIST_RESPONSE_ITEM02",
+        "last_used_at": "sd5",
+        "last_used_from_addr": "sd6",
+        "name": "sd7",
+        "project_id": "PROJECT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "org_api_keys_list_response_item": {
+      "org_api_keys_list_response_item_ref01": {
+        "created_at": "s118",
+        "created_by": {},
+        "last_used_at": "s11b",
+        "last_used_from_addr": "s11c",
+        "name": "s11d",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "requests": {
+    "GET /organizations/{org_id}/api_keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

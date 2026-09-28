@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "connection_uri": {
+      "CONNECTION_URI00": {
+        "uri": "sa",
+        "project_id": "PROJECT01",
+        "id": "CONNECTION_URI00"
+      },
+      "CONNECTION_URI01": {
+        "uri": "s14",
+        "project_id": "PROJECT01",
+        "id": "CONNECTION_URI01"
+      },
+      "CONNECTION_URI02": {
+        "uri": "s1e",
+        "project_id": "PROJECT01",
+        "id": "CONNECTION_URI02"
+      }
+    }
+  },
+  "new": {
+    "connection_uri": {
+      "connection_uri_ref01": {
+        "uri": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/connection_uri": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

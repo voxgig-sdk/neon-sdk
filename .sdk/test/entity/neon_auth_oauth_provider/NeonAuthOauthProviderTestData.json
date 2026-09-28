@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "neon_auth_oauth_provider": {
+      "NEON_AUTH_OAUTH_PROVIDER00": {
+        "client_id": "CLIENT01",
+        "client_secret": "s33",
+        "id": "NEON_AUTH_OAUTH_PROVIDER00",
+        "microsoft_tenant_id": "MICROSOFT_TENANT01",
+        "type": "s36",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_AUTH_OAUTH_PROVIDER01": {
+        "client_id": "CLIENT01",
+        "client_secret": "s65",
+        "id": "NEON_AUTH_OAUTH_PROVIDER01",
+        "microsoft_tenant_id": "MICROSOFT_TENANT01",
+        "type": "s68",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "NEON_AUTH_OAUTH_PROVIDER02": {
+        "client_id": "CLIENT01",
+        "client_secret": "s97",
+        "id": "NEON_AUTH_OAUTH_PROVIDER02",
+        "microsoft_tenant_id": "MICROSOFT_TENANT01",
+        "type": "s9a",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_oauth_provider": {
+      "neon_auth_oauth_provider_ref01": {
+        "client_id": "CLIENT01",
+        "client_secret": "sc9",
+        "microsoft_tenant_id": "MICROSOFT_TENANT01",
+        "type": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/auth/oauth_providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/{project_id}/auth/oauth_providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/auth/oauth_providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/auth/oauth_providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/auth/oauth_providers/{oauth_provider_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "region": {
+      "REGION00": {
+        "default": true,
+        "geo_lat": "s33",
+        "geo_long": "s34",
+        "name": "s35",
+        "region_id": "REGION01"
+      },
+      "REGION01": {
+        "default": true,
+        "geo_lat": "s65",
+        "geo_long": "s66",
+        "name": "s67",
+        "region_id": "REGION01"
+      },
+      "REGION02": {
+        "default": true,
+        "geo_lat": "s97",
+        "geo_long": "s98",
+        "name": "s99",
+        "region_id": "REGION01"
+      }
+    }
+  },
+  "new": {
+    "region": {
+      "region_ref01": {
+        "default": true,
+        "geo_lat": "sc9",
+        "geo_long": "sca",
+        "name": "scb",
+        "region_id": "REGION01"
+      }
+    }
+  },
+  "requests": {
+    "GET /regions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

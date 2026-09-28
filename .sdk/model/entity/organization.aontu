@@ -1,0 +1,410 @@
+# Entity: organization
+
+main: kit: entity: organization: {
+
+  alias: field: {}
+
+  fields: {
+    allow_hipaa_projects: {
+      h: "Allow Hipaa Projects"
+      n: "allow_hipaa_projects"
+      r: false
+      sh: "If true, allow account to mark projects as HIPAA"
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicting when the organization was created"
+      t: "`$STRING`"
+    }
+    handle: {
+      h: "Handle"
+      n: "handle"
+      r: true
+      sh: "URL-safe identifier for the organization, used in API paths."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The Neon organization ID."
+      t: "`$STRING`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: true
+      sh: "Human-readable name for the VPC endpoint assignment, used to identify it within the organization."
+      t: "`$STRING`"
+    }
+    managed_by: {
+      h: "Managed By"
+      n: "managed_by"
+      r: true
+      sh: "Organizations created via the Console or the API are managed by `console`."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Human-readable display name of the organization."
+      t: "`$STRING`"
+    }
+    plan: {
+      h: "Plan"
+      n: "plan"
+      r: true
+      sh: "Billing plan for the organization, for example `free`, `launch`, or `scale`."
+      t: "`$STRING`"
+    }
+    require_mfa: {
+      h: "Require Mfa"
+      n: "require_mfa"
+      r: false
+      sh: "If true, all members must have MFA enabled to access this organization"
+      t: "`$BOOLEAN`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "A timestamp indicating when the organization was updated"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "organization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "region_id"
+                or: "region_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "vpc_endpoint_id"
+                or: "vpc_endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "region_id"
+              "vpc_endpoint_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "vpc"
+            }
+            {
+              lit: "region"
+            }
+            {
+              var: "region_id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+            {
+              var: "vpc_endpoint_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /organizations/{org_id}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "joined_at"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "desc"
+                k: "query"
+                n: "sort_order"
+                or: "sort_order"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/organizations/{org_id}/members"
+          q: {
+            "$action": "member"
+            exist: [
+              "cursor"
+              "id"
+              "limit"
+              "sort_by"
+              "sort_order"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /users/me/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/users/me/organizations"
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organizations`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /organizations/{org_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/organizations/{org_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "region_id"
+                or: "region_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "vpc_endpoint_id"
+                or: "vpc_endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "region_id"
+              "vpc_endpoint_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "vpc"
+            }
+            {
+              lit: "region"
+            }
+            {
+              var: "region_id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+            {
+              var: "vpc_endpoint_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.region") path("$.main.kit.entity.vpc_endpoint")]
+  ]
+
+}

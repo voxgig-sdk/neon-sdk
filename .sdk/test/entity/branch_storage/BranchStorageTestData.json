@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "branch_storage": {
+      "BRANCH_STORAGE00": {
+        "enabled": true,
+        "force_path_style": false,
+        "id": "BRANCH_STORAGE00",
+        "region": "s35",
+        "s3_endpoint": "s36",
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_STORAGE01": {
+        "enabled": true,
+        "force_path_style": false,
+        "id": "BRANCH_STORAGE01",
+        "region": "s67",
+        "s3_endpoint": "s68",
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_STORAGE02": {
+        "enabled": true,
+        "force_path_style": false,
+        "id": "BRANCH_STORAGE02",
+        "region": "s99",
+        "s3_endpoint": "s9a",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "branch_storage": {
+      "branch_storage_ref01": {
+        "enabled": true,
+        "force_path_style": false,
+        "region": "scb",
+        "s3_endpoint": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/storage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

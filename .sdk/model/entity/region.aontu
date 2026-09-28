@@ -1,0 +1,90 @@
+# Entity: region
+
+main: kit: entity: region: {
+
+  alias: field: {}
+
+  fields: {
+    default: {
+      h: "Default"
+      n: "default"
+      r: true
+      sh: "True if this region is selected by default when no region is specified during project creation."
+      t: "`$BOOLEAN`"
+    }
+    geo_lat: {
+      h: "Geo Lat"
+      n: "geo_lat"
+      r: true
+      sh: "The geographical latitude (approximate) for the region."
+      t: "`$STRING`"
+    }
+    geo_long: {
+      h: "Geo Long"
+      n: "geo_long"
+      r: true
+      sh: "The geographical longitude (approximate) for the region."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "A short description of the region."
+      t: "`$STRING`"
+    }
+    region_id: {
+      h: "Region Id"
+      n: "region_id"
+      r: true
+      sh: "Cloud region where the resource's Postgres compute and storage reside (for example, `aws-us-east-1`)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "region"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /regions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "org_id"
+                or: "org_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/regions"
+          q: {
+            exist: [
+              "org_id"
+            ]
+          }
+          s: [
+            {
+              lit: "regions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.regions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

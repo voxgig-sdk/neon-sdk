@@ -1,0 +1,33 @@
+# BasicNeonAuthConfigFlow
+
+main: kit: flow: BasicNeonAuthConfigFlow:
+{
+  entity: "neon_auth_config",
+  kind: "basic",
+  name: "BasicNeonAuthConfigFlow",
+  step: [
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "neon_auth_config_ref01",
+        srcdatavar: "neon_auth_config_ref01_data",
+        suffix: "_up0",
+        textfield: "name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-neon_auth_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeonAuthConfigFlow"
+}

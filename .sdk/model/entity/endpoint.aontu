@@ -1,0 +1,553 @@
+# Entity: endpoint
+
+main: kit: entity: endpoint: {
+
+  alias: field: {}
+
+  fields: {
+    autoscaling_limit_max_cu: {
+      h: "Autoscaling Limit Max Cu"
+      n: "autoscaling_limit_max_cu"
+      r: true
+      sh: "The maximum number of Compute Units"
+      t: "`$NUMBER`"
+    }
+    autoscaling_limit_min_cu: {
+      h: "Autoscaling Limit Min Cu"
+      n: "autoscaling_limit_min_cu"
+      r: true
+      sh: "The minimum number of Compute Units"
+      t: "`$NUMBER`"
+    }
+    branch_id: {
+      h: "Branch Id"
+      n: "branch_id"
+      r: true
+      sh: "The ID of the branch this compute endpoint belongs to."
+      t: "`$STRING`"
+    }
+    compute_release_version: {
+      h: "Compute Release Version"
+      n: "compute_release_version"
+      r: false
+      sh: "Attached compute's release version number."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicating when the compute endpoint was created"
+      t: "`$STRING`"
+    }
+    creation_source: {
+      h: "Creation Source"
+      n: "creation_source"
+      r: true
+      sh: "The compute endpoint creation source"
+      t: "`$STRING`"
+    }
+    current_state: {
+      h: "Current State"
+      n: "current_state"
+      r: true
+      sh: "Lifecycle state of the compute endpoint."
+      t: "`$STRING`"
+    }
+    disabled: {
+      h: "Disabled"
+      n: "disabled"
+      r: true
+      sh: "Whether to restrict connections to the compute endpoint."
+      t: "`$BOOLEAN`"
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      r: true
+      sh: "Configuration for the compute endpoint to create."
+      t: "`$OBJECT`"
+    }
+    host: {
+      h: "Host"
+      n: "host"
+      r: true
+      sh: "The hostname of the compute endpoint."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The compute endpoint ID."
+      t: "`$STRING`"
+    }
+    last_active: {
+      fo: "date-time"
+      h: "Last Active"
+      n: "last_active"
+      r: false
+      sh: "A timestamp indicating when the compute endpoint was last active"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Optional name of the compute endpoint"
+      t: "`$STRING`"
+    }
+    passwordless_access: {
+      h: "Passwordless Access"
+      n: "passwordless_access"
+      r: true
+      sh: "Whether to permit passwordless access to the compute endpoint"
+      t: "`$BOOLEAN`"
+    }
+    pending_state: {
+      h: "Pending State"
+      n: "pending_state"
+      r: false
+      sh: "Target state the compute endpoint is transitioning to."
+      t: "`$STRING`"
+    }
+    pooler_enabled: {
+      de: true
+      h: "Pooler Enabled"
+      n: "pooler_enabled"
+      r: true
+      sh: "Deprecated."
+      t: "`$BOOLEAN`"
+    }
+    pooler_mode: {
+      de: true
+      h: "Pooler Mode"
+      n: "pooler_mode"
+      r: true
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      sh: "The ID of the project this compute endpoint belongs to."
+      t: "`$STRING`"
+    }
+    provisioner: {
+      h: "Provisioner"
+      n: "provisioner"
+      r: true
+      sh: "Compute provisioner."
+      t: "`$STRING`"
+    }
+    proxy_host: {
+      h: "Proxy Host"
+      n: "proxy_host"
+      r: true
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    region_id: {
+      h: "Region Id"
+      n: "region_id"
+      r: true
+      sh: "Cloud region where the resource's Postgres compute and storage reside (for example, `aws-us-east-1`)."
+      t: "`$STRING`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: true
+      sh: "A collection of settings for a compute endpoint"
+      t: "`$OBJECT`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "A timestamp indicating when the compute endpoint was last started"
+      t: "`$STRING`"
+    }
+    suspend_timeout_seconds: {
+      fo: "int64"
+      h: "Suspend Timeout Seconds"
+      n: "suspend_timeout_seconds"
+      r: true
+      sh: "Scale-to-zero idle timeout, in seconds, before the compute suspends."
+      t: "`$INTEGER`"
+    }
+    suspended_at: {
+      fo: "date-time"
+      h: "Suspended At"
+      n: "suspended_at"
+      r: false
+      sh: "A timestamp indicating when the compute endpoint was last suspended"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "Compute endpoint type."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "A timestamp indicating when the compute endpoint was last updated"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "endpoint"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/endpoints"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "endpoints"
+            }
+          ]
+          t: {
+            req: {
+              endpoint: "`reqdata`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/endpoints"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoints`"
+          }
+        }
+        {
+          co: {
+            id: "GET /projects/{project_id}/endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/endpoints"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoints`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/endpoints/{endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/endpoints/{endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              endpoint_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/endpoints/{endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/endpoints/{endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              endpoint_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /projects/{project_id}/endpoints/{endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/projects/{project_id}/endpoints/{endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              endpoint_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              endpoint: "`reqdata`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

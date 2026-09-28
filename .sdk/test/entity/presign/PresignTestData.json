@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "presign": {
+      "PRESIGN00": {
+        "content_type": "s1e",
+        "expires_in_seconds": 31,
+        "operation": "s20",
+        "branch_id": "BRANCH01",
+        "bucket_id": "BUCKET01",
+        "object_key": "OBJECT_KEY01",
+        "project_id": "PROJECT01",
+        "id": "PRESIGN00"
+      },
+      "PRESIGN01": {
+        "content_type": "s3c",
+        "expires_in_seconds": 61,
+        "operation": "s3e",
+        "branch_id": "BRANCH01",
+        "bucket_id": "BUCKET01",
+        "object_key": "OBJECT_KEY01",
+        "project_id": "PROJECT01",
+        "id": "PRESIGN01"
+      },
+      "PRESIGN02": {
+        "content_type": "s5a",
+        "expires_in_seconds": 91,
+        "operation": "s5c",
+        "branch_id": "BRANCH01",
+        "bucket_id": "BUCKET01",
+        "object_key": "OBJECT_KEY01",
+        "project_id": "PROJECT01",
+        "id": "PRESIGN02"
+      }
+    }
+  },
+  "new": {
+    "presign": {
+      "presign_ref01": {
+        "content_type": "s78",
+        "expires_in_seconds": 121,
+        "operation": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/presign": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

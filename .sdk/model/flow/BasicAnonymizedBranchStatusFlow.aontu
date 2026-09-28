@@ -1,0 +1,33 @@
+# BasicAnonymizedBranchStatusFlow
+
+main: kit: flow: BasicAnonymizedBranchStatusFlow:
+{
+  entity: "anonymized_branch_status",
+  kind: "basic",
+  name: "BasicAnonymizedBranchStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "anonymized_branch_status_ref01",
+        srcdatavar: "anonymized_branch_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "anonymized_branch_status01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-anonymized_branch_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAnonymizedBranchStatusFlow"
+}

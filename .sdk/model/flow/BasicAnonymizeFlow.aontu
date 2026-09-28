@@ -1,0 +1,23 @@
+# BasicAnonymizeFlow
+
+main: kit: flow: BasicAnonymizeFlow:
+{
+  entity: "anonymize",
+  kind: "basic",
+  name: "BasicAnonymizeFlow",
+  step: [
+    {
+      i: {
+        ref: "anonymize_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAnonymizeFlow"
+}

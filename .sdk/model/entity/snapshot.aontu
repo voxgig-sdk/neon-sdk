@@ -1,0 +1,459 @@
+# Entity: snapshot
+
+main: kit: entity: snapshot: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "Timestamp when the snapshot was created, in RFC 3339 format (UTC)."
+      t: "`$STRING`"
+    }
+    diff_size: {
+      fo: "int64"
+      h: "Diff Size"
+      n: "diff_size"
+      r: false
+      sh: "Incremental Postgres storage size in bytes since the previous scheduled snapshot, when the snapshot is billed on incremental (diff) usage."
+      t: "`$INTEGER`"
+    }
+    expires_at: {
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "RFC 3339 timestamp when the snapshot expires and is eligible for deletion."
+      t: "`$STRING`"
+    }
+    full_size: {
+      fo: "int64"
+      h: "Full Size"
+      n: "full_size"
+      r: false
+      sh: "Full logical size of the snapshot in bytes at the time it was taken."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The snapshot ID."
+      t: "`$STRING`"
+    }
+    lsn: {
+      h: "Lsn"
+      n: "lsn"
+      r: false
+      sh: "WAL position (Log Sequence Number) at which the snapshot was captured, in Postgres LSN format (for example, `0/3000000`)."
+      t: "`$STRING`"
+    }
+    manual: {
+      h: "Manual"
+      n: "manual"
+      r: false
+      sh: "True if the snapshot was created manually rather than by a schedule."
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Human-readable label for the snapshot."
+      t: "`$STRING`"
+    }
+    operations: {
+      h: "Operations"
+      n: "operations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      sh: "Snapshot resource ID, unique within the project."
+      t: "`$STRING`"
+    }
+    snapshot: {
+      h: "Snapshot"
+      n: "snapshot"
+      r: true
+      sh: "Fields to update on the snapshot."
+      t: "`$OBJECT`"
+    }
+    source_branch_id: {
+      h: "Source Branch Id"
+      n: "source_branch_id"
+      r: false
+      sh: "Branch from which this snapshot was created."
+      t: "`$STRING`"
+    }
+    timestamp: {
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "Point in time captured by the snapshot, in RFC 3339 format (UTC)."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "snapshot"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/snapshot"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "2025-08-05T22:00:00Z"
+                k: "query"
+                n: "expires_at"
+                or: "expires_at"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "lsn"
+                or: "lsn"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "slug"
+                or: "slug"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-08-05T22:00:00Z"
+                k: "query"
+                n: "timestamp"
+                or: "timestamp"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/snapshot"
+          q: {
+            exist: [
+              "branch_id"
+              "expires_at"
+              "lsn"
+              "name"
+              "project_id"
+              "slug"
+              "timestamp"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "snapshot"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshot`"
+          }
+        }
+        {
+          co: {
+            id: "POST /projects/{project_id}/snapshots/{snapshot_id}/restore"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/snapshots/{snapshot_id}/restore"
+          q: {
+            "$action": "restore"
+            exist: [
+              "id"
+              "name"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              snapshot_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "restore"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/snapshots"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/snapshots"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snapshots"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshots`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /projects/{project_id}/snapshots/{snapshot_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/projects/{project_id}/snapshots/{snapshot_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              snapshot_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /projects/{project_id}/snapshots/{snapshot_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/projects/{project_id}/snapshots/{snapshot_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              snapshot_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              snapshot: "`reqdata`"
+            }
+            res: "`body.snapshot`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

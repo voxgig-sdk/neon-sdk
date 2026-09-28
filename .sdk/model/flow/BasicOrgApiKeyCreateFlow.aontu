@@ -1,0 +1,22 @@
+# BasicOrgApiKeyCreateFlow
+
+main: kit: flow: BasicOrgApiKeyCreateFlow:
+{
+  entity: "org_api_key_create",
+  kind: "basic",
+  name: "BasicOrgApiKeyCreateFlow",
+  step: [
+    {
+      i: {
+        ref: "org_api_key_create_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrgApiKeyCreateFlow"
+}

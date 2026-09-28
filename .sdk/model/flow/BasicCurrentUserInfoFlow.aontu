@@ -1,0 +1,22 @@
+# BasicCurrentUserInfoFlow
+
+main: kit: flow: BasicCurrentUserInfoFlow:
+{
+  entity: "current_user_info",
+  kind: "basic",
+  name: "BasicCurrentUserInfoFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "current_user_info_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCurrentUserInfoFlow"
+}

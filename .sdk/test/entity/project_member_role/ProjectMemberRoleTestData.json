@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "project_member_role": {
+      "PROJECT_MEMBER_ROLE00": {
+        "credential_rotation_recommended": true,
+        "effective_project_permission": "s83",
+        "email": "s84",
+        "explicit_project_permission": "s85",
+        "member_id": "MEMBER01",
+        "name": "s87",
+        "org_api_key_rotation_recommended": true,
+        "org_default_project_permission": "s89",
+        "org_role": "s8a",
+        "project_id": "PROJECT01",
+        "project_role": "s8c",
+        "role": "s8d",
+        "user_id": "USER01",
+        "id": "PROJECT_MEMBER_ROLE00"
+      },
+      "PROJECT_MEMBER_ROLE01": {
+        "credential_rotation_recommended": true,
+        "effective_project_permission": "s105",
+        "email": "s106",
+        "explicit_project_permission": "s107",
+        "member_id": "MEMBER01",
+        "name": "s109",
+        "org_api_key_rotation_recommended": true,
+        "org_default_project_permission": "s10b",
+        "org_role": "s10c",
+        "project_id": "PROJECT01",
+        "project_role": "s10e",
+        "role": "s10f",
+        "user_id": "USER01",
+        "id": "PROJECT_MEMBER_ROLE01"
+      },
+      "PROJECT_MEMBER_ROLE02": {
+        "credential_rotation_recommended": true,
+        "effective_project_permission": "s187",
+        "email": "s188",
+        "explicit_project_permission": "s189",
+        "member_id": "MEMBER01",
+        "name": "s18b",
+        "org_api_key_rotation_recommended": true,
+        "org_default_project_permission": "s18d",
+        "org_role": "s18e",
+        "project_id": "PROJECT01",
+        "project_role": "s190",
+        "role": "s191",
+        "user_id": "USER01",
+        "id": "PROJECT_MEMBER_ROLE02"
+      }
+    }
+  },
+  "new": {
+    "project_member_role": {
+      "project_member_role_ref01": {
+        "credential_rotation_recommended": true,
+        "effective_project_permission": "s209",
+        "email": "s20a",
+        "explicit_project_permission": "s20b",
+        "member_id": "MEMBER01",
+        "name": "s20d",
+        "org_api_key_rotation_recommended": true,
+        "org_default_project_permission": "s20f",
+        "org_role": "s210",
+        "project_id": "PROJECT01",
+        "project_role": "s212",
+        "role": "s213",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "DELETE /projects/{project_id}/members/{member_id}/role": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /projects/{project_id}/members/{member_id}/role": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

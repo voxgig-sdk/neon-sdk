@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "empty": {
+      "EMPTY00": {
+        "destination_org_id": "DESTINATION_ORG01",
+        "project_ids": [],
+        "schedule": [],
+        "organization_id": "ORGANIZATION01",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "EMPTY00"
+      },
+      "EMPTY01": {
+        "destination_org_id": "DESTINATION_ORG01",
+        "project_ids": [],
+        "schedule": [],
+        "organization_id": "ORGANIZATION01",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "EMPTY01"
+      },
+      "EMPTY02": {
+        "destination_org_id": "DESTINATION_ORG01",
+        "project_ids": [],
+        "schedule": [],
+        "organization_id": "ORGANIZATION01",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "EMPTY02"
+      }
+    }
+  },
+  "new": {
+    "empty": {
+      "empty_ref01": {
+        "destination_org_id": "DESTINATION_ORG01",
+        "project_ids": [],
+        "schedule": []
+      }
+    }
+  },
+  "requests": {
+    "POST /organizations/{source_org_id}/projects/transfer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /users/me/projects/transfer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /organizations/{org_id}/billing/spending_limit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /projects/{project_id}/branches/{branch_id}/backup_schedule": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+# Entity: masking_rule
+
+main: kit: entity: masking_rule: {
+
+  alias: field: {}
+
+  fields: {
+    column_name: {
+      h: "Column Name"
+      n: "column_name"
+      r: true
+      sh: "The name of the column to be masked"
+      t: "`$STRING`"
+    }
+    database_name: {
+      h: "Database Name"
+      n: "database_name"
+      r: true
+      sh: "The name of the database containing the table to be masked"
+      t: "`$STRING`"
+    }
+    masking_function: {
+      h: "Masking Function"
+      n: "masking_function"
+      r: false
+      sh: "The PostgreSQL Anonymizer masking function to apply."
+      t: "`$STRING`"
+    }
+    masking_rules: {
+      h: "Masking Rules"
+      n: "masking_rules"
+      r: true
+      sh: "List of masking rules for the branch"
+      t: "`$ARRAY`"
+    }
+    masking_value: {
+      h: "Masking Value"
+      n: "masking_value"
+      r: false
+      sh: "A literal value to set on the column when masking."
+      t: "`$STRING`"
+    }
+    schema_name: {
+      h: "Schema Name"
+      n: "schema_name"
+      r: true
+      sh: "The name of the schema containing the table to be masked"
+      t: "`$STRING`"
+    }
+    table_name: {
+      h: "Table Name"
+      n: "table_name"
+      r: true
+      sh: "The name of the table containing the column to be masked"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "masking_rule"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/masking_rules"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/masking_rules"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "masking_rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.masking_rules`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /projects/{project_id}/branches/{branch_id}/masking_rules"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/projects/{project_id}/branches/{branch_id}/masking_rules"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "masking_rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

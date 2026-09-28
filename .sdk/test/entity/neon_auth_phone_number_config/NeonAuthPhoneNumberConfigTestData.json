@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "neon_auth_phone_number_config": {
+      "NEON_AUTH_PHONE_NUMBER_CONFIG00": {
+        "enabled": true,
+        "otp_expires_in": 21,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_PHONE_NUMBER_CONFIG00"
+      },
+      "NEON_AUTH_PHONE_NUMBER_CONFIG01": {
+        "enabled": true,
+        "otp_expires_in": 41,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_PHONE_NUMBER_CONFIG01"
+      },
+      "NEON_AUTH_PHONE_NUMBER_CONFIG02": {
+        "enabled": true,
+        "otp_expires_in": 61,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_PHONE_NUMBER_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_phone_number_config": {
+      "neon_auth_phone_number_config_ref01": {
+        "enabled": true,
+        "otp_expires_in": 81
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/auth/plugins/phone-number": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/plugins/phone-number": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

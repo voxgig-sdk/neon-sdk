@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "vpc_endpoint": {
+      "VPC_ENDPOINT00": {
+        "example_restricted_projects": [],
+        "id": "VPC_ENDPOINT00",
+        "label": "s48",
+        "num_restricted_projects": 73,
+        "region_id": "REGION01",
+        "state": "s4b",
+        "vpc_endpoint_id": "VPC_ENDPOINT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "VPC_ENDPOINT01": {
+        "example_restricted_projects": [],
+        "id": "VPC_ENDPOINT01",
+        "label": "s8e",
+        "num_restricted_projects": 143,
+        "region_id": "REGION01",
+        "state": "s91",
+        "vpc_endpoint_id": "VPC_ENDPOINT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "VPC_ENDPOINT02": {
+        "example_restricted_projects": [],
+        "id": "VPC_ENDPOINT02",
+        "label": "sd4",
+        "num_restricted_projects": 213,
+        "region_id": "REGION01",
+        "state": "sd7",
+        "vpc_endpoint_id": "VPC_ENDPOINT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "vpc_endpoint": {
+      "vpc_endpoint_ref01": {
+        "example_restricted_projects": [],
+        "label": "s11a",
+        "num_restricted_projects": 283,
+        "region_id": "REGION01",
+        "state": "s11d",
+        "vpc_endpoint_id": "VPC_ENDPOINT01"
+      }
+    }
+  },
+  "requests": {
+    "GET /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /organizations/{org_id}/vpc/vpc_endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/vpc_endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

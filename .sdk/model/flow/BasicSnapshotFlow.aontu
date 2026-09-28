@@ -1,0 +1,96 @@
+# BasicSnapshotFlow
+
+main: kit: flow: BasicSnapshotFlow:
+{
+  entity: "snapshot",
+  kind: "basic",
+  name: "BasicSnapshotFlow",
+  step: [
+    {
+      i: {
+        ref: "snapshot_ref01"
+      }
+
+      m: {
+        project_id: "project01",
+        snapshot_id: "snapshot01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "snapshot_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "snapshot_ref01",
+        srcdatavar: "snapshot_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-snapshot_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "snapshot_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "snapshot01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "snapshot_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSnapshotFlow"
+}

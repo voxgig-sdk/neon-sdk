@@ -1,0 +1,24 @@
+# BasicNeonFunctionDeploymentFlow
+
+main: kit: flow: BasicNeonFunctionDeploymentFlow:
+{
+  entity: "neon_function_deployment",
+  kind: "basic",
+  name: "BasicNeonFunctionDeploymentFlow",
+  step: [
+    {
+      i: {
+        ref: "neon_function_deployment_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01",
+        slug: "slug01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicNeonFunctionDeploymentFlow"
+}

@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "neon_function_deployment": {
+      "NEON_FUNCTION_DEPLOYMENT00": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "slug": "SLUG01",
+        "id": "NEON_FUNCTION_DEPLOYMENT00"
+      },
+      "NEON_FUNCTION_DEPLOYMENT01": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "slug": "SLUG01",
+        "id": "NEON_FUNCTION_DEPLOYMENT01"
+      },
+      "NEON_FUNCTION_DEPLOYMENT02": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "slug": "SLUG01",
+        "id": "NEON_FUNCTION_DEPLOYMENT02"
+      }
+    }
+  },
+  "new": {
+    "neon_function_deployment": {
+      "neon_function_deployment_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/functions/{slug}/deployments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "neon_auth_email_server_config": {
+      "NEON_AUTH_EMAIL_SERVER_CONFIG00": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_EMAIL_SERVER_CONFIG00"
+      },
+      "NEON_AUTH_EMAIL_SERVER_CONFIG01": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_EMAIL_SERVER_CONFIG01"
+      },
+      "NEON_AUTH_EMAIL_SERVER_CONFIG02": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_EMAIL_SERVER_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_email_server_config": {
+      "neon_auth_email_server_config_ref01": {}
+    }
+  },
+  "requests": {
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/email_provider": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/auth/email_server": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

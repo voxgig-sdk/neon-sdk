@@ -1,0 +1,27 @@
+# BasicProjectBranchLogFieldFlow
+
+main: kit: flow: BasicProjectBranchLogFieldFlow:
+{
+  entity: "project_branch_log_field",
+  kind: "basic",
+  name: "BasicProjectBranchLogFieldFlow",
+  step: [
+    {
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_branch_log_field_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectBranchLogFieldFlow"
+}

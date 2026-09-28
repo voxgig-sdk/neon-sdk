@@ -1,0 +1,233 @@
+# Entity: empty
+
+main: kit: entity: empty: {
+
+  alias: field: {}
+
+  fields: {
+    destination_org_id: {
+      h: "Destination Org Id"
+      n: "destination_org_id"
+      r: true
+      sh: "The destination organization identifier"
+      t: "`$STRING`"
+    }
+    project_ids: {
+      h: "Project Ids"
+      n: "project_ids"
+      r: true
+      sh: "The list of projects ids to transfer."
+      t: "`$ARRAY`"
+    }
+    schedule: {
+      h: "Schedule"
+      n: "schedule"
+      r: true
+      sh: "List of schedule entries defining the backup frequency."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "empty"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /organizations/{source_org_id}/projects/transfer"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "source_org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/organizations/{source_org_id}/projects/transfer"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              source_org_id: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              lit: "transfer"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /users/me/projects/transfer"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/users/me/projects/transfer"
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              lit: "transfer"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /organizations/{org_id}/billing/spending_limit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/organizations/{org_id}/billing/spending_limit"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "spending_limit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /projects/{project_id}/branches/{branch_id}/backup_schedule"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/projects/{project_id}/branches/{branch_id}/backup_schedule"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "backup_schedule"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "auth": {
+      "AUTH00": {
+        "account_id": "ACCOUNT01",
+        "auth_data": "s1f",
+        "auth_method": "s20",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "auth_user_id": "AUTH_USER01",
+        "oauth_provider_id": "OAUTH_PROVIDER01",
+        "id": "AUTH00"
+      },
+      "AUTH01": {
+        "account_id": "ACCOUNT01",
+        "auth_data": "s3d",
+        "auth_method": "s3e",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "auth_user_id": "AUTH_USER01",
+        "oauth_provider_id": "OAUTH_PROVIDER01",
+        "id": "AUTH01"
+      },
+      "AUTH02": {
+        "account_id": "ACCOUNT01",
+        "auth_data": "s5b",
+        "auth_method": "s5c",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "auth_user_id": "AUTH_USER01",
+        "oauth_provider_id": "OAUTH_PROVIDER01",
+        "id": "AUTH02"
+      }
+    }
+  },
+  "new": {
+    "auth": {
+      "auth_ref01": {
+        "account_id": "ACCOUNT01",
+        "auth_data": "s79",
+        "auth_method": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/auth/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /auth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/auth/users/{auth_user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/auth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/auth/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

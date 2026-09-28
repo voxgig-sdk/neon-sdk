@@ -1,0 +1,87 @@
+# BasicDataApiFlow
+
+main: kit: flow: BasicDataApiFlow:
+{
+  entity: "data_api",
+  kind: "basic",
+  name: "BasicDataApiFlow",
+  step: [
+    {
+      i: {
+        ref: "data_api_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        database_name: "database_name01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "data_api_ref01",
+        srcdatavar: "data_api_ref01_data",
+        suffix: "_up0",
+        textfield: "auth_provider"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-data_api_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "data_api_ref01",
+        srcdatavar: "data_api_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        id: "data_api01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-data_api_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "data_api_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        branch_id: "branch01",
+        id: "data_api01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicDataApiFlow"
+}

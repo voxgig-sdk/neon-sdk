@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "neon_auth_config": {
+      "NEON_AUTH_CONFIG00": {
+        "name": "sa",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_CONFIG00"
+      },
+      "NEON_AUTH_CONFIG01": {
+        "name": "s14",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_CONFIG01"
+      },
+      "NEON_AUTH_CONFIG02": {
+        "name": "s1e",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_config": {
+      "neon_auth_config_ref01": {
+        "name": "s28"
+      }
+    }
+  },
+  "requests": {
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

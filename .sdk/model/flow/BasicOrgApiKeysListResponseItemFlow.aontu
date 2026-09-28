@@ -1,0 +1,26 @@
+# BasicOrgApiKeysListResponseItemFlow
+
+main: kit: flow: BasicOrgApiKeysListResponseItemFlow:
+{
+  entity: "org_api_keys_list_response_item",
+  kind: "basic",
+  name: "BasicOrgApiKeysListResponseItemFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "org_api_keys_list_response_item_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrgApiKeysListResponseItemFlow"
+}

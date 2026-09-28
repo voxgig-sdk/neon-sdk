@@ -1,0 +1,79 @@
+# Entity: current_user_info
+
+main: kit: entity: current_user_info: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "Email address associated with this auth account."
+      t: "`$STRING`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: true
+      sh: "URL of the user's profile picture as provided by the identity provider."
+      t: "`$STRING`"
+    }
+    login: {
+      de: true
+      h: "Login"
+      n: "login"
+      r: true
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Display name of the account as provided by the identity provider."
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      sh: "Identity provider id from keycloak"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "current_user_info"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/me"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/users/me"
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              lit: "me"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

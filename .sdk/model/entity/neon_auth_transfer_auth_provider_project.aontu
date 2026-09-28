@@ -1,0 +1,66 @@
+# Entity: neon_auth_transfer_auth_provider_project
+
+main: kit: entity: neon_auth_transfer_auth_provider_project: {
+
+  alias: field: {}
+
+  fields: {
+    auth_provider: {
+      h: "Auth Provider"
+      n: "auth_provider"
+      r: true
+      sh: "Authentication provider integrated with this Neon Auth configuration."
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      sh: "The Neon project ID."
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "URL for completing the process of ownership transfer"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "neon_auth_transfer_auth_provider_project"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/auth/transfer_ownership"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/projects/auth/transfer_ownership"
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "transfer_ownership"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

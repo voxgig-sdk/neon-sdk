@@ -1,0 +1,33 @@
+# BasicProjectMemberRoleFlow
+
+main: kit: flow: BasicProjectMemberRoleFlow:
+{
+  entity: "project_member_role",
+  kind: "basic",
+  name: "BasicProjectMemberRoleFlow",
+  step: [
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "project_member_role_ref01",
+        srcdatavar: "project_member_role_ref01_data",
+        suffix: "_up0",
+        textfield: "effective_project_permission"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_member_role_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectMemberRoleFlow"
+}

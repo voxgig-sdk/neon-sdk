@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "email_server": {
+      "EMAIL_SERVER00": {
+        "project_id": "PROJECT01",
+        "id": "EMAIL_SERVER00"
+      },
+      "EMAIL_SERVER01": {
+        "project_id": "PROJECT01",
+        "id": "EMAIL_SERVER01"
+      },
+      "EMAIL_SERVER02": {
+        "project_id": "PROJECT01",
+        "id": "EMAIL_SERVER02"
+      }
+    }
+  },
+  "new": {
+    "email_server": {
+      "email_server_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/auth/email_server": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+# Entity: org_api_keys_list_response_item
+
+main: kit: entity: org_api_keys_list_response_item: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicating when the API key was created"
+      t: "`$STRING`"
+    }
+    created_by: {
+      h: "Created By"
+      n: "created_by"
+      r: true
+      sh: "The user data of the user that created this API key."
+      t: "`$OBJECT`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The API key's unique numeric ID."
+      t: "`$INTEGER`"
+    }
+    last_used_at: {
+      fo: "date-time"
+      h: "Last Used At"
+      n: "last_used_at"
+      r: false
+      sh: "A timestamp indicating when the API was last used"
+      t: "`$STRING`"
+    }
+    last_used_from_addr: {
+      h: "Last Used From Addr"
+      n: "last_used_from_addr"
+      r: true
+      sh: "The IP address from which the API key was last used"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The user-specified API key name"
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "If set, the API key can access only this project"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "org_api_keys_list_response_item"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /organizations/{org_id}/api_keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/organizations/{org_id}/api_keys"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "api_keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

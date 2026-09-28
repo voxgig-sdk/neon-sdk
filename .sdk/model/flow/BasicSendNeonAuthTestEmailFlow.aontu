@@ -1,0 +1,23 @@
+# BasicSendNeonAuthTestEmailFlow
+
+main: kit: flow: BasicSendNeonAuthTestEmailFlow:
+{
+  entity: "send_neon_auth_test_email",
+  kind: "basic",
+  name: "BasicSendNeonAuthTestEmailFlow",
+  step: [
+    {
+      i: {
+        ref: "send_neon_auth_test_email_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSendNeonAuthTestEmailFlow"
+}

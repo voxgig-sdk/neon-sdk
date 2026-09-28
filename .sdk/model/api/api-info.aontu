@@ -1,0 +1,35 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "help@databricks.com"
+      }
+      description: `The Neon API is the management API for Neon. Use it to provision, configure, and manage resources such as projects, branches, databases, roles, functions, and object storage.
+
+See the [Neon API reference](https://neon.com/docs/reference/api) for details, and [Manage API keys](https://neon.com/docs/manage/api-keys/) to create and use API keys.`
+      license: {
+        name: "Proprietary"
+      }
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "BearerAuth"
+        type: "http"
+      }
+      servers: [
+        {
+          url: "https://console.neon.tech/api/v2"
+        }
+      ]
+      summary: "The Neon API is the management API for Neon."
+      title: "Neon API"
+      version: "v2"
+      website: "https://console.neon.tech"
+    }
+  }
+}
+

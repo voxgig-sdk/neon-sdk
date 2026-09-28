@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "snapshot": {
+      "SNAPSHOT00": {
+        "created_at": "s82",
+        "diff_size": 131,
+        "expires_at": "s84",
+        "full_size": 133,
+        "id": "SNAPSHOT00",
+        "lsn": "s87",
+        "manual": true,
+        "name": "s89",
+        "operations": [],
+        "slug": "s8b",
+        "snapshot": {},
+        "source_branch_id": "SOURCE_BRANCH01",
+        "timestamp": "s8e",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "SNAPSHOT01": {
+        "created_at": "s104",
+        "diff_size": 261,
+        "expires_at": "s106",
+        "full_size": 263,
+        "id": "SNAPSHOT01",
+        "lsn": "s109",
+        "manual": true,
+        "name": "s10b",
+        "operations": [],
+        "slug": "s10d",
+        "snapshot": {},
+        "source_branch_id": "SOURCE_BRANCH01",
+        "timestamp": "s110",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      },
+      "SNAPSHOT02": {
+        "created_at": "s186",
+        "diff_size": 391,
+        "expires_at": "s188",
+        "full_size": 393,
+        "id": "SNAPSHOT02",
+        "lsn": "s18b",
+        "manual": true,
+        "name": "s18d",
+        "operations": [],
+        "slug": "s18f",
+        "snapshot": {},
+        "source_branch_id": "SOURCE_BRANCH01",
+        "timestamp": "s192",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "snapshot": {
+      "snapshot_ref01": {
+        "created_at": "s208",
+        "diff_size": 521,
+        "expires_at": "s20a",
+        "full_size": 523,
+        "lsn": "s20d",
+        "manual": true,
+        "name": "s20f",
+        "operations": [],
+        "slug": "s211",
+        "snapshot": {},
+        "source_branch_id": "SOURCE_BRANCH01",
+        "timestamp": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/snapshot": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/{project_id}/snapshots/{snapshot_id}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/snapshots/{snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/snapshots/{snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

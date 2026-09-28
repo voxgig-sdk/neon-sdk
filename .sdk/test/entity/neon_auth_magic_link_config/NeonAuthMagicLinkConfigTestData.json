@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "neon_auth_magic_link_config": {
+      "NEON_AUTH_MAGIC_LINK_CONFIG00": {
+        "disable_sign_up": true,
+        "enabled": false,
+        "expires_in": 32,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_MAGIC_LINK_CONFIG00"
+      },
+      "NEON_AUTH_MAGIC_LINK_CONFIG01": {
+        "disable_sign_up": true,
+        "enabled": false,
+        "expires_in": 62,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_MAGIC_LINK_CONFIG01"
+      },
+      "NEON_AUTH_MAGIC_LINK_CONFIG02": {
+        "disable_sign_up": true,
+        "enabled": false,
+        "expires_in": 92,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_MAGIC_LINK_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_magic_link_config": {
+      "neon_auth_magic_link_config_ref01": {
+        "disable_sign_up": true,
+        "enabled": false,
+        "expires_in": 122
+      }
+    }
+  },
+  "requests": {
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/plugins/magic-link": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

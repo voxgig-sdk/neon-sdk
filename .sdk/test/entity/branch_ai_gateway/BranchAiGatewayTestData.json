@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "branch_ai_gateway": {
+      "BRANCH_AI_GATEWAY00": {
+        "base_url": "s1e",
+        "enabled": false,
+        "id": "BRANCH_AI_GATEWAY00",
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_AI_GATEWAY01": {
+        "base_url": "s3c",
+        "enabled": false,
+        "id": "BRANCH_AI_GATEWAY01",
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_AI_GATEWAY02": {
+        "base_url": "s5a",
+        "enabled": false,
+        "id": "BRANCH_AI_GATEWAY02",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "branch_ai_gateway": {
+      "branch_ai_gateway_ref01": {
+        "base_url": "s78",
+        "enabled": false
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/ai_gateway": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

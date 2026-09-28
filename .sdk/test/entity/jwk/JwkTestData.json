@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "jwk": {
+      "JWK00": {
+        "branch_id": "BRANCH01",
+        "created_at": "s65",
+        "id": "JWK00",
+        "jwks_url": "s67",
+        "jwt_audience": "s68",
+        "project_id": "PROJECT01",
+        "provider_name": "s6a",
+        "role_names": [],
+        "skip_role_creation": true,
+        "updated_at": "s6d"
+      },
+      "JWK01": {
+        "branch_id": "BRANCH01",
+        "created_at": "sc9",
+        "id": "JWK01",
+        "jwks_url": "scb",
+        "jwt_audience": "scc",
+        "project_id": "PROJECT01",
+        "provider_name": "sce",
+        "role_names": [],
+        "skip_role_creation": true,
+        "updated_at": "sd1"
+      },
+      "JWK02": {
+        "branch_id": "BRANCH01",
+        "created_at": "s12d",
+        "id": "JWK02",
+        "jwks_url": "s12f",
+        "jwt_audience": "s130",
+        "project_id": "PROJECT01",
+        "provider_name": "s132",
+        "role_names": [],
+        "skip_role_creation": true,
+        "updated_at": "s135"
+      }
+    }
+  },
+  "new": {
+    "jwk": {
+      "jwk_ref01": {
+        "branch_id": "BRANCH01",
+        "created_at": "s191",
+        "jwks_url": "s193",
+        "jwt_audience": "s194",
+        "project_id": "PROJECT01",
+        "provider_name": "s196",
+        "role_names": [],
+        "skip_role_creation": true,
+        "updated_at": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/jwks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/jwks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/jwks/{jwks_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

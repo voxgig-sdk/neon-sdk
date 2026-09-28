@@ -1,0 +1,25 @@
+# BasicPresignFlow
+
+main: kit: flow: BasicPresignFlow:
+{
+  entity: "presign",
+  kind: "basic",
+  name: "BasicPresignFlow",
+  step: [
+    {
+      i: {
+        ref: "presign_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        bucket_id: "bucket01",
+        object_key: "object_key01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPresignFlow"
+}

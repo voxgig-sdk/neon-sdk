@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+
+// Neon SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+NeonUtility::setRegistrar(function (NeonUtility $u): void {
+    $u->clean = [NeonClean::class, 'call'];
+    $u->done = [NeonDone::class, 'call'];
+    $u->make_error = [NeonMakeError::class, 'call'];
+    $u->feature_add = [NeonFeatureAdd::class, 'call'];
+    $u->feature_hook = [NeonFeatureHook::class, 'call'];
+    $u->feature_init = [NeonFeatureInit::class, 'call'];
+    $u->fetcher = [NeonFetcher::class, 'call'];
+    $u->make_fetch_def = [NeonMakeFetchDef::class, 'call'];
+    $u->make_context = [NeonMakeContext::class, 'call'];
+    $u->make_options = [NeonMakeOptions::class, 'call'];
+    $u->make_request = [NeonMakeRequest::class, 'call'];
+    $u->make_response = [NeonMakeResponse::class, 'call'];
+    $u->make_result = [NeonMakeResult::class, 'call'];
+    $u->make_point = [NeonMakePoint::class, 'call'];
+    $u->make_spec = [NeonMakeSpec::class, 'call'];
+    $u->make_url = [NeonMakeUrl::class, 'call'];
+    $u->param = [NeonParam::class, 'call'];
+    $u->prepare_auth = [NeonPrepareAuth::class, 'call'];
+    $u->prepare_body = [NeonPrepareBody::class, 'call'];
+    $u->prepare_headers = [NeonPrepareHeaders::class, 'call'];
+    $u->prepare_method = [NeonPrepareMethod::class, 'call'];
+    $u->prepare_params = [NeonPrepareParams::class, 'call'];
+    $u->prepare_path = [NeonPreparePath::class, 'call'];
+    $u->prepare_query = [NeonPrepareQuery::class, 'call'];
+    $u->graphql_body = [NeonGraphql::class, 'body'];
+    $u->graphql_errors = [NeonGraphql::class, 'errors'];
+    $u->result_basic = [NeonResultBasic::class, 'call'];
+    $u->result_body = [NeonResultBody::class, 'call'];
+    $u->result_headers = [NeonResultHeaders::class, 'call'];
+    $u->transform_request = [NeonTransformRequest::class, 'call'];
+    $u->transform_response = [NeonTransformResponse::class, 'call'];
+});

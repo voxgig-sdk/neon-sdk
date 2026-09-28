@@ -1,0 +1,157 @@
+{
+  "existing": {
+    "endpoint": {
+      "ENDPOINT00": {
+        "autoscaling_limit_max_cu": 270,
+        "autoscaling_limit_min_cu": 271,
+        "branch_id": "BRANCH01",
+        "compute_release_version": "s111",
+        "created_at": "s112",
+        "creation_source": "s113",
+        "current_state": "s114",
+        "disabled": false,
+        "endpoint": {},
+        "host": "s117",
+        "id": "ENDPOINT00",
+        "last_active": "s119",
+        "name": "s11a",
+        "passwordless_access": false,
+        "pending_state": "s11c",
+        "pooler_enabled": false,
+        "pooler_mode": "s11e",
+        "project_id": "PROJECT01",
+        "provisioner": "s120",
+        "proxy_host": "s121",
+        "region_id": "REGION01",
+        "settings": {},
+        "started_at": "s124",
+        "suspend_timeout_seconds": 293,
+        "suspended_at": "s126",
+        "type": "s127",
+        "updated_at": "s128"
+      },
+      "ENDPOINT01": {
+        "autoscaling_limit_max_cu": 540,
+        "autoscaling_limit_min_cu": 541,
+        "branch_id": "BRANCH01",
+        "compute_release_version": "s21f",
+        "created_at": "s220",
+        "creation_source": "s221",
+        "current_state": "s222",
+        "disabled": false,
+        "endpoint": {},
+        "host": "s225",
+        "id": "ENDPOINT01",
+        "last_active": "s227",
+        "name": "s228",
+        "passwordless_access": false,
+        "pending_state": "s22a",
+        "pooler_enabled": false,
+        "pooler_mode": "s22c",
+        "project_id": "PROJECT01",
+        "provisioner": "s22e",
+        "proxy_host": "s22f",
+        "region_id": "REGION01",
+        "settings": {},
+        "started_at": "s232",
+        "suspend_timeout_seconds": 563,
+        "suspended_at": "s234",
+        "type": "s235",
+        "updated_at": "s236"
+      },
+      "ENDPOINT02": {
+        "autoscaling_limit_max_cu": 810,
+        "autoscaling_limit_min_cu": 811,
+        "branch_id": "BRANCH01",
+        "compute_release_version": "s32d",
+        "created_at": "s32e",
+        "creation_source": "s32f",
+        "current_state": "s330",
+        "disabled": false,
+        "endpoint": {},
+        "host": "s333",
+        "id": "ENDPOINT02",
+        "last_active": "s335",
+        "name": "s336",
+        "passwordless_access": false,
+        "pending_state": "s338",
+        "pooler_enabled": false,
+        "pooler_mode": "s33a",
+        "project_id": "PROJECT01",
+        "provisioner": "s33c",
+        "proxy_host": "s33d",
+        "region_id": "REGION01",
+        "settings": {},
+        "started_at": "s340",
+        "suspend_timeout_seconds": 833,
+        "suspended_at": "s342",
+        "type": "s343",
+        "updated_at": "s344"
+      }
+    }
+  },
+  "new": {
+    "endpoint": {
+      "endpoint_ref01": {
+        "autoscaling_limit_max_cu": 1080,
+        "autoscaling_limit_min_cu": 1081,
+        "branch_id": "BRANCH01",
+        "compute_release_version": "s43b",
+        "created_at": "s43c",
+        "creation_source": "s43d",
+        "current_state": "s43e",
+        "disabled": false,
+        "endpoint": {},
+        "host": "s441",
+        "last_active": "s443",
+        "name": "s444",
+        "passwordless_access": false,
+        "pending_state": "s446",
+        "pooler_enabled": false,
+        "pooler_mode": "s448",
+        "project_id": "PROJECT01",
+        "provisioner": "s44a",
+        "proxy_host": "s44b",
+        "region_id": "REGION01",
+        "settings": {},
+        "started_at": "s44e",
+        "suspend_timeout_seconds": 1103,
+        "suspended_at": "s450",
+        "type": "s451",
+        "updated_at": "s452"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/endpoints/{endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/endpoints/{endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/endpoints/{endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

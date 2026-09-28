@@ -1,0 +1,26 @@
+# BasicNeonAuthRedirectUriWhitelistDomainFlow
+
+main: kit: flow: BasicNeonAuthRedirectUriWhitelistDomainFlow:
+{
+  entity: "neon_auth_redirect_uri_whitelist_domain",
+  kind: "basic",
+  name: "BasicNeonAuthRedirectUriWhitelistDomainFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "neon_auth_redirect_uri_whitelist_domain_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeonAuthRedirectUriWhitelistDomainFlow"
+}

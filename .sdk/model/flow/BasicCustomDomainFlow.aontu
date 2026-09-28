@@ -1,0 +1,23 @@
+# BasicCustomDomainFlow
+
+main: kit: flow: BasicCustomDomainFlow:
+{
+  entity: "custom_domain",
+  kind: "basic",
+  name: "BasicCustomDomainFlow",
+  step: [
+    {
+      i: {
+        ref: "custom_domain_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCustomDomainFlow"
+}

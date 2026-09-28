@@ -1,0 +1,174 @@
+# Entity: api_key
+
+main: kit: entity: api_key: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicating when the API key was created"
+      t: "`$STRING`"
+    }
+    created_by: {
+      fo: "uuid"
+      h: "Created By"
+      n: "created_by"
+      r: true
+      sh: "ID of the user who created this API key"
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The API key's unique numeric ID."
+      t: "`$INTEGER`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      sh: "The generated 64-bit token required to access the Neon API"
+      t: "`$STRING`"
+    }
+    key_name: {
+      h: "Key Name"
+      n: "key_name"
+      r: true
+      sh: "A user-specified API key name."
+      t: "`$STRING`"
+    }
+    last_used_at: {
+      fo: "date-time"
+      h: "Last Used At"
+      n: "last_used_at"
+      r: false
+      sh: "A timestamp indicating when the API was last used"
+      t: "`$STRING`"
+    }
+    last_used_from_addr: {
+      h: "Last Used From Addr"
+      n: "last_used_from_addr"
+      r: true
+      sh: "The IP address from which the API key was last used"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The user-specified API key name"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_key"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api_keys"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api_keys"
+          s: [
+            {
+              lit: "api_keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api_keys"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api_keys"
+          s: [
+            {
+              lit: "api_keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api_keys/{key_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "key_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api_keys/{key_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              key_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api_keys"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

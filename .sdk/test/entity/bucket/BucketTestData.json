@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "bucket": {
+      "BUCKET00": {
+        "access_level": "s28",
+        "created_at": "s29",
+        "id": "BUCKET00",
+        "name": "s2b",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "bucket_id": "BUCKET01",
+        "object_key": "OBJECT_KEY01",
+        "bucket_name": "BUCKET_NAME01"
+      },
+      "BUCKET01": {
+        "access_level": "s50",
+        "created_at": "s51",
+        "id": "BUCKET01",
+        "name": "s53",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "bucket_id": "BUCKET01",
+        "object_key": "OBJECT_KEY01",
+        "bucket_name": "BUCKET_NAME01"
+      },
+      "BUCKET02": {
+        "access_level": "s78",
+        "created_at": "s79",
+        "id": "BUCKET02",
+        "name": "s7b",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "bucket_id": "BUCKET01",
+        "object_key": "OBJECT_KEY01",
+        "bucket_name": "BUCKET_NAME01"
+      }
+    }
+  },
+  "new": {
+    "bucket": {
+      "bucket_ref01": {
+        "access_level": "sa0",
+        "created_at": "sa1",
+        "name": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/buckets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/buckets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/download": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects-by-prefix": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

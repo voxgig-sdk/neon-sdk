@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "project_branch_log_field_value": {
+      "PROJECT_BRANCH_LOG_FIELD_VALUE00": {
+        "is_truncated": true,
+        "values": [],
+        "branch_id": "BRANCH01",
+        "field_name": "FIELD_NAME01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_BRANCH_LOG_FIELD_VALUE01": {
+        "is_truncated": true,
+        "values": [],
+        "branch_id": "BRANCH01",
+        "field_name": "FIELD_NAME01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_BRANCH_LOG_FIELD_VALUE02": {
+        "is_truncated": true,
+        "values": [],
+        "branch_id": "BRANCH01",
+        "field_name": "FIELD_NAME01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_branch_log_field_value": {
+      "project_branch_log_field_value_ref01": {
+        "is_truncated": true,
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/logs/fields/{field_name}/values": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

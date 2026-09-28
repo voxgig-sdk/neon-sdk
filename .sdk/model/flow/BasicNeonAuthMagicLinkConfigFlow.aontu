@@ -1,0 +1,32 @@
+# BasicNeonAuthMagicLinkConfigFlow
+
+main: kit: flow: BasicNeonAuthMagicLinkConfigFlow:
+{
+  entity: "neon_auth_magic_link_config",
+  kind: "basic",
+  name: "BasicNeonAuthMagicLinkConfigFlow",
+  step: [
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "neon_auth_magic_link_config_ref01",
+        srcdatavar: "neon_auth_magic_link_config_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-neon_auth_magic_link_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeonAuthMagicLinkConfigFlow"
+}

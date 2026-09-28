@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "branch_schema_compare": {
+      "BRANCH_SCHEMA_COMPARE00": {
+        "id": "BRANCH_SCHEMA_COMPARE00",
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_SCHEMA_COMPARE01": {
+        "id": "BRANCH_SCHEMA_COMPARE01",
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_SCHEMA_COMPARE02": {
+        "id": "BRANCH_SCHEMA_COMPARE02",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "branch_schema_compare": {
+      "branch_schema_compare_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/compare_schema": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

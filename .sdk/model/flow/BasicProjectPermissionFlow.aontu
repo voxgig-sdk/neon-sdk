@@ -1,0 +1,72 @@
+# BasicProjectPermissionFlow
+
+main: kit: flow: BasicProjectPermissionFlow:
+{
+  entity: "project_permission",
+  kind: "basic",
+  name: "BasicProjectPermissionFlow",
+  step: [
+    {
+      i: {
+        ref: "project_permission_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_permission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "project_permission_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "project_permission01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "project_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectPermissionFlow"
+}

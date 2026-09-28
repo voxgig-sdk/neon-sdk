@@ -1,0 +1,18 @@
+# BasicNeonAuthTransferAuthProviderProjectFlow
+
+main: kit: flow: BasicNeonAuthTransferAuthProviderProjectFlow:
+{
+  entity: "neon_auth_transfer_auth_provider_project",
+  kind: "basic",
+  name: "BasicNeonAuthTransferAuthProviderProjectFlow",
+  step: [
+    {
+      i: {
+        ref: "neon_auth_transfer_auth_provider_project_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicNeonAuthTransferAuthProviderProjectFlow"
+}

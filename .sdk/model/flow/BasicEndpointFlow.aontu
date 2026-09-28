@@ -1,0 +1,119 @@
+# BasicEndpointFlow
+
+main: kit: flow: BasicEndpointFlow:
+{
+  entity: "endpoint",
+  kind: "basic",
+  name: "BasicEndpointFlow",
+  step: [
+    {
+      i: {
+        ref: "endpoint_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "endpoint_ref01",
+        srcdatavar: "endpoint_ref01_data",
+        suffix: "_up0",
+        textfield: "branch_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "endpoint_ref01",
+        srcdatavar: "endpoint_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "endpoint01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "endpoint_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "endpoint01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "endpoint_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEndpointFlow"
+}

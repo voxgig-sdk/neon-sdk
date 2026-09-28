@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "available_preload_library": {
+      "AVAILABLE_PRELOAD_LIBRARY00": {
+        "description": "s32",
+        "is_default": false,
+        "is_experimental": true,
+        "library_name": "s35",
+        "version": "s36",
+        "project_id": "PROJECT01"
+      },
+      "AVAILABLE_PRELOAD_LIBRARY01": {
+        "description": "s64",
+        "is_default": false,
+        "is_experimental": true,
+        "library_name": "s67",
+        "version": "s68",
+        "project_id": "PROJECT01"
+      },
+      "AVAILABLE_PRELOAD_LIBRARY02": {
+        "description": "s96",
+        "is_default": false,
+        "is_experimental": true,
+        "library_name": "s99",
+        "version": "s9a",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "available_preload_library": {
+      "available_preload_library_ref01": {
+        "description": "sc8",
+        "is_default": false,
+        "is_experimental": true,
+        "library_name": "scb",
+        "version": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/available_preload_libraries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

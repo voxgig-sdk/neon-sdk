@@ -1,0 +1,28 @@
+# BasicNeonAuthEmailServerConfigFlow
+
+main: kit: flow: BasicNeonAuthEmailServerConfigFlow:
+{
+  entity: "neon_auth_email_server_config",
+  kind: "basic",
+  name: "BasicNeonAuthEmailServerConfigFlow",
+  step: [
+    {
+      i: {
+        ref: "neon_auth_email_server_config_ref01",
+        srcdatavar: "neon_auth_email_server_config_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-neon_auth_email_server_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeonAuthEmailServerConfigFlow"
+}

@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "org_api_key_create": {
+      "ORG_API_KEY_CREATE00": {
+        "created_at": "s32",
+        "created_by": "s33",
+        "id": "ORG_API_KEY_CREATE00",
+        "key": "s35",
+        "name": "s36",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORG_API_KEY_CREATE01": {
+        "created_at": "s64",
+        "created_by": "s65",
+        "id": "ORG_API_KEY_CREATE01",
+        "key": "s67",
+        "name": "s68",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORG_API_KEY_CREATE02": {
+        "created_at": "s96",
+        "created_by": "s97",
+        "id": "ORG_API_KEY_CREATE02",
+        "key": "s99",
+        "name": "s9a",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "org_api_key_create": {
+      "org_api_key_create_ref01": {
+        "created_at": "sc8",
+        "created_by": "sc9",
+        "key": "scb",
+        "name": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /organizations/{org_id}/api_keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+# BasicSpendingLimitFlow
+
+main: kit: flow: BasicSpendingLimitFlow:
+{
+  entity: "spending_limit",
+  kind: "basic",
+  name: "BasicSpendingLimitFlow",
+  step: [
+    {
+      i: {
+        ref: "spending_limit_ref01",
+        srcdatavar: "spending_limit_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spending_limit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spending_limit_ref01",
+        srcdatavar: "spending_limit_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "spending_limit01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spending_limit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpendingLimitFlow"
+}

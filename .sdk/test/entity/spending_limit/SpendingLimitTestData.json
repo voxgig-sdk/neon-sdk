@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "spending_limit": {
+      "SPENDING_LIMIT00": {
+        "spending_limit_cents": 10,
+        "organization_id": "ORGANIZATION01",
+        "id": "SPENDING_LIMIT00"
+      },
+      "SPENDING_LIMIT01": {
+        "spending_limit_cents": 20,
+        "organization_id": "ORGANIZATION01",
+        "id": "SPENDING_LIMIT01"
+      },
+      "SPENDING_LIMIT02": {
+        "spending_limit_cents": 30,
+        "organization_id": "ORGANIZATION01",
+        "id": "SPENDING_LIMIT02"
+      }
+    }
+  },
+  "new": {
+    "spending_limit": {
+      "spending_limit_ref01": {
+        "spending_limit_cents": 40
+      }
+    }
+  },
+  "requests": {
+    "GET /organizations/{org_id}/billing/spending_limit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /organizations/{org_id}/billing/spending_limit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

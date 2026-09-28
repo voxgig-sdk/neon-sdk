@@ -1,0 +1,33 @@
+# BasicEmailProviderFlow
+
+main: kit: flow: BasicEmailProviderFlow:
+{
+  entity: "email_provider",
+  kind: "basic",
+  name: "BasicEmailProviderFlow",
+  step: [
+    {
+      i: {
+        ref: "email_provider_ref01",
+        srcdatavar: "email_provider_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "email_provider01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-email_provider_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEmailProviderFlow"
+}

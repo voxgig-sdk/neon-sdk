@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "project_transfer_request": {
+      "PROJECT_TRANSFER_REQUEST00": {
+        "id": "PROJECT_TRANSFER_REQUEST00",
+        "ttl_seconds": 21
+      },
+      "PROJECT_TRANSFER_REQUEST01": {
+        "id": "PROJECT_TRANSFER_REQUEST01",
+        "ttl_seconds": 41
+      },
+      "PROJECT_TRANSFER_REQUEST02": {
+        "id": "PROJECT_TRANSFER_REQUEST02",
+        "ttl_seconds": 61
+      }
+    }
+  },
+  "new": {
+    "project_transfer_request": {
+      "project_transfer_request_ref01": {
+        "ttl_seconds": 81
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/transfer_requests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

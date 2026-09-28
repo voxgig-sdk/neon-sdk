@@ -1,0 +1,205 @@
+# Entity: send_neon_auth_test_email
+
+main: kit: entity: send_neon_auth_test_email: {
+
+  alias: field: {}
+
+  fields: {
+    error_message: {
+      h: "Error Message"
+      n: "error_message"
+      r: false
+      sh: "The error message from the email server."
+      t: "`$STRING`"
+    }
+    host: {
+      h: "Host"
+      n: "host"
+      r: true
+      sh: "Hostname of the email server."
+      t: "`$STRING`"
+    }
+    password: {
+      h: "Password"
+      n: "password"
+      r: true
+      sh: "Password for authenticating with the SMTP server."
+      t: "`$STRING`"
+    }
+    port: {
+      h: "Port"
+      n: "port"
+      r: true
+      sh: "TCP port of the SMTP server."
+      t: "`$INTEGER`"
+    }
+    recipient_email: {
+      fo: "email"
+      h: "Recipient Email"
+      n: "recipient_email"
+      r: true
+      sh: "The email address to send the test email to."
+      t: "`$STRING`"
+    }
+    sender_email: {
+      h: "Sender Email"
+      n: "sender_email"
+      r: true
+      sh: "Email address used as the From address on outgoing auth emails."
+      t: "`$STRING`"
+    }
+    sender_name: {
+      h: "Sender Name"
+      n: "sender_name"
+      r: true
+      sh: "Display name shown as the sender in outgoing emails."
+      t: "`$STRING`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: true
+      sh: "Whether the test email was sent successfully."
+      t: "`$BOOLEAN`"
+    }
+    username: {
+      h: "Username"
+      n: "username"
+      r: true
+      sh: "Username for authenticating with the SMTP server."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "send_neon_auth_test_email"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/auth/email_provider/test"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/email_provider/test"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "email_provider"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/auth/send_test_email"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/send_test_email"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "send_test_email"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

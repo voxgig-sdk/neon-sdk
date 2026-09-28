@@ -1,0 +1,308 @@
+# Entity: vpc_endpoint
+
+main: kit: entity: vpc_endpoint: {
+
+  alias: field: {}
+
+  fields: {
+    example_restricted_projects: {
+      h: "Example Restricted Projects"
+      n: "example_restricted_projects"
+      r: true
+      sh: "A list of example projects that are restricted to use this VPC endpoint."
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: true
+      sh: "A descriptive label for the VPC endpoint"
+      t: "`$STRING`"
+    }
+    num_restricted_projects: {
+      h: "Num Restricted Projects"
+      n: "num_restricted_projects"
+      r: true
+      sh: "The number of projects that are restricted to use this VPC endpoint."
+      t: "`$INTEGER`"
+    }
+    region_id: {
+      h: "Region Id"
+      n: "region_id"
+      r: true
+      sh: "The region where the VPC endpoint is located"
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "The current state of the VPC endpoint."
+      t: "`$STRING`"
+    }
+    vpc_endpoint_id: {
+      h: "Vpc Endpoint Id"
+      n: "vpc_endpoint_id"
+      r: true
+      sh: "Cloud provider identifier for the VPC endpoint."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vpc_endpoint"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "region_id"
+                or: "region_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints"
+          q: {
+            exist: [
+              "organization_id"
+              "region_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "vpc"
+            }
+            {
+              lit: "region"
+            }
+            {
+              var: "region_id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoints`"
+          }
+        }
+        {
+          co: {
+            id: "GET /organizations/{org_id}/vpc/vpc_endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/organizations/{org_id}/vpc/vpc_endpoints"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "vpc"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoints`"
+          }
+        }
+        {
+          co: {
+            id: "GET /projects/{project_id}/vpc_endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/vpc_endpoints"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoints`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "vpc_endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "region_id"
+                or: "region_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "region_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "organization_id"
+              vpc_endpoint_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "vpc"
+            }
+            {
+              lit: "region"
+            }
+            {
+              var: "region_id"
+            }
+            {
+              lit: "vpc_endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.region")]
+  ]
+
+}

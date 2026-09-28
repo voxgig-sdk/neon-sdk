@@ -1,0 +1,26 @@
+# BasicAvailablePreloadLibraryFlow
+
+main: kit: flow: BasicAvailablePreloadLibraryFlow:
+{
+  entity: "available_preload_library",
+  kind: "basic",
+  name: "BasicAvailablePreloadLibraryFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "available_preload_library_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAvailablePreloadLibraryFlow"
+}

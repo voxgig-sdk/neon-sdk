@@ -1,0 +1,28 @@
+# BasicBucketObjectsListFlow
+
+main: kit: flow: BasicBucketObjectsListFlow:
+{
+  entity: "bucket_objects_list",
+  kind: "basic",
+  name: "BasicBucketObjectsListFlow",
+  step: [
+    {
+      m: {
+        branch_id: "branch01",
+        bucket_name: "bucket_name01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bucket_objects_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBucketObjectsListFlow"
+}

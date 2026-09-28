@@ -1,0 +1,99 @@
+# Entity: available_preload_library
+
+main: kit: entity: available_preload_library: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "Human-readable explanation of the library's purpose and behavior."
+      t: "`$STRING`"
+    }
+    is_default: {
+      h: "Is Default"
+      n: "is_default"
+      r: true
+      sh: "Whether this library is loaded by default in the `shared_preload_libraries` configuration for new compute endpoints."
+      t: "`$BOOLEAN`"
+    }
+    is_experimental: {
+      h: "Is Experimental"
+      n: "is_experimental"
+      r: true
+      sh: "Marks the library as experimental."
+      t: "`$BOOLEAN`"
+    }
+    library_name: {
+      h: "Library Name"
+      n: "library_name"
+      r: true
+      sh: "Name of the Postgres shared preload library as it appears in the `shared_preload_libraries` parameter (for example, `pg_stat_statements`)."
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      sh: "Version of the preload library."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "available_preload_library"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/available_preload_libraries"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/available_preload_libraries"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "available_preload_libraries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.libraries`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

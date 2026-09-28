@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "neon_auth_webhook_config": {
+      "NEON_AUTH_WEBHOOK_CONFIG00": {
+        "enabled": true,
+        "enabled_events": [],
+        "timeout_seconds": 42,
+        "webhook_url": "s2b",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_WEBHOOK_CONFIG00"
+      },
+      "NEON_AUTH_WEBHOOK_CONFIG01": {
+        "enabled": true,
+        "enabled_events": [],
+        "timeout_seconds": 82,
+        "webhook_url": "s53",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_WEBHOOK_CONFIG01"
+      },
+      "NEON_AUTH_WEBHOOK_CONFIG02": {
+        "enabled": true,
+        "enabled_events": [],
+        "timeout_seconds": 122,
+        "webhook_url": "s7b",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_WEBHOOK_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_webhook_config": {
+      "neon_auth_webhook_config_ref01": {
+        "enabled": true,
+        "enabled_events": [],
+        "timeout_seconds": 162,
+        "webhook_url": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/auth/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /projects/{project_id}/branches/{branch_id}/auth/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

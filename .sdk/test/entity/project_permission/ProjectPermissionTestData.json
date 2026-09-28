@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "project_permission": {
+      "PROJECT_PERMISSION00": {
+        "email": "s32",
+        "granted_at": "s33",
+        "granted_to_email": "s34",
+        "id": "PROJECT_PERMISSION00",
+        "revoked_at": "s36",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_PERMISSION01": {
+        "email": "s64",
+        "granted_at": "s65",
+        "granted_to_email": "s66",
+        "id": "PROJECT_PERMISSION01",
+        "revoked_at": "s68",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_PERMISSION02": {
+        "email": "s96",
+        "granted_at": "s97",
+        "granted_to_email": "s98",
+        "id": "PROJECT_PERMISSION02",
+        "revoked_at": "s9a",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_permission": {
+      "project_permission_ref01": {
+        "email": "sc8",
+        "granted_at": "sc9",
+        "granted_to_email": "sca",
+        "revoked_at": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/permissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/permissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/permissions/{permission_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

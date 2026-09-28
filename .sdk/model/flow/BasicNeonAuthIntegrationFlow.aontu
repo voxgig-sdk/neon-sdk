@@ -1,0 +1,49 @@
+# BasicNeonAuthIntegrationFlow
+
+main: kit: flow: BasicNeonAuthIntegrationFlow:
+{
+  entity: "neon_auth_integration",
+  kind: "basic",
+  name: "BasicNeonAuthIntegrationFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "neon_auth_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "neon_auth_integration_ref01",
+        srcdatavar: "neon_auth_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "neon_auth_integration01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-neon_auth_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeonAuthIntegrationFlow"
+}

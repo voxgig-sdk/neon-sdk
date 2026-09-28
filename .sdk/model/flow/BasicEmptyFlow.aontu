@@ -1,0 +1,58 @@
+# BasicEmptyFlow
+
+main: kit: flow: BasicEmptyFlow:
+{
+  entity: "empty",
+  kind: "basic",
+  name: "BasicEmptyFlow",
+  step: [
+    {
+      i: {
+        ref: "empty_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "empty_ref01",
+        srcdatavar: "empty_ref01_data",
+        suffix: "_up0",
+        textfield: "destination_org_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-empty_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "empty_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "empty01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicEmptyFlow"
+}

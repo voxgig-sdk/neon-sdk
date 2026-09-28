@@ -1,0 +1,80 @@
+# Entity: org_api_key_revoke
+
+main: kit: entity: org_api_key_revoke: {
+
+  alias: field: {}
+
+  name: "org_api_key_revoke"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /organizations/{org_id}/api_keys/{key_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "key_id"
+                or: "key_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/organizations/{org_id}/api_keys/{key_id}"
+          q: {
+            exist: [
+              "key_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_id: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "api_keys"
+            }
+            {
+              var: "key_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.api_key")]
+  ]
+
+}

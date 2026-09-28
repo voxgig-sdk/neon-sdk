@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "neon_auth_transfer_auth_provider_project": {
+      "NEON_AUTH_TRANSFER_AUTH_PROVIDER_PROJECT00": {
+        "auth_provider": "s1e",
+        "project_id": "PROJECT01",
+        "url": "s20",
+        "id": "NEON_AUTH_TRANSFER_AUTH_PROVIDER_PROJECT00"
+      },
+      "NEON_AUTH_TRANSFER_AUTH_PROVIDER_PROJECT01": {
+        "auth_provider": "s3c",
+        "project_id": "PROJECT01",
+        "url": "s3e",
+        "id": "NEON_AUTH_TRANSFER_AUTH_PROVIDER_PROJECT01"
+      },
+      "NEON_AUTH_TRANSFER_AUTH_PROVIDER_PROJECT02": {
+        "auth_provider": "s5a",
+        "project_id": "PROJECT01",
+        "url": "s5c",
+        "id": "NEON_AUTH_TRANSFER_AUTH_PROVIDER_PROJECT02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_transfer_auth_provider_project": {
+      "neon_auth_transfer_auth_provider_project_ref01": {
+        "auth_provider": "s78",
+        "project_id": "PROJECT01",
+        "url": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/auth/transfer_ownership": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

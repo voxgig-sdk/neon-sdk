@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "role": {
+      "ROLE00": {
+        "authentication_method": "s5a",
+        "branch_id": "BRANCH01",
+        "created_at": "s5c",
+        "id": "ROLE00",
+        "name": "s5e",
+        "password": "s5f",
+        "protected": true,
+        "role": {},
+        "updated_at": "s62",
+        "project_id": "PROJECT01"
+      },
+      "ROLE01": {
+        "authentication_method": "sb4",
+        "branch_id": "BRANCH01",
+        "created_at": "sb6",
+        "id": "ROLE01",
+        "name": "sb8",
+        "password": "sb9",
+        "protected": true,
+        "role": {},
+        "updated_at": "sbc",
+        "project_id": "PROJECT01"
+      },
+      "ROLE02": {
+        "authentication_method": "s10e",
+        "branch_id": "BRANCH01",
+        "created_at": "s110",
+        "id": "ROLE02",
+        "name": "s112",
+        "password": "s113",
+        "protected": true,
+        "role": {},
+        "updated_at": "s116",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "role": {
+      "role_ref01": {
+        "authentication_method": "s168",
+        "branch_id": "BRANCH01",
+        "created_at": "s16a",
+        "name": "s16c",
+        "password": "s16d",
+        "protected": true,
+        "role": {},
+        "updated_at": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/roles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/roles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/roles/{role_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}/roles/{role_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

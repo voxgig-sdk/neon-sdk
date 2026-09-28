@@ -1,0 +1,9 @@
+# BasicOrgApiKeyRevokeFlow
+
+main: kit: flow: BasicOrgApiKeyRevokeFlow:
+{
+  entity: "org_api_key_revoke",
+  kind: "basic",
+  name: "BasicOrgApiKeyRevokeFlow",
+  "key$": "BasicOrgApiKeyRevokeFlow"
+}

@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "send_neon_auth_test_email": {
+      "SEND_NEON_AUTH_TEST_EMAIL00": {
+        "error_message": "s5a",
+        "host": "s5b",
+        "password": "s5c",
+        "port": 93,
+        "recipient_email": "s5e",
+        "sender_email": "s5f",
+        "sender_name": "s60",
+        "success": false,
+        "username": "s62",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "SEND_NEON_AUTH_TEST_EMAIL00"
+      },
+      "SEND_NEON_AUTH_TEST_EMAIL01": {
+        "error_message": "sb4",
+        "host": "sb5",
+        "password": "sb6",
+        "port": 183,
+        "recipient_email": "sb8",
+        "sender_email": "sb9",
+        "sender_name": "sba",
+        "success": false,
+        "username": "sbc",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "SEND_NEON_AUTH_TEST_EMAIL01"
+      },
+      "SEND_NEON_AUTH_TEST_EMAIL02": {
+        "error_message": "s10e",
+        "host": "s10f",
+        "password": "s110",
+        "port": 273,
+        "recipient_email": "s112",
+        "sender_email": "s113",
+        "sender_name": "s114",
+        "success": false,
+        "username": "s116",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "SEND_NEON_AUTH_TEST_EMAIL02"
+      }
+    }
+  },
+  "new": {
+    "send_neon_auth_test_email": {
+      "send_neon_auth_test_email_ref01": {
+        "error_message": "s168",
+        "host": "s169",
+        "password": "s16a",
+        "port": 363,
+        "recipient_email": "s16c",
+        "sender_email": "s16d",
+        "sender_name": "s16e",
+        "success": false,
+        "username": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/auth/email_provider/test": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/{project_id}/branches/{branch_id}/auth/send_test_email": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,2632 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Project | Neon API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Neon API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/neon-sdk">voxgig-sdk/neon-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Neon API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/anonymize.html">Anonymize</a>
+<a href="../api/anonymized_branch_status.html">AnonymizedBranchStatus</a>
+<a href="../api/api_key.html">ApiKey</a>
+<a href="../api/auth.html">Auth</a>
+<a href="../api/auth_legacy.html">AuthLegacy</a>
+<a href="../api/available_preload_library.html">AvailablePreloadLibrary</a>
+<a href="../api/backup_schedule.html">BackupSchedule</a>
+<a href="../api/branch.html">Branch</a>
+<a href="../api/branch_ai_gateway.html">BranchAiGateway</a>
+<a href="../api/branch_operation.html">BranchOperation</a>
+<a href="../api/branch_schema.html">BranchSchema</a>
+<a href="../api/branch_schema_compare.html">BranchSchemaCompare</a>
+<a href="../api/branch_storage.html">BranchStorage</a>
+<a href="../api/bucket.html">Bucket</a>
+<a href="../api/bucket_objects_list.html">BucketObjectsList</a>
+<a href="../api/connection_uri.html">ConnectionUri</a>
+<a href="../api/consumption.html">Consumption</a>
+<a href="../api/create_credential.html">CreateCredential</a>
+<a href="../api/credential.html">Credential</a>
+<a href="../api/current_user_info.html">CurrentUserInfo</a>
+<a href="../api/custom_domain.html">CustomDomain</a>
+<a href="../api/data_api.html">DataApi</a>
+<a href="../api/database.html">Database</a>
+<a href="../api/email_provider.html">EmailProvider</a>
+<a href="../api/email_server.html">EmailServer</a>
+<a href="../api/empty.html">Empty</a>
+<a href="../api/endpoint.html">Endpoint</a>
+<a href="../api/endpoint_operation.html">EndpointOperation</a>
+<a href="../api/function.html">Function</a>
+<a href="../api/jwk.html">Jwk</a>
+<a href="../api/masking_rule.html">MaskingRule</a>
+<a href="../api/member.html">Member</a>
+<a href="../api/neon_auth_allow_localhost.html">NeonAuthAllowLocalhost</a>
+<a href="../api/neon_auth_config.html">NeonAuthConfig</a>
+<a href="../api/neon_auth_create_integration.html">NeonAuthCreateIntegration</a>
+<a href="../api/neon_auth_create_new_user.html">NeonAuthCreateNewUser</a>
+<a href="../api/neon_auth_email_and_password_config.html">NeonAuthEmailAndPasswordConfig</a>
+<a href="../api/neon_auth_email_server_config.html">NeonAuthEmailServerConfig</a>
+<a href="../api/neon_auth_integration.html">NeonAuthIntegration</a>
+<a href="../api/neon_auth_magic_link_config.html">NeonAuthMagicLinkConfig</a>
+<a href="../api/neon_auth_oauth_provider.html">NeonAuthOauthProvider</a>
+<a href="../api/neon_auth_organization_config.html">NeonAuthOrganizationConfig</a>
+<a href="../api/neon_auth_phone_number_config.html">NeonAuthPhoneNumberConfig</a>
+<a href="../api/neon_auth_plugin_config.html">NeonAuthPluginConfig</a>
+<a href="../api/neon_auth_redirect_uri_whitelist_domain.html">NeonAuthRedirectUriWhitelistDomain</a>
+<a href="../api/neon_auth_transfer_auth_provider_project.html">NeonAuthTransferAuthProviderProject</a>
+<a href="../api/neon_auth_webhook_config.html">NeonAuthWebhookConfig</a>
+<a href="../api/neon_function.html">NeonFunction</a>
+<a href="../api/neon_function_deployment.html">NeonFunctionDeployment</a>
+<a href="../api/operation.html">Operation</a>
+<a href="../api/org_api_key_create.html">OrgApiKeyCreate</a>
+<a href="../api/org_api_key_revoke.html">OrgApiKeyRevoke</a>
+<a href="../api/org_api_keys_list_response_item.html">OrgApiKeysListResponseItem</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_invitation.html">OrganizationInvitation</a>
+<a href="../api/presign.html">Presign</a>
+<a aria-current="page" href="../api/project.html">Project</a><div class="nav-sections"><a class="nav-section" href="#post-projectsproject_idvpc_endpointsvpc_endpoint_id">POST /projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}</a>
+<a class="nav-section" href="#post-projectsproject_idbranch_anonymized">POST /projects/{project_id}/branch_anonymized</a>
+<a class="nav-section" href="#post-projects">POST /projects</a>
+<a class="nav-section" href="#get-projects">GET /projects</a>
+<a class="nav-section" href="#get-projectsproject_idadvisors">GET /projects/{project_id}/advisors</a>
+<a class="nav-section" href="#get-projectsshared">GET /projects/shared</a>
+<a class="nav-section" href="#get-projectsproject_id">GET /projects/{project_id}</a>
+<a class="nav-section" href="#patch-projectsproject_id">PATCH /projects/{project_id}</a>
+<a class="nav-section" href="#delete-projectsproject_idvpc_endpointsvpc_endpoint_id">DELETE /projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}</a>
+<a class="nav-section" href="#delete-projectsproject_id">DELETE /projects/{project_id}</a>
+<a class="nav-section" href="#put-projectsproject_idtransfer_requestsrequest_id">PUT /projects/{project_id}/transfer_requests/{request_id}</a></div>
+<a href="../api/project_branch_log_field.html">ProjectBranchLogField</a>
+<a href="../api/project_branch_log_field_value.html">ProjectBranchLogFieldValue</a>
+<a href="../api/project_branch_logs_query.html">ProjectBranchLogsQuery</a>
+<a href="../api/project_member.html">ProjectMember</a>
+<a href="../api/project_member_role.html">ProjectMemberRole</a>
+<a href="../api/project_permission.html">ProjectPermission</a>
+<a href="../api/project_recover.html">ProjectRecover</a>
+<a href="../api/project_transfer_request.html">ProjectTransferRequest</a>
+<a href="../api/region.html">Region</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/role_operation.html">RoleOperation</a>
+<a href="../api/role_password.html">RolePassword</a>
+<a href="../api/send_neon_auth_test_email.html">SendNeonAuthTestEmail</a>
+<a href="../api/snapshot.html">Snapshot</a>
+<a href="../api/spending_limit.html">SpendingLimit</a>
+<a href="../api/trigger.html">Trigger</a>
+<a href="../api/update_neon_auth_user_role.html">UpdateNeonAuthUserRole</a>
+<a href="../api/vpc_endpoint.html">VpcEndpoint</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="project">Project</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projectsproject_idvpc_endpointsvpc_endpoint_id"><code>/projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}</code></a></td>
+<td><code>create</code></td>
+<td>Configured the specified VPC endpoint as a restriction for the specified project</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projectsproject_idbranch_anonymized"><code>/projects/{project_id}/branch_anonymized</code></a></td>
+<td><code>create</code></td>
+<td>Created a branch. An endpoint is only created if it was specified in the request</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projects"><code>/projects</code></a></td>
+<td><code>create</code></td>
+<td>Created a project. The project includes a connection URI with a database, password, and role. At least one non-protected role is created with a password. Wait until the operations are finished before attempting to connect to a project database.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projects"><code>/projects</code></a></td>
+<td><code>list</code></td>
+<td>Returned a list of projects for the Neon account</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsproject_idadvisors"><code>/projects/{project_id}/advisors</code></a></td>
+<td><code>list</code></td>
+<td>Successfully retrieved security advisor issues</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsshared"><code>/projects/shared</code></a></td>
+<td><code>list</code></td>
+<td>Returned a list of shared projects for the Neon account</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsproject_id"><code>/projects/{project_id}</code></a></td>
+<td><code>load</code></td>
+<td>Returned information about the specified project</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-projectsproject_id"><code>/projects/{project_id}</code></a></td>
+<td><code>patch</code></td>
+<td>Updated the specified project</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-projectsproject_idvpc_endpointsvpc_endpoint_id"><code>/projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}</code></a></td>
+<td><code>remove</code></td>
+<td>Removed the VPC endpoint restriction from the specified Neon project</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-projectsproject_id"><code>/projects/{project_id}</code></a></td>
+<td><code>remove</code></td>
+<td>Deleted the specified project</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-projectsproject_idtransfer_requestsrequest_id"><code>/projects/{project_id}/transfer_requests/{request_id}</code></a></td>
+<td><code>update</code></td>
+<td>Project transfer request accepted successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">projects, err := client.Project(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(projects)
+project, err := client.Project(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(project)
+created, err := client.Project(nil).Create(map[string]any{&quot;id&quot;: &quot;example&quot;, &quot;vpc_endpoint_id&quot;: &quot;example&quot;, &quot;active_time_seconds&quot;: 1, &quot;applications&quot;: map[string]any{}, &quot;branch_logical_size_limit&quot;: 1, &quot;branch_logical_size_limit_bytes&quot;: 1, &quot;compute_time_seconds&quot;: 1, &quot;consumption_period_end&quot;: &quot;example&quot;, &quot;consumption_period_start&quot;: &quot;example&quot;, &quot;cpu_used_sec&quot;: 1, &quot;created_at&quot;: &quot;example&quot;, &quot;creation_source&quot;: &quot;example&quot;, &quot;data_storage_bytes_hour&quot;: 1, &quot;data_transfer_bytes&quot;: 1, &quot;history_retention_seconds&quot;: 1, &quot;integrations&quot;: map[string]any{}, &quot;label&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;owner&quot;: map[string]any{}, &quot;owner_id&quot;: &quot;example&quot;, &quot;pagination&quot;: map[string]any{}, &quot;pg_version&quot;: 1, &quot;platform_id&quot;: &quot;example&quot;, &quot;project&quot;: map[string]any{}, &quot;projects&quot;: []any{}, &quot;provisioner&quot;: &quot;example&quot;, &quot;proxy_host&quot;: &quot;example&quot;, &quot;region_id&quot;: &quot;example&quot;, &quot;store_passwords&quot;: true, &quot;updated_at&quot;: &quot;example&quot;, &quot;written_data_bytes&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Project(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;request_id&quot;: &quot;example&quot;, &quot;active_time_seconds&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Project(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local projects, err = client:Project():list()
+local project, err = client:Project():load({ id = &quot;example_id&quot; })
+local created, err = client:Project():create({ id = &quot;example&quot;, vpc_endpoint_id = &quot;example&quot;, active_time_seconds = 1, applications = {}, branch_logical_size_limit = 1, branch_logical_size_limit_bytes = 1, compute_time_seconds = 1, consumption_period_end = &quot;example&quot;, consumption_period_start = &quot;example&quot;, cpu_used_sec = 1, created_at = &quot;example&quot;, creation_source = &quot;example&quot;, data_storage_bytes_hour = 1, data_transfer_bytes = 1, history_retention_seconds = 1, integrations = {}, label = &quot;example&quot;, name = &quot;example&quot;, owner = {}, owner_id = &quot;example&quot;, pagination = {}, pg_version = 1, platform_id = &quot;example&quot;, project = {}, projects = {}, provisioner = &quot;example&quot;, proxy_host = &quot;example&quot;, region_id = &quot;example&quot;, store_passwords = true, updated_at = &quot;example&quot;, written_data_bytes = 1 })
+local updated, err = client:Project():update({ id = &quot;example_id&quot;, request_id = &quot;example&quot;, active_time_seconds = 1 })
+local removed, err = client:Project():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$projects = $client-&gt;Project()-&gt;list();
+$project = $client-&gt;Project()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Project()-&gt;create([&quot;id&quot; =&gt; &quot;example&quot;, &quot;vpc_endpoint_id&quot; =&gt; &quot;example&quot;, &quot;active_time_seconds&quot; =&gt; 1, &quot;applications&quot; =&gt; [], &quot;branch_logical_size_limit&quot; =&gt; 1, &quot;branch_logical_size_limit_bytes&quot; =&gt; 1, &quot;compute_time_seconds&quot; =&gt; 1, &quot;consumption_period_end&quot; =&gt; &quot;example&quot;, &quot;consumption_period_start&quot; =&gt; &quot;example&quot;, &quot;cpu_used_sec&quot; =&gt; 1, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;creation_source&quot; =&gt; &quot;example&quot;, &quot;data_storage_bytes_hour&quot; =&gt; 1, &quot;data_transfer_bytes&quot; =&gt; 1, &quot;history_retention_seconds&quot; =&gt; 1, &quot;integrations&quot; =&gt; [], &quot;label&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;owner&quot; =&gt; [], &quot;owner_id&quot; =&gt; &quot;example&quot;, &quot;pagination&quot; =&gt; [], &quot;pg_version&quot; =&gt; 1, &quot;platform_id&quot; =&gt; &quot;example&quot;, &quot;project&quot; =&gt; [], &quot;projects&quot; =&gt; [], &quot;provisioner&quot; =&gt; &quot;example&quot;, &quot;proxy_host&quot; =&gt; &quot;example&quot;, &quot;region_id&quot; =&gt; &quot;example&quot;, &quot;store_passwords&quot; =&gt; true, &quot;updated_at&quot; =&gt; &quot;example&quot;, &quot;written_data_bytes&quot; =&gt; 1]);
+$updated = $client-&gt;Project()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;request_id&quot; =&gt; &quot;example&quot;, &quot;active_time_seconds&quot; =&gt; 1]);
+$client-&gt;Project()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">projects = client.Project().list()
+project = client.Project().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Project().create({ &quot;id&quot;: &quot;example&quot;, &quot;vpc_endpoint_id&quot;: &quot;example&quot;, &quot;active_time_seconds&quot;: 1, &quot;applications&quot;: {}, &quot;branch_logical_size_limit&quot;: 1, &quot;branch_logical_size_limit_bytes&quot;: 1, &quot;compute_time_seconds&quot;: 1, &quot;consumption_period_end&quot;: &quot;example&quot;, &quot;consumption_period_start&quot;: &quot;example&quot;, &quot;cpu_used_sec&quot;: 1, &quot;created_at&quot;: &quot;example&quot;, &quot;creation_source&quot;: &quot;example&quot;, &quot;data_storage_bytes_hour&quot;: 1, &quot;data_transfer_bytes&quot;: 1, &quot;history_retention_seconds&quot;: 1, &quot;integrations&quot;: {}, &quot;label&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;owner&quot;: {}, &quot;owner_id&quot;: &quot;example&quot;, &quot;pagination&quot;: {}, &quot;pg_version&quot;: 1, &quot;platform_id&quot;: &quot;example&quot;, &quot;project&quot;: {}, &quot;projects&quot;: [], &quot;provisioner&quot;: &quot;example&quot;, &quot;proxy_host&quot;: &quot;example&quot;, &quot;region_id&quot;: &quot;example&quot;, &quot;store_passwords&quot;: True, &quot;updated_at&quot;: &quot;example&quot;, &quot;written_data_bytes&quot;: 1 })
+updated = client.Project().update({&quot;id&quot;: &quot;example_id&quot;, &quot;request_id&quot;: &quot;example&quot;, &quot;active_time_seconds&quot;: 1})
+client.Project().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">projects = client.Project.list()
+project = client.Project.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.Project.create({ &quot;id&quot; =&gt; &quot;example&quot;, &quot;vpc_endpoint_id&quot; =&gt; &quot;example&quot;, &quot;active_time_seconds&quot; =&gt; 1, &quot;applications&quot; =&gt; {}, &quot;branch_logical_size_limit&quot; =&gt; 1, &quot;branch_logical_size_limit_bytes&quot; =&gt; 1, &quot;compute_time_seconds&quot; =&gt; 1, &quot;consumption_period_end&quot; =&gt; &quot;example&quot;, &quot;consumption_period_start&quot; =&gt; &quot;example&quot;, &quot;cpu_used_sec&quot; =&gt; 1, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;creation_source&quot; =&gt; &quot;example&quot;, &quot;data_storage_bytes_hour&quot; =&gt; 1, &quot;data_transfer_bytes&quot; =&gt; 1, &quot;history_retention_seconds&quot; =&gt; 1, &quot;integrations&quot; =&gt; {}, &quot;label&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;owner&quot; =&gt; {}, &quot;owner_id&quot; =&gt; &quot;example&quot;, &quot;pagination&quot; =&gt; {}, &quot;pg_version&quot; =&gt; 1, &quot;platform_id&quot; =&gt; &quot;example&quot;, &quot;project&quot; =&gt; {}, &quot;projects&quot; =&gt; [], &quot;provisioner&quot; =&gt; &quot;example&quot;, &quot;proxy_host&quot; =&gt; &quot;example&quot;, &quot;region_id&quot; =&gt; &quot;example&quot;, &quot;store_passwords&quot; =&gt; true, &quot;updated_at&quot; =&gt; &quot;example&quot;, &quot;written_data_bytes&quot; =&gt; 1 })
+updated = client.Project.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;request_id&quot; =&gt; &quot;example&quot;, &quot;active_time_seconds&quot; =&gt; 1 })
+client.Project.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const projects = await client.Project().list()
+const project = await client.Project().load({ id: &quot;example_id&quot; })
+const created = await client.Project().create({ id: &quot;example&quot;, vpc_endpoint_id: &quot;example&quot;, active_time_seconds: 1, applications: {}, branch_logical_size_limit: 1, branch_logical_size_limit_bytes: 1, compute_time_seconds: 1, consumption_period_end: &quot;example&quot;, consumption_period_start: &quot;example&quot;, cpu_used_sec: 1, created_at: &quot;example&quot;, creation_source: &quot;example&quot;, data_storage_bytes_hour: 1, data_transfer_bytes: 1, history_retention_seconds: 1, integrations: {}, label: &quot;example&quot;, name: &quot;example&quot;, owner: {}, owner_id: &quot;example&quot;, pagination: {}, pg_version: 1, platform_id: &quot;example&quot;, project: {}, projects: [], provisioner: &quot;example&quot;, proxy_host: &quot;example&quot;, region_id: &quot;example&quot;, store_passwords: true, updated_at: &quot;example&quot;, written_data_bytes: 1 })
+const updated = await client.Project().update({ id: &quot;example_id&quot;, request_id: &quot;example&quot;, active_time_seconds: 1 })
+await client.Project().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_time_seconds</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Seconds.</td>
+</tr>
+<tr>
+<td><code>applications</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Map of project IDs to their installed applications.</td>
+</tr>
+<tr>
+<td><code>branch_logical_size_limit</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The logical size limit for a branch.</td>
+</tr>
+<tr>
+<td><code>branch_logical_size_limit_bytes</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The logical size limit for a branch.</td>
+</tr>
+<tr>
+<td><code>compute_last_active_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The most recent time when any endpoint of this project was active.</td>
+</tr>
+<tr>
+<td><code>compute_time_seconds</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Seconds.</td>
+</tr>
+<tr>
+<td><code>consumption_period_end</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A date-time indicating when Neon Cloud plans to stop measuring consumption for current consumption period.</td>
+</tr>
+<tr>
+<td><code>consumption_period_start</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A date-time indicating when Neon Cloud started measuring consumption for current consumption period.</td>
+</tr>
+<tr>
+<td><code>cpu_used_sec</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the project was created</td>
+</tr>
+<tr>
+<td><code>creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The project creation source</td>
+</tr>
+<tr>
+<td><code>data_storage_bytes_hour</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Bytes-Hour.</td>
+</tr>
+<tr>
+<td><code>data_transfer_bytes</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Bytes.</td>
+</tr>
+<tr>
+<td><code>default_endpoint_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a Neon endpoint</td>
+</tr>
+<tr>
+<td><code>effective_project_permission</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Effective Project Permission</td>
+</tr>
+<tr>
+<td><code>hipaa_enabled_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A timestamp indicating when HIPAA was enabled for this project</td>
+</tr>
+<tr>
+<td><code>history_retention_seconds</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of seconds to retain the shared history for all branches in this project.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The Neon project ID.</td>
+</tr>
+<tr>
+<td><code>integrations</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Map of project IDs to their associated integration details.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable name for the VPC endpoint assignment, used to identify it within the organization.</td>
+</tr>
+<tr>
+<td><code>maintenance_scheduled_for</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A timestamp indicating when project update begins.</td>
+</tr>
+<tr>
+<td><code>maintenance_starts_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A timestamp indicating when project maintenance begins.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The project name</td>
+</tr>
+<tr>
+<td><code>org_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Neon organization ID.</td>
+</tr>
+<tr>
+<td><code>owner</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ownership details for the project, including the owner's name and email.</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ID of the organization that owns the project.</td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Cursor-based pagination.</td>
+</tr>
+<tr>
+<td><code>pg_version</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The major Postgres version number.</td>
+</tr>
+<tr>
+<td><code>platform_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The cloud platform identifier.</td>
+</tr>
+<tr>
+<td><code>project</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Configuration for the new project, including name, region, and Postgres compute and storage settings.</td>
+</tr>
+<tr>
+<td><code>projects</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>List of projects accessible to the caller.</td>
+</tr>
+<tr>
+<td><code>provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner.</td>
+</tr>
+<tr>
+<td><code>proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The proxy host for the project.</td>
+</tr>
+<tr>
+<td><code>quota_reset_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>).</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Project-level settings, for example <code>quota</code>, <code>allowed_ips</code>, <code>enable_logical_replication</code>, and <code>maintenance_window</code>.</td>
+</tr>
+<tr>
+<td><code>store_passwords</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether or not passwords are stored for roles in the Neon project.</td>
+</tr>
+<tr>
+<td><code>synthetic_storage_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The current space occupied by the project in Postgres storage, in bytes.</td>
+</tr>
+<tr>
+<td><code>unavailable_project_ids</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the project was last updated</td>
+</tr>
+<tr>
+<td><code>written_data_bytes</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Bytes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-projectsproject_idvpc_endpointsvpc_endpoint_id" class="operation" data-method="post"><code>POST</code> /projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}</h3>
+<p>Operation ID: <code>assignProjectVPCEndpoint</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>vpc_endpoint_id</code> | <code>path</code> | <code>string</code> | Yes | The VPC endpoint ID |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable name for the VPC endpoint assignment, used to identify it within the organization.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-configured-the-specified-vpc-endpoint-as-a-restriction-for-the-specified-project" class="status" data-status="2xx">200: Configured the specified VPC endpoint as a restriction for the specified project</h5>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-projectsproject_idbranch_anonymized" class="operation" data-method="post"><code>POST</code> /projects/{project_id}/branch_anonymized</h3>
+<p>Operation ID: <code>createProjectBranchAnonymized</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object and object</code>.</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-created-a-branch-an-endpoint-is-only-created-if-it-was-specified-in-the-request" class="status" data-status="2xx">201: Created a branch. An endpoint is only created if it was specified in the request</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object and object and object and object and object</code>.</p>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-1">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-projects" class="operation" data-method="post"><code>POST</code> /projects</h3>
+<p>Operation ID: <code>createProject</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Configuration for the new project, including name, region, and Postgres compute and storage settings.</td>
+</tr>
+<tr>
+<td><code>project.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Deprecated. Use <code>default_endpoint_settings`.`autoscaling_limit_max_cu</code> instead. The maximum number of Compute Units. See <a href="https://neon.com/docs/manage/endpoints#compute-size-and-autoscaling-configuration">Compute size and Autoscaling configuration</a> for more information.</td>
+</tr>
+<tr>
+<td><code>project.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Deprecated. Use <code>default_endpoint_settings`.`autoscaling_limit_min_cu</code> instead. The minimum number of Compute Units. The minimum value is <code>0.25</code>. See <a href="https://neon.com/docs/manage/endpoints#compute-size-and-autoscaling-configuration">Compute size and Autoscaling configuration</a> for more information.</td>
+</tr>
+<tr>
+<td><code>project.branch</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Configuration for the initial branch created with the project.</td>
+</tr>
+<tr>
+<td><code>project.branch.annotations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Arbitrary key-value metadata to attach to the branch.</td>
+</tr>
+<tr>
+<td><code>project.branch.database_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The database name. If not specified, the default database name, <code>neondb</code>, will be used.</td>
+</tr>
+<tr>
+<td><code>project.branch.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The default branch name. If not specified, the default branch name, <code>main</code>, will be used.</td>
+</tr>
+<tr>
+<td><code>project.branch.role_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The role name. If not specified, the default role name, <code>&amp;#123;</code>database_name<code>&amp;#125;_owner</code>, will be used.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a Neon endpoint</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Default maximum number of Compute Units for endpoints created under this account. At least 0.25.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Minimum number of Compute Units for this endpoint. At least 0.25 and no greater than <code>autoscaling_limit_max_cu</code>.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. Use the endpoint-level connection pooler configuration instead. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> uses the plan default; <code>-1</code> disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value.</td>
+</tr>
+<tr>
+<td><code>project.history_retention_seconds</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>History window (point-in-time restore range) for all branches, in seconds. <code>0</code> disables it. Default 1 day (Free: 6 hours). Maximum depends on plan: Free 6 hours (21600), Launch 7 days (604800), Scale 30 days (2592000).</td>
+</tr>
+<tr>
+<td><code>project.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The project name. If not specified, the name will be identical to the generated project ID</td>
+</tr>
+<tr>
+<td><code>project.org_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the organization that will own the project. If omitted when using an organization API key, it is inferred from the key.</td>
+</tr>
+<tr>
+<td><code>project.pg_version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The major Postgres version number. Supported versions are <code>14</code>, <code>15</code>, <code>16</code>, <code>17</code>, and <code>18</code>. <code>19</code> is rolling out and is accepted only in regions where it is enabled; requesting it elsewhere returns an error.</td>
+</tr>
+<tr>
+<td><code>project.provisioner</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>project.region_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The region identifier. Refer to our <a href="https://neon.com/docs/introduction/regions">Regions</a> documentation for supported regions. Values are specified in this format: <code>aws-us-east-1</code></td>
+</tr>
+<tr>
+<td><code>project.settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Project-level settings applied at creation.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the compute endpoint. If the list is empty or not set, all IP addresses are allowed. If <code>protected_branches_only</code> is true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.ips</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the endpoint.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.protected_branches_only</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.audit_log_level</code></td>
+<td><code>enum: base, extended, full</code></td>
+<td>No</td>
+<td>Audit logging level, set only on HIPAA-enabled organizations (absent otherwise). Values: <code>base</code>, <code>extended</code>, <code>full</code>; HIPAA defaults to <code>extended</code>. Cannot be lowered back to <code>base</code> once <code>extended</code> or <code>full</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_public_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections from the public internet are disallowed. This supersedes the AllowedIPs list. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_vpc_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections using VPC endpoints are disallowed. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.enable_logical_replication</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Sets <code>wal_level</code>=logical for all compute endpoints in this project. All active endpoints will be suspended. Once enabled, logical replication cannot be disabled.</td>
+</tr>
+<tr>
+<td><code>project.settings.hipaa</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Enables HIPAA compliance mode for the project, including audit logging.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A maintenance window is a time period during which Neon may perform maintenance on the project's infrastructure. During this time, the project's compute endpoints may be unavailable and existing connections can be interrupted.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.end_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>End time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.start_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Start time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.weekdays</code></td>
+<td><code>array of integer</code></td>
+<td>Yes</td>
+<td>A list of weekdays when the maintenance window is active. Encoded as ints, where 1 - Monday, and 7 - Sunday.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Per-project consumption quotas. If a quota is exceeded, all active computes are automatically suspended and cannot be started via API calls or incoming connections. The exception is <code>logical_size_bytes</code>, which is enforced per branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size<code>Postgres setting. Quotas are enforced using per-project consumption metrics with the same names. These metrics reset at the start of each billing period.</code>logical_size_bytes`` is also an exception, it reflects the total data stored in a branch and does not reset. A zero or empty quota value means “unlimited.”</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.active_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of wall-clock time allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.compute_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of CPU seconds allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.data_transfer_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data transferred from all of a project's branches using the proxy.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.logical_size_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Limit on the logical size of every project's branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size`` Postgres setting.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.written_data_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data written to all of a project's branches.</td>
+</tr>
+<tr>
+<td><code>project.store_passwords</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether or not passwords are stored for roles in the Neon project. Storing passwords facilitates access to Neon features that require authorization.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-created-a-project-the-project-includes-a-connection-uri-with-a-database-password-and-role-at-least-one-non-protected-role-is-created-with-a-password-wait-until-the-operations-are-finished-before-attempting-to-connect-to-a-project-database" class="status" data-status="2xx">201: Created a project. The project includes a connection URI with a database, password, and role. At least one non-protected role is created with a password. Wait until the operations are finished before attempting to connect to a project database.</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object and object and object and object and object and object</code>.</p>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-2">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-projects" class="operation" data-method="get"><code>GET</code> /projects</h3>
+<p>Operation ID: <code>listProjects</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | Specify the cursor value from the previous response to retrieve the next batch of projects. |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Specify a value from 1 to 400 to limit number of projects in the response. |
+| <code>search</code> | <code>query</code> | <code>string</code> | No | Search by project <code>name</code> or <code>id</code>. You can specify partial <code>name</code> or <code>id</code> values to filter results. |
+| <code>org_id</code> | <code>query</code> | <code>string</code> | No | Search for projects by <code>org_id</code>. |
+| <code>timeout</code> | <code>query</code> | <code>integer</code> | No | Specify an explicit timeout in milliseconds to limit response delay. After timing out, the incomplete list of project data fetched so far will be returned. Projects still being fetched when the timeout occurred are listed in the &quot;unavailable&quot; attribute of the response. If not specified, an implicit implementation defined timeout is chosen with the same behaviour as above |
+| <code>recoverable</code> | <code>query</code> | <code>boolean</code> | No | Show only deleted projects within the recovery window. |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-returned-a-list-of-projects-for-the-neon-account" class="status" data-status="2xx">200: Returned a list of projects for the Neon account</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object and object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;applications&quot;: {
+    &quot;winter-boat-259881&quot;: [
+      &quot;vercel&quot;,
+      &quot;github&quot;
+    ]
+  },
+  &quot;integrations&quot;: {
+    &quot;winter-boat-259881&quot;: [
+      &quot;vercel&quot;,
+      &quot;github&quot;
+    ]
+  },
+  &quot;projects&quot;: [
+    {
+      &quot;active_time&quot;: 100,
+      &quot;branch_logical_size_limit&quot;: 0,
+      &quot;branch_logical_size_limit_bytes&quot;: 10800,
+      &quot;cpu_used_sec&quot;: 0,
+      &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;id&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;name&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;owner_id&quot;: &quot;1232111&quot;,
+      &quot;pg_version&quot;: 15,
+      &quot;platform_id&quot;: &quot;aws&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;store_passwords&quot;: true,
+      &quot;updated_at&quot;: &quot;2022-11-23T17:42:25Z&quot;
+    },
+    {
+      &quot;active_time&quot;: 100,
+      &quot;branch_logical_size_limit&quot;: 0,
+      &quot;branch_logical_size_limit_bytes&quot;: 10800,
+      &quot;cpu_used_sec&quot;: 0,
+      &quot;created_at&quot;: &quot;2022-11-23T17:52:25Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;id&quot;: &quot;winter-boat-259881&quot;,
+      &quot;name&quot;: &quot;winter-boat-259881&quot;,
+      &quot;org_id&quot;: &quot;org-morning-bread-81040908&quot;,
+      &quot;owner_id&quot;: &quot;1232111&quot;,
+      &quot;pg_version&quot;: 15,
+      &quot;platform_id&quot;: &quot;aws&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;store_passwords&quot;: true,
+      &quot;updated_at&quot;: &quot;2022-11-23T17:52:25Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-3">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-projectsproject_idadvisors" class="operation" data-method="get"><code>GET</code> /projects/{project_id}/advisors</h3>
+<p>Operation ID: <code>getProjectAdvisorSecurityIssues</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | Neon project ID |
+| <code>branch_id</code> | <code>query</code> | <code>string</code> | No | Branch ID to analyze. If not specified, the project's default branch is used. |
+| <code>database_name</code> | <code>query</code> | <code>string</code> | No | Database name to analyze. Required if branch has multiple databases. |
+| <code>category</code> | <code>query</code> | <code>enum: SECURITY, PERFORMANCE</code> | No | Filter issues by category |
+| <code>min_severity</code> | <code>query</code> | <code>enum: INFO, WARN, ERROR</code> | No | Minimum severity level to include. For example, WARN returns WARN and ERROR issues, excluding INFO. |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-successfully-retrieved-security-advisor-issues" class="status" data-status="2xx">200: Successfully retrieved security advisor issues</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>issues</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>issues[].cache_key</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique key for caching this issue result</td>
+</tr>
+<tr>
+<td><code>issues[].categories</code></td>
+<td><code>array of enum: SECURITY, PERFORMANCE</code></td>
+<td>Yes</td>
+<td>Categories this issue belongs to</td>
+</tr>
+<tr>
+<td><code>issues[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Detailed description of what this check detects</td>
+</tr>
+<tr>
+<td><code>issues[].detail</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Specific details about this instance of the issue</td>
+</tr>
+<tr>
+<td><code>issues[].facing</code></td>
+<td><code>enum: EXTERNAL, INTERNAL</code></td>
+<td>Yes</td>
+<td>Whether this issue affects external API exposure or is internal only</td>
+</tr>
+<tr>
+<td><code>issues[].level</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Severity level of the issue</td>
+</tr>
+<tr>
+<td><code>issues[].metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Additional context-specific metadata</td>
+</tr>
+<tr>
+<td><code>issues[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the issue type</td>
+</tr>
+<tr>
+<td><code>issues[].remediation</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>URL to documentation on how to fix this issue</td>
+</tr>
+<tr>
+<td><code>issues[].title</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Human-readable title</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-4">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-projectsshared" class="operation" data-method="get"><code>GET</code> /projects/shared</h3>
+<p>Operation ID: <code>listSharedProjects</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | Specify the cursor value from the previous response to get the next batch of projects. |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Specify a value from 1 to 400 to limit number of projects in the response. |
+| <code>search</code> | <code>query</code> | <code>string</code> | No | Search query by name or id. |
+| <code>timeout</code> | <code>query</code> | <code>integer</code> | No | Specify an explicit timeout in milliseconds to limit response delay. After timing out, the incomplete list of project data fetched so far will be returned. Projects still being fetched when the timeout occurred are listed in the &quot;unavailable&quot; attribute of the response. If not specified, an implicit implementation defined timeout is chosen with the same behaviour as above |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-returned-a-list-of-shared-projects-for-the-neon-account" class="status" data-status="2xx">200: Returned a list of shared projects for the Neon account</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;projects&quot;: [
+    {
+      &quot;active_time&quot;: 100,
+      &quot;branch_logical_size_limit&quot;: 0,
+      &quot;branch_logical_size_limit_bytes&quot;: 10800,
+      &quot;cpu_used_sec&quot;: 0,
+      &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;id&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;name&quot;: &quot;shiny-wind-028834&quot;,
+      &quot;owner_id&quot;: &quot;1232111&quot;,
+      &quot;pg_version&quot;: 15,
+      &quot;platform_id&quot;: &quot;aws&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;store_passwords&quot;: true,
+      &quot;updated_at&quot;: &quot;2022-11-23T17:42:25Z&quot;
+    },
+    {
+      &quot;active_time&quot;: 100,
+      &quot;branch_logical_size_limit&quot;: 0,
+      &quot;branch_logical_size_limit_bytes&quot;: 10800,
+      &quot;cpu_used_sec&quot;: 0,
+      &quot;created_at&quot;: &quot;2022-11-23T17:52:25Z&quot;,
+      &quot;creation_source&quot;: &quot;console&quot;,
+      &quot;id&quot;: &quot;winter-boat-259881&quot;,
+      &quot;name&quot;: &quot;winter-boat-259881&quot;,
+      &quot;owner_id&quot;: &quot;1232111&quot;,
+      &quot;pg_version&quot;: 15,
+      &quot;platform_id&quot;: &quot;aws&quot;,
+      &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+      &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+      &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+      &quot;store_passwords&quot;: true,
+      &quot;updated_at&quot;: &quot;2022-11-23T17:52:25Z&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-5">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-projectsproject_id" class="operation" data-method="get"><code>GET</code> /projects/{project_id}</h3>
+<p>Operation ID: <code>getProject</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-returned-information-about-the-specified-project" class="status" data-status="2xx">200: Returned information about the specified project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Full details of the project, including configuration, consumption metrics, and ownership.</td>
+</tr>
+<tr>
+<td><code>project.active_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Seconds. Control plane observed endpoints of this project being active this amount of wall-clock time. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+<tr>
+<td><code>project.branch_logical_size_limit</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The logical size limit for a branch. The value is in MiB.</td>
+</tr>
+<tr>
+<td><code>project.branch_logical_size_limit_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The logical size limit for a branch. The value is in B.</td>
+</tr>
+<tr>
+<td><code>project.compute_last_active_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The most recent time when any endpoint of this project was active. Omitted when observed no activity for endpoints of this project.</td>
+</tr>
+<tr>
+<td><code>project.compute_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Seconds. The number of CPU seconds used by the project's compute endpoints, including compute endpoints that have been deleted. The value has some lag. The value is reset at the beginning of each billing period. Examples: 1. An endpoint that uses 1 CPU for 1 second is equal to <code>compute_time`=1`. 2. An endpoint that uses 2 CPUs simultaneously for 1 second is equal to </code>compute_time<code>=2</code>.</td>
+</tr>
+<tr>
+<td><code>project.consumption_period_end</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A date-time indicating when Neon Cloud plans to stop measuring consumption for current consumption period.</td>
+</tr>
+<tr>
+<td><code>project.consumption_period_start</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A date-time indicating when Neon Cloud started measuring consumption for current consumption period.</td>
+</tr>
+<tr>
+<td><code>project.cpu_used_sec</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Deprecated. Use <code>compute_time_seconds</code> instead.</td>
+</tr>
+<tr>
+<td><code>project.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the project was created</td>
+</tr>
+<tr>
+<td><code>project.creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The project creation source</td>
+</tr>
+<tr>
+<td><code>project.data_storage_bytes_hour</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Bytes-Hour. Project consumed that much Postgres storage hourly during the billing period. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+<tr>
+<td><code>project.data_transfer_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Bytes. Egress traffic from the Neon cloud to the client for given project over the billing period. Includes deleted endpoints. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a Neon endpoint</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Default maximum number of Compute Units for endpoints created under this account. At least 0.25.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Minimum number of Compute Units for this endpoint. At least 0.25 and no greater than <code>autoscaling_limit_max_cu</code>.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. Use the endpoint-level connection pooler configuration instead. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> uses the plan default; <code>-1</code> disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value.</td>
+</tr>
+<tr>
+<td><code>project.effective_project_permission</code></td>
+<td><code>enum: VIEWER, EDITOR, ADMIN</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>project.hipaa_enabled_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when HIPAA was enabled for this project</td>
+</tr>
+<tr>
+<td><code>project.history_retention_seconds</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of seconds to retain the shared history for all branches in this project.</td>
+</tr>
+<tr>
+<td><code>project.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The Neon project ID. Use as the <code>project_id</code> path parameter in other endpoints.</td>
+</tr>
+<tr>
+<td><code>project.maintenance_scheduled_for</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when project update begins. If set, computes might experience a brief restart around this time.</td>
+</tr>
+<tr>
+<td><code>project.maintenance_starts_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when project maintenance begins. If set, the project is placed into maintenance mode at this time.</td>
+</tr>
+<tr>
+<td><code>project.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The project name</td>
+</tr>
+<tr>
+<td><code>project.org_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Neon organization ID. Returned as <code>id</code> from <code>GET /users/me/organizations</code>.</td>
+</tr>
+<tr>
+<td><code>project.owner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Ownership details for the project, including the owner's name and email.</td>
+</tr>
+<tr>
+<td><code>project.owner.branches_limit</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Maximum number of branches the owner is allowed to create across their projects.</td>
+</tr>
+<tr>
+<td><code>project.owner.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td>Email address of the project owner.</td>
+</tr>
+<tr>
+<td><code>project.owner.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Display name of the project owner.</td>
+</tr>
+<tr>
+<td><code>project.owner.subscription_type</code></td>
+<td><code>enum: UNKNOWN, direct_sales, direct_sales_v3, aws_marketplace, free_v2, free_v3, ...</code></td>
+<td>Yes</td>
+<td>Type of subscription to Neon Cloud. Notice that for users without billing account this will be &quot;UNKNOWN&quot;</td>
+</tr>
+<tr>
+<td><code>project.owner_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ID of the organization that owns the project.</td>
+</tr>
+<tr>
+<td><code>project.pg_version</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The major Postgres version number. Supported versions are <code>14</code>, <code>15</code>, <code>16</code>, <code>17</code>, and <code>18</code>. <code>19</code> is rolling out and is accepted only in regions where it is enabled; requesting it elsewhere returns an error.</td>
+</tr>
+<tr>
+<td><code>project.platform_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The cloud platform identifier. Currently, only AWS is supported, for which the identifier is <code>aws</code>.</td>
+</tr>
+<tr>
+<td><code>project.provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>project.proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The proxy host for the project. This value combines the <code>region_id</code>, the <code>platform_id</code>, and the Neon domain (<code>neon.tech</code>).</td>
+</tr>
+<tr>
+<td><code>project.quota_reset_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Deprecated. Use the <code>consumption_period_end</code> field instead. A timestamp indicating when the project quota resets.</td>
+</tr>
+<tr>
+<td><code>project.region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>). Valid values are returned by <code>GET /regions</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Project-level settings, for example <code>quota</code>, <code>allowed_ips</code>, <code>enable_logical_replication</code>, and <code>maintenance_window</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the compute endpoint. If the list is empty or not set, all IP addresses are allowed. If <code>protected_branches_only</code> is true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.ips</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the endpoint.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.protected_branches_only</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.audit_log_level</code></td>
+<td><code>enum: base, extended, full</code></td>
+<td>No</td>
+<td>Audit logging level, set only on HIPAA-enabled organizations (absent otherwise). Values: <code>base</code>, <code>extended</code>, <code>full</code>; HIPAA defaults to <code>extended</code>. Cannot be lowered back to <code>base</code> once <code>extended</code> or <code>full</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_public_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections from the public internet are disallowed. This supersedes the AllowedIPs list. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_vpc_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections using VPC endpoints are disallowed. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.enable_logical_replication</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Sets <code>wal_level</code>=logical for all compute endpoints in this project. All active endpoints will be suspended. Once enabled, logical replication cannot be disabled.</td>
+</tr>
+<tr>
+<td><code>project.settings.hipaa</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Enables HIPAA compliance mode for the project, including audit logging.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A maintenance window is a time period during which Neon may perform maintenance on the project's infrastructure. During this time, the project's compute endpoints may be unavailable and existing connections can be interrupted.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.end_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>End time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.start_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Start time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.weekdays</code></td>
+<td><code>array of integer</code></td>
+<td>Yes</td>
+<td>A list of weekdays when the maintenance window is active. Encoded as ints, where 1 - Monday, and 7 - Sunday.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Per-project consumption quotas. If a quota is exceeded, all active computes are automatically suspended and cannot be started via API calls or incoming connections. The exception is <code>logical_size_bytes</code>, which is enforced per branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size<code>Postgres setting. Quotas are enforced using per-project consumption metrics with the same names. These metrics reset at the start of each billing period.</code>logical_size_bytes`` is also an exception, it reflects the total data stored in a branch and does not reset. A zero or empty quota value means “unlimited.”</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.active_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of wall-clock time allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.compute_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of CPU seconds allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.data_transfer_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data transferred from all of a project's branches using the proxy.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.logical_size_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Limit on the logical size of every project's branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size`` Postgres setting.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.written_data_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data written to all of a project's branches.</td>
+</tr>
+<tr>
+<td><code>project.store_passwords</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether or not passwords are stored for roles in the Neon project. Storing passwords facilitates access to Neon features that require authorization.</td>
+</tr>
+<tr>
+<td><code>project.synthetic_storage_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The current space occupied by the project in Postgres storage, in bytes. Synthetic Postgres storage size combines the logical data size and Write-Ahead Log (WAL) size for all branches in a project.</td>
+</tr>
+<tr>
+<td><code>project.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the project was last updated</td>
+</tr>
+<tr>
+<td><code>project.written_data_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Bytes. Amount of WAL that travelled through Postgres storage for given project across all branches. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;project&quot;: {
+    &quot;active_time_seconds&quot;: 100,
+    &quot;branch_logical_size_limit&quot;: 0,
+    &quot;branch_logical_size_limit_bytes&quot;: 10500,
+    &quot;compute_time_seconds&quot;: 100,
+    &quot;consumption_period_end&quot;: &quot;2023-03-01T00:00:00Z&quot;,
+    &quot;consumption_period_start&quot;: &quot;2023-02-01T00:00:00Z&quot;,
+    &quot;cpu_used_sec&quot;: 10,
+    &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;data_storage_bytes_hour&quot;: 1040,
+    &quot;data_transfer_bytes&quot;: 1000000,
+    &quot;history_retention_seconds&quot;: 604800,
+    &quot;id&quot;: &quot;shiny-wind-028834&quot;,
+    &quot;name&quot;: &quot;shiny-wind-028834&quot;,
+    &quot;owner&quot;: {
+      &quot;branches_limit&quot;: 10,
+      &quot;email&quot;: &quot;some@email.com&quot;,
+      &quot;name&quot;: &quot;John Smith&quot;,
+      &quot;subscription_type&quot;: &quot;scale&quot;
+    },
+    &quot;owner_id&quot;: &quot;1232111&quot;,
+    &quot;pg_version&quot;: 15,
+    &quot;platform_id&quot;: &quot;aws&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;store_passwords&quot;: true,
+    &quot;updated_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+    &quot;written_data_bytes&quot;: 100800
+  }
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-6">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="patch">patch</h2>
+<h3 id="patch-projectsproject_id" class="operation" data-method="patch"><code>PATCH</code> /projects/{project_id}</h3>
+<p>Operation ID: <code>updateProject</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a Neon endpoint</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Default maximum number of Compute Units for endpoints created under this account. At least 0.25.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Minimum number of Compute Units for this endpoint. At least 0.25 and no greater than <code>autoscaling_limit_max_cu</code>.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. Use the endpoint-level connection pooler configuration instead. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> uses the plan default; <code>-1</code> disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value.</td>
+</tr>
+<tr>
+<td><code>project.history_retention_seconds</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>History window (point-in-time restore range) for all branches, in seconds. <code>0</code> disables it. Default 1 day (Free: 6 hours). Maximum depends on plan: Free 6 hours (21600), Launch 7 days (604800), Scale 30 days (2592000).</td>
+</tr>
+<tr>
+<td><code>project.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The project name</td>
+</tr>
+<tr>
+<td><code>project.settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Project-level settings, for example <code>quota</code>, <code>allowed_ips</code>, <code>enable_logical_replication</code>, and <code>maintenance_window</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the compute endpoint. If the list is empty or not set, all IP addresses are allowed. If <code>protected_branches_only</code> is true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.ips</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the endpoint.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.protected_branches_only</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.audit_log_level</code></td>
+<td><code>enum: base, extended, full</code></td>
+<td>No</td>
+<td>Audit logging level, set only on HIPAA-enabled organizations (absent otherwise). Values: <code>base</code>, <code>extended</code>, <code>full</code>; HIPAA defaults to <code>extended</code>. Cannot be lowered back to <code>base</code> once <code>extended</code> or <code>full</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_public_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections from the public internet are disallowed. This supersedes the AllowedIPs list. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_vpc_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections using VPC endpoints are disallowed. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.enable_logical_replication</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Sets <code>wal_level</code>=logical for all compute endpoints in this project. All active endpoints will be suspended. Once enabled, logical replication cannot be disabled.</td>
+</tr>
+<tr>
+<td><code>project.settings.hipaa</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Enables HIPAA compliance mode for the project, including audit logging.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A maintenance window is a time period during which Neon may perform maintenance on the project's infrastructure. During this time, the project's compute endpoints may be unavailable and existing connections can be interrupted.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.end_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>End time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.start_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Start time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.weekdays</code></td>
+<td><code>array of integer</code></td>
+<td>Yes</td>
+<td>A list of weekdays when the maintenance window is active. Encoded as ints, where 1 - Monday, and 7 - Sunday.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Per-project consumption quotas. If a quota is exceeded, all active computes are automatically suspended and cannot be started via API calls or incoming connections. The exception is <code>logical_size_bytes</code>, which is enforced per branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size<code>Postgres setting. Quotas are enforced using per-project consumption metrics with the same names. These metrics reset at the start of each billing period.</code>logical_size_bytes`` is also an exception, it reflects the total data stored in a branch and does not reset. A zero or empty quota value means “unlimited.”</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.active_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of wall-clock time allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.compute_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of CPU seconds allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.data_transfer_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data transferred from all of a project's branches using the proxy.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.logical_size_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Limit on the logical size of every project's branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size`` Postgres setting.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.written_data_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data written to all of a project's branches.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;project&quot;: {
+    &quot;name&quot;: &quot;myproject&quot;
+  }
+}
+</code></pre>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-updated-the-specified-project" class="status" data-status="2xx">200: Updated the specified project</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;operations&quot;: [],
+  &quot;project&quot;: {
+    &quot;active_time_seconds&quot;: 100,
+    &quot;branch_logical_size_limit&quot;: 0,
+    &quot;branch_logical_size_limit_bytes&quot;: 10500,
+    &quot;compute_time_seconds&quot;: 100,
+    &quot;consumption_period_end&quot;: &quot;2023-03-01T00:00:00Z&quot;,
+    &quot;consumption_period_start&quot;: &quot;2023-02-01T00:00:00Z&quot;,
+    &quot;cpu_used_sec&quot;: 213230,
+    &quot;created_at&quot;: &quot;2022-11-23T17:42:25Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;data_storage_bytes_hour&quot;: 1040,
+    &quot;data_transfer_bytes&quot;: 1000000,
+    &quot;history_retention_seconds&quot;: 604800,
+    &quot;id&quot;: &quot;shiny-wind-028834&quot;,
+    &quot;name&quot;: &quot;myproject&quot;,
+    &quot;owner_id&quot;: &quot;1232111&quot;,
+    &quot;pg_version&quot;: 15,
+    &quot;platform_id&quot;: &quot;aws&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;store_passwords&quot;: true,
+    &quot;updated_at&quot;: &quot;2022-12-04T02:39:25Z&quot;,
+    &quot;written_data_bytes&quot;: 100800
+  }
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-7">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-projectsproject_idvpc_endpointsvpc_endpoint_id" class="operation" data-method="delete"><code>DELETE</code> /projects/{project_id}/vpc_endpoints/{vpc_endpoint_id}</h3>
+<p>Operation ID: <code>deleteProjectVPCEndpoint</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>vpc_endpoint_id</code> | <code>path</code> | <code>string</code> | Yes | The VPC endpoint ID |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-removed-the-vpc-endpoint-restriction-from-the-specified-neon-project" class="status" data-status="2xx">200: Removed the VPC endpoint restriction from the specified Neon project</h5>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-8">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-projectsproject_id" class="operation" data-method="delete"><code>DELETE</code> /projects/{project_id}</h3>
+<p>Operation ID: <code>deleteProject</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-deleted-the-specified-project" class="status" data-status="2xx">200: Deleted the specified project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Full details of the project, including configuration, consumption metrics, and ownership.</td>
+</tr>
+<tr>
+<td><code>project.active_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Seconds. Control plane observed endpoints of this project being active this amount of wall-clock time. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+<tr>
+<td><code>project.branch_logical_size_limit</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The logical size limit for a branch. The value is in MiB.</td>
+</tr>
+<tr>
+<td><code>project.branch_logical_size_limit_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The logical size limit for a branch. The value is in B.</td>
+</tr>
+<tr>
+<td><code>project.compute_last_active_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The most recent time when any endpoint of this project was active. Omitted when observed no activity for endpoints of this project.</td>
+</tr>
+<tr>
+<td><code>project.compute_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Seconds. The number of CPU seconds used by the project's compute endpoints, including compute endpoints that have been deleted. The value has some lag. The value is reset at the beginning of each billing period. Examples: 1. An endpoint that uses 1 CPU for 1 second is equal to <code>compute_time`=1`. 2. An endpoint that uses 2 CPUs simultaneously for 1 second is equal to </code>compute_time<code>=2</code>.</td>
+</tr>
+<tr>
+<td><code>project.consumption_period_end</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A date-time indicating when Neon Cloud plans to stop measuring consumption for current consumption period.</td>
+</tr>
+<tr>
+<td><code>project.consumption_period_start</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A date-time indicating when Neon Cloud started measuring consumption for current consumption period.</td>
+</tr>
+<tr>
+<td><code>project.cpu_used_sec</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Deprecated. Use <code>compute_time_seconds</code> instead.</td>
+</tr>
+<tr>
+<td><code>project.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the project was created</td>
+</tr>
+<tr>
+<td><code>project.creation_source</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The project creation source</td>
+</tr>
+<tr>
+<td><code>project.data_storage_bytes_hour</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Bytes-Hour. Project consumed that much Postgres storage hourly during the billing period. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+<tr>
+<td><code>project.data_transfer_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Bytes. Egress traffic from the Neon cloud to the client for given project over the billing period. Includes deleted endpoints. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A collection of settings for a Neon endpoint</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_max_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Default maximum number of Compute Units for endpoints created under this account. At least 0.25.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.autoscaling_limit_min_cu</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Minimum number of Compute Units for this endpoint. At least 0.25 and no greater than <code>autoscaling_limit_max_cu</code>.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pg_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A raw representation of Postgres settings</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.pgbouncer_settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deprecated. Use the endpoint-level connection pooler configuration instead. Removal scheduled for June 20, 2026.</td>
+</tr>
+<tr>
+<td><code>project.default_endpoint_settings.suspend_timeout_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Scale-to-zero idle timeout, in seconds, before the compute suspends. <code>0</code> uses the plan default; <code>-1</code> disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value.</td>
+</tr>
+<tr>
+<td><code>project.effective_project_permission</code></td>
+<td><code>enum: VIEWER, EDITOR, ADMIN</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>project.hipaa_enabled_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when HIPAA was enabled for this project</td>
+</tr>
+<tr>
+<td><code>project.history_retention_seconds</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of seconds to retain the shared history for all branches in this project.</td>
+</tr>
+<tr>
+<td><code>project.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The Neon project ID. Use as the <code>project_id</code> path parameter in other endpoints.</td>
+</tr>
+<tr>
+<td><code>project.maintenance_scheduled_for</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when project update begins. If set, computes might experience a brief restart around this time.</td>
+</tr>
+<tr>
+<td><code>project.maintenance_starts_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>A timestamp indicating when project maintenance begins. If set, the project is placed into maintenance mode at this time.</td>
+</tr>
+<tr>
+<td><code>project.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The project name</td>
+</tr>
+<tr>
+<td><code>project.org_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Neon organization ID. Returned as <code>id</code> from <code>GET /users/me/organizations</code>.</td>
+</tr>
+<tr>
+<td><code>project.owner</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Ownership details for the project, including the owner's name and email.</td>
+</tr>
+<tr>
+<td><code>project.owner.branches_limit</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Maximum number of branches the owner is allowed to create across their projects.</td>
+</tr>
+<tr>
+<td><code>project.owner.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td>Email address of the project owner.</td>
+</tr>
+<tr>
+<td><code>project.owner.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Display name of the project owner.</td>
+</tr>
+<tr>
+<td><code>project.owner.subscription_type</code></td>
+<td><code>enum: UNKNOWN, direct_sales, direct_sales_v3, aws_marketplace, free_v2, free_v3, ...</code></td>
+<td>Yes</td>
+<td>Type of subscription to Neon Cloud. Notice that for users without billing account this will be &quot;UNKNOWN&quot;</td>
+</tr>
+<tr>
+<td><code>project.owner_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ID of the organization that owns the project.</td>
+</tr>
+<tr>
+<td><code>project.pg_version</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The major Postgres version number. Supported versions are <code>14</code>, <code>15</code>, <code>16</code>, <code>17</code>, and <code>18</code>. <code>19</code> is rolling out and is accepted only in regions where it is enabled; requesting it elsewhere returns an error.</td>
+</tr>
+<tr>
+<td><code>project.platform_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The cloud platform identifier. Currently, only AWS is supported, for which the identifier is <code>aws</code>.</td>
+</tr>
+<tr>
+<td><code>project.provisioner</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Compute provisioner. <code>k8s-neonvm</code> (default) supports Autoscaling; <code>k8s-pod</code> is fixed-size compute. Also <code>docker</code> and <code>serverless-platform</code>.</td>
+</tr>
+<tr>
+<td><code>project.proxy_host</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The proxy host for the project. This value combines the <code>region_id</code>, the <code>platform_id</code>, and the Neon domain (<code>neon.tech</code>).</td>
+</tr>
+<tr>
+<td><code>project.quota_reset_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Deprecated. Use the <code>consumption_period_end</code> field instead. A timestamp indicating when the project quota resets.</td>
+</tr>
+<tr>
+<td><code>project.region_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Cloud region where the resource's Postgres compute and storage reside (for example, <code>aws-us-east-1</code>). Valid values are returned by <code>GET /regions</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Project-level settings, for example <code>quota</code>, <code>allowed_ips</code>, <code>enable_logical_replication</code>, and <code>maintenance_window</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the compute endpoint. If the list is empty or not set, all IP addresses are allowed. If <code>protected_branches_only</code> is true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.ips</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of IP addresses that are allowed to connect to the endpoint.</td>
+</tr>
+<tr>
+<td><code>project.settings.allowed_ips.protected_branches_only</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the list will be applied only to protected branches.</td>
+</tr>
+<tr>
+<td><code>project.settings.audit_log_level</code></td>
+<td><code>enum: base, extended, full</code></td>
+<td>No</td>
+<td>Audit logging level, set only on HIPAA-enabled organizations (absent otherwise). Values: <code>base</code>, <code>extended</code>, <code>full</code>; HIPAA defaults to <code>extended</code>. Cannot be lowered back to <code>base</code> once <code>extended</code> or <code>full</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_public_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections from the public internet are disallowed. This supersedes the AllowedIPs list. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.block_vpc_connections</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set, connections using VPC endpoints are disallowed. This parameter is under active development and its semantics may change in the future.</td>
+</tr>
+<tr>
+<td><code>project.settings.enable_logical_replication</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Sets <code>wal_level</code>=logical for all compute endpoints in this project. All active endpoints will be suspended. Once enabled, logical replication cannot be disabled.</td>
+</tr>
+<tr>
+<td><code>project.settings.hipaa</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Enables HIPAA compliance mode for the project, including audit logging.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A maintenance window is a time period during which Neon may perform maintenance on the project's infrastructure. During this time, the project's compute endpoints may be unavailable and existing connections can be interrupted.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.end_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>End time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.start_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Start time of the maintenance window, in the format of &quot;HH:MM&quot;. Uses UTC.</td>
+</tr>
+<tr>
+<td><code>project.settings.maintenance_window.weekdays</code></td>
+<td><code>array of integer</code></td>
+<td>Yes</td>
+<td>A list of weekdays when the maintenance window is active. Encoded as ints, where 1 - Monday, and 7 - Sunday.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The shared libraries to preload into the project's compute instances.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.enabled_libraries</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names of shared preload libraries to enable for the project.</td>
+</tr>
+<tr>
+<td><code>project.settings.preload_libraries.use_defaults</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When true, the project's preload libraries include the platform default set in addition to any libraries listed in <code>enabled_libraries</code>.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Per-project consumption quotas. If a quota is exceeded, all active computes are automatically suspended and cannot be started via API calls or incoming connections. The exception is <code>logical_size_bytes</code>, which is enforced per branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size<code>Postgres setting. Quotas are enforced using per-project consumption metrics with the same names. These metrics reset at the start of each billing period.</code>logical_size_bytes`` is also an exception, it reflects the total data stored in a branch and does not reset. A zero or empty quota value means “unlimited.”</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.active_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of wall-clock time allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.compute_time_seconds</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total amount of CPU seconds allowed to be spent by the project's compute endpoints.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.data_transfer_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data transferred from all of a project's branches using the proxy.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.logical_size_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Limit on the logical size of every project's branch. If a branch exceeds its <code>logical_size_bytes</code> quota, computes can still be started, but write operations will fail, allowing data to be deleted to free up space. Computes on other branches are not affected. Setting <code>logical_size_bytes</code> overrides any lower value set by the <code>neon.</code>max_cluster_size`` Postgres setting.</td>
+</tr>
+<tr>
+<td><code>project.settings.quota.written_data_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Total amount of data written to all of a project's branches.</td>
+</tr>
+<tr>
+<td><code>project.store_passwords</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Whether or not passwords are stored for roles in the Neon project. Storing passwords facilitates access to Neon features that require authorization.</td>
+</tr>
+<tr>
+<td><code>project.synthetic_storage_size</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The current space occupied by the project in Postgres storage, in bytes. Synthetic Postgres storage size combines the logical data size and Write-Ahead Log (WAL) size for all branches in a project.</td>
+</tr>
+<tr>
+<td><code>project.updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>A timestamp indicating when the project was last updated</td>
+</tr>
+<tr>
+<td><code>project.written_data_bytes</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Bytes. Amount of WAL that travelled through Postgres storage for given project across all branches. The value has some lag. The value is reset at the beginning of each billing period.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;project&quot;: {
+    &quot;active_time_seconds&quot;: 100,
+    &quot;branch_logical_size_limit&quot;: 0,
+    &quot;branch_logical_size_limit_bytes&quot;: 10500,
+    &quot;compute_time_seconds&quot;: 100,
+    &quot;consumption_period_end&quot;: &quot;2023-03-01T00:00:00Z&quot;,
+    &quot;consumption_period_start&quot;: &quot;2023-02-01T00:00:00Z&quot;,
+    &quot;cpu_used_sec&quot;: 23004200,
+    &quot;created_at&quot;: &quot;2022-11-30T18:41:29Z&quot;,
+    &quot;creation_source&quot;: &quot;console&quot;,
+    &quot;data_storage_bytes_hour&quot;: 1040,
+    &quot;data_transfer_bytes&quot;: 1000000,
+    &quot;history_retention_seconds&quot;: 604800,
+    &quot;id&quot;: &quot;bold-cloud-468218&quot;,
+    &quot;name&quot;: &quot;bold-cloud-468218&quot;,
+    &quot;owner_id&quot;: &quot;1232111&quot;,
+    &quot;pg_version&quot;: 15,
+    &quot;platform_id&quot;: &quot;aws&quot;,
+    &quot;provisioner&quot;: &quot;k8s-pod&quot;,
+    &quot;proxy_host&quot;: &quot;us-east-2.aws.neon.tech&quot;,
+    &quot;region_id&quot;: &quot;aws-us-east-2&quot;,
+    &quot;store_passwords&quot;: true,
+    &quot;updated_at&quot;: &quot;2022-11-30T18:41:29Z&quot;,
+    &quot;written_data_bytes&quot;: 100800
+  }
+}
+</code></pre>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-9">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="put-projectsproject_idtransfer_requestsrequest_id" class="operation" data-method="put"><code>PUT</code> /projects/{project_id}/transfer_requests/{request_id}</h3>
+<p>Operation ID: <code>acceptProjectTransferRequest</code>.</p>
+<p>Authentication: bearer token (<code>BearerAuth</code>) or API key in the cookie (<code>CookieAuth</code>) or API key in the cookie (<code>TokenCookieAuth</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project ID |
+| <code>request_id</code> | <code>path</code> | <code>string</code> | Yes | The Neon project transfer request ID |</p>
+<h4 id="request-body-4">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>org_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The Neon organization ID to transfer the project to. If not provided, the project will be transferred to the current user or organization account.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-10">Responses</h4>
+<h5 id="204-project-transfer-request-accepted-successfully" class="status" data-status="2xx">204: Project transfer request accepted successfully</h5>
+<h5 id="406-account-doesn39t-satisfy-the-plan-requirements-to-own-the-project" class="status" data-status="4xx">406: Account doesn't satisfy the plan requirements to own the project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reasons</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>List of reasons why the target account's plan cannot satisfy the transfer requirements. Each item contains a <code>code</code> identifying the constraint and a <code>message</code> with a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>reasons[].code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A short code identifying the reason</td>
+</tr>
+<tr>
+<td><code>reasons[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Description of why the plan is not satisfied</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-general-error-the-request-may-or-may-not-be-safe-to-retry-depending-on-the-http-method-response-status-code-and-whether-a-response-was-received---if-no-response-is-returned-from-the-api-a-network-error-or-timeout-likely-occurred---in-some-cases-the-request-may-have-reached-the-server-and-been-successfully-processed-but-the-response-failed-to-reach-the-client-as-a-result-retrying-non-idempotent-requests-can-lead-to-unintended-results-the-following-http-methods-are-considered-non-idempotent-post-patch-delete-and-put-retrying-these-methods-is-generally-not-safe-the-following-methods-are-considered-idempotent-get-head-and-options-retrying-these-methods-is-safe-in-the-event-of-a-network-error-or-timeout-any-request-that-returns-a-503-service-unavailable-response-is-always-safe-to-retry-any-request-that-returns-a-423-locked-response-is-safe-to-retry-423-locked-indicates-that-the-resource-is-temporarily-locked-for-example-due-to-another-operation-in-progress-10">default: General Error. The request may or may not be safe to retry, depending on the HTTP method, response status code, and whether a response was received. - If no response is returned from the API, a network error or timeout likely occurred. - In some cases, the request may have reached the server and been successfully processed, but the response failed to reach the client. As a result, retrying non-idempotent requests can lead to unintended results. The following HTTP methods are considered non-idempotent: <code>POST</code>, <code>PATCH</code>, <code>DELETE</code>, and <code>PUT</code>. Retrying these methods is generally <strong>not safe</strong>. The following methods are considered idempotent: <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code>. Retrying these methods is <strong>safe</strong> in the event of a network error or timeout. Any request that returns a <code>503 Service Unavailable</code> response is always safe to retry. Any request that returns a <code>423 Locked</code> response is safe to retry. <code>423 Locked</code> indicates that the resource is temporarily locked, for example, due to another operation in progress.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Machine-readable code classifying the error type. See <code>message</code> for a human-readable explanation.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the request, useful for debugging. You can set this value manually by including an <code>X-Request-ID</code> header in the request. If not provided, the value will be generated automatically.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "project_member": {
+      "PROJECT_MEMBER00": {
+        "effective_project_permission": "s6e",
+        "email": "s6f",
+        "explicit_project_permission": "s70",
+        "grant_source": "s71",
+        "id": "PROJECT_MEMBER00",
+        "member_id": "MEMBER01",
+        "name": "s74",
+        "org_default_project_permission": "s75",
+        "org_role": "s76",
+        "project_role": "s77",
+        "user_id": "USER01"
+      },
+      "PROJECT_MEMBER01": {
+        "effective_project_permission": "sdc",
+        "email": "sdd",
+        "explicit_project_permission": "sde",
+        "grant_source": "sdf",
+        "id": "PROJECT_MEMBER01",
+        "member_id": "MEMBER01",
+        "name": "se2",
+        "org_default_project_permission": "se3",
+        "org_role": "se4",
+        "project_role": "se5",
+        "user_id": "USER01"
+      },
+      "PROJECT_MEMBER02": {
+        "effective_project_permission": "s14a",
+        "email": "s14b",
+        "explicit_project_permission": "s14c",
+        "grant_source": "s14d",
+        "id": "PROJECT_MEMBER02",
+        "member_id": "MEMBER01",
+        "name": "s150",
+        "org_default_project_permission": "s151",
+        "org_role": "s152",
+        "project_role": "s153",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "project_member": {
+      "project_member_ref01": {
+        "effective_project_permission": "s1b8",
+        "email": "s1b9",
+        "explicit_project_permission": "s1ba",
+        "grant_source": "s1bb",
+        "member_id": "MEMBER01",
+        "name": "s1be",
+        "org_default_project_permission": "s1bf",
+        "org_role": "s1c0",
+        "project_role": "s1c1",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

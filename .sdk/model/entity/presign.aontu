@@ -1,0 +1,133 @@
+# Entity: presign
+
+main: kit: entity: presign: {
+
+  alias: field: {}
+
+  fields: {
+    content_type: {
+      h: "Content Type"
+      n: "content_type"
+      r: false
+      sh: "The `Content-Type` to bind into the signed request."
+      t: "`$STRING`"
+    }
+    expires_in_seconds: {
+      fo: "int64"
+      h: "Expires In Seconds"
+      n: "expires_in_seconds"
+      r: false
+      sh: "How long the presigned URL stays valid, in seconds."
+      t: "`$INTEGER`"
+    }
+    operation: {
+      h: "Operation"
+      n: "operation"
+      r: true
+      sh: "The transfer direction."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "presign"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/presign"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "bucket_id"
+                or: "bucket_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "object_key"
+                or: "object_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/presign"
+          q: {
+            exist: [
+              "branch_id"
+              "bucket_id"
+              "object_key"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              bucket_name: "bucket_id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "buckets"
+            }
+            {
+              var: "bucket_id"
+            }
+            {
+              lit: "objects"
+            }
+            {
+              var: "object_key"
+            }
+            {
+              lit: "presign"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.headers`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch") path("$.main.kit.entity.bucket")]
+  ]
+
+}

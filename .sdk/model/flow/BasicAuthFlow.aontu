@@ -1,0 +1,55 @@
+# BasicAuthFlow
+
+main: kit: flow: BasicAuthFlow:
+{
+  entity: "auth",
+  kind: "basic",
+  name: "BasicAuthFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_ref01"
+      }
+
+      m: {
+        branch_id: "branch01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "auth_ref01",
+        srcdatavar: "auth_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-auth_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "auth_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "auth01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicAuthFlow"
+}

@@ -1,0 +1,22 @@
+# BasicProjectRecoverFlow
+
+main: kit: flow: BasicProjectRecoverFlow:
+{
+  entity: "project_recover",
+  kind: "basic",
+  name: "BasicProjectRecoverFlow",
+  step: [
+    {
+      i: {
+        ref: "project_recover_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProjectRecoverFlow"
+}

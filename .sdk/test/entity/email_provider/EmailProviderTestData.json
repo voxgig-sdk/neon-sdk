@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "email_provider": {
+      "EMAIL_PROVIDER00": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "EMAIL_PROVIDER00"
+      },
+      "EMAIL_PROVIDER01": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "EMAIL_PROVIDER01"
+      },
+      "EMAIL_PROVIDER02": {
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "EMAIL_PROVIDER02"
+      }
+    }
+  },
+  "new": {
+    "email_provider": {
+      "email_provider_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/auth/email_provider": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

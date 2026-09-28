@@ -1,0 +1,56 @@
+# BasicMemberFlow
+
+main: kit: flow: BasicMemberFlow:
+{
+  entity: "member",
+  kind: "basic",
+  name: "BasicMemberFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "member_ref01",
+        srcdatavar: "member_ref01_data",
+        suffix: "_up0",
+        textfield: "joined_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-member_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "member_ref01",
+        srcdatavar: "member_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "member01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-member_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMemberFlow"
+}

@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "neon_auth_create_new_user": {
+      "NEON_AUTH_CREATE_NEW_USER00": {
+        "auth_provider": "s28",
+        "email": "s29",
+        "name": "s2a",
+        "project_id": "PROJECT01",
+        "branch_id": "BRANCH01",
+        "id": "NEON_AUTH_CREATE_NEW_USER00"
+      },
+      "NEON_AUTH_CREATE_NEW_USER01": {
+        "auth_provider": "s50",
+        "email": "s51",
+        "name": "s52",
+        "project_id": "PROJECT01",
+        "branch_id": "BRANCH01",
+        "id": "NEON_AUTH_CREATE_NEW_USER01"
+      },
+      "NEON_AUTH_CREATE_NEW_USER02": {
+        "auth_provider": "s78",
+        "email": "s79",
+        "name": "s7a",
+        "project_id": "PROJECT01",
+        "branch_id": "BRANCH01",
+        "id": "NEON_AUTH_CREATE_NEW_USER02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_create_new_user": {
+      "neon_auth_create_new_user_ref01": {
+        "auth_provider": "sa0",
+        "email": "sa1",
+        "name": "sa2",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/auth/users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/auth/user": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

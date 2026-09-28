@@ -1,0 +1,18 @@
+# BasicNeonAuthCreateNewUserFlow
+
+main: kit: flow: BasicNeonAuthCreateNewUserFlow:
+{
+  entity: "neon_auth_create_new_user",
+  kind: "basic",
+  name: "BasicNeonAuthCreateNewUserFlow",
+  step: [
+    {
+      i: {
+        ref: "neon_auth_create_new_user_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicNeonAuthCreateNewUserFlow"
+}

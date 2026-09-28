@@ -1,0 +1,113 @@
+# Entity: connection_uri
+
+main: kit: entity: connection_uri: {
+
+  alias: field: {}
+
+  fields: {
+    uri: {
+      h: "Uri"
+      n: "uri"
+      r: true
+      sh: "The connection URI."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "connection_uri"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/connection_uri"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "branch_id"
+                or: "branch_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "database_name"
+                or: "database_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "endpoint_id"
+                or: "endpoint_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pooled"
+                or: "pooled"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "role_name"
+                or: "role_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/connection_uri"
+          q: {
+            exist: [
+              "branch_id"
+              "database_name"
+              "endpoint_id"
+              "pooled"
+              "project_id"
+              "role_name"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "connection_uri"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

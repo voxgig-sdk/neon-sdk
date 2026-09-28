@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "update_neon_auth_user_role": {
+      "UPDATE_NEON_AUTH_USER_ROLE00": {
+        "id": "UPDATE_NEON_AUTH_USER_ROLE00",
+        "roles": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "user_id": "USER01"
+      },
+      "UPDATE_NEON_AUTH_USER_ROLE01": {
+        "id": "UPDATE_NEON_AUTH_USER_ROLE01",
+        "roles": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "user_id": "USER01"
+      },
+      "UPDATE_NEON_AUTH_USER_ROLE02": {
+        "id": "UPDATE_NEON_AUTH_USER_ROLE02",
+        "roles": [],
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "update_neon_auth_user_role": {
+      "update_neon_auth_user_role_ref01": {
+        "roles": []
+      }
+    }
+  },
+  "requests": {
+    "PUT /projects/{project_id}/branches/{branch_id}/auth/users/{auth_user_id}/role": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+# Entity: anonymized_branch_status
+
+main: kit: entity: anonymized_branch_status: {
+
+  alias: field: {}
+
+  fields: {
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      sh: "Timestamp indicating when the latest anonymization attempt completed."
+      t: "`$STRING`"
+    }
+    masked_columns: {
+      h: "Masked Columns"
+      n: "masked_columns"
+      r: false
+      sh: "Number of columns that had masking rules applied during the attempt."
+      t: "`$INTEGER`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "Timestamp indicating when the latest anonymization attempt started."
+      t: "`$STRING`"
+    }
+    triggered_by: {
+      fo: "uuid"
+      h: "Triggered By"
+      n: "triggered_by"
+      r: false
+      sh: "UUID of the user who triggered the latest anonymization attempt."
+      t: "`$STRING`"
+    }
+    triggered_by_username: {
+      h: "Triggered By Username"
+      n: "triggered_by_username"
+      r: false
+      sh: "Username of the user who triggered the latest anonymization attempt."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "anonymized_branch_status"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/anonymized_status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/anonymized_status"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "anonymized_status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.last_run`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

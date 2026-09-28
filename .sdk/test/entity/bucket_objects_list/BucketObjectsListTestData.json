@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "bucket_objects_list": {
+      "BUCKET_OBJECTS_LIST00": {
+        "etag": "s28",
+        "key": "s29",
+        "last_modified": "s2a",
+        "size": 43,
+        "branch_id": "BRANCH01",
+        "bucket_name": "BUCKET_NAME01",
+        "project_id": "PROJECT01"
+      },
+      "BUCKET_OBJECTS_LIST01": {
+        "etag": "s50",
+        "key": "s51",
+        "last_modified": "s52",
+        "size": 83,
+        "branch_id": "BRANCH01",
+        "bucket_name": "BUCKET_NAME01",
+        "project_id": "PROJECT01"
+      },
+      "BUCKET_OBJECTS_LIST02": {
+        "etag": "s78",
+        "key": "s79",
+        "last_modified": "s7a",
+        "size": 123,
+        "branch_id": "BRANCH01",
+        "bucket_name": "BUCKET_NAME01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "bucket_objects_list": {
+      "bucket_objects_list_ref01": {
+        "etag": "sa0",
+        "key": "sa1",
+        "last_modified": "sa2",
+        "size": 163
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

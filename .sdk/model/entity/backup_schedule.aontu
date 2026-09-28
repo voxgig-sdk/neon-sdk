@@ -1,0 +1,113 @@
+# Entity: backup_schedule
+
+main: kit: entity: backup_schedule: {
+
+  alias: field: {}
+
+  fields: {
+    day: {
+      h: "Day"
+      n: "day"
+      r: false
+      sh: "The day of the week or month to take the snapshot (if applicable)."
+      t: "`$INTEGER`"
+    }
+    frequency: {
+      h: "Frequency"
+      n: "frequency"
+      r: true
+      sh: "How often to take snapshots."
+      t: "`$STRING`"
+    }
+    hour: {
+      h: "Hour"
+      n: "hour"
+      r: false
+      sh: "The hour of the day to take the snapshot (if applicable)."
+      t: "`$INTEGER`"
+    }
+    month: {
+      h: "Month"
+      n: "month"
+      r: false
+      sh: "The month of the year to take the snapshot (if applicable)."
+      t: "`$INTEGER`"
+    }
+    retention_seconds: {
+      h: "Retention Seconds"
+      n: "retention_seconds"
+      r: false
+      sh: "How long to keep a scheduled snapshot (in seconds) before it's automatically deleted."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "backup_schedule"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/backup_schedule"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/backup_schedule"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "backup_schedule"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.schedule`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

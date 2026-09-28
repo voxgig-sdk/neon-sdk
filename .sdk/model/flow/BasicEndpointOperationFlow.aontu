@@ -1,0 +1,23 @@
+# BasicEndpointOperationFlow
+
+main: kit: flow: BasicEndpointOperationFlow:
+{
+  entity: "endpoint_operation",
+  kind: "basic",
+  name: "BasicEndpointOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "endpoint_operation_ref01"
+      }
+
+      m: {
+        endpoint_id: "endpoint01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicEndpointOperationFlow"
+}

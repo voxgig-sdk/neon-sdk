@@ -1,0 +1,94 @@
+{
+  "existing": {
+    "operation": {
+      "OPERATION00": {
+        "action": "s96",
+        "branch_id": "BRANCH01",
+        "created_at": "s98",
+        "endpoint_id": "ENDPOINT01",
+        "error": "s9a",
+        "failures_count": 155,
+        "id": "OPERATION00",
+        "name": "s9d",
+        "operations": [],
+        "pagination": {},
+        "project_id": "PROJECT01",
+        "retry_at": "sa1",
+        "status": "sa2",
+        "total_duration_ms": 163,
+        "updated_at": "sa4"
+      },
+      "OPERATION01": {
+        "action": "s12c",
+        "branch_id": "BRANCH01",
+        "created_at": "s12e",
+        "endpoint_id": "ENDPOINT01",
+        "error": "s130",
+        "failures_count": 305,
+        "id": "OPERATION01",
+        "name": "s133",
+        "operations": [],
+        "pagination": {},
+        "project_id": "PROJECT01",
+        "retry_at": "s137",
+        "status": "s138",
+        "total_duration_ms": 313,
+        "updated_at": "s13a"
+      },
+      "OPERATION02": {
+        "action": "s1c2",
+        "branch_id": "BRANCH01",
+        "created_at": "s1c4",
+        "endpoint_id": "ENDPOINT01",
+        "error": "s1c6",
+        "failures_count": 455,
+        "id": "OPERATION02",
+        "name": "s1c9",
+        "operations": [],
+        "pagination": {},
+        "project_id": "PROJECT01",
+        "retry_at": "s1cd",
+        "status": "s1ce",
+        "total_duration_ms": 463,
+        "updated_at": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "operation": {
+      "operation_ref01": {
+        "action": "s258",
+        "branch_id": "BRANCH01",
+        "created_at": "s25a",
+        "endpoint_id": "ENDPOINT01",
+        "error": "s25c",
+        "failures_count": 605,
+        "name": "s25f",
+        "operations": [],
+        "pagination": {},
+        "project_id": "PROJECT01",
+        "retry_at": "s263",
+        "status": "s264",
+        "total_duration_ms": 613,
+        "updated_at": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/finalize_restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/operations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/operations/{operation_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

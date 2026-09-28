@@ -1,0 +1,147 @@
+# Entity: branch_schema_compare
+
+main: kit: entity: branch_schema_compare: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "branch_schema_compare"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/compare_schema"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "base_branch_id"
+                or: "base_branch_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "base_lsn"
+                or: "base_lsn"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-11-30T20:09:48Z"
+                k: "query"
+                n: "base_timestamp"
+                or: "base_timestamp"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "db_name"
+                or: "db_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "lsn"
+                or: "lsn"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-11-30T20:09:48Z"
+                k: "query"
+                n: "timestamp"
+                or: "timestamp"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/compare_schema"
+          q: {
+            "$action": "compare_schema"
+            exist: [
+              "base_branch_id"
+              "base_lsn"
+              "base_timestamp"
+              "db_name"
+              "id"
+              "lsn"
+              "project_id"
+              "timestamp"
+            ]
+          }
+          r: {
+            param: {
+              branch_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "compare_schema"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

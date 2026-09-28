@@ -1,0 +1,32 @@
+# BasicEmailServerFlow
+
+main: kit: flow: BasicEmailServerFlow:
+{
+  entity: "email_server",
+  kind: "basic",
+  name: "BasicEmailServerFlow",
+  step: [
+    {
+      i: {
+        ref: "email_server_ref01",
+        srcdatavar: "email_server_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "email_server01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-email_server_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEmailServerFlow"
+}

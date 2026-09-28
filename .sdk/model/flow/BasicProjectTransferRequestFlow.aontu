@@ -1,0 +1,22 @@
+# BasicProjectTransferRequestFlow
+
+main: kit: flow: BasicProjectTransferRequestFlow:
+{
+  entity: "project_transfer_request",
+  kind: "basic",
+  name: "BasicProjectTransferRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "project_transfer_request_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProjectTransferRequestFlow"
+}

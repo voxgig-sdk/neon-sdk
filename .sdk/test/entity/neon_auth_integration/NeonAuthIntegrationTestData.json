@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "neon_auth_integration": {
+      "NEON_AUTH_INTEGRATION00": {
+        "auth_provider": "s64",
+        "auth_provider_project_id": "AUTH_PROVIDER_PROJECT01",
+        "base_url": "s66",
+        "branch_id": "BRANCH01",
+        "created_at": "s68",
+        "db_name": "s69",
+        "jwks_url": "s6a",
+        "name": "s6b",
+        "owned_by": "s6c",
+        "transfer_status": "s6d",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_INTEGRATION00"
+      },
+      "NEON_AUTH_INTEGRATION01": {
+        "auth_provider": "sc8",
+        "auth_provider_project_id": "AUTH_PROVIDER_PROJECT01",
+        "base_url": "sca",
+        "branch_id": "BRANCH01",
+        "created_at": "scc",
+        "db_name": "scd",
+        "jwks_url": "sce",
+        "name": "scf",
+        "owned_by": "sd0",
+        "transfer_status": "sd1",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_INTEGRATION01"
+      },
+      "NEON_AUTH_INTEGRATION02": {
+        "auth_provider": "s12c",
+        "auth_provider_project_id": "AUTH_PROVIDER_PROJECT01",
+        "base_url": "s12e",
+        "branch_id": "BRANCH01",
+        "created_at": "s130",
+        "db_name": "s131",
+        "jwks_url": "s132",
+        "name": "s133",
+        "owned_by": "s134",
+        "transfer_status": "s135",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_INTEGRATION02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_integration": {
+      "neon_auth_integration_ref01": {
+        "auth_provider": "s190",
+        "auth_provider_project_id": "AUTH_PROVIDER_PROJECT01",
+        "base_url": "s192",
+        "branch_id": "BRANCH01",
+        "created_at": "s194",
+        "db_name": "s195",
+        "jwks_url": "s196",
+        "name": "s197",
+        "owned_by": "s198",
+        "transfer_status": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/auth/integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}/auth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

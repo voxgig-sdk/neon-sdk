@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "masking_rule": {
+      "MASKING_RULE00": {
+        "column_name": "s46",
+        "database_name": "s47",
+        "masking_function": "s48",
+        "masking_rules": [],
+        "masking_value": "s4a",
+        "schema_name": "s4b",
+        "table_name": "s4c",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "MASKING_RULE00"
+      },
+      "MASKING_RULE01": {
+        "column_name": "s8c",
+        "database_name": "s8d",
+        "masking_function": "s8e",
+        "masking_rules": [],
+        "masking_value": "s90",
+        "schema_name": "s91",
+        "table_name": "s92",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "MASKING_RULE01"
+      },
+      "MASKING_RULE02": {
+        "column_name": "sd2",
+        "database_name": "sd3",
+        "masking_function": "sd4",
+        "masking_rules": [],
+        "masking_value": "sd6",
+        "schema_name": "sd7",
+        "table_name": "sd8",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "MASKING_RULE02"
+      }
+    }
+  },
+  "new": {
+    "masking_rule": {
+      "masking_rule_ref01": {
+        "column_name": "s118",
+        "database_name": "s119",
+        "masking_function": "s11a",
+        "masking_rules": [],
+        "masking_value": "s11c",
+        "schema_name": "s11d",
+        "table_name": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/masking_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/masking_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

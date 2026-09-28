@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "neon_auth_create_integration": {
+      "NEON_AUTH_CREATE_INTEGRATION00": {
+        "auth_provider": "s32",
+        "branch_id": "BRANCH01",
+        "database_name": "s34",
+        "project_id": "PROJECT01",
+        "role_name": "s36",
+        "id": "NEON_AUTH_CREATE_INTEGRATION00"
+      },
+      "NEON_AUTH_CREATE_INTEGRATION01": {
+        "auth_provider": "s64",
+        "branch_id": "BRANCH01",
+        "database_name": "s66",
+        "project_id": "PROJECT01",
+        "role_name": "s68",
+        "id": "NEON_AUTH_CREATE_INTEGRATION01"
+      },
+      "NEON_AUTH_CREATE_INTEGRATION02": {
+        "auth_provider": "s96",
+        "branch_id": "BRANCH01",
+        "database_name": "s98",
+        "project_id": "PROJECT01",
+        "role_name": "s9a",
+        "id": "NEON_AUTH_CREATE_INTEGRATION02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_create_integration": {
+      "neon_auth_create_integration_ref01": {
+        "auth_provider": "sc8",
+        "branch_id": "BRANCH01",
+        "database_name": "sca",
+        "project_id": "PROJECT01",
+        "role_name": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/auth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/auth/create": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/auth/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

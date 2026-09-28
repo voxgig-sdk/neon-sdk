@@ -1,0 +1,99 @@
+# Entity: custom_domain
+
+main: kit: entity: custom_domain: {
+
+  alias: field: {}
+
+  fields: {
+    domain: {
+      h: "Domain"
+      n: "domain"
+      r: true
+      sh: "The custom domain to register (for example `dashboard.acme.com`)."
+      t: "`$STRING`"
+    }
+    entity_id: {
+      h: "Entity Id"
+      n: "entity_id"
+      r: true
+      sh: "The target entity's identifier within the branch."
+      t: "`$STRING`"
+    }
+    entity_type: {
+      h: "Entity Type"
+      n: "entity_type"
+      r: true
+      sh: "The kind of branch entity to point the domain at."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "custom_domain"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /projects/{project_id}/branches/{branch_id}/custom-domains"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/projects/{project_id}/branches/{branch_id}/custom-domains"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "custom-domains"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

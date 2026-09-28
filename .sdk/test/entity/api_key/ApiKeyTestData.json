@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "api_key": {
+      "API_KEY00": {
+        "created_at": "s50",
+        "created_by": "s51",
+        "id": "API_KEY00",
+        "key": "s53",
+        "key_name": "s54",
+        "last_used_at": "s55",
+        "last_used_from_addr": "s56",
+        "name": "s57"
+      },
+      "API_KEY01": {
+        "created_at": "sa0",
+        "created_by": "sa1",
+        "id": "API_KEY01",
+        "key": "sa3",
+        "key_name": "sa4",
+        "last_used_at": "sa5",
+        "last_used_from_addr": "sa6",
+        "name": "sa7"
+      },
+      "API_KEY02": {
+        "created_at": "sf0",
+        "created_by": "sf1",
+        "id": "API_KEY02",
+        "key": "sf3",
+        "key_name": "sf4",
+        "last_used_at": "sf5",
+        "last_used_from_addr": "sf6",
+        "name": "sf7"
+      }
+    }
+  },
+  "new": {
+    "api_key": {
+      "api_key_ref01": {
+        "created_at": "s140",
+        "created_by": "s141",
+        "key": "s143",
+        "key_name": "s144",
+        "last_used_at": "s145",
+        "last_used_from_addr": "s146",
+        "name": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /api_keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api_keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api_keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

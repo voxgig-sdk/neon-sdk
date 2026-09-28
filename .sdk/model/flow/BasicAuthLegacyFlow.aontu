@@ -1,0 +1,35 @@
+# BasicAuthLegacyFlow
+
+main: kit: flow: BasicAuthLegacyFlow:
+{
+  entity: "auth_legacy",
+  kind: "basic",
+  name: "BasicAuthLegacyFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_legacy_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "auth_legacy_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "auth_legacy01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicAuthLegacyFlow"
+}

@@ -1,0 +1,33 @@
+# BasicBranchStorageFlow
+
+main: kit: flow: BasicBranchStorageFlow:
+{
+  entity: "branch_storage",
+  kind: "basic",
+  name: "BasicBranchStorageFlow",
+  step: [
+    {
+      i: {
+        ref: "branch_storage_ref01",
+        srcdatavar: "branch_storage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "branch_storage01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-branch_storage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBranchStorageFlow"
+}

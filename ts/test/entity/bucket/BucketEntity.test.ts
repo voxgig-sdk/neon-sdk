@@ -1,0 +1,192 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { NeonSDK, BaseFeature, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('BucketEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when NEON_TEST_LIVE=TRUE.
+  afterEach(liveDelay('NEON_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = NeonSDK.test()
+    const ent = testsdk.Bucket()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.NEON_TEST_LIVE
+    for (const op of ['create', 'list', 'load', 'remove']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'bucket.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"access_level":{"a":true,"h":"Access Level","n":"access_level","op":{"list":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Access level for the bucket.","t":"`$STRING`","key$":"access_level","index$":0},"created_at":{"a":true,"fo":"date-time","h":"Created At","n":"created_at","r":true,"sh":"When the bucket was created.","t":"`$STRING`","key$":"created_at","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":2},"name":{"a":true,"h":"Name","n":"name","r":true,"sh":"The bucket name.","t":"`$STRING`","key$":"name","index$":3}},"id":{"field":"id","name":"id"},"name":"bucket","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /projects/{project_id}/branches/{branch_id}/buckets","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"branch_id","or":"branch_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"POST","o":"/projects/{project_id}/branches/{branch_id}/buckets","q":{"exist":["branch_id","project_id"]},"r":{},"s":[{"lit":"projects"},{"var":"project_id"},{"lit":"branches"},{"var":"branch_id"},{"lit":"buckets"}],"t":{"req":"`reqdata`","res":"`body.bucket`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /projects/{project_id}/branches/{branch_id}/buckets","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"branch_id","or":"branch_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/projects/{project_id}/branches/{branch_id}/buckets","q":{"exist":["branch_id","project_id"]},"r":{},"s":[{"lit":"projects"},{"var":"project_id"},{"lit":"branches"},{"var":"branch_id"},{"lit":"buckets"}],"t":{"req":"`reqdata`","res":"`body.buckets`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/download","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"branch_id","or":"branch_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"bucket_id","or":"bucket_name","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"object_key","or":"object_key","r":true,"t":"`$STRING`","index$":2},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":3}]},"k":"http","m":"GET","o":"/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/download","q":{"exist":["branch_id","bucket_id","object_key","project_id"]},"r":{"param":{"bucket_name":"bucket_id"}},"s":[{"lit":"projects"},{"var":"project_id"},{"lit":"branches"},{"var":"branch_id"},{"lit":"buckets"},{"var":"bucket_id"},{"lit":"objects"},{"var":"object_key"},{"lit":"download"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"branch_id","or":"branch_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"bucket_id","or":"bucket_name","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"object_key","or":"object_key","r":true,"t":"`$STRING`","index$":2},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":3}]},"k":"http","m":"DELETE","o":"/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}","q":{"exist":["branch_id","bucket_id","object_key","project_id"]},"r":{"param":{"bucket_name":"bucket_id"}},"s":[{"lit":"projects"},{"var":"project_id"},{"lit":"branches"},{"var":"branch_id"},{"lit":"buckets"},{"var":"bucket_id"},{"lit":"objects"},{"var":"object_key"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects-by-prefix","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"branch_id","or":"branch_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"bucket_name","or":"bucket_name","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":2}],"query":[{"a":true,"k":"query","n":"prefix","or":"prefix","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects-by-prefix","q":{"$action":"objects_by_prefix","exist":["branch_id","bucket_name","prefix","project_id"]},"r":{},"s":[{"lit":"projects"},{"var":"project_id"},{"lit":"branches"},{"var":"branch_id"},{"lit":"buckets"},{"var":"bucket_name"},{"lit":"objects-by-prefix"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"branch_id","or":"branch_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"id","or":"bucket_name","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"DELETE","o":"/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}","q":{"exist":["branch_id","id","project_id"]},"r":{"param":{"bucket_name":"id"}},"s":[{"lit":"projects"},{"var":"project_id"},{"lit":"branches"},{"var":"branch_id"},{"lit":"buckets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"remove"}},"relations":{"ancestors":[["$.main.kit.entity.project","$.main.kit.entity.branch"],["$.main.kit.entity.project","$.main.kit.entity.branch"],["$.main.kit.entity.project","$.main.kit.entity.branch"]]},"key$":"bucket","name__orig":"bucket","Name":"Bucket","name_":"bucket","name-":"bucket","NAME":"BUCKET","index$":13}, {"active":true,"entity":"bucket","key$":"BasicBucketFlow","kind":"basic","name":"BasicBucketFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"bucket_ref01"},"m":{"branch_id":"branch01","bucket_id":"bucket01","project_id":"project01"},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{"branch_id":"branch01","project_id":"project01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"bucket_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"bucket_ref01","srcdatavar":"bucket_ref01_data","suffix":"_dt0"},"m":{"branch_id":"branch01","bucket_id":"bucket01","id":"bucket01","project_id":"project01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-bucket_ref01"}}],"index$":2},{"a":true,"d":{},"i":{"ref":"bucket_ref01","suffix":"_rm0"},"m":{"branch_id":"branch01","id":"bucket01","project_id":"project01"},"o":"remove","s":[],"v":[],"index$":3},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{"branch_id":"branch01","project_id":"project01"},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"bucket_ref01"}}],"index$":4}]}, 'Bucket', {"POST /projects/{project_id}/branches/{branch_id}/buckets":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name"],"properties":{"name":{"type":"string","minLength":1,"maxLength":255,"description":"The bucket name.","key$":"name"},"access_level":{"type":"string","enum":["private","public_read"],"default":"private","description":"Access level for the bucket. Defaults to `private`. Set to `public_read`\nto allow anonymous `GetObject`/`HeadObject` on objects in this bucket.\n","key$":"access_level"}},"x-ref":"#/components/schemas/BucketCreateRequest","index$":1}}}},"parameters":[{"name":"project_id","in":"path","description":"The Neon project ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":0},{"name":"branch_id","in":"path","description":"The Neon branch ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":1}]},"GET /projects/{project_id}/branches/{branch_id}/buckets":{"protocol":"http","parameters":[{"name":"project_id","in":"path","description":"The Neon project ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":0},{"name":"branch_id","in":"path","description":"The Neon branch ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":1}]},"GET /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/download":{"protocol":"http","parameters":[{"name":"project_id","in":"path","description":"The Neon project ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":0},{"name":"branch_id","in":"path","description":"The Neon branch ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":1},{"name":"bucket_name","in":"path","description":"The bucket name","required":true,"schema":{"type":"string","minLength":1,"maxLength":255},"index$":2},{"name":"object_key","in":"path","description":"The object key. Keys may contain `/`; the `/` characters of nested\nkeys must be percent-encoded (`%2F`) in the path segment.\n","required":true,"schema":{"type":"string","minLength":1,"maxLength":1024},"index$":3}]},"DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}":{"protocol":"http","parameters":[{"name":"project_id","in":"path","description":"The Neon project ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":0},{"name":"branch_id","in":"path","description":"The Neon branch ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":1},{"name":"bucket_name","in":"path","description":"The bucket name","required":true,"schema":{"type":"string","minLength":1,"maxLength":255},"index$":2},{"name":"object_key","in":"path","description":"The object key. Keys may contain `/`; the `/` characters of nested\nkeys must be percent-encoded (`%2F`) in the path segment.\n","required":true,"schema":{"type":"string","minLength":1,"maxLength":1024},"index$":3}]},"DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects-by-prefix":{"protocol":"http","parameters":[{"name":"project_id","in":"path","description":"The Neon project ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":0},{"name":"branch_id","in":"path","description":"The Neon branch ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":1},{"name":"bucket_name","in":"path","description":"The bucket name","required":true,"schema":{"type":"string","minLength":1,"maxLength":255},"index$":2},{"name":"prefix","in":"query","description":"The key prefix (folder) to delete. Must be non-empty and end with\n`/`. Every object on this branch whose key starts with this prefix\nis soft-deleted.\n","required":true,"schema":{"type":"string","minLength":1,"maxLength":1024},"index$":3}]},"DELETE /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}":{"protocol":"http","parameters":[{"name":"project_id","in":"path","description":"The Neon project ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":0},{"name":"branch_id","in":"path","description":"The Neon branch ID","required":true,"schema":{"type":"string","pattern":"^[a-z0-9-]{1,60}$"},"index$":1},{"name":"bucket_name","in":"path","description":"The bucket name","required":true,"schema":{"type":"string","minLength":1,"maxLength":255},"index$":2}]}})
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const bucket_ref01_ent = client.Bucket()
+    let bucket_ref01_data = setup.data.new.bucket['bucket_ref01']
+    bucket_ref01_data['branch_id'] = setup.idmap['branch01']
+    bucket_ref01_data['bucket_id'] = setup.idmap['bucket01']
+    bucket_ref01_data['project_id'] = setup.idmap['project01']
+
+    bucket_ref01_data = (await bucket_ref01_ent.create(bucket_ref01_data)).data()
+    assert(null != bucket_ref01_data.id)
+
+
+    // LIST
+    const bucket_ref01_match: any = {}
+    bucket_ref01_match['branch_id'] = setup.idmap['branch01']
+    bucket_ref01_match['project_id'] = setup.idmap['project01']
+
+    const bucket_ref01_list = (await bucket_ref01_ent.list(bucket_ref01_match)).map((e: any) => e.data())
+
+    assert(!isempty(select(bucket_ref01_list, { id: bucket_ref01_data.id })))
+
+
+    // LOAD
+    const bucket_ref01_match_dt0: any = {}
+    bucket_ref01_match_dt0.id = bucket_ref01_data.id
+    const bucket_ref01_data_dt0 = (await bucket_ref01_ent.load(bucket_ref01_match_dt0)).data()
+    assert(bucket_ref01_data_dt0.id === bucket_ref01_data.id)
+
+
+    // REMOVE
+    const bucket_ref01_match_rm0: any = { id: bucket_ref01_data.id }
+    await bucket_ref01_ent.remove(bucket_ref01_match_rm0)
+  
+
+    // LIST
+    const bucket_ref01_match_rt0: any = {}
+    bucket_ref01_match_rt0['branch_id'] = setup.idmap['branch01']
+    bucket_ref01_match_rt0['project_id'] = setup.idmap['project01']
+
+    const bucket_ref01_list_rt0 = (await bucket_ref01_ent.list(bucket_ref01_match_rt0)).map((e: any) => e.data())
+
+    assert(isempty(select(bucket_ref01_list_rt0, { id: bucket_ref01_data.id })))
+
+
+  })
+})
+
+
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/bucket/BucketTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = NeonSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['bucket01','bucket02','bucket03','project01','project02','project03','branch01','branch02','branch03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'NEON_TEST_BUCKET_ENTID': idmap,
+    'NEON_TEST_LIVE': 'FALSE',
+    'NEON_TEST_EXPLAIN': 'FALSE',
+    'NEON_APIKEY': '',
+  })
+
+  idmap = env['NEON_TEST_BUCKET_ENTID']
+
+  const live = 'TRUE' === env.NEON_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['NEON_TEST_BUCKET_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new NeonSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.NEON_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.NEON_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

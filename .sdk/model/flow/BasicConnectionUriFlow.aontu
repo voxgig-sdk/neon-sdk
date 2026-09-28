@@ -1,0 +1,32 @@
+# BasicConnectionUriFlow
+
+main: kit: flow: BasicConnectionUriFlow:
+{
+  entity: "connection_uri",
+  kind: "basic",
+  name: "BasicConnectionUriFlow",
+  step: [
+    {
+      i: {
+        ref: "connection_uri_ref01",
+        srcdatavar: "connection_uri_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "connection_uri01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-connection_uri_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConnectionUriFlow"
+}

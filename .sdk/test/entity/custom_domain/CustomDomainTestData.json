@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "custom_domain": {
+      "CUSTOM_DOMAIN00": {
+        "domain": "s1e",
+        "entity_id": "ENTITY01",
+        "entity_type": "s20",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "CUSTOM_DOMAIN00"
+      },
+      "CUSTOM_DOMAIN01": {
+        "domain": "s3c",
+        "entity_id": "ENTITY01",
+        "entity_type": "s3e",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "CUSTOM_DOMAIN01"
+      },
+      "CUSTOM_DOMAIN02": {
+        "domain": "s5a",
+        "entity_id": "ENTITY01",
+        "entity_type": "s5c",
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "CUSTOM_DOMAIN02"
+      }
+    }
+  },
+  "new": {
+    "custom_domain": {
+      "custom_domain_ref01": {
+        "domain": "s78",
+        "entity_id": "ENTITY01",
+        "entity_type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/custom-domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

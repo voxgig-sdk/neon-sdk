@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "branch_operation": {
+      "BRANCH_OPERATION00": {
+        "branch": {},
+        "id": "BRANCH_OPERATION00",
+        "operations": [],
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_OPERATION01": {
+        "branch": {},
+        "id": "BRANCH_OPERATION01",
+        "operations": [],
+        "project_id": "PROJECT01"
+      },
+      "BRANCH_OPERATION02": {
+        "branch": {},
+        "id": "BRANCH_OPERATION02",
+        "operations": [],
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "branch_operation": {
+      "branch_operation_ref01": {
+        "branch": {},
+        "operations": []
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches/{branch_id}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /projects/{project_id}/branches/{branch_id}/set_as_default": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

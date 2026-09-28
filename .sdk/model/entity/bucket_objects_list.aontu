@@ -1,0 +1,157 @@
+# Entity: bucket_objects_list
+
+main: kit: entity: bucket_objects_list: {
+
+  alias: field: {}
+
+  fields: {
+    etag: {
+      h: "Etag"
+      n: "etag"
+      r: true
+      sh: "The object's entity tag (content hash)."
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      sh: "The full object key."
+      t: "`$STRING`"
+    }
+    last_modified: {
+      fo: "date-time"
+      h: "Last Modified"
+      n: "last_modified"
+      r: true
+      sh: "The time the object was last modified."
+      t: "`$STRING`"
+    }
+    size: {
+      fo: "int64"
+      h: "Size"
+      n: "size"
+      r: true
+      sh: "The object size in bytes."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "bucket_objects_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "bucket_name"
+                or: "bucket_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "delimiter"
+                or: "delimiter"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1000
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "prefix"
+                or: "prefix"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects"
+          q: {
+            exist: [
+              "branch_id"
+              "bucket_name"
+              "cursor"
+              "delimiter"
+              "limit"
+              "prefix"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "buckets"
+            }
+            {
+              var: "bucket_name"
+            }
+            {
+              lit: "objects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch") path("$.main.kit.entity.bucket")]
+  ]
+
+}

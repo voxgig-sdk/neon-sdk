@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "neon_auth_allow_localhost": {
+      "NEON_AUTH_ALLOW_LOCALHOST00": {
+        "allow_localhost": true,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_ALLOW_LOCALHOST00"
+      },
+      "NEON_AUTH_ALLOW_LOCALHOST01": {
+        "allow_localhost": true,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_ALLOW_LOCALHOST01"
+      },
+      "NEON_AUTH_ALLOW_LOCALHOST02": {
+        "allow_localhost": true,
+        "branch_id": "BRANCH01",
+        "project_id": "PROJECT01",
+        "id": "NEON_AUTH_ALLOW_LOCALHOST02"
+      }
+    }
+  },
+  "new": {
+    "neon_auth_allow_localhost": {
+      "neon_auth_allow_localhost_ref01": {
+        "allow_localhost": true
+      }
+    }
+  },
+  "requests": {
+    "GET /projects/{project_id}/branches/{branch_id}/auth/allow_localhost": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}/auth/allow_localhost": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# BasicConsumptionFlow
+
+main: kit: flow: BasicConsumptionFlow:
+{
+  entity: "consumption",
+  kind: "basic",
+  name: "BasicConsumptionFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "consumption_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConsumptionFlow"
+}

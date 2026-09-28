@@ -1,0 +1,90 @@
+{
+  "existing": {
+    "organization": {
+      "ORGANIZATION00": {
+        "allow_hipaa_projects": true,
+        "created_at": "s65",
+        "handle": "s66",
+        "id": "ORGANIZATION00",
+        "label": "s68",
+        "managed_by": "s69",
+        "name": "s6a",
+        "plan": "s6b",
+        "require_mfa": true,
+        "updated_at": "s6d",
+        "region_id": "REGION01",
+        "vpc_endpoint_id": "VPC_ENDPOINT01"
+      },
+      "ORGANIZATION01": {
+        "allow_hipaa_projects": true,
+        "created_at": "sc9",
+        "handle": "sca",
+        "id": "ORGANIZATION01",
+        "label": "scc",
+        "managed_by": "scd",
+        "name": "sce",
+        "plan": "scf",
+        "require_mfa": true,
+        "updated_at": "sd1",
+        "region_id": "REGION01",
+        "vpc_endpoint_id": "VPC_ENDPOINT01"
+      },
+      "ORGANIZATION02": {
+        "allow_hipaa_projects": true,
+        "created_at": "s12d",
+        "handle": "s12e",
+        "id": "ORGANIZATION02",
+        "label": "s130",
+        "managed_by": "s131",
+        "name": "s132",
+        "plan": "s133",
+        "require_mfa": true,
+        "updated_at": "s135",
+        "region_id": "REGION01",
+        "vpc_endpoint_id": "VPC_ENDPOINT01"
+      }
+    }
+  },
+  "new": {
+    "organization": {
+      "organization_ref01": {
+        "allow_hipaa_projects": true,
+        "created_at": "s191",
+        "handle": "s192",
+        "label": "s194",
+        "managed_by": "s195",
+        "name": "s196",
+        "plan": "s197",
+        "require_mfa": true,
+        "updated_at": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /organizations/{org_id}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /users/me/organizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /organizations/{org_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

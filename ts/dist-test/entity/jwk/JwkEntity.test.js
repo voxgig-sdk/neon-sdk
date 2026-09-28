@@ -1,0 +1,157 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const node_path_1 = __importDefault(require("node:path"));
+const Fs = __importStar(require("node:fs"));
+const node_test_1 = require("node:test");
+const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
+const __1 = require("../../..");
+const utility_1 = require("../../utility");
+(0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
+(0, node_test_1.describe)('JwkEntity', async () => {
+    // Per-test live pacing. Delay is read from sdk-test-control.json's
+    // `test.live.delayMs`; only sleeps when NEON_TEST_LIVE=TRUE.
+    (0, node_test_1.afterEach)((0, utility_1.liveDelay)('NEON_TEST_LIVE'));
+    (0, node_test_1.test)('instance', async () => {
+        const testsdk = __1.NeonSDK.test();
+        const ent = testsdk.Jwk();
+        (0, node_assert_1.default)(null != ent);
+    });
+    (0, node_test_1.test)('basic', async (t) => {
+        const live = 'TRUE' === process.env.NEON_TEST_LIVE;
+        for (const op of ['create', 'list', 'remove']) {
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'jwk.' + op, live))
+                return;
+        }
+        const setup = basicSetup();
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "branch_id": { "a": true, "h": "Branch Id", "n": "branch_id", "r": false, "sh": "The Neon branch ID.", "t": "`$STRING`", "key$": "branch_id", "index$": 0 }, "created_at": { "a": true, "fo": "date-time", "h": "Created At", "n": "created_at", "r": true, "sh": "The date and time when the JWKS was created", "t": "`$STRING`", "key$": "created_at", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": true, "sh": "The JWKS configuration's ID.", "t": "`$STRING`", "key$": "id", "index$": 2 }, "jwks_url": { "a": true, "h": "Jwks Url", "n": "jwks_url", "r": true, "sh": "URL of the provider's JWKS endpoint used to verify JWTs.", "t": "`$STRING`", "key$": "jwks_url", "index$": 3 }, "jwt_audience": { "a": true, "h": "Jwt Audience", "n": "jwt_audience", "r": false, "sh": "Expected `aud` claim in incoming JWTs.", "t": "`$STRING`", "key$": "jwt_audience", "index$": 4 }, "project_id": { "a": true, "h": "Project Id", "n": "project_id", "r": true, "sh": "The Neon project ID.", "t": "`$STRING`", "key$": "project_id", "index$": 5 }, "provider_name": { "a": true, "h": "Provider Name", "n": "provider_name", "r": true, "sh": "The name of the authentication provider (e.g., Clerk, Stytch, Auth0)", "t": "`$STRING`", "key$": "provider_name", "index$": 6 }, "role_names": { "a": true, "de": true, "h": "Role Names", "n": "role_names", "r": false, "sh": "Deprecated.", "t": "`$ARRAY`", "key$": "role_names", "index$": 7 }, "skip_role_creation": { "a": true, "h": "Skip Role Creation", "n": "skip_role_creation", "r": false, "sh": "Deprecated.", "t": "`$BOOLEAN`", "key$": "skip_role_creation", "index$": 8 }, "updated_at": { "a": true, "fo": "date-time", "h": "Updated At", "n": "updated_at", "r": true, "sh": "The date and time when the JWKS was last modified", "t": "`$STRING`", "key$": "updated_at", "index$": 9 } }, "id": { "field": "id", "name": "id" }, "name": "jwk", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "co": { "id": "POST /projects/{project_id}/jwks", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "project_id", "or": "project_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/projects/{project_id}/jwks", "q": { "exist": ["project_id"] }, "r": {}, "s": [{ "lit": "projects" }, { "var": "project_id" }, { "lit": "jwks" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" }, "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /projects/{project_id}/jwks", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "project_id", "or": "project_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/projects/{project_id}/jwks", "q": { "exist": ["project_id"] }, "r": {}, "s": [{ "lit": "projects" }, { "var": "project_id" }, { "lit": "jwks" }], "t": { "req": "`reqdata`", "res": "`body.jwks`" }, "index$": 0 }], "key$": "list" }, "remove": { "input": "data", "name": "remove", "points": [{ "a": true, "co": { "id": "DELETE /projects/{project_id}/jwks/{jwks_id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "jwks_id", "r": true, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "param", "n": "project_id", "or": "project_id", "r": true, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "DELETE", "o": "/projects/{project_id}/jwks/{jwks_id}", "q": { "exist": ["id", "project_id"] }, "r": { "param": { "jwks_id": "id" } }, "s": [{ "lit": "projects" }, { "var": "project_id" }, { "lit": "jwks" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "remove" } }, "relations": { "ancestors": [["$.main.kit.entity.project"]] }, "key$": "jwk", "name__orig": "jwk", "Name": "Jwk", "name_": "jwk", "name-": "jwk", "NAME": "JWK", "index$": 29 }, { "active": true, "entity": "jwk", "key$": "BasicJwkFlow", "kind": "basic", "name": "BasicJwkFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "jwk_ref01" }, "m": { "project_id": "project01" }, "o": "create", "s": [], "v": [], "index$": 0 }, { "a": true, "d": {}, "i": {}, "m": { "project_id": "project01" }, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "jwk_ref01" } }], "index$": 1 }, { "a": true, "d": {}, "i": { "ref": "jwk_ref01", "suffix": "_rm0" }, "m": { "id": "jwk01", "project_id": "project01" }, "o": "remove", "s": [], "v": [], "index$": 2 }, { "a": true, "d": {}, "i": { "suffix": "_rt0" }, "m": { "project_id": "project01" }, "o": "list", "s": [], "v": [{ "apply": "ItemNotExists", "def": { "ref": "jwk_ref01" } }], "index$": 3 }] }, 'Jwk', { "POST /projects/{project_id}/jwks": { "protocol": "http", "requestBody": { "required": true, "content": { "application/json": { "schema": { "description": "Add a new JWKS to a specific endpoint of a project", "type": "object", "required": ["jwks_url", "provider_name"], "properties": { "jwks_url": { "description": "URL of the provider's JWKS endpoint used to verify JWTs.", "type": "string", "key$": "jwks_url" }, "provider_name": { "description": "The name of the authentication provider (e.g., Clerk, Stytch, Auth0)", "type": "string", "key$": "provider_name" }, "branch_id": { "description": "The Neon branch ID. Returned as `id` from `GET /projects/{project_id}/branches`.", "type": "string", "pattern": "^[a-z0-9-]{1,60}$", "key$": "branch_id" }, "jwt_audience": { "description": "Expected `aud` claim in incoming JWTs. When set, tokens with a different audience are rejected; tokens with no audience are still accepted. Omit to skip audience validation.", "type": "string", "key$": "jwt_audience" }, "role_names": { "type": "array", "description": "Deprecated. The roles the JWKS should be mapped to. By default, the JWKS is mapped to the `authenticator`, `authenticated`, and `anonymous` roles.", "deprecated": true, "minItems": 0, "maxItems": 10, "items": { "type": "string" }, "key$": "role_names" }, "skip_role_creation": { "type": "boolean", "description": "Deprecated. Only used with Neon RLS. If true, role creation is skipped.", "default": false, "key$": "skip_role_creation" } }, "x-ref": "#/components/schemas/AddProjectJWKSRequest", "index$": 1 } } } }, "parameters": [{ "name": "project_id", "in": "path", "description": "The Neon project ID", "required": true, "schema": { "type": "string", "pattern": "^[a-z0-9-]{1,60}$" }, "index$": 0 }] }, "GET /projects/{project_id}/jwks": { "protocol": "http", "parameters": [{ "name": "project_id", "in": "path", "description": "The Neon project ID", "required": true, "schema": { "type": "string", "pattern": "^[a-z0-9-]{1,60}$" }, "index$": 0 }] }, "DELETE /projects/{project_id}/jwks/{jwks_id}": { "protocol": "http", "parameters": [{ "name": "project_id", "in": "path", "description": "The Neon project ID", "required": true, "schema": { "type": "string", "pattern": "^[a-z0-9-]{1,60}$" }, "index$": 0 }, { "name": "jwks_id", "in": "path", "description": "The JWKS ID", "required": true, "schema": { "type": "string" }, "index$": 1 }] } });
+        }
+        const client = setup.client;
+        const struct = setup.struct;
+        const isempty = struct.isempty;
+        const select = struct.select;
+        // CREATE
+        const jwk_ref01_ent = client.Jwk();
+        let jwk_ref01_data = setup.data.new.jwk['jwk_ref01'];
+        jwk_ref01_data['project_id'] = setup.idmap['project01'];
+        jwk_ref01_data = (await jwk_ref01_ent.create(jwk_ref01_data)).data();
+        (0, node_assert_1.default)(null != jwk_ref01_data.id);
+        // LIST
+        const jwk_ref01_match = {};
+        jwk_ref01_match['project_id'] = setup.idmap['project01'];
+        const jwk_ref01_list = (await jwk_ref01_ent.list(jwk_ref01_match)).map((e) => e.data());
+        (0, node_assert_1.default)(!isempty(select(jwk_ref01_list, { id: jwk_ref01_data.id })));
+        // REMOVE
+        const jwk_ref01_match_rm0 = { id: jwk_ref01_data.id };
+        await jwk_ref01_ent.remove(jwk_ref01_match_rm0);
+        // LIST
+        const jwk_ref01_match_rt0 = {};
+        jwk_ref01_match_rt0['project_id'] = setup.idmap['project01'];
+        const jwk_ref01_list_rt0 = (await jwk_ref01_ent.list(jwk_ref01_match_rt0)).map((e) => e.data());
+        (0, node_assert_1.default)(isempty(select(jwk_ref01_list_rt0, { id: jwk_ref01_data.id })));
+    });
+});
+function basicSetup(extra) {
+    // TODO: fix test def options
+    const options = {}; // null
+    // TODO: needs test utility to resolve path
+    const entityDataFile = node_path_1.default.resolve(__dirname, '../../../../.sdk/test/entity/jwk/JwkTestData.json');
+    // TODO: file ready util needed?
+    const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8');
+    // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+    const entityData = JSON.parse(entityDataSource);
+    options.entity = entityData.existing;
+    let client = __1.NeonSDK.test(options, extra);
+    const struct = client.utility().struct;
+    const merge = struct.merge;
+    const transform = struct.transform;
+    let idmap = transform(['jwk01', 'jwk02', 'jwk03', 'project01', 'project02', 'project03'], {
+        '`$PACK`': ['', {
+                '`$KEY`': '`$COPY`',
+                '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+            }]
+    });
+    const env = (0, utility_1.envOverride)({
+        'NEON_TEST_JWK_ENTID': idmap,
+        'NEON_TEST_LIVE': 'FALSE',
+        'NEON_TEST_EXPLAIN': 'FALSE',
+        'NEON_APIKEY': '',
+    });
+    idmap = env['NEON_TEST_JWK_ENTID'];
+    const live = 'TRUE' === env.NEON_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
+    if (live) {
+        const rawIds = process.env['NEON_TEST_JWK_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
+        client = new __1.NeonSDK(merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            (0, utility_1.liveClientOptions)(),
+            {
+                apikey: env.NEON_APIKEY,
+            },
+            // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+            // last entry is undefined, and basicSetup is normally called with no
+            // argument at all - so a bare 'extra' silently discarded the apikey
+            // and server values above and handed the SDK undefined. Harmless
+            // while there was nothing in that object; not harmless now.
+            extra || {},
+            { system: { fetch: transport.fetch } }
+        ]));
+    }
+    const setup = {
+        idmap,
+        env,
+        options,
+        client,
+        struct,
+        data: entityData,
+        explain: 'TRUE' === env.NEON_TEST_EXPLAIN,
+        live,
+        transport,
+        now: Date.now(),
+    };
+    return setup;
+}
+//# sourceMappingURL=JwkEntity.test.js.map

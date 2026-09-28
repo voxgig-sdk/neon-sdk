@@ -1,0 +1,151 @@
+# Entity: neon_auth_organization_config
+
+main: kit: entity: neon_auth_organization_config: {
+
+  alias: field: {}
+
+  fields: {
+    creator_role: {
+      h: "Creator Role"
+      n: "creator_role"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Role of the organization's creator."
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Whether the organization plugin is enabled."
+      t: "`$BOOLEAN`"
+    }
+    membership_limit: {
+      fo: "int32"
+      h: "Membership Limit"
+      n: "membership_limit"
+      op: {
+        update: {
+          req: false
+          type: "`$INTEGER`"
+        }
+      }
+      r: true
+      sh: "Maximum number of members per organization."
+      t: "`$INTEGER`"
+    }
+    organization_limit: {
+      fo: "int32"
+      h: "Organization Limit"
+      n: "organization_limit"
+      op: {
+        update: {
+          req: false
+          type: "`$INTEGER`"
+        }
+      }
+      r: true
+      sh: "Maximum organizations a user can belong to (created or joined)."
+      t: "`$INTEGER`"
+    }
+    send_invitation_email: {
+      h: "Send Invitation Email"
+      n: "send_invitation_email"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Whether to send invitation emails when inviting members to an organization."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "neon_auth_organization_config"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /projects/{project_id}/branches/{branch_id}/auth/plugins/organization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/projects/{project_id}/branches/{branch_id}/auth/plugins/organization"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "plugins"
+            }
+            {
+              lit: "organization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "branch": {
+      "BRANCH00": {
+        "annotation": {},
+        "annotations": {},
+        "branch": {},
+        "branches": [],
+        "id": "BRANCH00",
+        "pagination": {},
+        "project_id": "PROJECT01"
+      },
+      "BRANCH01": {
+        "annotation": {},
+        "annotations": {},
+        "branch": {},
+        "branches": [],
+        "id": "BRANCH01",
+        "pagination": {},
+        "project_id": "PROJECT01"
+      },
+      "BRANCH02": {
+        "annotation": {},
+        "annotations": {},
+        "branch": {},
+        "branches": [],
+        "id": "BRANCH02",
+        "pagination": {},
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "branch": {
+      "branch_ref01": {
+        "annotation": {},
+        "annotations": {},
+        "branch": {},
+        "branches": [],
+        "pagination": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/branches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/{branch_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /projects/{project_id}/branches/count": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /projects/{project_id}/branches/{branch_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /projects/{project_id}/branches/{branch_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

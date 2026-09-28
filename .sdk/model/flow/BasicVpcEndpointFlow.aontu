@@ -1,0 +1,50 @@
+# BasicVpcEndpointFlow
+
+main: kit: flow: BasicVpcEndpointFlow:
+{
+  entity: "vpc_endpoint",
+  kind: "basic",
+  name: "BasicVpcEndpointFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vpc_endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_endpoint_ref01",
+        srcdatavar: "vpc_endpoint_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vpc_endpoint01",
+        organization_id: "organization01",
+        region_id: "region01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_endpoint_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVpcEndpointFlow"
+}

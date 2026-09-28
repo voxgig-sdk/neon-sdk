@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "project_recover": {
+      "PROJECT_RECOVER00": {
+        "branches": [],
+        "id": "PROJECT_RECOVER00",
+        "project": {}
+      },
+      "PROJECT_RECOVER01": {
+        "branches": [],
+        "id": "PROJECT_RECOVER01",
+        "project": {}
+      },
+      "PROJECT_RECOVER02": {
+        "branches": [],
+        "id": "PROJECT_RECOVER02",
+        "project": {}
+      }
+    }
+  },
+  "new": {
+    "project_recover": {
+      "project_recover_ref01": {
+        "branches": [],
+        "project": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /projects/{project_id}/recover": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+# Entity: project_member
+
+main: kit: entity: project_member: {
+
+  alias: field: {}
+
+  fields: {
+    effective_project_permission: {
+      h: "Effective Project Permission"
+      n: "effective_project_permission"
+      r: false
+      sh: "The caller's effective permission for a project when per-project permissions are enabled."
+      t: "`$STRING`"
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "Email address of the user who has been granted access to the project."
+      t: "`$STRING`"
+    }
+    explicit_project_permission: {
+      h: "Explicit Project Permission"
+      n: "explicit_project_permission"
+      r: false
+      sh: "The caller's effective permission for a project when per-project permissions are enabled."
+      t: "`$STRING`"
+    }
+    grant_source: {
+      h: "Grant Source"
+      n: "grant_source"
+      r: false
+      sh: "How a member's project access is granted."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    member_id: {
+      fo: "uuid"
+      h: "Member Id"
+      n: "member_id"
+      r: true
+      sh: "The organization member ID."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The user's display name."
+      t: "`$STRING`"
+    }
+    org_default_project_permission: {
+      h: "Org Default Project Permission"
+      n: "org_default_project_permission"
+      r: false
+      sh: "The caller's effective permission for a project when per-project permissions are enabled."
+      t: "`$STRING`"
+    }
+    org_role: {
+      h: "Org Role"
+      n: "org_role"
+      r: true
+      sh: "Organization-level role used by project member role management."
+      t: "`$STRING`"
+    }
+    project_role: {
+      h: "Project Role"
+      n: "project_role"
+      r: false
+      sh: "Per-project role."
+      t: "`$STRING`"
+    }
+    user_id: {
+      fo: "uuid"
+      h: "User Id"
+      n: "user_id"
+      r: true
+      sh: "The user ID for the organization member."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "project_member"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /projects/{project_id}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/projects/{project_id}/members"
+          q: {
+            exist: [
+              "cursor"
+              "id"
+              "limit"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
