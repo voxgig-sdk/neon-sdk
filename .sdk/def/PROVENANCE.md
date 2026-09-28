@@ -6,7 +6,7 @@
 - **Retrieved:** 2026-09-28T20:35:54Z
 - **SHA-256:** `cc8478b185d61071e00ae8440d4192b17f5f9c9fe37802cb6e49fc7bb91b611d`
 - **Definition:** OpenAPI 3.0.3, `info.version` v2, 122 paths, 179 operations, 848 KB.
-- **Licence:** Proprietary (info.license).
+- **Licence:** Apache-2.0, inherited from the repository that carries it: Neon commits this definition to neondatabase/neon-pkgs as `packages/sdk/spec/neon-openapi.json`, and that repository is Apache-2.0 (checked at 1696ac3). The definition's own `info.license` says `Proprietary`; the repository's licence governs here.
 - **Changes:** none. This is the vendor's definition, byte for byte.
 
 ## Why this SDK exists
