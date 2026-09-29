@@ -1,6 +1,6 @@
 # Neon: the Voxgig SDK and the Hey API SDK compared
 
-Vergleich: Hey API. Compared with neondatabase/neon-pkgs packages/sdk (@neon/sdk 6.1.2, @hey-api/openapi-ts 0.98.2). Spec: neon.com/api_spec/release/v2.json, OAS 3.0.3, 122 paths / 179 ops, Apache-2.0 (inherited from neondatabase/neon-pkgs, over info.license Proprietary). Added 2026-09-28.
+Vergleich: Hey API. Compared with neondatabase/neon-pkgs packages/sdk (@neon/sdk 6.1.2, @hey-api/openapi-ts 0.98.2). Spec: neon.com/api_spec/release/v2.json, OAS 3.0.3, 122 paths / 179 ops, Apache-2.0 (inherited from neondatabase/neon-pkgs, over info.license Proprietary). Added 2026-09-28. Rebuilt 2026-09-29 on sdkgen 4.32.1 and apidef 8.22.0.
 
 This repository is on the admin **vergleich** list. It is built only to be compared, and it is not published.
 
@@ -8,15 +8,15 @@ This repository is on the admin **vergleich** list. It is built only to be compa
 
 | | Voxgig | Hey API |
 |---|---|---|
-| SDK | this repository, commit `d16e29e`: eight targets (go, go-cli, go-mcp, ts, py, rb, lua, php) | `@neon/sdk@6.1.2` (TypeScript) |
+| SDK | this repository, commit `32103a7`: eight targets (go, go-cli, go-mcp, ts, py, rb, lua, php) | `@neon/sdk@6.1.2` (TypeScript) |
 | Input | `neon-openapi.json`: OAS 3.0.3, `info.version` v2, 122 paths, 179 operations | the vendor's own generation; the note above names the definition version it came from |
 | Operations callable | 178 of 179 (1 modelled as `patch` but not generated) | 177 operation methods |
 | Entities | 75 | not applicable |
-| ts package | 3.95 MB, 544 files | 2.42 MB, 210 files |
+| ts package | 4.01 MB, 544 files | 2.42 MB, 210 files |
 | Runtime dependencies | 0 | 0 |
-| Generated tests | ts 476 pass / 0 fail; py 463 pass; rb 487 runs / 0 fail; lua 461 pass / 0 fail; php 487 tests, 0 fail; go, go-cli, go-mcp build, vet and test | not run: a published package |
+| Generated tests | ts 653 pass / 0 fail / 8 skipped; py 463 pass / 57 skipped; rb 487 runs / 0 fail; lua 461 pass / 0 fail; php 487 tests / 0 fail; go, go-cli, go-mcp build, vet and test | not run: a published package |
 | Determinism | a second generation on the same toolchain is byte-identical | not measured |
-| Scenario against a mock | 0 of 4 steps right, 2 returned wrong data, 2 request violations (static) | 4 of 4 steps right, 0 request violations (static) |
+| Scenario against a mock | 4 of 4 steps right, 0 returned wrong data, 0 request violations (static) | 4 of 4 steps right, 0 request violations (static) |
 
 ## Features
 
@@ -69,16 +69,16 @@ Voxgig's features are opt-in; these builds enable the standard set. The Hey API 
 
 Each SDK lists one resource, loads and removes the first item it listed, and creates one from the definition's own example or required fields, against a mock built from the same vendor definition. The mock is Prism: static mode answers with the definition's examples, and dynamic mode generates schema-valid data. Each SDK is credited with its better mode. Request violations are Prism's verdicts on what the SDK sent.
 
-- **Voxgig, static:** 0 of 4 steps right, 2 request violations.
-  - ⚠ `list`: 0 items where the vendor SDK read 2: the list is `body.projects`, and the model says `body`
-  - ✗ `load`: NeonSDK: load: request: 422: Unprocessable Entity
-  - ⚠ `create`: returned the `{ project, connection_uris, ... }` wrapper, not the project
-  - ✗ `remove`: NeonSDK: remove: request: 422: Unprocessable Entity
-- **Voxgig, dynamic:** 0 of 4 steps right, 2 request violations.
-  - ⚠ `list`: 0 items where the vendor SDK read 2: the list is `body.projects`, and the model says `body`
-  - ✗ `load`: NeonSDK: load: request: 422: Unprocessable Entity
-  - ⚠ `create`: returned the `{ project, connection_uris, ... }` wrapper, not the project
-  - ✗ `remove`: NeonSDK: remove: request: 422: Unprocessable Entity
+- **Voxgig, static:** 4 of 4 steps right, 0 request violations.
+  - ✓ `list`
+  - ✓ `load`
+  - ✓ `create`
+  - ✓ `remove`
+- **Voxgig, dynamic:** 4 of 4 steps right, 0 request violations.
+  - ✓ `list`
+  - ✓ `load`
+  - ✓ `create`
+  - ✓ `remove`
 - **Hey API, static:** 4 of 4 steps right, 0 request violations.
   - ✓ `list`
   - ✓ `load`
@@ -92,11 +92,11 @@ Each SDK lists one resource, loads and removes the first item it listed, and cre
 
 ## Voxgig toolchain findings
 
-- **TS-NAMES** (@voxgig/sdkgen 4.30.2). An entity named operation, context or control collided with the SDK types the ts entity file imports (TS2300: Neon, Novu). An entity named eval produced `const eval` in the README examples (TS1215: Vapi). Fixed in voxgig/sdkgen#210, released in 4.30.3. All eight SDKs are built on 4.30.3.
-- **PATCH-OP** (@voxgig/apidef 8.17.2 + @voxgig/sdkgen 4.30.3). apidef resolves a PATCH beside a PUT on the same entity as a sixth op, `patch`. sdkgen generates only load, list, create, update and remove, so those operations are modelled but have no method. The coverage gate counts entities, so it passes anyway. Here: neon: PATCH /projects/{project_id} (Neon's real project update; `update` was mapped to PUT /projects/{project_id}/transfer_requests/{request_id}). Reported, not changed: a design decision across both tools.
-- **UNWRAP** (@voxgig/apidef 8.17.2). The response transform that says where an operation's data sits is inferred wrongly for several resources, in both directions. A schema whose one object-valued property is ordinary data is taken for an envelope (Apicurio's `labels`, SaladCloud's `container`), and a real envelope is missed when it is composed with allOf (Lob) or sits beside another property (Neon's `projects` beside `pagination`). The SDKs' own tests cannot see it, because they mock from the same model; a mock built from the vendor definition does. Here: neon project list: `body`, but the list is `body.projects`; list yields 0 entities. Create returns the `{ project, ... }` wrapper while load unwraps `body.project`. Reported, not changed: heuristic design in apidef.
-- **QUERY-ECHO** (@voxgig/sdkgen 4.30.3 (PrepareQuery: ts, js and rb read the field; other targets not checked)). Every match field, path parameters included, is also sent as a query parameter: GET /video/v1/assets/a1?id=a1 (Mux), GET /assistant/asst_1?id=asst_1 (Vapi), DELETE .../containers/web?id=web&organization_name=acme&project_id=demo (SaladCloud). prepareQuery excludes names in point.params, but the generated config carries path parameters in point.args.params (which prepareParams reads), so nothing is excluded. Harmless to a lenient server, rejected by a strict one. Prism logs paths without query strings, so its runs did not show it. Reported, not changed: the same exclusion exists per target.
-- **DOCS-QA** (@voxgig/docgen 0.29.2 (the generated Documentation workflow)). The generated API pages quote each vendor's own descriptions, and the Documentation workflow runs its prose checks over them. Vale reads identifiers such as `asset_id` as misspellings (272 errors on Mux, 44 on Neon), and docgen's own rules reject the vendor's repeated words and first-person prose (Apicurio). Vapi and Maxio fail the same step. Every SDK's tests pass on every target; only the documentation check fails. Reported, not changed: whether a vendor's text is prose-checked is docgen's design. Lob and Novu fail earlier, at generation, on the unpatched YAML parser (Y1-Y3). SaladCloud's pages pass the check; only the deploy fails, because GitHub Pages is not enabled for the repository.
+- **TS-NAMES** (@voxgig/sdkgen). An entity named operation, context or control collided with the SDK types the ts entity file imports (TS2300: Neon, Novu), and an entity named eval produced `const eval` in the README examples (TS1215: Vapi). Fixed in voxgig/sdkgen#210, released in 4.30.3; this SDK is built on 4.32.1.
+- **PATCH-OP** (@voxgig/apidef + @voxgig/sdkgen). apidef resolves a PATCH beside a PUT on the same entity as a sixth op, `patch`, and sdkgen generates only load, list, create, update and remove, so those operations are modelled but have no method. Here: PATCH /projects/{project_id}, Neon's real project update; `update` is mapped to PUT /projects/{project_id}/transfer_requests/{request_id}. Open: voxgig/sdkgen#211.
+- **UNWRAP** (@voxgig/apidef). The response transform that says where an operation's data sits was inferred wrongly for several resources in the first build. Here: the project list read `body`, where Neon puts it at `body.projects` beside `pagination`, so list yielded 0 entities, and the create returned the `{ project, connection_uris, ... }` wrapper. The list is fixed in apidef 8.19.0 (voxgig/apidef#102), and the create with 13 more writes composed the same way in 8.22.0 (voxgig/apidef#114, issue #112).
+- **QUERY-ECHO** (@voxgig/sdkgen, PrepareQuery). Every match field, path parameters included, was also sent as a query parameter, such as `?id=` on a load. Fixed in voxgig/sdkgen#222, released in 4.31.0: query parameters go out under the definition's names, and the rebuild's scenario requests carry no echoed parameter.
+- **DOCS-QA** (@voxgig/docgen, the generated Documentation workflow). The generated API pages quote the vendor's own descriptions, and the workflow runs its prose checks over them, so the step fails on the vendor's identifiers and repeated words rather than on anything the generator wrote. Open: voxgig/docgen#33.
 
 ## Hey API SDK notes
 
@@ -108,4 +108,6 @@ Each SDK lists one resource, loads and removes the first item it listed, and cre
 - Package size and file count: `npm pack --dry-run` for the Voxgig ts target, and the registry's `dist.unpackedSize` and `dist.fileCount` for the compared package.
 - Tests: `admin/scripts/cedar-test-all.sh` runs each target's generated suite.
 - Features: read from the code of the published package, crediting a feature only for a mechanism, not a word in the API's own models.
-
+- Rebuild: 2026-09-29, on create-sdkgen 0.30.4, sdkgen 4.32.1, apidef 8.22.0, model 12.0.0 and @tabnas/yaml 0.5.14, all as published, with no overlay.
+- Tests on the rebuild: all eight targets, the lua suite under Lua 5.4 with busted 2.2.0.
+- Scenario on the rebuild: the Voxgig side was re-run on 2026-09-29; the compared SDK's run is from 2026-09-28, and its package is unchanged. The generated create input honours the definition's minimums, which the first run did not.
