@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/neon-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/neon-sdk/releases](https://github.com/voxgig-sdk/neon-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/neon-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-neon-sdk", path: "./neon-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -50,7 +59,7 @@ end
 
 ```ruby
 # create returns the ENTITY — call data_get for the created Anonymize record.
-created = client.Anonymize.create({ "branch_id" => "example_branch_id", "project_id" => "example_project_id" })
+created = client.Anonymize.create({ "branch_id" => "example_branch_id", "project_id" => "example_project_id", "created_at" => "example_created_at", "state" => "example_state", "updated_at" => "example_updated_at" })
 
 ```
 
@@ -330,11 +339,14 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `completed_at` | Timestamp indicating when the latest anonymization attempt completed. |
-| `masked_columns` | Number of columns that had masking rules applied during the attempt. |
-| `started_at` | Timestamp indicating when the latest anonymization attempt started. |
-| `triggered_by` | UUID of the user who triggered the latest anonymization attempt. |
-| `triggered_by_username` | Username of the user who triggered the latest anonymization attempt. |
+| `branch_id` | The ID of the anonymized branch. |
+| `created_at` | A timestamp indicating when the anonymized branch was created |
+| `failed_at` | A timestamp indicating when the anonymized branch operation failed (if applicable) |
+| `last_run` | Metadata about the most recent anonymization attempt for the branch. |
+| `project_id` | The ID of the project this branch belongs to. |
+| `state` | The current state of the anonymized branch. |
+| `status_message` | A descriptive message about the current status or any errors |
+| `updated_at` | A timestamp indicating when the anonymized branch status was last updated |
 
 Operations: Create.
 
@@ -344,11 +356,14 @@ API path: `/projects/{project_id}/branches/{branch_id}/anonymize`
 
 | Field | Description |
 | --- | --- |
-| `completed_at` | Timestamp indicating when the latest anonymization attempt completed. |
-| `masked_columns` | Number of columns that had masking rules applied during the attempt. |
-| `started_at` | Timestamp indicating when the latest anonymization attempt started. |
-| `triggered_by` | UUID of the user who triggered the latest anonymization attempt. |
-| `triggered_by_username` | Username of the user who triggered the latest anonymization attempt. |
+| `branch_id` | The ID of the anonymized branch. |
+| `created_at` | A timestamp indicating when the anonymized branch was created |
+| `failed_at` | A timestamp indicating when the anonymized branch operation failed (if applicable) |
+| `last_run` | Metadata about the most recent anonymization attempt for the branch. |
+| `project_id` | The ID of the project this branch belongs to. |
+| `state` | The current state of the anonymized branch. |
+| `status_message` | A descriptive message about the current status or any errors |
+| `updated_at` | A timestamp indicating when the anonymized branch status was last updated |
 
 Operations: Load.
 
@@ -426,12 +441,39 @@ API path: `/projects/{project_id}/branches/{branch_id}/backup_schedule`
 
 | Field | Description |
 | --- | --- |
+| `active_time_seconds` | Total time this branch's compute has been active during the current billing period, in seconds (not weighted by compute size). |
 | `annotation` | Annotation data associated with the annotated object. |
-| `annotations` | Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource. |
 | `branch` | Branch returned by the request. |
-| `branches` | Branches in the project. |
-| `id` |  |
-| `pagination` | To paginate the response, issue an initial request with `limit` value. |
+| `compute_time_seconds` | Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size). |
+| `cpu_used_sec` | Deprecated. |
+| `created_at` | A timestamp indicating when the branch was created |
+| `created_by` | The resolved user model that contains details of the user/org/integration/api_key used for branch creation. |
+| `creation_source` | The branch creation source |
+| `current_state` | The branch’s state, indicating if it is initializing, ready for use, or archived. |
+| `data_transfer_bytes` | Total data transferred out of the branch, in bytes. |
+| `default` | Whether the branch is the project's default branch |
+| `expires_at` | The timestamp when the branch is scheduled to expire and be automatically deleted. |
+| `id` | The branch ID. |
+| `init_source` | Source of initialization for the branch. |
+| `last_reset_at` | A timestamp indicating when the branch was last reset |
+| `logical_size` | The logical size of the branch, in bytes |
+| `name` | The branch name |
+| `parent_id` | The `branch_id` of the parent branch |
+| `parent_lsn` | The Log Sequence Number (LSN) on the parent branch from which this branch was created. |
+| `parent_timestamp` | The point in time on the parent branch from which this branch was created. |
+| `pending_state` | The branch’s state, indicating if it is initializing, ready for use, or archived. |
+| `primary` | Deprecated. |
+| `project_id` | The ID of the project this branch belongs to. |
+| `protected` | Whether the branch is protected. |
+| `recovery` | Recovery information for a deleted branch. |
+| `restore_status` | Could be `restored`, `finalized` or `detaching`. |
+| `restored_as` | ID of the target branch which was replaced when this branch was restored |
+| `restored_from` | ID of the snapshot that was the restore source for this branch |
+| `restricted_actions` | A list of actions that are currently restricted for this branch and the reason why. |
+| `state_changed_at` | A UTC timestamp indicating when the `current_state` began |
+| `ttl_interval_seconds` | The time-to-live (TTL) duration originally configured for the branch, in seconds. |
+| `updated_at` | A timestamp indicating when the branch was last updated |
+| `written_data_bytes` | Data written by this branch during the current billing period, in bytes. |
 
 Operations: Create, List, Load, Remove, Update.
 
@@ -466,7 +508,8 @@ API path: `/projects/{project_id}/branches/{branch_id}/restore`
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `tables` | Tables present in the branch schema. |
+| `json` | Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`. |
+| `sql` | Branch schema expressed as SQL DDL statements. |
 
 Operations: Load.
 
@@ -536,9 +579,9 @@ API path: `/projects/{project_id}/connection_uri`
 
 | Field | Description |
 | --- | --- |
-| `branches` | Per-branch consumption history records returned for the requested time range. |
-| `pagination` | Cursor-based pagination. |
-| `projects` | Per-project consumption history records included in the response. |
+| `branch_id` | The Neon branch ID. |
+| `periods` | Consumption history records for the branch, grouped by billing period. |
+| `project_id` | The ID of the project that owns this branch. |
 
 Operations: List.
 
@@ -721,10 +764,21 @@ API path: `/projects/{project_id}/endpoints/{endpoint_id}/restart`
 
 | Field | Description |
 | --- | --- |
-| `custom_domains` |  |
-| `functions` |  |
-| `id` |  |
-| `pagination` | To paginate the response, issue an initial request with `limit` value. |
+| `active_deployment` | The most recent deployment whose build completed successfully. |
+| `binding_status` | Whether Neon's internal routing for the domain is published: `pending`, `present`, or `missing`. |
+| `cname_target` | The hostname the customer must point their custom domain at with a CNAME record. |
+| `created_at` |  |
+| `current_deployment` | The most recent deployment, regardless of build status. |
+| `dns_status` | The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt). |
+| `domain` | The registered custom domain (normalized, lowercase). |
+| `entity_id` | The target entity's identifier within the branch. |
+| `entity_type` | The kind of branch entity the domain targets. |
+| `id` | Opaque, stable function identifier. |
+| `invocation_url` | URL at which the function is invoked. |
+| `name` | Free-form display name. |
+| `slug` | Branch-unique, lowercase DNS-label. |
+| `status` | The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error… |
+| `status_reason` | A short, stable machine-readable reason for a non-active `status` (e.g. |
 
 Operations: List, Remove.
 
@@ -1008,7 +1062,6 @@ API path: `/projects/{project_id}/branches/{branch_id}/functions/{slug}/deployme
 | `id` | The operation ID |
 | `name` | Name for the replaced branch. |
 | `operations` |  |
-| `pagination` | Cursor-based pagination. |
 | `project_id` | The ID of the project this operation ran on. |
 | `retry_at` | A timestamp indicating when the operation was last retried |
 | `status` | Current lifecycle state of the operation. |
@@ -1098,8 +1151,12 @@ API path: `/organizations/{org_id}/invitations`
 | Field | Description |
 | --- | --- |
 | `content_type` | The `Content-Type` to bind into the signed request. |
+| `expires_at` | When the presigned URL stops being valid. |
 | `expires_in_seconds` | How long the presigned URL stays valid, in seconds. |
+| `headers` | Headers the caller MUST send verbatim on the request (e.g. |
+| `method` | The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download. |
 | `operation` | The transfer direction. |
+| `url` | The presigned URL. |
 
 Operations: Create.
 
@@ -1109,8 +1166,8 @@ API path: `/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/obj
 
 | Field | Description |
 | --- | --- |
+| `active_time` | Control plane observed endpoints of this project being active this amount of wall-clock time. |
 | `active_time_seconds` | Seconds. |
-| `applications` | Map of project IDs to their installed applications. |
 | `branch_logical_size_limit` | The logical size limit for a branch. |
 | `branch_logical_size_limit_bytes` | The logical size limit for a branch. |
 | `compute_last_active_at` | The most recent time when any endpoint of this project was active. |
@@ -1123,31 +1180,30 @@ API path: `/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/obj
 | `data_storage_bytes_hour` | Bytes-Hour. |
 | `data_transfer_bytes` | Bytes. |
 | `default_endpoint_settings` | A collection of settings for a Neon endpoint |
+| `deleted_at` | A timestamp indicating when the project was deleted |
 | `effective_project_permission` |  |
 | `hipaa_enabled_at` | A timestamp indicating when HIPAA was enabled for this project |
 | `history_retention_seconds` | The number of seconds to retain the shared history for all branches in this project. |
 | `id` | The Neon project ID. |
-| `integrations` | Map of project IDs to their associated integration details. |
 | `label` | Human-readable name for the VPC endpoint assignment, used to identify it within the organization. |
 | `maintenance_scheduled_for` | A timestamp indicating when project update begins. |
 | `maintenance_starts_at` | A timestamp indicating when project maintenance begins. |
 | `name` | The project name |
 | `org_id` | The Neon organization ID. |
+| `org_name` | Name of the organization that owns the project. |
 | `owner` | Ownership details for the project, including the owner's name and email. |
 | `owner_id` | ID of the organization that owns the project. |
-| `pagination` | Cursor-based pagination. |
 | `pg_version` | The major Postgres version number. |
 | `platform_id` | The cloud platform identifier. |
 | `project` | Configuration for the new project, including name, region, and Postgres compute and storage settings. |
-| `projects` | List of projects accessible to the caller. |
 | `provisioner` | Compute provisioner. |
 | `proxy_host` | The proxy host for the project. |
 | `quota_reset_at` | Deprecated. |
+| `recoverable_until` | A timestamp indicating the project will be recoverable until this date and time. |
 | `region_id` | Cloud region where the resource's Postgres compute and storage reside (for example, `aws-us-east-1`). |
 | `settings` | Project-level settings, for example `quota`, `allowed_ips`, `enable_logical_replication`, and `maintenance_window`. |
 | `store_passwords` | Whether or not passwords are stored for roles in the Neon project. |
 | `synthetic_storage_size` | The current space occupied by the project in Postgres storage, in bytes. |
-| `unavailable_project_ids` | A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit |
 | `updated_at` | A timestamp indicating when the project was last updated |
 | `written_data_bytes` | Bytes. |
 
@@ -1441,11 +1497,14 @@ Create an instance: `anonymize = client.Anonymize`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `completed_at` | `String` | Timestamp indicating when the latest anonymization attempt completed. |
-| `masked_columns` | `Integer` | Number of columns that had masking rules applied during the attempt. |
-| `started_at` | `String` | Timestamp indicating when the latest anonymization attempt started. |
-| `triggered_by` | `String` | UUID of the user who triggered the latest anonymization attempt. |
-| `triggered_by_username` | `String` | Username of the user who triggered the latest anonymization attempt. |
+| `branch_id` | `String` | The ID of the anonymized branch. |
+| `created_at` | `String` | A timestamp indicating when the anonymized branch was created |
+| `failed_at` | `String` | A timestamp indicating when the anonymized branch operation failed (if applicable) |
+| `last_run` | `Hash` | Metadata about the most recent anonymization attempt for the branch. |
+| `project_id` | `String` | The ID of the project this branch belongs to. |
+| `state` | `String` | The current state of the anonymized branch. |
+| `status_message` | `String` | A descriptive message about the current status or any errors |
+| `updated_at` | `String` | A timestamp indicating when the anonymized branch status was last updated |
 
 #### Example: Create
 
@@ -1453,6 +1512,9 @@ Create an instance: `anonymize = client.Anonymize`
 anonymize = client.Anonymize.create({
   "branch_id" => "example_branch_id", # String
   "project_id" => "example_project_id", # String
+  "created_at" => "example_created_at", # String
+  "state" => "example_state", # String
+  "updated_at" => "example_updated_at", # String
 })
 ```
 
@@ -1471,11 +1533,14 @@ Create an instance: `anonymized_branch_status = client.AnonymizedBranchStatus`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `completed_at` | `String` | Timestamp indicating when the latest anonymization attempt completed. |
-| `masked_columns` | `Integer` | Number of columns that had masking rules applied during the attempt. |
-| `started_at` | `String` | Timestamp indicating when the latest anonymization attempt started. |
-| `triggered_by` | `String` | UUID of the user who triggered the latest anonymization attempt. |
-| `triggered_by_username` | `String` | Username of the user who triggered the latest anonymization attempt. |
+| `branch_id` | `String` | The ID of the anonymized branch. |
+| `created_at` | `String` | A timestamp indicating when the anonymized branch was created |
+| `failed_at` | `String` | A timestamp indicating when the anonymized branch operation failed (if applicable) |
+| `last_run` | `Hash` | Metadata about the most recent anonymization attempt for the branch. |
+| `project_id` | `String` | The ID of the project this branch belongs to. |
+| `state` | `String` | The current state of the anonymized branch. |
+| `status_message` | `String` | A descriptive message about the current status or any errors |
+| `updated_at` | `String` | A timestamp indicating when the anonymized branch status was last updated |
 
 #### Example: Load
 
@@ -1674,12 +1739,39 @@ Create an instance: `branch = client.Branch`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `active_time_seconds` | `Integer` | Total time this branch's compute has been active during the current billing period, in seconds (not weighted by compute size). |
 | `annotation` | `Hash` | Annotation data associated with the annotated object. |
-| `annotations` | `Hash` | Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource. |
 | `branch` | `Hash` | Branch returned by the request. |
-| `branches` | `Array` | Branches in the project. |
-| `id` | `String` |  |
-| `pagination` | `Hash` | To paginate the response, issue an initial request with `limit` value. |
+| `compute_time_seconds` | `Integer` | Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size). |
+| `cpu_used_sec` | `Integer` | Deprecated. |
+| `created_at` | `String` | A timestamp indicating when the branch was created |
+| `created_by` | `Hash` | The resolved user model that contains details of the user/org/integration/api_key used for branch creation. |
+| `creation_source` | `String` | The branch creation source |
+| `current_state` | `String` | The branch’s state, indicating if it is initializing, ready for use, or archived. |
+| `data_transfer_bytes` | `Integer` | Total data transferred out of the branch, in bytes. |
+| `default` | `Boolean` | Whether the branch is the project's default branch |
+| `expires_at` | `String` | The timestamp when the branch is scheduled to expire and be automatically deleted. |
+| `id` | `String` | The branch ID. |
+| `init_source` | `String` | Source of initialization for the branch. |
+| `last_reset_at` | `String` | A timestamp indicating when the branch was last reset |
+| `logical_size` | `Integer` | The logical size of the branch, in bytes |
+| `name` | `String` | The branch name |
+| `parent_id` | `String` | The `branch_id` of the parent branch |
+| `parent_lsn` | `String` | The Log Sequence Number (LSN) on the parent branch from which this branch was created. |
+| `parent_timestamp` | `String` | The point in time on the parent branch from which this branch was created. |
+| `pending_state` | `String` | The branch’s state, indicating if it is initializing, ready for use, or archived. |
+| `primary` | `Boolean` | Deprecated. |
+| `project_id` | `String` | The ID of the project this branch belongs to. |
+| `protected` | `Boolean` | Whether the branch is protected. |
+| `recovery` | `Hash` | Recovery information for a deleted branch. |
+| `restore_status` | `String` | Could be `restored`, `finalized` or `detaching`. |
+| `restored_as` | `String` | ID of the target branch which was replaced when this branch was restored |
+| `restored_from` | `String` | ID of the snapshot that was the restore source for this branch |
+| `restricted_actions` | `Array` | A list of actions that are currently restricted for this branch and the reason why. |
+| `state_changed_at` | `String` | A UTC timestamp indicating when the `current_state` began |
+| `ttl_interval_seconds` | `Integer` | The time-to-live (TTL) duration originally configured for the branch, in seconds. |
+| `updated_at` | `String` | A timestamp indicating when the branch was last updated |
+| `written_data_bytes` | `Integer` | Data written by this branch during the current billing period, in bytes. |
 
 #### Example: Load
 
@@ -1700,10 +1792,23 @@ branchs = client.Branch.list
 ```ruby
 branch = client.Branch.create({
   "project_id" => "example_project_id", # String
+  "active_time_seconds" => 1, # Integer
   "annotation" => {}, # Hash
-  "annotations" => {}, # Hash
   "branch" => {}, # Hash
-  "branches" => [], # Array
+  "compute_time_seconds" => 1, # Integer
+  "cpu_used_sec" => 1, # Integer
+  "created_at" => "example_created_at", # String
+  "creation_source" => "example_creation_source", # String
+  "current_state" => "example_current_state", # String
+  "data_transfer_bytes" => 1, # Integer
+  "default" => true, # Boolean
+  "id" => "example_id", # String
+  "name" => "example_name", # String
+  "protected" => true, # Boolean
+  "recovery" => {}, # Hash
+  "state_changed_at" => "example_state_changed_at", # String
+  "updated_at" => "example_updated_at", # String
+  "written_data_bytes" => 1, # Integer
 })
 ```
 
@@ -1779,7 +1884,8 @@ Create an instance: `branch_schema = client.BranchSchema`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
-| `tables` | `Array` | Tables present in the branch schema. |
+| `json` | `Hash` | Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`. |
+| `sql` | `String` | Branch schema expressed as SQL DDL statements. |
 
 #### Example: Load
 
@@ -1954,9 +2060,9 @@ Create an instance: `consumption = client.Consumption`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `branches` | `Array` | Per-branch consumption history records returned for the requested time range. |
-| `pagination` | `Hash` | Cursor-based pagination. |
-| `projects` | `Array` | Per-project consumption history records included in the response. |
+| `branch_id` | `String` | The Neon branch ID. |
+| `periods` | `Array` | Consumption history records for the branch, grouped by billing period. |
+| `project_id` | `String` | The ID of the project that owns this branch. |
 
 #### Example: List
 
@@ -2414,10 +2520,21 @@ Create an instance: `function = client.Function`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `custom_domains` | `Array` |  |
-| `functions` | `Array` |  |
-| `id` | `String` |  |
-| `pagination` | `Hash` | To paginate the response, issue an initial request with `limit` value. |
+| `active_deployment` | `Object` | The most recent deployment whose build completed successfully. |
+| `binding_status` | `String` | Whether Neon's internal routing for the domain is published: `pending`, `present`, or `missing`. |
+| `cname_target` | `String` | The hostname the customer must point their custom domain at with a CNAME record. |
+| `created_at` | `String` |  |
+| `current_deployment` | `Object` | The most recent deployment, regardless of build status. |
+| `dns_status` | `String` | The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt). |
+| `domain` | `String` | The registered custom domain (normalized, lowercase). |
+| `entity_id` | `String` | The target entity's identifier within the branch. |
+| `entity_type` | `String` | The kind of branch entity the domain targets. |
+| `id` | `String` | Opaque, stable function identifier. |
+| `invocation_url` | `String` | URL at which the function is invoked. |
+| `name` | `String` | Free-form display name. |
+| `slug` | `String` | Branch-unique, lowercase DNS-label. |
+| `status` | `String` | The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error… |
+| `status_reason` | `String` | A short, stable machine-readable reason for a non-active `status` (e.g. |
 
 #### Example: List
 
@@ -3014,7 +3131,6 @@ Create an instance: `operation = client.Operation`
 | `id` | `String` | The operation ID |
 | `name` | `String` | Name for the replaced branch. |
 | `operations` | `Array` |  |
-| `pagination` | `Hash` | Cursor-based pagination. |
 | `project_id` | `String` | The ID of the project this operation ran on. |
 | `retry_at` | `String` | A timestamp indicating when the operation was last retried |
 | `status` | `String` | Current lifecycle state of the operation. |
@@ -3046,7 +3162,6 @@ operation = client.Operation.create({
   "failures_count" => 1, # Integer
   "id" => "example_id", # String
   "operations" => [], # Array
-  "pagination" => {}, # Hash
   "status" => "example_status", # String
   "total_duration_ms" => 1, # Integer
   "updated_at" => "example_updated_at", # String
@@ -3244,8 +3359,12 @@ Create an instance: `presign = client.Presign`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content_type` | `String` | The `Content-Type` to bind into the signed request. |
+| `expires_at` | `String` | When the presigned URL stops being valid. |
 | `expires_in_seconds` | `Integer` | How long the presigned URL stays valid, in seconds. |
+| `headers` | `Hash` | Headers the caller MUST send verbatim on the request (e.g. |
+| `method` | `String` | The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download. |
 | `operation` | `String` | The transfer direction. |
+| `url` | `String` | The presigned URL. |
 
 #### Example: Create
 
@@ -3255,7 +3374,11 @@ presign = client.Presign.create({
   "bucket_id" => "example_bucket_id", # String
   "object_key" => "example_object_key", # String
   "project_id" => "example_project_id", # String
+  "expires_at" => "example_expires_at", # String
+  "headers" => {}, # Hash
+  "method" => "example_method", # String
   "operation" => "example_operation", # String
+  "url" => "example_url", # String
 })
 ```
 
@@ -3278,8 +3401,8 @@ Create an instance: `project = client.Project`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `active_time` | `Integer` | Control plane observed endpoints of this project being active this amount of wall-clock time. |
 | `active_time_seconds` | `Integer` | Seconds. |
-| `applications` | `Hash` | Map of project IDs to their installed applications. |
 | `branch_logical_size_limit` | `Integer` | The logical size limit for a branch. |
 | `branch_logical_size_limit_bytes` | `Integer` | The logical size limit for a branch. |
 | `compute_last_active_at` | `String` | The most recent time when any endpoint of this project was active. |
@@ -3292,31 +3415,30 @@ Create an instance: `project = client.Project`
 | `data_storage_bytes_hour` | `Integer` | Bytes-Hour. |
 | `data_transfer_bytes` | `Integer` | Bytes. |
 | `default_endpoint_settings` | `Hash` | A collection of settings for a Neon endpoint |
+| `deleted_at` | `String` | A timestamp indicating when the project was deleted |
 | `effective_project_permission` | `String` |  |
 | `hipaa_enabled_at` | `String` | A timestamp indicating when HIPAA was enabled for this project |
 | `history_retention_seconds` | `Integer` | The number of seconds to retain the shared history for all branches in this project. |
 | `id` | `String` | The Neon project ID. |
-| `integrations` | `Hash` | Map of project IDs to their associated integration details. |
 | `label` | `String` | Human-readable name for the VPC endpoint assignment, used to identify it within the organization. |
 | `maintenance_scheduled_for` | `String` | A timestamp indicating when project update begins. |
 | `maintenance_starts_at` | `String` | A timestamp indicating when project maintenance begins. |
 | `name` | `String` | The project name |
 | `org_id` | `String` | The Neon organization ID. |
+| `org_name` | `String` | Name of the organization that owns the project. |
 | `owner` | `Hash` | Ownership details for the project, including the owner's name and email. |
 | `owner_id` | `String` | ID of the organization that owns the project. |
-| `pagination` | `Hash` | Cursor-based pagination. |
 | `pg_version` | `Integer` | The major Postgres version number. |
 | `platform_id` | `String` | The cloud platform identifier. |
 | `project` | `Hash` | Configuration for the new project, including name, region, and Postgres compute and storage settings. |
-| `projects` | `Array` | List of projects accessible to the caller. |
 | `provisioner` | `String` | Compute provisioner. |
 | `proxy_host` | `String` | The proxy host for the project. |
 | `quota_reset_at` | `String` | Deprecated. |
+| `recoverable_until` | `String` | A timestamp indicating the project will be recoverable until this date and time. |
 | `region_id` | `String` | Cloud region where the resource's Postgres compute and storage reside (for example, `aws-us-east-1`). |
 | `settings` | `Hash` | Project-level settings, for example `quota`, `allowed_ips`, `enable_logical_replication`, and `maintenance_window`. |
 | `store_passwords` | `Boolean` | Whether or not passwords are stored for roles in the Neon project. |
 | `synthetic_storage_size` | `Integer` | The current space occupied by the project in Postgres storage, in bytes. |
-| `unavailable_project_ids` | `Array` | A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit |
 | `updated_at` | `String` | A timestamp indicating when the project was last updated |
 | `written_data_bytes` | `Integer` | Bytes. |
 
@@ -3340,8 +3462,8 @@ projects = client.Project.list
 project = client.Project.create({
   "id" => "example_id", # String
   "vpc_endpoint_id" => "example_vpc_endpoint_id", # String
+  "active_time" => 1, # Integer
   "active_time_seconds" => 1, # Integer
-  "applications" => {}, # Hash
   "branch_logical_size_limit" => 1, # Integer
   "branch_logical_size_limit_bytes" => 1, # Integer
   "compute_time_seconds" => 1, # Integer
@@ -3353,16 +3475,13 @@ project = client.Project.create({
   "data_storage_bytes_hour" => 1, # Integer
   "data_transfer_bytes" => 1, # Integer
   "history_retention_seconds" => 1, # Integer
-  "integrations" => {}, # Hash
   "label" => "example_label", # String
   "name" => "example_name", # String
   "owner" => {}, # Hash
   "owner_id" => "example_owner_id", # String
-  "pagination" => {}, # Hash
   "pg_version" => 1, # Integer
   "platform_id" => "example_platform_id", # String
   "project" => {}, # Hash
-  "projects" => [], # Array
   "provisioner" => "example_provisioner", # String
   "proxy_host" => "example_proxy_host", # String
   "region_id" => "example_region_id", # String

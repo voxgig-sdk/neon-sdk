@@ -20,11 +20,12 @@ type Anonymize struct {
 type AnonymizeCreateData struct {
 	BranchId string `json:"branch_id"`
 	ProjectId string `json:"project_id"`
-	CompletedAt *string `json:"completed_at,omitempty"`
-	MaskedColumns *int `json:"masked_columns,omitempty"`
-	StartedAt *string `json:"started_at,omitempty"`
-	TriggeredBy *string `json:"triggered_by,omitempty"`
-	TriggeredByUsername *string `json:"triggered_by_username,omitempty"`
+	CreatedAt string `json:"created_at"`
+	FailedAt *string `json:"failed_at,omitempty"`
+	LastRun *map[string]any `json:"last_run,omitempty"`
+	State string `json:"state"`
+	StatusMessage *string `json:"status_message,omitempty"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 // AnonymizedBranchStatus is the typed data model for the anonymized_branch_status entity.
@@ -160,23 +161,75 @@ type BranchListMatch struct {
 // BranchCreateData is the typed request payload for Branch.CreateTyped.
 type BranchCreateData struct {
 	ProjectId string `json:"project_id"`
+	ActiveTimeSeconds int `json:"active_time_seconds"`
 	Annotation map[string]any `json:"annotation"`
-	Annotations map[string]any `json:"annotations"`
 	Branch map[string]any `json:"branch"`
-	Branches []any `json:"branches"`
-	Id *string `json:"id,omitempty"`
-	Pagination *map[string]any `json:"pagination,omitempty"`
+	ComputeTimeSeconds int `json:"compute_time_seconds"`
+	CpuUsedSec int `json:"cpu_used_sec"`
+	CreatedAt string `json:"created_at"`
+	CreatedBy *map[string]any `json:"created_by,omitempty"`
+	CreationSource string `json:"creation_source"`
+	CurrentState string `json:"current_state"`
+	DataTransferBytes int `json:"data_transfer_bytes"`
+	Default bool `json:"default"`
+	ExpiresAt *string `json:"expires_at,omitempty"`
+	Id string `json:"id"`
+	InitSource *string `json:"init_source,omitempty"`
+	LastResetAt *string `json:"last_reset_at,omitempty"`
+	LogicalSize *int `json:"logical_size,omitempty"`
+	Name string `json:"name"`
+	ParentId *string `json:"parent_id,omitempty"`
+	ParentLsn *string `json:"parent_lsn,omitempty"`
+	ParentTimestamp *string `json:"parent_timestamp,omitempty"`
+	PendingState *string `json:"pending_state,omitempty"`
+	Primary *bool `json:"primary,omitempty"`
+	Protected bool `json:"protected"`
+	Recovery map[string]any `json:"recovery"`
+	RestoreStatus *string `json:"restore_status,omitempty"`
+	RestoredAs *string `json:"restored_as,omitempty"`
+	RestoredFrom *string `json:"restored_from,omitempty"`
+	RestrictedActions *[]any `json:"restricted_actions,omitempty"`
+	StateChangedAt string `json:"state_changed_at"`
+	TtlIntervalSeconds *int `json:"ttl_interval_seconds,omitempty"`
+	UpdatedAt string `json:"updated_at"`
+	WrittenDataBytes int `json:"written_data_bytes"`
 }
 
 // BranchUpdateData is the typed request payload for Branch.UpdateTyped.
 type BranchUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	ActiveTimeSeconds *int `json:"active_time_seconds,omitempty"`
 	Annotation *map[string]any `json:"annotation,omitempty"`
-	Annotations *map[string]any `json:"annotations,omitempty"`
 	Branch *map[string]any `json:"branch,omitempty"`
-	Branches *[]any `json:"branches,omitempty"`
-	Pagination *map[string]any `json:"pagination,omitempty"`
+	ComputeTimeSeconds *int `json:"compute_time_seconds,omitempty"`
+	CpuUsedSec *int `json:"cpu_used_sec,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
+	CreatedBy *map[string]any `json:"created_by,omitempty"`
+	CreationSource *string `json:"creation_source,omitempty"`
+	CurrentState *string `json:"current_state,omitempty"`
+	DataTransferBytes *int `json:"data_transfer_bytes,omitempty"`
+	Default *bool `json:"default,omitempty"`
+	ExpiresAt *string `json:"expires_at,omitempty"`
+	InitSource *string `json:"init_source,omitempty"`
+	LastResetAt *string `json:"last_reset_at,omitempty"`
+	LogicalSize *int `json:"logical_size,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ParentId *string `json:"parent_id,omitempty"`
+	ParentLsn *string `json:"parent_lsn,omitempty"`
+	ParentTimestamp *string `json:"parent_timestamp,omitempty"`
+	PendingState *string `json:"pending_state,omitempty"`
+	Primary *bool `json:"primary,omitempty"`
+	Protected *bool `json:"protected,omitempty"`
+	Recovery *map[string]any `json:"recovery,omitempty"`
+	RestoreStatus *string `json:"restore_status,omitempty"`
+	RestoredAs *string `json:"restored_as,omitempty"`
+	RestoredFrom *string `json:"restored_from,omitempty"`
+	RestrictedActions *[]any `json:"restricted_actions,omitempty"`
+	StateChangedAt *string `json:"state_changed_at,omitempty"`
+	TtlIntervalSeconds *int `json:"ttl_interval_seconds,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
+	WrittenDataBytes *int `json:"written_data_bytes,omitempty"`
 }
 
 // BranchRemoveMatch is the typed request payload for Branch.RemoveTyped.
@@ -1038,7 +1091,6 @@ type OperationCreateData struct {
 	Id string `json:"id"`
 	Name *string `json:"name,omitempty"`
 	Operations []any `json:"operations"`
-	Pagination map[string]any `json:"pagination"`
 	RetryAt *string `json:"retry_at,omitempty"`
 	Status string `json:"status"`
 	TotalDurationMs int `json:"total_duration_ms"`
@@ -1155,8 +1207,12 @@ type PresignCreateData struct {
 	ObjectKey string `json:"object_key"`
 	ProjectId string `json:"project_id"`
 	ContentType *string `json:"content_type,omitempty"`
+	ExpiresAt string `json:"expires_at"`
 	ExpiresInSeconds *int `json:"expires_in_seconds,omitempty"`
+	Headers map[string]any `json:"headers"`
+	Method string `json:"method"`
 	Operation string `json:"operation"`
+	Url string `json:"url"`
 }
 
 // Project is the typed data model for the project entity.
@@ -1182,8 +1238,8 @@ type ProjectListMatch struct {
 type ProjectCreateData struct {
 	Id string `json:"id"`
 	VpcEndpointId string `json:"vpc_endpoint_id"`
+	ActiveTime int `json:"active_time"`
 	ActiveTimeSeconds int `json:"active_time_seconds"`
-	Applications map[string]any `json:"applications"`
 	BranchLogicalSizeLimit int `json:"branch_logical_size_limit"`
 	BranchLogicalSizeLimitBytes int `json:"branch_logical_size_limit_bytes"`
 	ComputeLastActiveAt *string `json:"compute_last_active_at,omitempty"`
@@ -1196,30 +1252,29 @@ type ProjectCreateData struct {
 	DataStorageBytesHour int `json:"data_storage_bytes_hour"`
 	DataTransferBytes int `json:"data_transfer_bytes"`
 	DefaultEndpointSettings *map[string]any `json:"default_endpoint_settings,omitempty"`
+	DeletedAt *string `json:"deleted_at,omitempty"`
 	EffectiveProjectPermission *string `json:"effective_project_permission,omitempty"`
 	HipaaEnabledAt *string `json:"hipaa_enabled_at,omitempty"`
 	HistoryRetentionSeconds int `json:"history_retention_seconds"`
-	Integrations map[string]any `json:"integrations"`
 	Label string `json:"label"`
 	MaintenanceScheduledFor *string `json:"maintenance_scheduled_for,omitempty"`
 	MaintenanceStartsAt *string `json:"maintenance_starts_at,omitempty"`
 	Name string `json:"name"`
 	OrgId *string `json:"org_id,omitempty"`
+	OrgName *string `json:"org_name,omitempty"`
 	Owner map[string]any `json:"owner"`
 	OwnerId string `json:"owner_id"`
-	Pagination map[string]any `json:"pagination"`
 	PgVersion int `json:"pg_version"`
 	PlatformId string `json:"platform_id"`
 	Project map[string]any `json:"project"`
-	Projects []any `json:"projects"`
 	Provisioner string `json:"provisioner"`
 	ProxyHost string `json:"proxy_host"`
 	QuotaResetAt *string `json:"quota_reset_at,omitempty"`
+	RecoverableUntil *string `json:"recoverable_until,omitempty"`
 	RegionId string `json:"region_id"`
 	Settings *map[string]any `json:"settings,omitempty"`
 	StorePasswords bool `json:"store_passwords"`
 	SyntheticStorageSize *int `json:"synthetic_storage_size,omitempty"`
-	UnavailableProjectIds *[]any `json:"unavailable_project_ids,omitempty"`
 	UpdatedAt string `json:"updated_at"`
 	WrittenDataBytes int `json:"written_data_bytes"`
 }
@@ -1228,8 +1283,8 @@ type ProjectCreateData struct {
 type ProjectUpdateData struct {
 	Id string `json:"id"`
 	RequestId string `json:"request_id"`
+	ActiveTime *int `json:"active_time,omitempty"`
 	ActiveTimeSeconds *int `json:"active_time_seconds,omitempty"`
-	Applications *map[string]any `json:"applications,omitempty"`
 	BranchLogicalSizeLimit *int `json:"branch_logical_size_limit,omitempty"`
 	BranchLogicalSizeLimitBytes *int `json:"branch_logical_size_limit_bytes,omitempty"`
 	ComputeLastActiveAt *string `json:"compute_last_active_at,omitempty"`
@@ -1242,30 +1297,29 @@ type ProjectUpdateData struct {
 	DataStorageBytesHour *int `json:"data_storage_bytes_hour,omitempty"`
 	DataTransferBytes *int `json:"data_transfer_bytes,omitempty"`
 	DefaultEndpointSettings *map[string]any `json:"default_endpoint_settings,omitempty"`
+	DeletedAt *string `json:"deleted_at,omitempty"`
 	EffectiveProjectPermission *string `json:"effective_project_permission,omitempty"`
 	HipaaEnabledAt *string `json:"hipaa_enabled_at,omitempty"`
 	HistoryRetentionSeconds *int `json:"history_retention_seconds,omitempty"`
-	Integrations *map[string]any `json:"integrations,omitempty"`
 	Label *string `json:"label,omitempty"`
 	MaintenanceScheduledFor *string `json:"maintenance_scheduled_for,omitempty"`
 	MaintenanceStartsAt *string `json:"maintenance_starts_at,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OrgId *string `json:"org_id,omitempty"`
+	OrgName *string `json:"org_name,omitempty"`
 	Owner *map[string]any `json:"owner,omitempty"`
 	OwnerId *string `json:"owner_id,omitempty"`
-	Pagination *map[string]any `json:"pagination,omitempty"`
 	PgVersion *int `json:"pg_version,omitempty"`
 	PlatformId *string `json:"platform_id,omitempty"`
 	Project *map[string]any `json:"project,omitempty"`
-	Projects *[]any `json:"projects,omitempty"`
 	Provisioner *string `json:"provisioner,omitempty"`
 	ProxyHost *string `json:"proxy_host,omitempty"`
 	QuotaResetAt *string `json:"quota_reset_at,omitempty"`
+	RecoverableUntil *string `json:"recoverable_until,omitempty"`
 	RegionId *string `json:"region_id,omitempty"`
 	Settings *map[string]any `json:"settings,omitempty"`
 	StorePasswords *bool `json:"store_passwords,omitempty"`
 	SyntheticStorageSize *int `json:"synthetic_storage_size,omitempty"`
-	UnavailableProjectIds *[]any `json:"unavailable_project_ids,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	WrittenDataBytes *int `json:"written_data_bytes,omitempty"`
 }

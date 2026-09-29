@@ -20,11 +20,11 @@ SDK operations: `create`.
 
 Key fields to recognise:
 
-- `completed_at`: Timestamp indicating when the latest anonymization attempt completed. Populated even if the attempt failed.
-- `masked_columns`: Number of columns that had masking rules applied during the attempt.
-- `started_at`: Timestamp indicating when the latest anonymization attempt started.
-- `triggered_by`: UUID of the user who triggered the latest anonymization attempt.
-- `triggered_by_username`: Username of the user who triggered the latest anonymization attempt.
+- `branch_id`: The ID of the anonymized branch.
+- `created_at`: A timestamp indicating when the anonymized branch was created
+- `failed_at`: A timestamp indicating when the anonymized branch operation failed (if applicable)
+- `last_run`: Metadata about the most recent anonymization attempt for the branch.
+- `project_id`: The ID of the project this branch belongs to.
 
 ### AnonymizedBranchStatus
 
@@ -34,11 +34,11 @@ SDK operations: `load`.
 
 Key fields to recognise:
 
-- `completed_at`: Timestamp indicating when the latest anonymization attempt completed. Populated even if the attempt failed.
-- `masked_columns`: Number of columns that had masking rules applied during the attempt.
-- `started_at`: Timestamp indicating when the latest anonymization attempt started.
-- `triggered_by`: UUID of the user who triggered the latest anonymization attempt.
-- `triggered_by_username`: Username of the user who triggered the latest anonymization attempt.
+- `branch_id`: The ID of the anonymized branch.
+- `created_at`: A timestamp indicating when the anonymized branch was created
+- `failed_at`: A timestamp indicating when the anonymized branch operation failed (if applicable)
+- `last_run`: Metadata about the most recent anonymization attempt for the branch.
+- `project_id`: The ID of the project this branch belongs to.
 
 ### ApiKey
 
@@ -112,11 +112,11 @@ SDK operations: `create`, `list`, `load`, `remove`, `update`.
 
 Key fields to recognise:
 
+- `active_time_seconds`: Total time this branch&#39;s compute has been active during the current billing period, in seconds (not weighted by compute size). Distinct from `compute_time_seconds`, which is CU-weighted.
 - `annotation`: Annotation data associated with the annotated object.
-- `annotations`: Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource.
 - `branch`: Branch returned by the request.
-- `branches`: Branches in the project. Each includes `id`, `name`, `current_state`, and `created_at`.
-- `id`: The branch ID. This value is generated when a branch is created. A `branch_id` value has a `br` prefix. For example: `br-small-term-683261`.
+- `compute_time_seconds`: Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size). Divide by 3600 for CU-hours.
+- `cpu_used_sec`: Deprecated. Use `compute_time_seconds` instead. CPU seconds used by all of the branch&#39;s compute endpoints, including deleted ones. This value is reset at the beginning of each billing period.
 
 ### BranchAiGateway
 
@@ -148,7 +148,8 @@ SDK operations: `load`.
 
 Key fields to recognise:
 
-- `tables`: Tables present in the branch schema.
+- `json`: Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`.
+- `sql`: Branch schema expressed as SQL DDL statements.
 
 ### BranchSchemaCompare
 
@@ -212,9 +213,9 @@ SDK operations: `list`.
 
 Key fields to recognise:
 
-- `branches`: Per-branch consumption history records returned for the requested time range.
-- `pagination`: Cursor-based pagination. The `cursor` value reflects the endpoint&#39;s sort field (for example, an ID or timestamp), so pass it back unchanged.
-- `projects`: Per-project consumption history records included in the response.
+- `branch_id`: The Neon branch ID. Returned as `id` from `GET /projects/&#123;project_id&#125;/branches`.
+- `periods`: Consumption history records for the branch, grouped by billing period.
+- `project_id`: The ID of the project that owns this branch.
 
 ### CreateCredential
 
@@ -352,8 +353,11 @@ SDK operations: `list`, `remove`.
 
 Key fields to recognise:
 
-- `id`: Opaque, stable function identifier.
-- `pagination`: To paginate the response, issue an initial request with `limit` value. Then, add the value returned in the response `.pagination.next` attribute into the request under the `cursor` query parameter to the subsequent request to retrieve next page in pagination. The contents on cursor `next` are opaque, clients are not expected to make any assumptions on the format of the data inside the cursor.
+- `active_deployment`: The most recent deployment whose build completed successfully. This is the deployment that serves invocations. Omitted until a deployment succeeds.
+- `binding_status`: Whether Neon&#39;s internal routing for the domain is published: `pending`, `present`, or `missing`. `missing` is an internal fault surfaced for support. Not an `enum`.
+- `cname_target`: The hostname the customer must point their custom domain at with a CNAME record. Empty when the serving region has no custom-domains front door configured. This is the activation input: point DNS here and the domain goes live (see `status`) once a certificate is issued on the first request.
+- `current_deployment`: The most recent deployment, regardless of build status. It may still be building or it may have failed. Omitted until the first deployment is created.
+- `dns_status`: The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let&#39;s Encrypt). Not an `enum`.
 
 ### Jwk
 
@@ -683,8 +687,10 @@ SDK operations: `create`.
 Key fields to recognise:
 
 - `content_type`: The `Content-Type` to bind into the signed request.
+- `expires_at`: When the presigned URL stops being valid.
 - `expires_in_seconds`: How long the presigned URL stays valid, in seconds.
-- `operation`: The transfer direction.
+- `headers`: Headers the caller MUST send verbatim on the request (for example `Content-Type` when it was signed on an upload). May be empty.
+- `method`: The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download.
 
 ### Project
 
@@ -694,8 +700,8 @@ SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
 
 Key fields to recognise:
 
+- `active_time`: Control plane observed endpoints of this project being active this amount of wall-clock time.
 - `active_time_seconds`: Total time this branch&#39;s compute has been active during the current billing period, in seconds (not weighted by compute size). Distinct from `compute_time_seconds`, which is CU-weighted.
-- `applications`: Map of project IDs to their installed applications. Each key is a project ID; each value is an array of application types (for example, `vercel`, `github`).
 - `branch_logical_size_limit`: The logical size limit for a branch. The value is in MiB.
 - `branch_logical_size_limit_bytes`: The logical size limit for a branch. The value is in B.
 - `compute_last_active_at`: The most recent time when any endpoint of this project was active. Omitted when observed no activity for endpoints of this project.

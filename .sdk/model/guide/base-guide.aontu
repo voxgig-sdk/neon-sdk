@@ -11,14 +11,12 @@ guide: {
   entity: anonymize: {
     path: "/projects/{project_id}/branches/{branch_id}/anonymize": {
       op: create: method: *POST
-      op: create: transform: res: *("`body.last_run`")|top
     }
   }
 
   entity: anonymized_branch_status: {
     path: "/projects/{project_id}/branches/{branch_id}/anonymized_status": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.last_run`")|top
     }
   }
 
@@ -86,7 +84,9 @@ guide: {
   entity: branch: {
     path: "/projects/{project_id}/branches": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.branch`")|top
       op: list: method: *GET
+      op: list: transform: res: *("`body.branches`")|top
     }
     path: "/projects/{project_id}/branches/count": {
       action: "count": {}
@@ -95,9 +95,12 @@ guide: {
     path: "/projects/{project_id}/branches/{branch_id}": {
       rename: param: "branch_id": *"id"
       op: load: method: *GET
+      op: load: transform: res: *("`body.branch`")|top
       op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.branch`")|top
       op: patch: transform: req: "branch": *("`reqdata`")|top
       op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.branch`")|top
     }
   }
 
@@ -125,7 +128,6 @@ guide: {
     path: "/projects/{project_id}/branches/{branch_id}/schema": {
       rename: param: "branch_id": *"id"
       op: load: method: *GET
-      op: load: transform: res: *("`body.json`")|top
     }
   }
 
@@ -184,12 +186,15 @@ guide: {
   entity: consumption: {
     path: "/consumption_history/projects": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.projects`")|top
     }
     path: "/consumption_history/v2/branches": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.branches`")|top
     }
     path: "/consumption_history/v2/projects": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.projects`")|top
     }
   }
 
@@ -245,6 +250,7 @@ guide: {
   entity: database: {
     path: "/projects/{project_id}/branches/{branch_id}/databases": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.database`")|top
       op: create: transform: req: "database": *("`reqdata`")|top
       op: list: method: *GET
       op: list: transform: res: *("`body.databases`")|top
@@ -254,8 +260,10 @@ guide: {
       op: load: method: *GET
       op: load: transform: res: *("`body.database`")|top
       op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.database`")|top
       op: patch: transform: req: "database": *("`reqdata`")|top
       op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.database`")|top
     }
   }
 
@@ -295,6 +303,7 @@ guide: {
     }
     path: "/projects/{project_id}/endpoints": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.endpoint`")|top
       op: create: transform: req: "endpoint": *("`reqdata`")|top
       op: list: method: *GET
       op: list: transform: res: *("`body.endpoints`")|top
@@ -304,8 +313,10 @@ guide: {
       op: load: method: *GET
       op: load: transform: res: *("`body.endpoint`")|top
       op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.endpoint`")|top
       op: patch: transform: req: "endpoint": *("`reqdata`")|top
       op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.endpoint`")|top
     }
   }
 
@@ -330,12 +341,14 @@ guide: {
   entity: function: {
     path: "/projects/{project_id}/branches/{branch_id}/custom-domains": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.custom_domains`")|top
     }
     path: "/projects/{project_id}/branches/{branch_id}/custom-domains/{domain}": {
       op: remove: method: *DELETE
     }
     path: "/projects/{project_id}/branches/{branch_id}/functions": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.functions`")|top
     }
     path: "/projects/{project_id}/branches/{branch_id}/functions/{slug}": {
       rename: param: "slug": *"id"
@@ -530,6 +543,7 @@ guide: {
     }
     path: "/projects/{project_id}/operations": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.operations`")|top
     }
     path: "/projects/{project_id}/operations/{operation_id}": {
       rename: param: "operation_id": *"id"
@@ -568,6 +582,7 @@ guide: {
       action: "member": {}
       rename: param: "org_id": *"id"
       op: list: method: *GET
+      op: list: transform: res: *("`body.members`")|top
     }
     path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}": {
       rename: param: "org_id": *"id"
@@ -593,25 +608,28 @@ guide: {
     path: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/presign": {
       rename: param: "bucket_name": *"bucket_id"
       op: create: method: *POST
-      op: create: transform: res: *("`body.headers`")|top
     }
   }
 
   entity: project: {
     path: "/projects": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.project`")|top
       op: create: transform: req: "project": *("`reqdata`")|top
       op: list: method: *GET
+      op: list: transform: res: *("`body.projects`")|top
     }
     path: "/projects/shared": {
       action: "shared": {}
       op: list: method: *GET
+      op: list: transform: res: *("`body.projects`")|top
     }
     path: "/projects/{project_id}": {
       rename: param: "project_id": *"id"
       op: load: method: *GET
       op: load: transform: res: *("`body.project`")|top
       op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.project`")|top
       op: patch: transform: req: "project": *("`reqdata`")|top
       op: remove: method: *DELETE
       op: remove: transform: res: *("`body.project`")|top
@@ -662,6 +680,7 @@ guide: {
     path: "/projects/{project_id}/members": {
       rename: param: "project_id": *"id"
       op: list: method: *GET
+      op: list: transform: res: *("`body.project_members`")|top
     }
   }
 
@@ -709,6 +728,7 @@ guide: {
   entity: role: {
     path: "/projects/{project_id}/branches/{branch_id}/roles": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.role`")|top
       op: create: transform: req: "role": *("`reqdata`")|top
       op: list: method: *GET
       op: list: transform: res: *("`body.roles`")|top
@@ -718,6 +738,7 @@ guide: {
       op: load: method: *GET
       op: load: transform: res: *("`body.role`")|top
       op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.role`")|top
     }
   }
 

@@ -102,9 +102,14 @@ class TestBranchEntity:
             "project_id": setup["idmap"]["project_id"],
         }
 
+        branch_ref01_markdef_up0_name = "created_at"
+        branch_ref01_markdef_up0_value = "Mark01-branch_ref01_" + str(setup["now"])
+        branch_ref01_data_up0_up[branch_ref01_markdef_up0_name] = branch_ref01_markdef_up0_value
+
         branch_ref01_resdata_up0 = helpers.to_map(runner.entity_data(branch_ref01_ent.update(branch_ref01_data_up0_up, None)))
         assert branch_ref01_resdata_up0 is not None
         assert branch_ref01_resdata_up0["id"] == branch_ref01_data_up0_up["id"]
+        assert branch_ref01_resdata_up0[branch_ref01_markdef_up0_name] == branch_ref01_markdef_up0_value
 
         # LOAD
         branch_ref01_match_dt0 = {

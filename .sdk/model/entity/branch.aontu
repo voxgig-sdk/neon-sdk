@@ -5,18 +5,19 @@ main: kit: entity: branch: {
   alias: field: {}
 
   fields: {
+    active_time_seconds: {
+      fo: "int64"
+      h: "Active Time Seconds"
+      n: "active_time_seconds"
+      r: true
+      sh: "Total time this branch's compute has been active during the current billing period, in seconds (not weighted by compute size)."
+      t: "`$INTEGER`"
+    }
     annotation: {
       h: "Annotation"
       n: "annotation"
       r: true
       sh: "Annotation data associated with the annotated object."
-      t: "`$OBJECT`"
-    }
-    annotations: {
-      h: "Annotations"
-      n: "annotations"
-      r: true
-      sh: "Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource."
       t: "`$OBJECT`"
     }
     branch: {
@@ -26,25 +27,228 @@ main: kit: entity: branch: {
       sh: "Branch returned by the request."
       t: "`$OBJECT`"
     }
-    branches: {
-      h: "Branches"
-      n: "branches"
+    compute_time_seconds: {
+      fo: "int64"
+      h: "Compute Time Seconds"
+      n: "compute_time_seconds"
       r: true
-      sh: "Branches in the project."
-      t: "`$ARRAY`"
+      sh: "Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size)."
+      t: "`$INTEGER`"
+    }
+    cpu_used_sec: {
+      de: true
+      fo: "int64"
+      h: "Cpu Used Sec"
+      n: "cpu_used_sec"
+      r: true
+      sh: "Deprecated."
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A timestamp indicating when the branch was created"
+      t: "`$STRING`"
+    }
+    created_by: {
+      h: "Created By"
+      n: "created_by"
+      r: false
+      sh: "The resolved user model that contains details of the user/org/integration/api_key used for branch creation."
+      t: "`$OBJECT`"
+    }
+    creation_source: {
+      h: "Creation Source"
+      n: "creation_source"
+      r: true
+      sh: "The branch creation source"
+      t: "`$STRING`"
+    }
+    current_state: {
+      h: "Current State"
+      n: "current_state"
+      r: true
+      sh: "The branch’s state, indicating if it is initializing, ready for use, or archived."
+      t: "`$STRING`"
+    }
+    data_transfer_bytes: {
+      fo: "int64"
+      h: "Data Transfer Bytes"
+      n: "data_transfer_bytes"
+      r: true
+      sh: "Total data transferred out of the branch, in bytes."
+      t: "`$INTEGER`"
+    }
+    default: {
+      h: "Default"
+      n: "default"
+      r: true
+      sh: "Whether the branch is the project's default branch"
+      t: "`$BOOLEAN`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "The timestamp when the branch is scheduled to expire and be automatically deleted."
+      t: "`$STRING`"
     }
     id: {
       h: "Id"
       n: "id"
-      r: false
+      r: true
+      sh: "The branch ID."
       t: "`$STRING`"
     }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
+    init_source: {
+      h: "Init Source"
+      n: "init_source"
       r: false
-      sh: "To paginate the response, issue an initial request with `limit` value."
+      sh: "Source of initialization for the branch."
+      t: "`$STRING`"
+    }
+    last_reset_at: {
+      fo: "date-time"
+      h: "Last Reset At"
+      n: "last_reset_at"
+      r: false
+      sh: "A timestamp indicating when the branch was last reset"
+      t: "`$STRING`"
+    }
+    logical_size: {
+      fo: "int64"
+      h: "Logical Size"
+      n: "logical_size"
+      r: false
+      sh: "The logical size of the branch, in bytes"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The branch name"
+      t: "`$STRING`"
+    }
+    parent_id: {
+      h: "Parent Id"
+      n: "parent_id"
+      r: false
+      sh: "The `branch_id` of the parent branch"
+      t: "`$STRING`"
+    }
+    parent_lsn: {
+      h: "Parent Lsn"
+      n: "parent_lsn"
+      r: false
+      sh: "The Log Sequence Number (LSN) on the parent branch from which this branch was created."
+      t: "`$STRING`"
+    }
+    parent_timestamp: {
+      fo: "date-time"
+      h: "Parent Timestamp"
+      n: "parent_timestamp"
+      r: false
+      sh: "The point in time on the parent branch from which this branch was created."
+      t: "`$STRING`"
+    }
+    pending_state: {
+      h: "Pending State"
+      n: "pending_state"
+      r: false
+      sh: "The branch’s state, indicating if it is initializing, ready for use, or archived."
+      t: "`$STRING`"
+    }
+    primary: {
+      de: true
+      h: "Primary"
+      n: "primary"
+      r: false
+      sh: "Deprecated."
+      t: "`$BOOLEAN`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      sh: "The ID of the project this branch belongs to."
+      t: "`$STRING`"
+    }
+    protected: {
+      h: "Protected"
+      n: "protected"
+      r: true
+      sh: "Whether the branch is protected."
+      t: "`$BOOLEAN`"
+    }
+    recovery: {
+      h: "Recovery"
+      n: "recovery"
+      r: true
+      sh: "Recovery information for a deleted branch."
       t: "`$OBJECT`"
+    }
+    restore_status: {
+      h: "Restore Status"
+      n: "restore_status"
+      r: false
+      sh: "Could be `restored`, `finalized` or `detaching`."
+      t: "`$STRING`"
+    }
+    restored_as: {
+      h: "Restored As"
+      n: "restored_as"
+      r: false
+      sh: "ID of the target branch which was replaced when this branch was restored"
+      t: "`$STRING`"
+    }
+    restored_from: {
+      h: "Restored From"
+      n: "restored_from"
+      r: false
+      sh: "ID of the snapshot that was the restore source for this branch"
+      t: "`$STRING`"
+    }
+    restricted_actions: {
+      h: "Restricted Actions"
+      n: "restricted_actions"
+      r: false
+      sh: "A list of actions that are currently restricted for this branch and the reason why."
+      t: "`$ARRAY`"
+    }
+    state_changed_at: {
+      fo: "date-time"
+      h: "State Changed At"
+      n: "state_changed_at"
+      r: true
+      sh: "A UTC timestamp indicating when the `current_state` began"
+      t: "`$STRING`"
+    }
+    ttl_interval_seconds: {
+      h: "Ttl Interval Seconds"
+      n: "ttl_interval_seconds"
+      r: false
+      sh: "The time-to-live (TTL) duration originally configured for the branch, in seconds."
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "A timestamp indicating when the branch was last updated"
+      t: "`$STRING`"
+    }
+    written_data_bytes: {
+      fo: "int64"
+      h: "Written Data Bytes"
+      n: "written_data_bytes"
+      r: true
+      sh: "Data written by this branch during the current billing period, in bytes."
+      t: "`$INTEGER`"
     }
   }
 
@@ -95,7 +299,7 @@ main: kit: entity: branch: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.branch`"
           }
         }
       ]
@@ -193,7 +397,7 @@ main: kit: entity: branch: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.branches`"
           }
         }
       ]
@@ -254,7 +458,7 @@ main: kit: entity: branch: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.branch`"
           }
         }
         {
@@ -369,7 +573,7 @@ main: kit: entity: branch: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.branch`"
           }
         }
       ]
@@ -432,7 +636,7 @@ main: kit: entity: branch: {
             req: {
               branch: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.branch`"
           }
         }
       ]

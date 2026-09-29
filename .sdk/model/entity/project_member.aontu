@@ -156,7 +156,7 @@ main: kit: entity: project_member: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.project_members`"
           }
         }
       ]

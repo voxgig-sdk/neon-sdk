@@ -2,28 +2,28 @@
   "existing": {
     "consumption": {
       "CONSUMPTION00": {
-        "branches": [],
-        "pagination": {},
-        "projects": []
+        "branch_id": "BRANCH01",
+        "periods": [],
+        "project_id": "PROJECT01"
       },
       "CONSUMPTION01": {
-        "branches": [],
-        "pagination": {},
-        "projects": []
+        "branch_id": "BRANCH01",
+        "periods": [],
+        "project_id": "PROJECT01"
       },
       "CONSUMPTION02": {
-        "branches": [],
-        "pagination": {},
-        "projects": []
+        "branch_id": "BRANCH01",
+        "periods": [],
+        "project_id": "PROJECT01"
       }
     }
   },
   "new": {
     "consumption": {
       "consumption_ref01": {
-        "branches": [],
-        "pagination": {},
-        "projects": []
+        "branch_id": "BRANCH01",
+        "periods": [],
+        "project_id": "PROJECT01"
       }
     }
   },

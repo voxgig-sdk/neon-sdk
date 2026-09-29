@@ -42,7 +42,8 @@ main: kit: flow: BasicBranchFlow:
       i: {
         ref: "branch_ref01",
         srcdatavar: "branch_ref01_data",
-        suffix: "_up0"
+        suffix: "_up0",
+        textfield: "created_at"
       }
 
       o: "update",

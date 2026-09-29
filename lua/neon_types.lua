@@ -7,27 +7,34 @@
 -- edit by hand.
 
 ---@class Anonymize
----@field completed_at? string
----@field masked_columns? number
----@field started_at? string
----@field triggered_by? string
----@field triggered_by_username? string
+---@field branch_id string
+---@field created_at string
+---@field failed_at? string
+---@field last_run? table
+---@field project_id string
+---@field state string
+---@field status_message? string
+---@field updated_at string
 
 ---@class AnonymizeCreateData
 ---@field branch_id string
 ---@field project_id string
----@field completed_at? string
----@field masked_columns? number
----@field started_at? string
----@field triggered_by? string
----@field triggered_by_username? string
+---@field created_at string
+---@field failed_at? string
+---@field last_run? table
+---@field state string
+---@field status_message? string
+---@field updated_at string
 
 ---@class AnonymizedBranchStatus
----@field completed_at? string
----@field masked_columns? number
----@field started_at? string
----@field triggered_by? string
----@field triggered_by_username? string
+---@field branch_id string
+---@field created_at string
+---@field failed_at? string
+---@field last_run? table
+---@field project_id string
+---@field state string
+---@field status_message? string
+---@field updated_at string
 
 ---@class AnonymizedBranchStatusLoadMatch
 ---@field branch_id string
@@ -126,12 +133,39 @@
 ---@field project_id string
 
 ---@class Branch
+---@field active_time_seconds number
 ---@field annotation table
----@field annotations table
 ---@field branch table
----@field branches table
----@field id? string
----@field pagination? table
+---@field compute_time_seconds number
+---@field cpu_used_sec number
+---@field created_at string
+---@field created_by? table
+---@field creation_source string
+---@field current_state string
+---@field data_transfer_bytes number
+---@field default boolean
+---@field expires_at? string
+---@field id string
+---@field init_source? string
+---@field last_reset_at? string
+---@field logical_size? number
+---@field name string
+---@field parent_id? string
+---@field parent_lsn? string
+---@field parent_timestamp? string
+---@field pending_state? string
+---@field primary? boolean
+---@field project_id string
+---@field protected boolean
+---@field recovery table
+---@field restore_status? string
+---@field restored_as? string
+---@field restored_from? string
+---@field restricted_actions? table
+---@field state_changed_at string
+---@field ttl_interval_seconds? number
+---@field updated_at string
+---@field written_data_bytes number
 
 ---@class BranchLoadMatch
 ---@field id string
@@ -148,21 +182,73 @@
 
 ---@class BranchCreateData
 ---@field project_id string
+---@field active_time_seconds number
 ---@field annotation table
----@field annotations table
 ---@field branch table
----@field branches table
----@field id? string
----@field pagination? table
+---@field compute_time_seconds number
+---@field cpu_used_sec number
+---@field created_at string
+---@field created_by? table
+---@field creation_source string
+---@field current_state string
+---@field data_transfer_bytes number
+---@field default boolean
+---@field expires_at? string
+---@field id string
+---@field init_source? string
+---@field last_reset_at? string
+---@field logical_size? number
+---@field name string
+---@field parent_id? string
+---@field parent_lsn? string
+---@field parent_timestamp? string
+---@field pending_state? string
+---@field primary? boolean
+---@field protected boolean
+---@field recovery table
+---@field restore_status? string
+---@field restored_as? string
+---@field restored_from? string
+---@field restricted_actions? table
+---@field state_changed_at string
+---@field ttl_interval_seconds? number
+---@field updated_at string
+---@field written_data_bytes number
 
 ---@class BranchUpdateData
 ---@field id string
 ---@field project_id string
+---@field active_time_seconds? number
 ---@field annotation? table
----@field annotations? table
 ---@field branch? table
----@field branches? table
----@field pagination? table
+---@field compute_time_seconds? number
+---@field cpu_used_sec? number
+---@field created_at? string
+---@field created_by? table
+---@field creation_source? string
+---@field current_state? string
+---@field data_transfer_bytes? number
+---@field default? boolean
+---@field expires_at? string
+---@field init_source? string
+---@field last_reset_at? string
+---@field logical_size? number
+---@field name? string
+---@field parent_id? string
+---@field parent_lsn? string
+---@field parent_timestamp? string
+---@field pending_state? string
+---@field primary? boolean
+---@field protected? boolean
+---@field recovery? table
+---@field restore_status? string
+---@field restored_as? string
+---@field restored_from? string
+---@field restricted_actions? table
+---@field state_changed_at? string
+---@field ttl_interval_seconds? number
+---@field updated_at? string
+---@field written_data_bytes? number
 
 ---@class BranchRemoveMatch
 ---@field id string
@@ -190,7 +276,8 @@
 
 ---@class BranchSchema
 ---@field id? string
----@field tables table
+---@field json table
+---@field sql? string
 
 ---@class BranchSchemaLoadMatch
 ---@field id string
@@ -282,9 +369,9 @@
 ---@field role_name string
 
 ---@class Consumption
----@field branches table
----@field pagination table
----@field projects table
+---@field branch_id string
+---@field periods table
+---@field project_id string
 
 ---@class ConsumptionListMatch
 ---@field branch_id? table
@@ -613,10 +700,21 @@
 ---@field operations table
 
 ---@class Function
----@field custom_domains table
----@field functions table
----@field id? string
----@field pagination? table
+---@field active_deployment? any
+---@field binding_status? string
+---@field cname_target string
+---@field created_at string
+---@field current_deployment? any
+---@field dns_status? string
+---@field domain string
+---@field entity_id string
+---@field entity_type string
+---@field id string
+---@field invocation_url string
+---@field name string
+---@field slug string
+---@field status? string
+---@field status_reason? string
 
 ---@class FunctionListMatch
 ---@field branch_id string
@@ -963,7 +1061,6 @@
 ---@field id string
 ---@field name? string
 ---@field operations table
----@field pagination table
 ---@field project_id string
 ---@field retry_at? string
 ---@field status string
@@ -990,7 +1087,6 @@
 ---@field id string
 ---@field name? string
 ---@field operations table
----@field pagination table
 ---@field retry_at? string
 ---@field status string
 ---@field total_duration_ms number
@@ -1098,8 +1194,12 @@
 
 ---@class Presign
 ---@field content_type? string
+---@field expires_at string
 ---@field expires_in_seconds? number
+---@field headers table
+---@field method string
 ---@field operation string
+---@field url string
 
 ---@class PresignCreateData
 ---@field branch_id string
@@ -1107,12 +1207,16 @@
 ---@field object_key string
 ---@field project_id string
 ---@field content_type? string
+---@field expires_at string
 ---@field expires_in_seconds? number
+---@field headers table
+---@field method string
 ---@field operation string
+---@field url string
 
 ---@class Project
+---@field active_time number
 ---@field active_time_seconds number
----@field applications table
 ---@field branch_logical_size_limit number
 ---@field branch_logical_size_limit_bytes number
 ---@field compute_last_active_at? string
@@ -1125,31 +1229,30 @@
 ---@field data_storage_bytes_hour number
 ---@field data_transfer_bytes number
 ---@field default_endpoint_settings? table
+---@field deleted_at? string
 ---@field effective_project_permission? string
 ---@field hipaa_enabled_at? string
 ---@field history_retention_seconds number
 ---@field id string
----@field integrations table
 ---@field label string
 ---@field maintenance_scheduled_for? string
 ---@field maintenance_starts_at? string
 ---@field name string
 ---@field org_id? string
+---@field org_name? string
 ---@field owner table
 ---@field owner_id string
----@field pagination table
 ---@field pg_version number
 ---@field platform_id string
 ---@field project table
----@field projects table
 ---@field provisioner string
 ---@field proxy_host string
 ---@field quota_reset_at? string
+---@field recoverable_until? string
 ---@field region_id string
 ---@field settings? table
 ---@field store_passwords boolean
 ---@field synthetic_storage_size? number
----@field unavailable_project_ids? table
 ---@field updated_at string
 ---@field written_data_bytes number
 
@@ -1167,8 +1270,8 @@
 ---@class ProjectCreateData
 ---@field id string
 ---@field vpc_endpoint_id string
+---@field active_time number
 ---@field active_time_seconds number
----@field applications table
 ---@field branch_logical_size_limit number
 ---@field branch_logical_size_limit_bytes number
 ---@field compute_last_active_at? string
@@ -1181,38 +1284,37 @@
 ---@field data_storage_bytes_hour number
 ---@field data_transfer_bytes number
 ---@field default_endpoint_settings? table
+---@field deleted_at? string
 ---@field effective_project_permission? string
 ---@field hipaa_enabled_at? string
 ---@field history_retention_seconds number
----@field integrations table
 ---@field label string
 ---@field maintenance_scheduled_for? string
 ---@field maintenance_starts_at? string
 ---@field name string
 ---@field org_id? string
+---@field org_name? string
 ---@field owner table
 ---@field owner_id string
----@field pagination table
 ---@field pg_version number
 ---@field platform_id string
 ---@field project table
----@field projects table
 ---@field provisioner string
 ---@field proxy_host string
 ---@field quota_reset_at? string
+---@field recoverable_until? string
 ---@field region_id string
 ---@field settings? table
 ---@field store_passwords boolean
 ---@field synthetic_storage_size? number
----@field unavailable_project_ids? table
 ---@field updated_at string
 ---@field written_data_bytes number
 
 ---@class ProjectUpdateData
 ---@field id string
 ---@field request_id string
+---@field active_time? number
 ---@field active_time_seconds? number
----@field applications? table
 ---@field branch_logical_size_limit? number
 ---@field branch_logical_size_limit_bytes? number
 ---@field compute_last_active_at? string
@@ -1225,30 +1327,29 @@
 ---@field data_storage_bytes_hour? number
 ---@field data_transfer_bytes? number
 ---@field default_endpoint_settings? table
+---@field deleted_at? string
 ---@field effective_project_permission? string
 ---@field hipaa_enabled_at? string
 ---@field history_retention_seconds? number
----@field integrations? table
 ---@field label? string
 ---@field maintenance_scheduled_for? string
 ---@field maintenance_starts_at? string
 ---@field name? string
 ---@field org_id? string
+---@field org_name? string
 ---@field owner? table
 ---@field owner_id? string
----@field pagination? table
 ---@field pg_version? number
 ---@field platform_id? string
 ---@field project? table
----@field projects? table
 ---@field provisioner? string
 ---@field proxy_host? string
 ---@field quota_reset_at? string
+---@field recoverable_until? string
 ---@field region_id? string
 ---@field settings? table
 ---@field store_passwords? boolean
 ---@field synthetic_storage_size? number
----@field unavailable_project_ids? table
 ---@field updated_at? string
 ---@field written_data_bytes? number
 

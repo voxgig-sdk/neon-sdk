@@ -246,7 +246,7 @@ main: kit: entity: organization: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.members`"
           }
         }
         {

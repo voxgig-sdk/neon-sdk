@@ -12,6 +12,14 @@ main: kit: entity: presign: {
       sh: "The `Content-Type` to bind into the signed request."
       t: "`$STRING`"
     }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: true
+      sh: "When the presigned URL stops being valid."
+      t: "`$STRING`"
+    }
     expires_in_seconds: {
       fo: "int64"
       h: "Expires In Seconds"
@@ -20,11 +28,32 @@ main: kit: entity: presign: {
       sh: "How long the presigned URL stays valid, in seconds."
       t: "`$INTEGER`"
     }
+    headers: {
+      h: "Headers"
+      n: "headers"
+      r: true
+      sh: "Headers the caller MUST send verbatim on the request (e.g."
+      t: "`$OBJECT`"
+    }
+    method: {
+      h: "Method"
+      n: "method"
+      r: true
+      sh: "The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download."
+      t: "`$STRING`"
+    }
     operation: {
       h: "Operation"
       n: "operation"
       r: true
       sh: "The transfer direction."
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "The presigned URL."
       t: "`$STRING`"
     }
   }
@@ -118,7 +147,7 @@ main: kit: entity: presign: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.headers`"
+            res: "`body`"
           }
         }
       ]

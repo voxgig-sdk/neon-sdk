@@ -70,13 +70,6 @@ main: kit: entity: operation: {
       r: true
       t: "`$ARRAY`"
     }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
-      r: true
-      sh: "Cursor-based pagination."
-      t: "`$OBJECT`"
-    }
     project_id: {
       h: "Project Id"
       n: "project_id"
@@ -241,7 +234,7 @@ main: kit: entity: operation: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.operations`"
           }
         }
       ]

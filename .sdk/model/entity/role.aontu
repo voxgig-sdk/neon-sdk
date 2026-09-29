@@ -134,7 +134,7 @@ main: kit: entity: role: {
             req: {
               role: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.role`"
           }
         }
       ]
@@ -343,7 +343,7 @@ main: kit: entity: role: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.role`"
           }
         }
       ]

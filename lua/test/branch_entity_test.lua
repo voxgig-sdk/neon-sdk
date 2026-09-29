@@ -107,11 +107,16 @@ describe("BranchEntity", function()
       ["project_id"] = setup.idmap["project_id"],
     }
 
+    local branch_ref01_markdef_up0_name = "created_at"
+    local branch_ref01_markdef_up0_value = "Mark01-branch_ref01_" .. tostring(setup.now)
+    branch_ref01_data_up0_up[branch_ref01_markdef_up0_name] = branch_ref01_markdef_up0_value
+
     local branch_ref01_resdata_up0_result, err = branch_ref01_ent:update(branch_ref01_data_up0_up, nil)
     assert.is_nil(err)
     local branch_ref01_resdata_up0 = helpers.to_map(type(branch_ref01_resdata_up0_result) == 'table' and branch_ref01_resdata_up0_result.data_get and branch_ref01_resdata_up0_result:data_get() or branch_ref01_resdata_up0_result)
     assert.is_not_nil(branch_ref01_resdata_up0)
     assert.are.equal(branch_ref01_resdata_up0["id"], branch_ref01_data_up0_up["id"])
+    assert.are.equal(branch_ref01_resdata_up0[branch_ref01_markdef_up0_name], branch_ref01_markdef_up0_value)
 
     -- LOAD
     local branch_ref01_match_dt0 = {

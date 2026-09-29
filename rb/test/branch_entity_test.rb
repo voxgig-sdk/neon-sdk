@@ -97,10 +97,15 @@ class BranchEntityTest < Minitest::Test
       "project_id" => setup[:idmap]["project_id"],
     }
 
+    branch_ref01_markdef_up0_name = "created_at"
+    branch_ref01_markdef_up0_value = "Mark01-branch_ref01_#{setup[:now]}"
+    branch_ref01_data_up0_up[branch_ref01_markdef_up0_name] = branch_ref01_markdef_up0_value
+
     branch_ref01_resdata_up0_result = branch_ref01_ent.update(branch_ref01_data_up0_up, nil)
     branch_ref01_resdata_up0 = Helpers.to_map(branch_ref01_resdata_up0_result.respond_to?(:data_get) ? branch_ref01_resdata_up0_result.data_get : branch_ref01_resdata_up0_result)
     assert !branch_ref01_resdata_up0.nil?
     assert_equal branch_ref01_resdata_up0["id"], branch_ref01_data_up0_up["id"]
+    assert_equal branch_ref01_resdata_up0[branch_ref01_markdef_up0_name], branch_ref01_markdef_up0_value
 
     # LOAD
     branch_ref01_match_dt0 = {

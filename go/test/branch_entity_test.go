@@ -2,6 +2,7 @@ package sdktest
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -140,6 +141,10 @@ func TestBranchEntity(t *testing.T) {
 			"project_id": setup.idmap["project_id"],
 		}
 
+		branchRef01MarkdefUp0Name := "created_at"
+		branchRef01MarkdefUp0Value := fmt.Sprintf("Mark01-branch_ref01_%d", setup.now)
+		branchRef01DataUp0Up[branchRef01MarkdefUp0Name] = branchRef01MarkdefUp0Value
+
 		branchRef01ResdataUp0Result, err := branchRef01Ent.Update(branchRef01DataUp0Up, nil)
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
@@ -150,6 +155,9 @@ func TestBranchEntity(t *testing.T) {
 		}
 		if branchRef01ResdataUp0["id"] != branchRef01DataUp0Up["id"] {
 			t.Fatal("expected update result id to match")
+		}
+		if branchRef01ResdataUp0[branchRef01MarkdefUp0Name] != branchRef01MarkdefUp0Value {
+			t.Fatalf("expected %s to be updated, got %v", branchRef01MarkdefUp0Name, branchRef01ResdataUp0[branchRef01MarkdefUp0Name])
 		}
 
 		// LOAD

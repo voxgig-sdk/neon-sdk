@@ -2,9 +2,13 @@
   "existing": {
     "presign": {
       "PRESIGN00": {
-        "content_type": "s1e",
-        "expires_in_seconds": 31,
-        "operation": "s20",
+        "content_type": "s46",
+        "expires_at": "s47",
+        "expires_in_seconds": 72,
+        "headers": {},
+        "method": "s4a",
+        "operation": "s4b",
+        "url": "s4c",
         "branch_id": "BRANCH01",
         "bucket_id": "BUCKET01",
         "object_key": "OBJECT_KEY01",
@@ -12,9 +16,13 @@
         "id": "PRESIGN00"
       },
       "PRESIGN01": {
-        "content_type": "s3c",
-        "expires_in_seconds": 61,
-        "operation": "s3e",
+        "content_type": "s8c",
+        "expires_at": "s8d",
+        "expires_in_seconds": 142,
+        "headers": {},
+        "method": "s90",
+        "operation": "s91",
+        "url": "s92",
         "branch_id": "BRANCH01",
         "bucket_id": "BUCKET01",
         "object_key": "OBJECT_KEY01",
@@ -22,9 +30,13 @@
         "id": "PRESIGN01"
       },
       "PRESIGN02": {
-        "content_type": "s5a",
-        "expires_in_seconds": 91,
-        "operation": "s5c",
+        "content_type": "sd2",
+        "expires_at": "sd3",
+        "expires_in_seconds": 212,
+        "headers": {},
+        "method": "sd6",
+        "operation": "sd7",
+        "url": "sd8",
         "branch_id": "BRANCH01",
         "bucket_id": "BUCKET01",
         "object_key": "OBJECT_KEY01",
@@ -36,9 +48,13 @@
   "new": {
     "presign": {
       "presign_ref01": {
-        "content_type": "s78",
-        "expires_in_seconds": 121,
-        "operation": "s7a"
+        "content_type": "s118",
+        "expires_at": "s119",
+        "expires_in_seconds": 282,
+        "headers": {},
+        "method": "s11c",
+        "operation": "s11d",
+        "url": "s11e"
       }
     }
   },

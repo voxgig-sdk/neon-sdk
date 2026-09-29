@@ -253,7 +253,7 @@ main: kit: entity: endpoint: {
             req: {
               endpoint: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.endpoint`"
           }
         }
       ]
@@ -474,7 +474,7 @@ main: kit: entity: endpoint: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.endpoint`"
           }
         }
       ]
@@ -537,7 +537,7 @@ main: kit: entity: endpoint: {
             req: {
               endpoint: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.endpoint`"
           }
         }
       ]

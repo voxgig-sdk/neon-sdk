@@ -15,11 +15,14 @@ declare(strict_types=1);
 /** Anonymize entity data model. */
 class Anonymize
 {
-    public ?string $completed_at = null;
-    public ?int $masked_columns = null;
-    public ?string $started_at = null;
-    public ?string $triggered_by = null;
-    public ?string $triggered_by_username = null;
+    public string $branch_id;
+    public string $created_at;
+    public ?string $failed_at = null;
+    public ?array $last_run = null;
+    public string $project_id;
+    public string $state;
+    public ?string $status_message = null;
+    public string $updated_at;
 }
 
 /** Request payload for Anonymize#create. */
@@ -27,21 +30,25 @@ class AnonymizeCreateData
 {
     public string $branch_id;
     public string $project_id;
-    public ?string $completed_at = null;
-    public ?int $masked_columns = null;
-    public ?string $started_at = null;
-    public ?string $triggered_by = null;
-    public ?string $triggered_by_username = null;
+    public string $created_at;
+    public ?string $failed_at = null;
+    public ?array $last_run = null;
+    public string $state;
+    public ?string $status_message = null;
+    public string $updated_at;
 }
 
 /** AnonymizedBranchStatus entity data model. */
 class AnonymizedBranchStatus
 {
-    public ?string $completed_at = null;
-    public ?int $masked_columns = null;
-    public ?string $started_at = null;
-    public ?string $triggered_by = null;
-    public ?string $triggered_by_username = null;
+    public string $branch_id;
+    public string $created_at;
+    public ?string $failed_at = null;
+    public ?array $last_run = null;
+    public string $project_id;
+    public string $state;
+    public ?string $status_message = null;
+    public string $updated_at;
 }
 
 /** Request payload for AnonymizedBranchStatus#load. */
@@ -191,12 +198,39 @@ class BackupScheduleListMatch
 /** Branch entity data model. */
 class Branch
 {
+    public int $active_time_seconds;
     public array $annotation;
-    public array $annotations;
     public array $branch;
-    public array $branches;
-    public ?string $id = null;
-    public ?array $pagination = null;
+    public int $compute_time_seconds;
+    public int $cpu_used_sec;
+    public string $created_at;
+    public ?array $created_by = null;
+    public string $creation_source;
+    public string $current_state;
+    public int $data_transfer_bytes;
+    public bool $default;
+    public ?string $expires_at = null;
+    public string $id;
+    public ?string $init_source = null;
+    public ?string $last_reset_at = null;
+    public ?int $logical_size = null;
+    public string $name;
+    public ?string $parent_id = null;
+    public ?string $parent_lsn = null;
+    public ?string $parent_timestamp = null;
+    public ?string $pending_state = null;
+    public ?bool $primary = null;
+    public string $project_id;
+    public bool $protected;
+    public array $recovery;
+    public ?string $restore_status = null;
+    public ?string $restored_as = null;
+    public ?string $restored_from = null;
+    public ?array $restricted_actions = null;
+    public string $state_changed_at;
+    public ?int $ttl_interval_seconds = null;
+    public string $updated_at;
+    public int $written_data_bytes;
 }
 
 /** Request payload for Branch#load. */
@@ -222,12 +256,38 @@ class BranchListMatch
 class BranchCreateData
 {
     public string $project_id;
+    public int $active_time_seconds;
     public array $annotation;
-    public array $annotations;
     public array $branch;
-    public array $branches;
-    public ?string $id = null;
-    public ?array $pagination = null;
+    public int $compute_time_seconds;
+    public int $cpu_used_sec;
+    public string $created_at;
+    public ?array $created_by = null;
+    public string $creation_source;
+    public string $current_state;
+    public int $data_transfer_bytes;
+    public bool $default;
+    public ?string $expires_at = null;
+    public string $id;
+    public ?string $init_source = null;
+    public ?string $last_reset_at = null;
+    public ?int $logical_size = null;
+    public string $name;
+    public ?string $parent_id = null;
+    public ?string $parent_lsn = null;
+    public ?string $parent_timestamp = null;
+    public ?string $pending_state = null;
+    public ?bool $primary = null;
+    public bool $protected;
+    public array $recovery;
+    public ?string $restore_status = null;
+    public ?string $restored_as = null;
+    public ?string $restored_from = null;
+    public ?array $restricted_actions = null;
+    public string $state_changed_at;
+    public ?int $ttl_interval_seconds = null;
+    public string $updated_at;
+    public int $written_data_bytes;
 }
 
 /** Request payload for Branch#update. */
@@ -235,11 +295,37 @@ class BranchUpdateData
 {
     public string $id;
     public string $project_id;
+    public ?int $active_time_seconds = null;
     public ?array $annotation = null;
-    public ?array $annotations = null;
     public ?array $branch = null;
-    public ?array $branches = null;
-    public ?array $pagination = null;
+    public ?int $compute_time_seconds = null;
+    public ?int $cpu_used_sec = null;
+    public ?string $created_at = null;
+    public ?array $created_by = null;
+    public ?string $creation_source = null;
+    public ?string $current_state = null;
+    public ?int $data_transfer_bytes = null;
+    public ?bool $default = null;
+    public ?string $expires_at = null;
+    public ?string $init_source = null;
+    public ?string $last_reset_at = null;
+    public ?int $logical_size = null;
+    public ?string $name = null;
+    public ?string $parent_id = null;
+    public ?string $parent_lsn = null;
+    public ?string $parent_timestamp = null;
+    public ?string $pending_state = null;
+    public ?bool $primary = null;
+    public ?bool $protected = null;
+    public ?array $recovery = null;
+    public ?string $restore_status = null;
+    public ?string $restored_as = null;
+    public ?string $restored_from = null;
+    public ?array $restricted_actions = null;
+    public ?string $state_changed_at = null;
+    public ?int $ttl_interval_seconds = null;
+    public ?string $updated_at = null;
+    public ?int $written_data_bytes = null;
 }
 
 /** Request payload for Branch#remove. */
@@ -285,7 +371,8 @@ class BranchOperationCreateData
 class BranchSchema
 {
     public ?string $id = null;
-    public array $tables;
+    public array $json;
+    public ?string $sql = null;
 }
 
 /** Request payload for BranchSchema#load. */
@@ -422,9 +509,9 @@ class ConnectionUriLoadMatch
 /** Consumption entity data model. */
 class Consumption
 {
-    public array $branches;
-    public array $pagination;
-    public array $projects;
+    public string $branch_id;
+    public array $periods;
+    public string $project_id;
 }
 
 /** Request payload for Consumption#list. */
@@ -870,10 +957,21 @@ class EndpointOperationCreateData
 /** Function entity data model. */
 class FunctionType
 {
-    public array $custom_domains;
-    public array $functions;
-    public ?string $id = null;
-    public ?array $pagination = null;
+    public mixed $active_deployment = null;
+    public ?string $binding_status = null;
+    public string $cname_target;
+    public string $created_at;
+    public mixed $current_deployment = null;
+    public ?string $dns_status = null;
+    public string $domain;
+    public string $entity_id;
+    public string $entity_type;
+    public string $id;
+    public string $invocation_url;
+    public string $name;
+    public string $slug;
+    public ?string $status = null;
+    public ?string $status_reason = null;
 }
 
 /** Request payload for Function#list. */
@@ -1388,7 +1486,6 @@ class Operation
     public string $id;
     public ?string $name = null;
     public array $operations;
-    public array $pagination;
     public string $project_id;
     public ?string $retry_at = null;
     public string $status;
@@ -1424,7 +1521,6 @@ class OperationCreateData
     public string $id;
     public ?string $name = null;
     public array $operations;
-    public array $pagination;
     public ?string $retry_at = null;
     public string $status;
     public int $total_duration_ms;
@@ -1577,8 +1673,12 @@ class OrganizationInvitationCreateData
 class Presign
 {
     public ?string $content_type = null;
+    public string $expires_at;
     public ?int $expires_in_seconds = null;
+    public array $headers;
+    public string $method;
     public string $operation;
+    public string $url;
 }
 
 /** Request payload for Presign#create. */
@@ -1589,15 +1689,19 @@ class PresignCreateData
     public string $object_key;
     public string $project_id;
     public ?string $content_type = null;
+    public string $expires_at;
     public ?int $expires_in_seconds = null;
+    public array $headers;
+    public string $method;
     public string $operation;
+    public string $url;
 }
 
 /** Project entity data model. */
 class Project
 {
+    public int $active_time;
     public int $active_time_seconds;
-    public array $applications;
     public int $branch_logical_size_limit;
     public int $branch_logical_size_limit_bytes;
     public ?string $compute_last_active_at = null;
@@ -1610,31 +1714,30 @@ class Project
     public int $data_storage_bytes_hour;
     public int $data_transfer_bytes;
     public ?array $default_endpoint_settings = null;
+    public ?string $deleted_at = null;
     public ?string $effective_project_permission = null;
     public ?string $hipaa_enabled_at = null;
     public int $history_retention_seconds;
     public string $id;
-    public array $integrations;
     public string $label;
     public ?string $maintenance_scheduled_for = null;
     public ?string $maintenance_starts_at = null;
     public string $name;
     public ?string $org_id = null;
+    public ?string $org_name = null;
     public array $owner;
     public string $owner_id;
-    public array $pagination;
     public int $pg_version;
     public string $platform_id;
     public array $project;
-    public array $projects;
     public string $provisioner;
     public string $proxy_host;
     public ?string $quota_reset_at = null;
+    public ?string $recoverable_until = null;
     public string $region_id;
     public ?array $settings = null;
     public bool $store_passwords;
     public ?int $synthetic_storage_size = null;
-    public ?array $unavailable_project_ids = null;
     public string $updated_at;
     public int $written_data_bytes;
 }
@@ -1661,8 +1764,8 @@ class ProjectCreateData
 {
     public string $id;
     public string $vpc_endpoint_id;
+    public int $active_time;
     public int $active_time_seconds;
-    public array $applications;
     public int $branch_logical_size_limit;
     public int $branch_logical_size_limit_bytes;
     public ?string $compute_last_active_at = null;
@@ -1675,30 +1778,29 @@ class ProjectCreateData
     public int $data_storage_bytes_hour;
     public int $data_transfer_bytes;
     public ?array $default_endpoint_settings = null;
+    public ?string $deleted_at = null;
     public ?string $effective_project_permission = null;
     public ?string $hipaa_enabled_at = null;
     public int $history_retention_seconds;
-    public array $integrations;
     public string $label;
     public ?string $maintenance_scheduled_for = null;
     public ?string $maintenance_starts_at = null;
     public string $name;
     public ?string $org_id = null;
+    public ?string $org_name = null;
     public array $owner;
     public string $owner_id;
-    public array $pagination;
     public int $pg_version;
     public string $platform_id;
     public array $project;
-    public array $projects;
     public string $provisioner;
     public string $proxy_host;
     public ?string $quota_reset_at = null;
+    public ?string $recoverable_until = null;
     public string $region_id;
     public ?array $settings = null;
     public bool $store_passwords;
     public ?int $synthetic_storage_size = null;
-    public ?array $unavailable_project_ids = null;
     public string $updated_at;
     public int $written_data_bytes;
 }
@@ -1708,8 +1810,8 @@ class ProjectUpdateData
 {
     public string $id;
     public string $request_id;
+    public ?int $active_time = null;
     public ?int $active_time_seconds = null;
-    public ?array $applications = null;
     public ?int $branch_logical_size_limit = null;
     public ?int $branch_logical_size_limit_bytes = null;
     public ?string $compute_last_active_at = null;
@@ -1722,30 +1824,29 @@ class ProjectUpdateData
     public ?int $data_storage_bytes_hour = null;
     public ?int $data_transfer_bytes = null;
     public ?array $default_endpoint_settings = null;
+    public ?string $deleted_at = null;
     public ?string $effective_project_permission = null;
     public ?string $hipaa_enabled_at = null;
     public ?int $history_retention_seconds = null;
-    public ?array $integrations = null;
     public ?string $label = null;
     public ?string $maintenance_scheduled_for = null;
     public ?string $maintenance_starts_at = null;
     public ?string $name = null;
     public ?string $org_id = null;
+    public ?string $org_name = null;
     public ?array $owner = null;
     public ?string $owner_id = null;
-    public ?array $pagination = null;
     public ?int $pg_version = null;
     public ?string $platform_id = null;
     public ?array $project = null;
-    public ?array $projects = null;
     public ?string $provisioner = null;
     public ?string $proxy_host = null;
     public ?string $quota_reset_at = null;
+    public ?string $recoverable_until = null;
     public ?string $region_id = null;
     public ?array $settings = null;
     public ?bool $store_passwords = null;
     public ?int $synthetic_storage_size = null;
-    public ?array $unavailable_project_ids = null;
     public ?string $updated_at = null;
     public ?int $written_data_bytes = null;
 }

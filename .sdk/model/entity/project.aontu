@@ -5,6 +5,14 @@ main: kit: entity: project: {
   alias: field: {}
 
   fields: {
+    active_time: {
+      fo: "int64"
+      h: "Active Time"
+      n: "active_time"
+      r: true
+      sh: "Control plane observed endpoints of this project being active this amount of wall-clock time."
+      t: "`$INTEGER`"
+    }
     active_time_seconds: {
       fo: "int64"
       h: "Active Time Seconds"
@@ -12,13 +20,6 @@ main: kit: entity: project: {
       r: true
       sh: "Seconds."
       t: "`$INTEGER`"
-    }
-    applications: {
-      h: "Applications"
-      n: "applications"
-      r: true
-      sh: "Map of project IDs to their installed applications."
-      t: "`$OBJECT`"
     }
     branch_logical_size_limit: {
       fo: "int64"
@@ -115,6 +116,14 @@ main: kit: entity: project: {
       sh: "A collection of settings for a Neon endpoint"
       t: "`$OBJECT`"
     }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "A timestamp indicating when the project was deleted"
+      t: "`$STRING`"
+    }
     effective_project_permission: {
       h: "Effective Project Permission"
       n: "effective_project_permission"
@@ -133,6 +142,12 @@ main: kit: entity: project: {
       fo: "int32"
       h: "History Retention Seconds"
       n: "history_retention_seconds"
+      op: {
+        list: {
+          req: false
+          type: "`$INTEGER`"
+        }
+      }
       r: true
       sh: "The number of seconds to retain the shared history for all branches in this project."
       t: "`$INTEGER`"
@@ -143,13 +158,6 @@ main: kit: entity: project: {
       r: true
       sh: "The Neon project ID."
       t: "`$STRING`"
-    }
-    integrations: {
-      h: "Integrations"
-      n: "integrations"
-      r: true
-      sh: "Map of project IDs to their associated integration details."
-      t: "`$OBJECT`"
     }
     label: {
       h: "Label"
@@ -188,6 +196,13 @@ main: kit: entity: project: {
       sh: "The Neon organization ID."
       t: "`$STRING`"
     }
+    org_name: {
+      h: "Org Name"
+      n: "org_name"
+      r: false
+      sh: "Name of the organization that owns the project."
+      t: "`$STRING`"
+    }
     owner: {
       h: "Owner"
       n: "owner"
@@ -201,13 +216,6 @@ main: kit: entity: project: {
       r: true
       sh: "ID of the organization that owns the project."
       t: "`$STRING`"
-    }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
-      r: true
-      sh: "Cursor-based pagination."
-      t: "`$OBJECT`"
     }
     pg_version: {
       h: "Pg Version"
@@ -230,13 +238,6 @@ main: kit: entity: project: {
       sh: "Configuration for the new project, including name, region, and Postgres compute and storage settings."
       t: "`$OBJECT`"
     }
-    projects: {
-      h: "Projects"
-      n: "projects"
-      r: true
-      sh: "List of projects accessible to the caller."
-      t: "`$ARRAY`"
-    }
     provisioner: {
       h: "Provisioner"
       n: "provisioner"
@@ -258,6 +259,14 @@ main: kit: entity: project: {
       n: "quota_reset_at"
       r: false
       sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    recoverable_until: {
+      fo: "date-time"
+      h: "Recoverable Until"
+      n: "recoverable_until"
+      r: false
+      sh: "A timestamp indicating the project will be recoverable until this date and time."
       t: "`$STRING`"
     }
     region_id: {
@@ -288,13 +297,6 @@ main: kit: entity: project: {
       r: false
       sh: "The current space occupied by the project in Postgres storage, in bytes."
       t: "`$INTEGER`"
-    }
-    unavailable_project_ids: {
-      h: "Unavailable Project Ids"
-      n: "unavailable_project_ids"
-      r: false
-      sh: "A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit"
-      t: "`$ARRAY`"
     }
     updated_at: {
       fo: "date-time"
@@ -443,7 +445,7 @@ main: kit: entity: project: {
             req: {
               project: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.project`"
           }
         }
       ]
@@ -524,7 +526,7 @@ main: kit: entity: project: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.projects`"
           }
         }
         {
@@ -667,7 +669,7 @@ main: kit: entity: project: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.projects`"
           }
         }
       ]
@@ -763,7 +765,7 @@ main: kit: entity: project: {
             req: {
               project: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.project`"
           }
         }
       ]

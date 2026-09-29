@@ -237,37 +237,60 @@ func MakeConfig() map[string]any {
 			"anonymize": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "completed_at",
-						"title": "Completed At",
+						"name": "branch_id",
+						"title": "Branch Id",
 						"type": "`$STRING`",
-						"short": "Timestamp indicating when the latest anonymization attempt completed.",
+						"req": true,
+						"short": "The ID of the anonymized branch.",
+					},
+					map[string]any{
+						"name": "created_at",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A timestamp indicating when the anonymized branch was created",
 						"format": "date-time",
 					},
 					map[string]any{
-						"name": "masked_columns",
-						"title": "Masked Columns",
-						"type": "`$INTEGER`",
-						"short": "Number of columns that had masking rules applied during the attempt.",
-					},
-					map[string]any{
-						"name": "started_at",
-						"title": "Started At",
+						"name": "failed_at",
+						"title": "Failed At",
 						"type": "`$STRING`",
-						"short": "Timestamp indicating when the latest anonymization attempt started.",
+						"short": "A timestamp indicating when the anonymized branch operation failed (if applicable)",
 						"format": "date-time",
 					},
 					map[string]any{
-						"name": "triggered_by",
-						"title": "Triggered By",
-						"type": "`$STRING`",
-						"short": "UUID of the user who triggered the latest anonymization attempt.",
-						"format": "uuid",
+						"name": "last_run",
+						"title": "Last Run",
+						"type": "`$OBJECT`",
+						"short": "Metadata about the most recent anonymization attempt for the branch.",
 					},
 					map[string]any{
-						"name": "triggered_by_username",
-						"title": "Triggered By Username",
+						"name": "project_id",
+						"title": "Project Id",
 						"type": "`$STRING`",
-						"short": "Username of the user who triggered the latest anonymization attempt.",
+						"req": true,
+						"short": "The ID of the project this branch belongs to.",
+					},
+					map[string]any{
+						"name": "state",
+						"title": "State",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The current state of the anonymized branch.",
+					},
+					map[string]any{
+						"name": "status_message",
+						"title": "Status Message",
+						"type": "`$STRING`",
+						"short": "A descriptive message about the current status or any errors",
+					},
+					map[string]any{
+						"name": "updated_at",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A timestamp indicating when the anonymized branch status was last updated",
+						"format": "date-time",
 					},
 				},
 				"name": "anonymize",
@@ -307,7 +330,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.last_run`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -349,37 +372,60 @@ func MakeConfig() map[string]any {
 			"anonymized_branch_status": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "completed_at",
-						"title": "Completed At",
+						"name": "branch_id",
+						"title": "Branch Id",
 						"type": "`$STRING`",
-						"short": "Timestamp indicating when the latest anonymization attempt completed.",
+						"req": true,
+						"short": "The ID of the anonymized branch.",
+					},
+					map[string]any{
+						"name": "created_at",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A timestamp indicating when the anonymized branch was created",
 						"format": "date-time",
 					},
 					map[string]any{
-						"name": "masked_columns",
-						"title": "Masked Columns",
-						"type": "`$INTEGER`",
-						"short": "Number of columns that had masking rules applied during the attempt.",
-					},
-					map[string]any{
-						"name": "started_at",
-						"title": "Started At",
+						"name": "failed_at",
+						"title": "Failed At",
 						"type": "`$STRING`",
-						"short": "Timestamp indicating when the latest anonymization attempt started.",
+						"short": "A timestamp indicating when the anonymized branch operation failed (if applicable)",
 						"format": "date-time",
 					},
 					map[string]any{
-						"name": "triggered_by",
-						"title": "Triggered By",
-						"type": "`$STRING`",
-						"short": "UUID of the user who triggered the latest anonymization attempt.",
-						"format": "uuid",
+						"name": "last_run",
+						"title": "Last Run",
+						"type": "`$OBJECT`",
+						"short": "Metadata about the most recent anonymization attempt for the branch.",
 					},
 					map[string]any{
-						"name": "triggered_by_username",
-						"title": "Triggered By Username",
+						"name": "project_id",
+						"title": "Project Id",
 						"type": "`$STRING`",
-						"short": "Username of the user who triggered the latest anonymization attempt.",
+						"req": true,
+						"short": "The ID of the project this branch belongs to.",
+					},
+					map[string]any{
+						"name": "state",
+						"title": "State",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The current state of the anonymized branch.",
+					},
+					map[string]any{
+						"name": "status_message",
+						"title": "Status Message",
+						"type": "`$STRING`",
+						"short": "A descriptive message about the current status or any errors",
+					},
+					map[string]any{
+						"name": "updated_at",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A timestamp indicating when the anonymized branch status was last updated",
+						"format": "date-time",
 					},
 				},
 				"name": "anonymized_branch_status",
@@ -419,7 +465,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.last_run`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -1569,18 +1615,19 @@ func MakeConfig() map[string]any {
 			"branch": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"name": "active_time_seconds",
+						"title": "Active Time Seconds",
+						"type": "`$INTEGER`",
+						"req": true,
+						"short": "Total time this branch's compute has been active during the current billing period, in seconds (not weighted by compute size).",
+						"format": "int64",
+					},
+					map[string]any{
 						"name": "annotation",
 						"title": "Annotation",
 						"type": "`$OBJECT`",
 						"req": true,
 						"short": "Annotation data associated with the annotated object.",
-					},
-					map[string]any{
-						"name": "annotations",
-						"title": "Annotations",
-						"type": "`$OBJECT`",
-						"req": true,
-						"short": "Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource.",
 					},
 					map[string]any{
 						"name": "branch",
@@ -1590,22 +1637,212 @@ func MakeConfig() map[string]any {
 						"short": "Branch returned by the request.",
 					},
 					map[string]any{
-						"name": "branches",
-						"title": "Branches",
-						"type": "`$ARRAY`",
+						"name": "compute_time_seconds",
+						"title": "Compute Time Seconds",
+						"type": "`$INTEGER`",
 						"req": true,
-						"short": "Branches in the project.",
+						"short": "Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size).",
+						"format": "int64",
+					},
+					map[string]any{
+						"name": "cpu_used_sec",
+						"title": "Cpu Used Sec",
+						"type": "`$INTEGER`",
+						"req": true,
+						"short": "Deprecated.",
+						"deprecated": true,
+						"format": "int64",
+					},
+					map[string]any{
+						"name": "created_at",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A timestamp indicating when the branch was created",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "created_by",
+						"title": "Created By",
+						"type": "`$OBJECT`",
+						"short": "The resolved user model that contains details of the user/org/integration/api_key used for branch creation.",
+					},
+					map[string]any{
+						"name": "creation_source",
+						"title": "Creation Source",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The branch creation source",
+					},
+					map[string]any{
+						"name": "current_state",
+						"title": "Current State",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The branch’s state, indicating if it is initializing, ready for use, or archived.",
+					},
+					map[string]any{
+						"name": "data_transfer_bytes",
+						"title": "Data Transfer Bytes",
+						"type": "`$INTEGER`",
+						"req": true,
+						"short": "Total data transferred out of the branch, in bytes.",
+						"format": "int64",
+					},
+					map[string]any{
+						"name": "default",
+						"title": "Default",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "Whether the branch is the project's default branch",
+					},
+					map[string]any{
+						"name": "expires_at",
+						"title": "Expires At",
+						"type": "`$STRING`",
+						"short": "The timestamp when the branch is scheduled to expire and be automatically deleted.",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
 						"title": "Id",
 						"type": "`$STRING`",
+						"req": true,
+						"short": "The branch ID.",
 					},
 					map[string]any{
-						"name": "pagination",
-						"title": "Pagination",
+						"name": "init_source",
+						"title": "Init Source",
+						"type": "`$STRING`",
+						"short": "Source of initialization for the branch.",
+					},
+					map[string]any{
+						"name": "last_reset_at",
+						"title": "Last Reset At",
+						"type": "`$STRING`",
+						"short": "A timestamp indicating when the branch was last reset",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "logical_size",
+						"title": "Logical Size",
+						"type": "`$INTEGER`",
+						"short": "The logical size of the branch, in bytes",
+						"format": "int64",
+					},
+					map[string]any{
+						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The branch name",
+					},
+					map[string]any{
+						"name": "parent_id",
+						"title": "Parent Id",
+						"type": "`$STRING`",
+						"short": "The `branch_id` of the parent branch",
+					},
+					map[string]any{
+						"name": "parent_lsn",
+						"title": "Parent Lsn",
+						"type": "`$STRING`",
+						"short": "The Log Sequence Number (LSN) on the parent branch from which this branch was created.",
+					},
+					map[string]any{
+						"name": "parent_timestamp",
+						"title": "Parent Timestamp",
+						"type": "`$STRING`",
+						"short": "The point in time on the parent branch from which this branch was created.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "pending_state",
+						"title": "Pending State",
+						"type": "`$STRING`",
+						"short": "The branch’s state, indicating if it is initializing, ready for use, or archived.",
+					},
+					map[string]any{
+						"name": "primary",
+						"title": "Primary",
+						"type": "`$BOOLEAN`",
+						"short": "Deprecated.",
+						"deprecated": true,
+					},
+					map[string]any{
+						"name": "project_id",
+						"title": "Project Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The ID of the project this branch belongs to.",
+					},
+					map[string]any{
+						"name": "protected",
+						"title": "Protected",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "Whether the branch is protected.",
+					},
+					map[string]any{
+						"name": "recovery",
+						"title": "Recovery",
 						"type": "`$OBJECT`",
-						"short": "To paginate the response, issue an initial request with `limit` value.",
+						"req": true,
+						"short": "Recovery information for a deleted branch.",
+					},
+					map[string]any{
+						"name": "restore_status",
+						"title": "Restore Status",
+						"type": "`$STRING`",
+						"short": "Could be `restored`, `finalized` or `detaching`.",
+					},
+					map[string]any{
+						"name": "restored_as",
+						"title": "Restored As",
+						"type": "`$STRING`",
+						"short": "ID of the target branch which was replaced when this branch was restored",
+					},
+					map[string]any{
+						"name": "restored_from",
+						"title": "Restored From",
+						"type": "`$STRING`",
+						"short": "ID of the snapshot that was the restore source for this branch",
+					},
+					map[string]any{
+						"name": "restricted_actions",
+						"title": "Restricted Actions",
+						"type": "`$ARRAY`",
+						"short": "A list of actions that are currently restricted for this branch and the reason why.",
+					},
+					map[string]any{
+						"name": "state_changed_at",
+						"title": "State Changed At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A UTC timestamp indicating when the `current_state` began",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "ttl_interval_seconds",
+						"title": "Ttl Interval Seconds",
+						"type": "`$INTEGER`",
+						"short": "The time-to-live (TTL) duration originally configured for the branch, in seconds.",
+					},
+					map[string]any{
+						"name": "updated_at",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A timestamp indicating when the branch was last updated",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "written_data_bytes",
+						"title": "Written Data Bytes",
+						"type": "`$INTEGER`",
+						"req": true,
+						"short": "Data written by this branch during the current billing period, in bytes.",
+						"format": "int64",
 					},
 				},
 				"id": map[string]any{
@@ -1641,7 +1878,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.branch`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -1689,7 +1926,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.branches`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -1792,7 +2029,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.branch`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -1912,7 +2149,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.branch`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -1978,7 +2215,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"branch": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.branch`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -2298,11 +2535,17 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "tables",
-						"title": "Tables",
-						"type": "`$ARRAY`",
+						"name": "json",
+						"title": "Json",
+						"type": "`$OBJECT`",
 						"req": true,
-						"short": "Tables present in the branch schema.",
+						"short": "Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`.",
+					},
+					map[string]any{
+						"name": "sql",
+						"title": "Sql",
+						"type": "`$STRING`",
+						"short": "Branch schema expressed as SQL DDL statements.",
 					},
 				},
 				"id": map[string]any{
@@ -2350,7 +2593,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.json`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -3489,25 +3732,25 @@ func MakeConfig() map[string]any {
 			"consumption": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "branches",
-						"title": "Branches",
-						"type": "`$ARRAY`",
+						"name": "branch_id",
+						"title": "Branch Id",
+						"type": "`$STRING`",
 						"req": true,
-						"short": "Per-branch consumption history records returned for the requested time range.",
+						"short": "The Neon branch ID.",
 					},
 					map[string]any{
-						"name": "pagination",
-						"title": "Pagination",
-						"type": "`$OBJECT`",
-						"req": true,
-						"short": "Cursor-based pagination.",
-					},
-					map[string]any{
-						"name": "projects",
-						"title": "Projects",
+						"name": "periods",
+						"title": "Periods",
 						"type": "`$ARRAY`",
 						"req": true,
-						"short": "Per-project consumption history records included in the response.",
+						"short": "Consumption history records for the branch, grouped by billing period.",
+					},
+					map[string]any{
+						"name": "project_id",
+						"title": "Project Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The ID of the project that owns this branch.",
 					},
 				},
 				"name": "consumption",
@@ -3539,13 +3782,13 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.branches`",
 								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
 											"name": "branch_id",
-											"orig": "branch_id",
+											"orig": "branch_ids",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -3578,7 +3821,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "metric",
-											"orig": "metric",
+											"orig": "metrics",
 											"type": "`$ARRAY`",
 											"kind": "query",
 											"reqd": true,
@@ -3592,7 +3835,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "project_id",
-											"orig": "project_id",
+											"orig": "project_ids",
 											"type": "`$ARRAY`",
 											"kind": "query",
 											"reqd": true,
@@ -3639,7 +3882,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.projects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -3665,7 +3908,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "include_v1_metric",
-											"orig": "include_v1_metric",
+											"orig": "include_v1_metrics",
 											"type": "`$BOOLEAN`",
 											"kind": "query",
 										},
@@ -3678,7 +3921,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "metric",
-											"orig": "metric",
+											"orig": "metrics",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -3690,7 +3933,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "project_id",
-											"orig": "project_id",
+											"orig": "project_ids",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -3740,7 +3983,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.projects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -3773,7 +4016,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "metric",
-											"orig": "metric",
+											"orig": "metrics",
 											"type": "`$ARRAY`",
 											"kind": "query",
 											"reqd": true,
@@ -3787,7 +4030,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "project_id",
-											"orig": "project_id",
+											"orig": "project_ids",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -5000,7 +5243,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"database": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.database`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -5216,7 +5459,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.database`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -5298,7 +5541,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"database": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.database`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -5968,7 +6211,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"endpoint": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.endpoint`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -6194,7 +6437,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.endpoint`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -6260,7 +6503,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"endpoint": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.endpoint`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -6536,27 +6779,102 @@ func MakeConfig() map[string]any {
 			"function": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "custom_domains",
-						"title": "Custom Domains",
-						"type": "`$ARRAY`",
+						"name": "active_deployment",
+						"title": "Active Deployment",
+						"type": "`$ANY`",
+						"short": "The most recent deployment whose build completed successfully.",
+					},
+					map[string]any{
+						"name": "binding_status",
+						"title": "Binding Status",
+						"type": "`$STRING`",
+						"short": "Whether Neon's internal routing for the domain is published: `pending`, `present`, or `missing`.",
+					},
+					map[string]any{
+						"name": "cname_target",
+						"title": "Cname Target",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The hostname the customer must point their custom domain at with a CNAME record.",
+					},
+					map[string]any{
+						"name": "created_at",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 					},
 					map[string]any{
-						"name": "functions",
-						"title": "Functions",
-						"type": "`$ARRAY`",
+						"name": "current_deployment",
+						"title": "Current Deployment",
+						"type": "`$ANY`",
+						"short": "The most recent deployment, regardless of build status.",
+					},
+					map[string]any{
+						"name": "dns_status",
+						"title": "Dns Status",
+						"type": "`$STRING`",
+						"short": "The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt).",
+					},
+					map[string]any{
+						"name": "domain",
+						"title": "Domain",
+						"type": "`$STRING`",
 						"req": true,
+						"short": "The registered custom domain (normalized, lowercase).",
+					},
+					map[string]any{
+						"name": "entity_id",
+						"title": "Entity Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The target entity's identifier within the branch.",
+					},
+					map[string]any{
+						"name": "entity_type",
+						"title": "Entity Type",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The kind of branch entity the domain targets.",
 					},
 					map[string]any{
 						"name": "id",
 						"title": "Id",
 						"type": "`$STRING`",
+						"req": true,
+						"short": "Opaque, stable function identifier.",
 					},
 					map[string]any{
-						"name": "pagination",
-						"title": "Pagination",
-						"type": "`$OBJECT`",
-						"short": "To paginate the response, issue an initial request with `limit` value.",
+						"name": "invocation_url",
+						"title": "Invocation Url",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "URL at which the function is invoked.",
+					},
+					map[string]any{
+						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "Free-form display name.",
+					},
+					map[string]any{
+						"name": "slug",
+						"title": "Slug",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "Branch-unique, lowercase DNS-label.",
+					},
+					map[string]any{
+						"name": "status",
+						"title": "Status",
+						"type": "`$STRING`",
+						"short": "The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error…",
+					},
+					map[string]any{
+						"name": "status_reason",
+						"title": "Status Reason",
+						"type": "`$STRING`",
+						"short": "A short, stable machine-readable reason for a non-active `status` (e.g.",
 					},
 				},
 				"id": map[string]any{
@@ -6600,7 +6918,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.custom_domains`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -6674,7 +6992,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.functions`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -10532,13 +10850,6 @@ func MakeConfig() map[string]any {
 						"req": true,
 					},
 					map[string]any{
-						"name": "pagination",
-						"title": "Pagination",
-						"type": "`$OBJECT`",
-						"req": true,
-						"short": "Cursor-based pagination.",
-					},
-					map[string]any{
 						"name": "project_id",
 						"title": "Project Id",
 						"type": "`$STRING`",
@@ -10673,7 +10984,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.operations`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -11274,7 +11585,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.members`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -11678,6 +11989,14 @@ func MakeConfig() map[string]any {
 						"short": "The `Content-Type` to bind into the signed request.",
 					},
 					map[string]any{
+						"name": "expires_at",
+						"title": "Expires At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "When the presigned URL stops being valid.",
+						"format": "date-time",
+					},
+					map[string]any{
 						"name": "expires_in_seconds",
 						"title": "Expires In Seconds",
 						"type": "`$INTEGER`",
@@ -11685,11 +12004,32 @@ func MakeConfig() map[string]any {
 						"format": "int64",
 					},
 					map[string]any{
+						"name": "headers",
+						"title": "Headers",
+						"type": "`$OBJECT`",
+						"req": true,
+						"short": "Headers the caller MUST send verbatim on the request (e.g.",
+					},
+					map[string]any{
+						"name": "method",
+						"title": "Method",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download.",
+					},
+					map[string]any{
 						"name": "operation",
 						"title": "Operation",
 						"type": "`$STRING`",
 						"req": true,
 						"short": "The transfer direction.",
+					},
+					map[string]any{
+						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The presigned URL.",
 					},
 				},
 				"name": "presign",
@@ -11749,7 +12089,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.headers`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -11808,19 +12148,20 @@ func MakeConfig() map[string]any {
 			"project": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"name": "active_time",
+						"title": "Active Time",
+						"type": "`$INTEGER`",
+						"req": true,
+						"short": "Control plane observed endpoints of this project being active this amount of wall-clock time.",
+						"format": "int64",
+					},
+					map[string]any{
 						"name": "active_time_seconds",
 						"title": "Active Time Seconds",
 						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Seconds.",
 						"format": "int64",
-					},
-					map[string]any{
-						"name": "applications",
-						"title": "Applications",
-						"type": "`$OBJECT`",
-						"req": true,
-						"short": "Map of project IDs to their installed applications.",
 					},
 					map[string]any{
 						"name": "branch_logical_size_limit",
@@ -11916,6 +12257,13 @@ func MakeConfig() map[string]any {
 						"short": "A collection of settings for a Neon endpoint",
 					},
 					map[string]any{
+						"name": "deleted_at",
+						"title": "Deleted At",
+						"type": "`$STRING`",
+						"short": "A timestamp indicating when the project was deleted",
+						"format": "date-time",
+					},
+					map[string]any{
 						"name": "effective_project_permission",
 						"title": "Effective Project Permission",
 						"type": "`$STRING`",
@@ -11932,6 +12280,11 @@ func MakeConfig() map[string]any {
 						"title": "History Retention Seconds",
 						"type": "`$INTEGER`",
 						"req": true,
+						"op": map[string]any{
+							"list": map[string]any{
+								"type": "`$INTEGER`",
+							},
+						},
 						"short": "The number of seconds to retain the shared history for all branches in this project.",
 						"format": "int32",
 					},
@@ -11941,13 +12294,6 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 						"req": true,
 						"short": "The Neon project ID.",
-					},
-					map[string]any{
-						"name": "integrations",
-						"title": "Integrations",
-						"type": "`$OBJECT`",
-						"req": true,
-						"short": "Map of project IDs to their associated integration details.",
 					},
 					map[string]any{
 						"name": "label",
@@ -11984,6 +12330,12 @@ func MakeConfig() map[string]any {
 						"short": "The Neon organization ID.",
 					},
 					map[string]any{
+						"name": "org_name",
+						"title": "Org Name",
+						"type": "`$STRING`",
+						"short": "Name of the organization that owns the project.",
+					},
+					map[string]any{
 						"name": "owner",
 						"title": "Owner",
 						"type": "`$OBJECT`",
@@ -11996,13 +12348,6 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 						"req": true,
 						"short": "ID of the organization that owns the project.",
-					},
-					map[string]any{
-						"name": "pagination",
-						"title": "Pagination",
-						"type": "`$OBJECT`",
-						"req": true,
-						"short": "Cursor-based pagination.",
 					},
 					map[string]any{
 						"name": "pg_version",
@@ -12026,13 +12371,6 @@ func MakeConfig() map[string]any {
 						"short": "Configuration for the new project, including name, region, and Postgres compute and storage settings.",
 					},
 					map[string]any{
-						"name": "projects",
-						"title": "Projects",
-						"type": "`$ARRAY`",
-						"req": true,
-						"short": "List of projects accessible to the caller.",
-					},
-					map[string]any{
 						"name": "provisioner",
 						"title": "Provisioner",
 						"type": "`$STRING`",
@@ -12052,6 +12390,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 						"short": "Deprecated.",
 						"deprecated": true,
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "recoverable_until",
+						"title": "Recoverable Until",
+						"type": "`$STRING`",
+						"short": "A timestamp indicating the project will be recoverable until this date and time.",
 						"format": "date-time",
 					},
 					map[string]any{
@@ -12080,12 +12425,6 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 						"short": "The current space occupied by the project in Postgres storage, in bytes.",
 						"format": "int64",
-					},
-					map[string]any{
-						"name": "unavailable_project_ids",
-						"title": "Unavailable Project Ids",
-						"type": "`$ARRAY`",
-						"short": "A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit",
 					},
 					map[string]any{
 						"name": "updated_at",
@@ -12236,7 +12575,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"project": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.project`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -12262,7 +12601,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.projects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -12413,7 +12752,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.projects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -12533,7 +12872,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"project": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.project`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -13273,7 +13612,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.project_members`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -14136,7 +14475,7 @@ func MakeConfig() map[string]any {
 									"req": map[string]any{
 										"role": "`reqdata`",
 									},
-									"res": "`body`",
+									"res": "`body.role`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -14352,7 +14691,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.role`",
 								},
 								"args": map[string]any{
 									"params": []any{

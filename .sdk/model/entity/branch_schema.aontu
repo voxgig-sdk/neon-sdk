@@ -11,12 +11,19 @@ main: kit: entity: branch_schema: {
       r: false
       t: "`$STRING`"
     }
-    tables: {
-      h: "Tables"
-      n: "tables"
+    json: {
+      h: "Json"
+      n: "json"
       r: true
-      sh: "Tables present in the branch schema."
-      t: "`$ARRAY`"
+      sh: "Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`."
+      t: "`$OBJECT`"
+    }
+    sql: {
+      h: "Sql"
+      n: "sql"
+      r: false
+      sh: "Branch schema expressed as SQL DDL statements."
+      t: "`$STRING`"
     }
   }
 
@@ -121,7 +128,7 @@ main: kit: entity: branch_schema: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.json`"
+            res: "`body`"
           }
         }
       ]

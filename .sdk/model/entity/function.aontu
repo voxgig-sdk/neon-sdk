@@ -5,30 +5,109 @@ main: kit: entity: function: {
   alias: field: {}
 
   fields: {
-    custom_domains: {
-      h: "Custom Domains"
-      n: "custom_domains"
-      r: true
-      t: "`$ARRAY`"
+    active_deployment: {
+      h: "Active Deployment"
+      n: "active_deployment"
+      r: false
+      sh: "The most recent deployment whose build completed successfully."
+      t: "`$ANY`"
     }
-    functions: {
-      h: "Functions"
-      n: "functions"
+    binding_status: {
+      h: "Binding Status"
+      n: "binding_status"
+      r: false
+      sh: "Whether Neon's internal routing for the domain is published: `pending`, `present`, or `missing`."
+      t: "`$STRING`"
+    }
+    cname_target: {
+      h: "Cname Target"
+      n: "cname_target"
       r: true
-      t: "`$ARRAY`"
+      sh: "The hostname the customer must point their custom domain at with a CNAME record."
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    current_deployment: {
+      h: "Current Deployment"
+      n: "current_deployment"
+      r: false
+      sh: "The most recent deployment, regardless of build status."
+      t: "`$ANY`"
+    }
+    dns_status: {
+      h: "Dns Status"
+      n: "dns_status"
+      r: false
+      sh: "The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt)."
+      t: "`$STRING`"
+    }
+    domain: {
+      h: "Domain"
+      n: "domain"
+      r: true
+      sh: "The registered custom domain (normalized, lowercase)."
+      t: "`$STRING`"
+    }
+    entity_id: {
+      h: "Entity Id"
+      n: "entity_id"
+      r: true
+      sh: "The target entity's identifier within the branch."
+      t: "`$STRING`"
+    }
+    entity_type: {
+      h: "Entity Type"
+      n: "entity_type"
+      r: true
+      sh: "The kind of branch entity the domain targets."
+      t: "`$STRING`"
     }
     id: {
       h: "Id"
       n: "id"
-      r: false
+      r: true
+      sh: "Opaque, stable function identifier."
       t: "`$STRING`"
     }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
+    invocation_url: {
+      h: "Invocation Url"
+      n: "invocation_url"
+      r: true
+      sh: "URL at which the function is invoked."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Free-form display name."
+      t: "`$STRING`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      sh: "Branch-unique, lowercase DNS-label."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
       r: false
-      sh: "To paginate the response, issue an initial request with `limit` value."
-      t: "`$OBJECT`"
+      sh: "The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error…"
+      t: "`$STRING`"
+    }
+    status_reason: {
+      h: "Status Reason"
+      n: "status_reason"
+      r: false
+      sh: "A short, stable machine-readable reason for a non-active `status` (e.g."
+      t: "`$STRING`"
     }
   }
 
@@ -111,7 +190,7 @@ main: kit: entity: function: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.custom_domains`"
           }
         }
         {
@@ -183,7 +262,7 @@ main: kit: entity: function: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.functions`"
           }
         }
       ]

@@ -16,33 +16,46 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Anonymize(TypedDict, total=False):
-    completed_at: str
-    masked_columns: int
-    started_at: str
-    triggered_by: str
-    triggered_by_username: str
+class AnonymizeRequired(TypedDict):
+    branch_id: str
+    created_at: str
+    project_id: str
+    state: str
+    updated_at: str
+
+
+class Anonymize(AnonymizeRequired, total=False):
+    failed_at: str
+    last_run: dict
+    status_message: str
 
 
 class AnonymizeCreateDataRequired(TypedDict):
     branch_id: str
     project_id: str
+    created_at: str
+    state: str
+    updated_at: str
 
 
 class AnonymizeCreateData(AnonymizeCreateDataRequired, total=False):
-    completed_at: str
-    masked_columns: int
-    started_at: str
-    triggered_by: str
-    triggered_by_username: str
+    failed_at: str
+    last_run: dict
+    status_message: str
 
 
-class AnonymizedBranchStatus(TypedDict, total=False):
-    completed_at: str
-    masked_columns: int
-    started_at: str
-    triggered_by: str
-    triggered_by_username: str
+class AnonymizedBranchStatusRequired(TypedDict):
+    branch_id: str
+    created_at: str
+    project_id: str
+    state: str
+    updated_at: str
+
+
+class AnonymizedBranchStatus(AnonymizedBranchStatusRequired, total=False):
+    failed_at: str
+    last_run: dict
+    status_message: str
 
 
 class AnonymizedBranchStatusLoadMatch(TypedDict):
@@ -179,15 +192,42 @@ class BackupScheduleListMatch(TypedDict):
 
 
 class BranchRequired(TypedDict):
+    active_time_seconds: int
     annotation: dict
-    annotations: dict
     branch: dict
-    branches: list
+    compute_time_seconds: int
+    cpu_used_sec: int
+    created_at: str
+    creation_source: str
+    current_state: str
+    data_transfer_bytes: int
+    default: bool
+    id: str
+    name: str
+    project_id: str
+    protected: bool
+    recovery: dict
+    state_changed_at: str
+    updated_at: str
+    written_data_bytes: int
 
 
 class Branch(BranchRequired, total=False):
-    id: str
-    pagination: dict
+    created_by: dict
+    expires_at: str
+    init_source: str
+    last_reset_at: str
+    logical_size: int
+    parent_id: str
+    parent_lsn: str
+    parent_timestamp: str
+    pending_state: str
+    primary: bool
+    restore_status: str
+    restored_as: str
+    restored_from: str
+    restricted_actions: list
+    ttl_interval_seconds: int
 
 
 class BranchLoadMatch(TypedDict):
@@ -210,15 +250,41 @@ class BranchListMatch(BranchListMatchRequired, total=False):
 
 class BranchCreateDataRequired(TypedDict):
     project_id: str
+    active_time_seconds: int
     annotation: dict
-    annotations: dict
     branch: dict
-    branches: list
+    compute_time_seconds: int
+    cpu_used_sec: int
+    created_at: str
+    creation_source: str
+    current_state: str
+    data_transfer_bytes: int
+    default: bool
+    id: str
+    name: str
+    protected: bool
+    recovery: dict
+    state_changed_at: str
+    updated_at: str
+    written_data_bytes: int
 
 
 class BranchCreateData(BranchCreateDataRequired, total=False):
-    id: str
-    pagination: dict
+    created_by: dict
+    expires_at: str
+    init_source: str
+    last_reset_at: str
+    logical_size: int
+    parent_id: str
+    parent_lsn: str
+    parent_timestamp: str
+    pending_state: str
+    primary: bool
+    restore_status: str
+    restored_as: str
+    restored_from: str
+    restricted_actions: list
+    ttl_interval_seconds: int
 
 
 class BranchUpdateDataRequired(TypedDict):
@@ -227,11 +293,37 @@ class BranchUpdateDataRequired(TypedDict):
 
 
 class BranchUpdateData(BranchUpdateDataRequired, total=False):
+    active_time_seconds: int
     annotation: dict
-    annotations: dict
     branch: dict
-    branches: list
-    pagination: dict
+    compute_time_seconds: int
+    cpu_used_sec: int
+    created_at: str
+    created_by: dict
+    creation_source: str
+    current_state: str
+    data_transfer_bytes: int
+    default: bool
+    expires_at: str
+    init_source: str
+    last_reset_at: str
+    logical_size: int
+    name: str
+    parent_id: str
+    parent_lsn: str
+    parent_timestamp: str
+    pending_state: str
+    primary: bool
+    protected: bool
+    recovery: dict
+    restore_status: str
+    restored_as: str
+    restored_from: str
+    restricted_actions: list
+    state_changed_at: str
+    ttl_interval_seconds: int
+    updated_at: str
+    written_data_bytes: int
 
 
 class BranchRemoveMatch(TypedDict):
@@ -270,11 +362,12 @@ class BranchOperationCreateData(TypedDict):
 
 
 class BranchSchemaRequired(TypedDict):
-    tables: list
+    json: dict
 
 
 class BranchSchema(BranchSchemaRequired, total=False):
     id: str
+    sql: str
 
 
 class BranchSchemaLoadMatchRequired(TypedDict):
@@ -405,9 +498,9 @@ class ConnectionUriLoadMatch(ConnectionUriLoadMatchRequired, total=False):
 
 
 class Consumption(TypedDict):
-    branches: list
-    pagination: dict
-    projects: list
+    branch_id: str
+    periods: list
+    project_id: str
 
 
 class ConsumptionListMatchRequired(TypedDict):
@@ -821,13 +914,24 @@ class EndpointOperationCreateData(TypedDict):
 
 
 class FunctionRequired(TypedDict):
-    custom_domains: list
-    functions: list
+    cname_target: str
+    created_at: str
+    domain: str
+    entity_id: str
+    entity_type: str
+    id: str
+    invocation_url: str
+    name: str
+    slug: str
 
 
 class Function(FunctionRequired, total=False):
-    id: str
-    pagination: dict
+    active_deployment: Any
+    binding_status: str
+    current_deployment: Any
+    dns_status: str
+    status: str
+    status_reason: str
 
 
 class FunctionListMatchRequired(TypedDict):
@@ -1321,7 +1425,6 @@ class OperationRequired(TypedDict):
     failures_count: int
     id: str
     operations: list
-    pagination: dict
     project_id: str
     status: str
     total_duration_ms: int
@@ -1358,7 +1461,6 @@ class OperationCreateDataRequired(TypedDict):
     failures_count: int
     id: str
     operations: list
-    pagination: dict
     status: str
     total_duration_ms: int
     updated_at: str
@@ -1499,7 +1601,11 @@ class OrganizationInvitationCreateData(TypedDict):
 
 
 class PresignRequired(TypedDict):
+    expires_at: str
+    headers: dict
+    method: str
     operation: str
+    url: str
 
 
 class Presign(PresignRequired, total=False):
@@ -1512,7 +1618,11 @@ class PresignCreateDataRequired(TypedDict):
     bucket_id: str
     object_key: str
     project_id: str
+    expires_at: str
+    headers: dict
+    method: str
     operation: str
+    url: str
 
 
 class PresignCreateData(PresignCreateDataRequired, total=False):
@@ -1521,8 +1631,8 @@ class PresignCreateData(PresignCreateDataRequired, total=False):
 
 
 class ProjectRequired(TypedDict):
+    active_time: int
     active_time_seconds: int
-    applications: dict
     branch_logical_size_limit: int
     branch_logical_size_limit_bytes: int
     compute_time_seconds: int
@@ -1535,16 +1645,13 @@ class ProjectRequired(TypedDict):
     data_transfer_bytes: int
     history_retention_seconds: int
     id: str
-    integrations: dict
     label: str
     name: str
     owner: dict
     owner_id: str
-    pagination: dict
     pg_version: int
     platform_id: str
     project: dict
-    projects: list
     provisioner: str
     proxy_host: str
     region_id: str
@@ -1556,15 +1663,17 @@ class ProjectRequired(TypedDict):
 class Project(ProjectRequired, total=False):
     compute_last_active_at: str
     default_endpoint_settings: dict
+    deleted_at: str
     effective_project_permission: str
     hipaa_enabled_at: str
     maintenance_scheduled_for: str
     maintenance_starts_at: str
     org_id: str
+    org_name: str
     quota_reset_at: str
+    recoverable_until: str
     settings: dict
     synthetic_storage_size: int
-    unavailable_project_ids: list
 
 
 class ProjectLoadMatch(TypedDict):
@@ -1583,8 +1692,8 @@ class ProjectListMatch(TypedDict, total=False):
 class ProjectCreateDataRequired(TypedDict):
     id: str
     vpc_endpoint_id: str
+    active_time: int
     active_time_seconds: int
-    applications: dict
     branch_logical_size_limit: int
     branch_logical_size_limit_bytes: int
     compute_time_seconds: int
@@ -1596,16 +1705,13 @@ class ProjectCreateDataRequired(TypedDict):
     data_storage_bytes_hour: int
     data_transfer_bytes: int
     history_retention_seconds: int
-    integrations: dict
     label: str
     name: str
     owner: dict
     owner_id: str
-    pagination: dict
     pg_version: int
     platform_id: str
     project: dict
-    projects: list
     provisioner: str
     proxy_host: str
     region_id: str
@@ -1617,15 +1723,17 @@ class ProjectCreateDataRequired(TypedDict):
 class ProjectCreateData(ProjectCreateDataRequired, total=False):
     compute_last_active_at: str
     default_endpoint_settings: dict
+    deleted_at: str
     effective_project_permission: str
     hipaa_enabled_at: str
     maintenance_scheduled_for: str
     maintenance_starts_at: str
     org_id: str
+    org_name: str
     quota_reset_at: str
+    recoverable_until: str
     settings: dict
     synthetic_storage_size: int
-    unavailable_project_ids: list
 
 
 class ProjectUpdateDataRequired(TypedDict):
@@ -1634,8 +1742,8 @@ class ProjectUpdateDataRequired(TypedDict):
 
 
 class ProjectUpdateData(ProjectUpdateDataRequired, total=False):
+    active_time: int
     active_time_seconds: int
-    applications: dict
     branch_logical_size_limit: int
     branch_logical_size_limit_bytes: int
     compute_last_active_at: str
@@ -1648,30 +1756,29 @@ class ProjectUpdateData(ProjectUpdateDataRequired, total=False):
     data_storage_bytes_hour: int
     data_transfer_bytes: int
     default_endpoint_settings: dict
+    deleted_at: str
     effective_project_permission: str
     hipaa_enabled_at: str
     history_retention_seconds: int
-    integrations: dict
     label: str
     maintenance_scheduled_for: str
     maintenance_starts_at: str
     name: str
     org_id: str
+    org_name: str
     owner: dict
     owner_id: str
-    pagination: dict
     pg_version: int
     platform_id: str
     project: dict
-    projects: list
     provisioner: str
     proxy_host: str
     quota_reset_at: str
+    recoverable_until: str
     region_id: str
     settings: dict
     store_passwords: bool
     synthetic_storage_size: int
-    unavailable_project_ids: list
     updated_at: str
     written_data_bytes: int
 

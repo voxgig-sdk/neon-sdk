@@ -6,29 +6,36 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Anonymize {
-  completed_at?: string
-  masked_columns?: number
-  started_at?: string
-  triggered_by?: string
-  triggered_by_username?: string
+  branch_id: string
+  created_at: string
+  failed_at?: string
+  last_run?: Record<string, any>
+  project_id: string
+  state: string
+  status_message?: string
+  updated_at: string
 }
 
 export interface AnonymizeCreateData {
   branch_id: string
   project_id: string
-  completed_at?: string
-  masked_columns?: number
-  started_at?: string
-  triggered_by?: string
-  triggered_by_username?: string
+  created_at: string
+  failed_at?: string
+  last_run?: Record<string, any>
+  state: string
+  status_message?: string
+  updated_at: string
 }
 
 export interface AnonymizedBranchStatus {
-  completed_at?: string
-  masked_columns?: number
-  started_at?: string
-  triggered_by?: string
-  triggered_by_username?: string
+  branch_id: string
+  created_at: string
+  failed_at?: string
+  last_run?: Record<string, any>
+  project_id: string
+  state: string
+  status_message?: string
+  updated_at: string
 }
 
 export interface AnonymizedBranchStatusLoadMatch {
@@ -156,12 +163,39 @@ export interface BackupScheduleListMatch {
 }
 
 export interface Branch {
+  active_time_seconds: number
   annotation: Record<string, any>
-  annotations: Record<string, any>
   branch: Record<string, any>
-  branches: any[]
-  id?: string
-  pagination?: Record<string, any>
+  compute_time_seconds: number
+  cpu_used_sec: number
+  created_at: string
+  created_by?: Record<string, any>
+  creation_source: string
+  current_state: string
+  data_transfer_bytes: number
+  default: boolean
+  expires_at?: string
+  id: string
+  init_source?: string
+  last_reset_at?: string
+  logical_size?: number
+  name: string
+  parent_id?: string
+  parent_lsn?: string
+  parent_timestamp?: string
+  pending_state?: string
+  primary?: boolean
+  project_id: string
+  protected: boolean
+  recovery: Record<string, any>
+  restore_status?: string
+  restored_as?: string
+  restored_from?: string
+  restricted_actions?: any[]
+  state_changed_at: string
+  ttl_interval_seconds?: number
+  updated_at: string
+  written_data_bytes: number
 }
 
 export interface BranchLoadMatch {
@@ -187,22 +221,74 @@ export interface BranchListMatch {
 
 export interface BranchCreateData {
   project_id: string
+  active_time_seconds: number
   annotation: Record<string, any>
-  annotations: Record<string, any>
   branch: Record<string, any>
-  branches: any[]
-  id?: string
-  pagination?: Record<string, any>
+  compute_time_seconds: number
+  cpu_used_sec: number
+  created_at: string
+  created_by?: Record<string, any>
+  creation_source: string
+  current_state: string
+  data_transfer_bytes: number
+  default: boolean
+  expires_at?: string
+  id: string
+  init_source?: string
+  last_reset_at?: string
+  logical_size?: number
+  name: string
+  parent_id?: string
+  parent_lsn?: string
+  parent_timestamp?: string
+  pending_state?: string
+  primary?: boolean
+  protected: boolean
+  recovery: Record<string, any>
+  restore_status?: string
+  restored_as?: string
+  restored_from?: string
+  restricted_actions?: any[]
+  state_changed_at: string
+  ttl_interval_seconds?: number
+  updated_at: string
+  written_data_bytes: number
 }
 
 export interface BranchUpdateData {
   id: string
   project_id: string
+  active_time_seconds?: number
   annotation?: Record<string, any>
-  annotations?: Record<string, any>
   branch?: Record<string, any>
-  branches?: any[]
-  pagination?: Record<string, any>
+  compute_time_seconds?: number
+  cpu_used_sec?: number
+  created_at?: string
+  created_by?: Record<string, any>
+  creation_source?: string
+  current_state?: string
+  data_transfer_bytes?: number
+  default?: boolean
+  expires_at?: string
+  init_source?: string
+  last_reset_at?: string
+  logical_size?: number
+  name?: string
+  parent_id?: string
+  parent_lsn?: string
+  parent_timestamp?: string
+  pending_state?: string
+  primary?: boolean
+  protected?: boolean
+  recovery?: Record<string, any>
+  restore_status?: string
+  restored_as?: string
+  restored_from?: string
+  restricted_actions?: any[]
+  state_changed_at?: string
+  ttl_interval_seconds?: number
+  updated_at?: string
+  written_data_bytes?: number
 }
 
 export interface BranchRemoveMatch {
@@ -242,7 +328,8 @@ export interface BranchOperationCreateData {
 
 export interface BranchSchema {
   id?: string
-  tables: any[]
+  json: Record<string, any>
+  sql?: string
 }
 
 export interface BranchSchemaLoadMatch {
@@ -361,9 +448,9 @@ export interface ConnectionUriLoadMatch {
 }
 
 export interface Consumption {
-  branches: any[]
-  pagination: Record<string, any>
-  projects: any[]
+  branch_id: string
+  periods: any[]
+  project_id: string
 }
 
 export interface ConsumptionListMatch {
@@ -743,10 +830,21 @@ export interface EndpointOperationCreateData {
 }
 
 export interface FunctionType {
-  custom_domains: any[]
-  functions: any[]
-  id?: string
-  pagination?: Record<string, any>
+  active_deployment?: any
+  binding_status?: string
+  cname_target: string
+  created_at: string
+  current_deployment?: any
+  dns_status?: string
+  domain: string
+  entity_id: string
+  entity_type: string
+  id: string
+  invocation_url: string
+  name: string
+  slug: string
+  status?: string
+  status_reason?: string
 }
 
 export interface FunctionListMatch {
@@ -1149,7 +1247,6 @@ export interface OperationType {
   id: string
   name?: string
   operations: any[]
-  pagination: Record<string, any>
   project_id: string
   retry_at?: string
   status: string
@@ -1179,7 +1276,6 @@ export interface OperationCreateData {
   id: string
   name?: string
   operations: any[]
-  pagination: Record<string, any>
   retry_at?: string
   status: string
   total_duration_ms: number
@@ -1308,8 +1404,12 @@ export interface OrganizationInvitationCreateData {
 
 export interface Presign {
   content_type?: string
+  expires_at: string
   expires_in_seconds?: number
+  headers: Record<string, any>
+  method: string
   operation: string
+  url: string
 }
 
 export interface PresignCreateData {
@@ -1318,13 +1418,17 @@ export interface PresignCreateData {
   object_key: string
   project_id: string
   content_type?: string
+  expires_at: string
   expires_in_seconds?: number
+  headers: Record<string, any>
+  method: string
   operation: string
+  url: string
 }
 
 export interface Project {
+  active_time: number
   active_time_seconds: number
-  applications: Record<string, any>
   branch_logical_size_limit: number
   branch_logical_size_limit_bytes: number
   compute_last_active_at?: string
@@ -1337,31 +1441,30 @@ export interface Project {
   data_storage_bytes_hour: number
   data_transfer_bytes: number
   default_endpoint_settings?: Record<string, any>
+  deleted_at?: string
   effective_project_permission?: string
   hipaa_enabled_at?: string
   history_retention_seconds: number
   id: string
-  integrations: Record<string, any>
   label: string
   maintenance_scheduled_for?: string
   maintenance_starts_at?: string
   name: string
   org_id?: string
+  org_name?: string
   owner: Record<string, any>
   owner_id: string
-  pagination: Record<string, any>
   pg_version: number
   platform_id: string
   project: Record<string, any>
-  projects: any[]
   provisioner: string
   proxy_host: string
   quota_reset_at?: string
+  recoverable_until?: string
   region_id: string
   settings?: Record<string, any>
   store_passwords: boolean
   synthetic_storage_size?: number
-  unavailable_project_ids?: any[]
   updated_at: string
   written_data_bytes: number
 }
@@ -1388,8 +1491,8 @@ export interface ProjectListMatch {
 export interface ProjectCreateData {
   id: string
   vpc_endpoint_id: string
+  active_time: number
   active_time_seconds: number
-  applications: Record<string, any>
   branch_logical_size_limit: number
   branch_logical_size_limit_bytes: number
   compute_last_active_at?: string
@@ -1402,30 +1505,29 @@ export interface ProjectCreateData {
   data_storage_bytes_hour: number
   data_transfer_bytes: number
   default_endpoint_settings?: Record<string, any>
+  deleted_at?: string
   effective_project_permission?: string
   hipaa_enabled_at?: string
   history_retention_seconds: number
-  integrations: Record<string, any>
   label: string
   maintenance_scheduled_for?: string
   maintenance_starts_at?: string
   name: string
   org_id?: string
+  org_name?: string
   owner: Record<string, any>
   owner_id: string
-  pagination: Record<string, any>
   pg_version: number
   platform_id: string
   project: Record<string, any>
-  projects: any[]
   provisioner: string
   proxy_host: string
   quota_reset_at?: string
+  recoverable_until?: string
   region_id: string
   settings?: Record<string, any>
   store_passwords: boolean
   synthetic_storage_size?: number
-  unavailable_project_ids?: any[]
   updated_at: string
   written_data_bytes: number
 
@@ -1439,8 +1541,8 @@ export interface ProjectCreateData {
 export interface ProjectUpdateData {
   id: string
   request_id: string
+  active_time?: number
   active_time_seconds?: number
-  applications?: Record<string, any>
   branch_logical_size_limit?: number
   branch_logical_size_limit_bytes?: number
   compute_last_active_at?: string
@@ -1453,30 +1555,29 @@ export interface ProjectUpdateData {
   data_storage_bytes_hour?: number
   data_transfer_bytes?: number
   default_endpoint_settings?: Record<string, any>
+  deleted_at?: string
   effective_project_permission?: string
   hipaa_enabled_at?: string
   history_retention_seconds?: number
-  integrations?: Record<string, any>
   label?: string
   maintenance_scheduled_for?: string
   maintenance_starts_at?: string
   name?: string
   org_id?: string
+  org_name?: string
   owner?: Record<string, any>
   owner_id?: string
-  pagination?: Record<string, any>
   pg_version?: number
   platform_id?: string
   project?: Record<string, any>
-  projects?: any[]
   provisioner?: string
   proxy_host?: string
   quota_reset_at?: string
+  recoverable_until?: string
   region_id?: string
   settings?: Record<string, any>
   store_passwords?: boolean
   synthetic_storage_size?: number
-  unavailable_project_ids?: any[]
   updated_at?: string
   written_data_bytes?: number
 }

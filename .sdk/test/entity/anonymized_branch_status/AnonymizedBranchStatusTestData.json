@@ -2,33 +2,36 @@
   "existing": {
     "anonymized_branch_status": {
       "ANONYMIZED_BRANCH_STATUS00": {
-        "completed_at": "s32",
-        "masked_columns": 51,
-        "started_at": "s34",
-        "triggered_by": "s35",
-        "triggered_by_username": "s36",
         "branch_id": "BRANCH01",
+        "created_at": "s51",
+        "failed_at": "s52",
+        "last_run": {},
         "project_id": "PROJECT01",
+        "state": "s55",
+        "status_message": "s56",
+        "updated_at": "s57",
         "id": "ANONYMIZED_BRANCH_STATUS00"
       },
       "ANONYMIZED_BRANCH_STATUS01": {
-        "completed_at": "s64",
-        "masked_columns": 101,
-        "started_at": "s66",
-        "triggered_by": "s67",
-        "triggered_by_username": "s68",
         "branch_id": "BRANCH01",
+        "created_at": "sa1",
+        "failed_at": "sa2",
+        "last_run": {},
         "project_id": "PROJECT01",
+        "state": "sa5",
+        "status_message": "sa6",
+        "updated_at": "sa7",
         "id": "ANONYMIZED_BRANCH_STATUS01"
       },
       "ANONYMIZED_BRANCH_STATUS02": {
-        "completed_at": "s96",
-        "masked_columns": 151,
-        "started_at": "s98",
-        "triggered_by": "s99",
-        "triggered_by_username": "s9a",
         "branch_id": "BRANCH01",
+        "created_at": "sf1",
+        "failed_at": "sf2",
+        "last_run": {},
         "project_id": "PROJECT01",
+        "state": "sf5",
+        "status_message": "sf6",
+        "updated_at": "sf7",
         "id": "ANONYMIZED_BRANCH_STATUS02"
       }
     }
@@ -36,11 +39,14 @@
   "new": {
     "anonymized_branch_status": {
       "anonymized_branch_status_ref01": {
-        "completed_at": "sc8",
-        "masked_columns": 201,
-        "started_at": "sca",
-        "triggered_by": "scb",
-        "triggered_by_username": "scc"
+        "branch_id": "BRANCH01",
+        "created_at": "s141",
+        "failed_at": "s142",
+        "last_run": {},
+        "project_id": "PROJECT01",
+        "state": "s145",
+        "status_message": "s146",
+        "updated_at": "s147"
       }
     }
   },

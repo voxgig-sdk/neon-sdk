@@ -208,6 +208,14 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
+                req: boolean;
+                short: string;
+                format?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
                 short: string;
                 format: string;
             } | {
@@ -215,6 +223,14 @@ declare class Config {
                 title: string;
                 type: string;
                 short: string;
+                format: string;
+                req?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                short: string;
+                req?: undefined;
                 format?: undefined;
             })[];
             name: string;
@@ -263,6 +279,14 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
+                req: boolean;
+                short: string;
+                format?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
                 short: string;
                 format: string;
             } | {
@@ -270,6 +294,14 @@ declare class Config {
                 title: string;
                 type: string;
                 short: string;
+                format: string;
+                req?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                short: string;
+                req?: undefined;
                 format?: undefined;
             })[];
             name: string;
@@ -768,18 +800,48 @@ declare class Config {
                 type: string;
                 req: boolean;
                 short: string;
+                format: string;
+                deprecated?: undefined;
             } | {
                 name: string;
                 title: string;
                 type: string;
-                req?: undefined;
-                short?: undefined;
+                req: boolean;
+                short: string;
+                format?: undefined;
+                deprecated?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                short: string;
+                deprecated: boolean;
+                format: string;
             } | {
                 name: string;
                 title: string;
                 type: string;
                 short: string;
                 req?: undefined;
+                format?: undefined;
+                deprecated?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                short: string;
+                format: string;
+                req?: undefined;
+                deprecated?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                short: string;
+                deprecated: boolean;
+                req?: undefined;
+                format?: undefined;
             })[];
             id: {
                 field: string;
@@ -1190,6 +1252,12 @@ declare class Config {
                 type: string;
                 req: boolean;
                 short: string;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                short: string;
+                req?: undefined;
             })[];
             id: {
                 field: string;
@@ -3134,20 +3202,20 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
-                req: boolean;
-                short?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                req?: undefined;
-                short?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
                 short: string;
                 req?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                short: string;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                short?: undefined;
             })[];
             id: {
                 field: string;
@@ -5602,8 +5670,15 @@ declare class Config {
                 title: string;
                 type: string;
                 short: string;
-                format?: undefined;
                 req?: undefined;
+                format?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                short: string;
+                format: string;
             } | {
                 name: string;
                 title: string;
@@ -5673,14 +5748,7 @@ declare class Config {
                 short: string;
                 format: string;
                 deprecated?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                req: boolean;
-                short: string;
-                format?: undefined;
-                deprecated?: undefined;
+                op?: undefined;
             } | {
                 name: string;
                 title: string;
@@ -5689,6 +5757,7 @@ declare class Config {
                 format: string;
                 req?: undefined;
                 deprecated?: undefined;
+                op?: undefined;
             } | {
                 name: string;
                 title: string;
@@ -5697,6 +5766,16 @@ declare class Config {
                 short: string;
                 deprecated: boolean;
                 format: string;
+                op?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                short: string;
+                format?: undefined;
+                deprecated?: undefined;
+                op?: undefined;
             } | {
                 name: string;
                 title: string;
@@ -5705,6 +5784,7 @@ declare class Config {
                 req?: undefined;
                 format?: undefined;
                 deprecated?: undefined;
+                op?: undefined;
             } | {
                 name: string;
                 title: string;
@@ -5713,6 +5793,20 @@ declare class Config {
                 short?: undefined;
                 format?: undefined;
                 deprecated?: undefined;
+                op?: undefined;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                op: {
+                    list: {
+                        type: string;
+                    };
+                };
+                short: string;
+                format: string;
+                deprecated?: undefined;
             } | {
                 name: string;
                 title: string;
@@ -5721,6 +5815,7 @@ declare class Config {
                 deprecated: boolean;
                 format: string;
                 req?: undefined;
+                op?: undefined;
             })[];
             id: {
                 field: string;

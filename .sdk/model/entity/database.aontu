@@ -122,7 +122,7 @@ main: kit: entity: database: {
             req: {
               database: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.database`"
           }
         }
       ]
@@ -331,7 +331,7 @@ main: kit: entity: database: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.database`"
           }
         }
       ]
@@ -408,7 +408,7 @@ main: kit: entity: database: {
             req: {
               database: "`reqdata`"
             }
-            res: "`body`"
+            res: "`body.database`"
           }
         }
       ]

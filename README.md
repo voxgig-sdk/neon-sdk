@@ -12,7 +12,7 @@ Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
+> **Features:** `debug`, `idempotency`, `metrics`, `paging`, `ratelimit`, `retry`, `test`, `timeout` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -28,6 +28,9 @@ const client = new NeonSDK()
 const anonymize = await client.Anonymize().create({
   branch_id: 'example',
   project_id: 'example',
+  created_at: 'example',
+  state: 'example',
+  updated_at: 'example',
 })
 ```
 
@@ -106,12 +109,12 @@ local result, err = client:BranchStorage():load({ id = "test01", project_id = "e
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/neon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/neon-sdk/tags) |
-| Python | `voxgig-sdk-neon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/neon-sdk/tags) |
-| PHP | `voxgig-sdk/neon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/neon-sdk/tags) |
+| TypeScript | `@voxgig-sdk/neon-sdk` | publish pending — [install from source](ts/README.md#install) |
+| Python | `voxgig-sdk-neon-sdk` | publish pending — [install from source](py/README.md#install) |
+| PHP | `voxgig-sdk/neon-sdk` | publish pending — [install from source](php/README.md#install) |
 | Golang | `github.com/voxgig-sdk/neon-sdk/go` | `go get github.com/voxgig-sdk/neon-sdk/go@latest` |
-| Ruby | `voxgig-sdk-neon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/neon-sdk/tags) |
-| Lua | `voxgig-sdk-neon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/neon-sdk/tags) |
+| Ruby | `voxgig-sdk-neon-sdk` | publish pending — [install from source](rb/README.md#install) |
+| Lua | `voxgig-sdk-neon-sdk` | publish pending — [install from source](lua/README.md#install) |
 | Go CLI | `github.com/voxgig-sdk/neon-sdk/go-cli` | `go install github.com/voxgig-sdk/neon-sdk/go-cli/cmd/neon@latest` |
 | Go MCP server | `github.com/voxgig-sdk/neon-sdk/go-mcp` | `go get github.com/voxgig-sdk/neon-sdk/go-mcp@latest` |
 

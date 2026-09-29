@@ -129,47 +129,71 @@
             "field": {}
           },
           "fields": {
-            "completed_at": {
+            "branch_id": {
+              "a": true,
+              "h": "Branch Id",
+              "n": "branch_id",
+              "r": true,
+              "sh": "The ID of the anonymized branch.",
+              "t": "`$STRING`"
+            },
+            "created_at": {
               "a": true,
               "fo": "date-time",
-              "h": "Completed At",
-              "n": "completed_at",
-              "r": false,
-              "sh": "Timestamp indicating when the latest anonymization attempt completed.",
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "A timestamp indicating when the anonymized branch was created",
               "t": "`$STRING`"
             },
-            "masked_columns": {
-              "a": true,
-              "h": "Masked Columns",
-              "n": "masked_columns",
-              "r": false,
-              "sh": "Number of columns that had masking rules applied during the attempt.",
-              "t": "`$INTEGER`"
-            },
-            "started_at": {
+            "failed_at": {
               "a": true,
               "fo": "date-time",
-              "h": "Started At",
-              "n": "started_at",
+              "h": "Failed At",
+              "n": "failed_at",
               "r": false,
-              "sh": "Timestamp indicating when the latest anonymization attempt started.",
+              "sh": "A timestamp indicating when the anonymized branch operation failed (if applicable)",
               "t": "`$STRING`"
             },
-            "triggered_by": {
+            "last_run": {
               "a": true,
-              "fo": "uuid",
-              "h": "Triggered By",
-              "n": "triggered_by",
+              "h": "Last Run",
+              "n": "last_run",
               "r": false,
-              "sh": "UUID of the user who triggered the latest anonymization attempt.",
+              "sh": "Metadata about the most recent anonymization attempt for the branch.",
+              "t": "`$OBJECT`"
+            },
+            "project_id": {
+              "a": true,
+              "h": "Project Id",
+              "n": "project_id",
+              "r": true,
+              "sh": "The ID of the project this branch belongs to.",
               "t": "`$STRING`"
             },
-            "triggered_by_username": {
+            "state": {
               "a": true,
-              "h": "Triggered By Username",
-              "n": "triggered_by_username",
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "The current state of the anonymized branch.",
+              "t": "`$STRING`"
+            },
+            "status_message": {
+              "a": true,
+              "h": "Status Message",
+              "n": "status_message",
               "r": false,
-              "sh": "Username of the user who triggered the latest anonymization attempt.",
+              "sh": "A descriptive message about the current status or any errors",
+              "t": "`$STRING`"
+            },
+            "updated_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": true,
+              "sh": "A timestamp indicating when the anonymized branch status was last updated",
               "t": "`$STRING`"
             }
           },
@@ -235,7 +259,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.last_run`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -256,47 +280,71 @@
             "field": {}
           },
           "fields": {
-            "completed_at": {
+            "branch_id": {
+              "a": true,
+              "h": "Branch Id",
+              "n": "branch_id",
+              "r": true,
+              "sh": "The ID of the anonymized branch.",
+              "t": "`$STRING`"
+            },
+            "created_at": {
               "a": true,
               "fo": "date-time",
-              "h": "Completed At",
-              "n": "completed_at",
-              "r": false,
-              "sh": "Timestamp indicating when the latest anonymization attempt completed.",
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "A timestamp indicating when the anonymized branch was created",
               "t": "`$STRING`"
             },
-            "masked_columns": {
-              "a": true,
-              "h": "Masked Columns",
-              "n": "masked_columns",
-              "r": false,
-              "sh": "Number of columns that had masking rules applied during the attempt.",
-              "t": "`$INTEGER`"
-            },
-            "started_at": {
+            "failed_at": {
               "a": true,
               "fo": "date-time",
-              "h": "Started At",
-              "n": "started_at",
+              "h": "Failed At",
+              "n": "failed_at",
               "r": false,
-              "sh": "Timestamp indicating when the latest anonymization attempt started.",
+              "sh": "A timestamp indicating when the anonymized branch operation failed (if applicable)",
               "t": "`$STRING`"
             },
-            "triggered_by": {
+            "last_run": {
               "a": true,
-              "fo": "uuid",
-              "h": "Triggered By",
-              "n": "triggered_by",
+              "h": "Last Run",
+              "n": "last_run",
               "r": false,
-              "sh": "UUID of the user who triggered the latest anonymization attempt.",
+              "sh": "Metadata about the most recent anonymization attempt for the branch.",
+              "t": "`$OBJECT`"
+            },
+            "project_id": {
+              "a": true,
+              "h": "Project Id",
+              "n": "project_id",
+              "r": true,
+              "sh": "The ID of the project this branch belongs to.",
               "t": "`$STRING`"
             },
-            "triggered_by_username": {
+            "state": {
               "a": true,
-              "h": "Triggered By Username",
-              "n": "triggered_by_username",
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "The current state of the anonymized branch.",
+              "t": "`$STRING`"
+            },
+            "status_message": {
+              "a": true,
+              "h": "Status Message",
+              "n": "status_message",
               "r": false,
-              "sh": "Username of the user who triggered the latest anonymization attempt.",
+              "sh": "A descriptive message about the current status or any errors",
+              "t": "`$STRING`"
+            },
+            "updated_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": true,
+              "sh": "A timestamp indicating when the anonymized branch status was last updated",
               "t": "`$STRING`"
             }
           },
@@ -362,7 +410,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.last_run`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -1561,20 +1609,21 @@
             "field": {}
           },
           "fields": {
+            "active_time_seconds": {
+              "a": true,
+              "fo": "int64",
+              "h": "Active Time Seconds",
+              "n": "active_time_seconds",
+              "r": true,
+              "sh": "Total time this branch's compute has been active during the current billing period, in seconds (not weighted by compute size).",
+              "t": "`$INTEGER`"
+            },
             "annotation": {
               "a": true,
               "h": "Annotation",
               "n": "annotation",
               "r": true,
               "sh": "Annotation data associated with the annotated object.",
-              "t": "`$OBJECT`"
-            },
-            "annotations": {
-              "a": true,
-              "h": "Annotations",
-              "n": "annotations",
-              "r": true,
-              "sh": "Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource.",
               "t": "`$OBJECT`"
             },
             "branch": {
@@ -1585,28 +1634,258 @@
               "sh": "Branch returned by the request.",
               "t": "`$OBJECT`"
             },
-            "branches": {
+            "compute_time_seconds": {
               "a": true,
-              "h": "Branches",
-              "n": "branches",
+              "fo": "int64",
+              "h": "Compute Time Seconds",
+              "n": "compute_time_seconds",
               "r": true,
-              "sh": "Branches in the project.",
-              "t": "`$ARRAY`"
+              "sh": "Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size).",
+              "t": "`$INTEGER`"
+            },
+            "cpu_used_sec": {
+              "a": true,
+              "de": true,
+              "fo": "int64",
+              "h": "Cpu Used Sec",
+              "n": "cpu_used_sec",
+              "r": true,
+              "sh": "Deprecated.",
+              "t": "`$INTEGER`"
+            },
+            "created_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "A timestamp indicating when the branch was created",
+              "t": "`$STRING`"
+            },
+            "created_by": {
+              "a": true,
+              "h": "Created By",
+              "n": "created_by",
+              "r": false,
+              "sh": "The resolved user model that contains details of the user/org/integration/api_key used for branch creation.",
+              "t": "`$OBJECT`"
+            },
+            "creation_source": {
+              "a": true,
+              "h": "Creation Source",
+              "n": "creation_source",
+              "r": true,
+              "sh": "The branch creation source",
+              "t": "`$STRING`"
+            },
+            "current_state": {
+              "a": true,
+              "h": "Current State",
+              "n": "current_state",
+              "r": true,
+              "sh": "The branch’s state, indicating if it is initializing, ready for use, or archived.",
+              "t": "`$STRING`"
+            },
+            "data_transfer_bytes": {
+              "a": true,
+              "fo": "int64",
+              "h": "Data Transfer Bytes",
+              "n": "data_transfer_bytes",
+              "r": true,
+              "sh": "Total data transferred out of the branch, in bytes.",
+              "t": "`$INTEGER`"
+            },
+            "default": {
+              "a": true,
+              "h": "Default",
+              "n": "default",
+              "r": true,
+              "sh": "Whether the branch is the project's default branch",
+              "t": "`$BOOLEAN`"
+            },
+            "expires_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Expires At",
+              "n": "expires_at",
+              "r": false,
+              "sh": "The timestamp when the branch is scheduled to expire and be automatically deleted.",
+              "t": "`$STRING`"
             },
             "id": {
               "a": true,
               "h": "Id",
               "n": "id",
-              "r": false,
+              "r": true,
+              "sh": "The branch ID.",
               "t": "`$STRING`"
             },
-            "pagination": {
+            "init_source": {
               "a": true,
-              "h": "Pagination",
-              "n": "pagination",
+              "h": "Init Source",
+              "n": "init_source",
               "r": false,
-              "sh": "To paginate the response, issue an initial request with `limit` value.",
+              "sh": "Source of initialization for the branch.",
+              "t": "`$STRING`"
+            },
+            "last_reset_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Last Reset At",
+              "n": "last_reset_at",
+              "r": false,
+              "sh": "A timestamp indicating when the branch was last reset",
+              "t": "`$STRING`"
+            },
+            "logical_size": {
+              "a": true,
+              "fo": "int64",
+              "h": "Logical Size",
+              "n": "logical_size",
+              "r": false,
+              "sh": "The logical size of the branch, in bytes",
+              "t": "`$INTEGER`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "The branch name",
+              "t": "`$STRING`"
+            },
+            "parent_id": {
+              "a": true,
+              "h": "Parent Id",
+              "n": "parent_id",
+              "r": false,
+              "sh": "The `branch_id` of the parent branch",
+              "t": "`$STRING`"
+            },
+            "parent_lsn": {
+              "a": true,
+              "h": "Parent Lsn",
+              "n": "parent_lsn",
+              "r": false,
+              "sh": "The Log Sequence Number (LSN) on the parent branch from which this branch was created.",
+              "t": "`$STRING`"
+            },
+            "parent_timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Parent Timestamp",
+              "n": "parent_timestamp",
+              "r": false,
+              "sh": "The point in time on the parent branch from which this branch was created.",
+              "t": "`$STRING`"
+            },
+            "pending_state": {
+              "a": true,
+              "h": "Pending State",
+              "n": "pending_state",
+              "r": false,
+              "sh": "The branch’s state, indicating if it is initializing, ready for use, or archived.",
+              "t": "`$STRING`"
+            },
+            "primary": {
+              "a": true,
+              "de": true,
+              "h": "Primary",
+              "n": "primary",
+              "r": false,
+              "sh": "Deprecated.",
+              "t": "`$BOOLEAN`"
+            },
+            "project_id": {
+              "a": true,
+              "h": "Project Id",
+              "n": "project_id",
+              "r": true,
+              "sh": "The ID of the project this branch belongs to.",
+              "t": "`$STRING`"
+            },
+            "protected": {
+              "a": true,
+              "h": "Protected",
+              "n": "protected",
+              "r": true,
+              "sh": "Whether the branch is protected.",
+              "t": "`$BOOLEAN`"
+            },
+            "recovery": {
+              "a": true,
+              "h": "Recovery",
+              "n": "recovery",
+              "r": true,
+              "sh": "Recovery information for a deleted branch.",
               "t": "`$OBJECT`"
+            },
+            "restore_status": {
+              "a": true,
+              "h": "Restore Status",
+              "n": "restore_status",
+              "r": false,
+              "sh": "Could be `restored`, `finalized` or `detaching`.",
+              "t": "`$STRING`"
+            },
+            "restored_as": {
+              "a": true,
+              "h": "Restored As",
+              "n": "restored_as",
+              "r": false,
+              "sh": "ID of the target branch which was replaced when this branch was restored",
+              "t": "`$STRING`"
+            },
+            "restored_from": {
+              "a": true,
+              "h": "Restored From",
+              "n": "restored_from",
+              "r": false,
+              "sh": "ID of the snapshot that was the restore source for this branch",
+              "t": "`$STRING`"
+            },
+            "restricted_actions": {
+              "a": true,
+              "h": "Restricted Actions",
+              "n": "restricted_actions",
+              "r": false,
+              "sh": "A list of actions that are currently restricted for this branch and the reason why.",
+              "t": "`$ARRAY`"
+            },
+            "state_changed_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "State Changed At",
+              "n": "state_changed_at",
+              "r": true,
+              "sh": "A UTC timestamp indicating when the `current_state` began",
+              "t": "`$STRING`"
+            },
+            "ttl_interval_seconds": {
+              "a": true,
+              "h": "Ttl Interval Seconds",
+              "n": "ttl_interval_seconds",
+              "r": false,
+              "sh": "The time-to-live (TTL) duration originally configured for the branch, in seconds.",
+              "t": "`$INTEGER`"
+            },
+            "updated_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": true,
+              "sh": "A timestamp indicating when the branch was last updated",
+              "t": "`$STRING`"
+            },
+            "written_data_bytes": {
+              "a": true,
+              "fo": "int64",
+              "h": "Written Data Bytes",
+              "n": "written_data_bytes",
+              "r": true,
+              "sh": "Data written by this branch during the current billing period, in bytes.",
+              "t": "`$INTEGER`"
             }
           },
           "id": {
@@ -1660,7 +1939,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.branch`"
                   }
                 }
               ]
@@ -1769,7 +2048,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.branches`"
                   }
                 }
               ]
@@ -1835,7 +2114,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.branch`"
                   }
                 },
                 {
@@ -1960,7 +2239,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.branch`"
                   }
                 }
               ]
@@ -2028,7 +2307,7 @@
                     "req": {
                       "branch": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.branch`"
                   }
                 }
               ]
@@ -2348,13 +2627,21 @@
               "r": false,
               "t": "`$STRING`"
             },
-            "tables": {
+            "json": {
               "a": true,
-              "h": "Tables",
-              "n": "tables",
+              "h": "Json",
+              "n": "json",
               "r": true,
-              "sh": "Tables present in the branch schema.",
-              "t": "`$ARRAY`"
+              "sh": "Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`.",
+              "t": "`$OBJECT`"
+            },
+            "sql": {
+              "a": true,
+              "h": "Sql",
+              "n": "sql",
+              "r": false,
+              "sh": "Branch schema expressed as SQL DDL statements.",
+              "t": "`$STRING`"
             }
           },
           "id": {
@@ -2466,7 +2753,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.json`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -3625,29 +3912,29 @@
             "field": {}
           },
           "fields": {
-            "branches": {
+            "branch_id": {
               "a": true,
-              "h": "Branches",
-              "n": "branches",
+              "h": "Branch Id",
+              "n": "branch_id",
               "r": true,
-              "sh": "Per-branch consumption history records returned for the requested time range.",
+              "sh": "The Neon branch ID.",
+              "t": "`$STRING`"
+            },
+            "periods": {
+              "a": true,
+              "h": "Periods",
+              "n": "periods",
+              "r": true,
+              "sh": "Consumption history records for the branch, grouped by billing period.",
               "t": "`$ARRAY`"
             },
-            "pagination": {
+            "project_id": {
               "a": true,
-              "h": "Pagination",
-              "n": "pagination",
+              "h": "Project Id",
+              "n": "project_id",
               "r": true,
-              "sh": "Cursor-based pagination.",
-              "t": "`$OBJECT`"
-            },
-            "projects": {
-              "a": true,
-              "h": "Projects",
-              "n": "projects",
-              "r": true,
-              "sh": "Per-project consumption history records included in the response.",
-              "t": "`$ARRAY`"
+              "sh": "The ID of the project that owns this branch.",
+              "t": "`$STRING`"
             }
           },
           "name": "consumption",
@@ -3669,7 +3956,7 @@
                         "a": true,
                         "k": "query",
                         "n": "branch_id",
-                        "or": "branch_id",
+                        "or": "branch_ids",
                         "r": false,
                         "t": "`$ARRAY`"
                       },
@@ -3710,7 +3997,7 @@
                         "a": true,
                         "k": "query",
                         "n": "metric",
-                        "or": "metric",
+                        "or": "metrics",
                         "r": true,
                         "t": "`$ARRAY`"
                       },
@@ -3726,7 +4013,7 @@
                         "a": true,
                         "k": "query",
                         "n": "project_id",
-                        "or": "project_id",
+                        "or": "project_ids",
                         "r": true,
                         "t": "`$ARRAY`"
                       },
@@ -3770,7 +4057,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.branches`"
                   }
                 },
                 {
@@ -3810,7 +4097,7 @@
                         "a": true,
                         "k": "query",
                         "n": "include_v1_metric",
-                        "or": "include_v1_metric",
+                        "or": "include_v1_metrics",
                         "r": false,
                         "t": "`$BOOLEAN`"
                       },
@@ -3827,7 +4114,7 @@
                         "a": true,
                         "k": "query",
                         "n": "metric",
-                        "or": "metric",
+                        "or": "metrics",
                         "r": false,
                         "t": "`$ARRAY`"
                       },
@@ -3843,7 +4130,7 @@
                         "a": true,
                         "k": "query",
                         "n": "project_id",
-                        "or": "project_id",
+                        "or": "project_ids",
                         "r": false,
                         "t": "`$ARRAY`"
                       },
@@ -3884,7 +4171,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.projects`"
                   }
                 },
                 {
@@ -3933,7 +4220,7 @@
                         "a": true,
                         "k": "query",
                         "n": "metric",
-                        "or": "metric",
+                        "or": "metrics",
                         "r": true,
                         "t": "`$ARRAY`"
                       },
@@ -3949,7 +4236,7 @@
                         "a": true,
                         "k": "query",
                         "n": "project_id",
-                        "or": "project_id",
+                        "or": "project_ids",
                         "r": false,
                         "t": "`$ARRAY`"
                       },
@@ -3992,7 +4279,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.projects`"
                   }
                 }
               ]
@@ -5299,7 +5586,7 @@
                     "req": {
                       "database": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.database`"
                   }
                 }
               ]
@@ -5526,7 +5813,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.database`"
                   }
                 }
               ]
@@ -5609,7 +5896,7 @@
                     "req": {
                       "database": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.database`"
                   }
                 }
               ]
@@ -6321,7 +6608,7 @@
                     "req": {
                       "endpoint": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.endpoint`"
                   }
                 }
               ]
@@ -6562,7 +6849,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.endpoint`"
                   }
                 }
               ]
@@ -6630,7 +6917,7 @@
                     "req": {
                       "endpoint": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.endpoint`"
                   }
                 }
               ]
@@ -6896,34 +7183,124 @@
             "field": {}
           },
           "fields": {
-            "custom_domains": {
+            "active_deployment": {
               "a": true,
-              "h": "Custom Domains",
-              "n": "custom_domains",
-              "r": true,
-              "t": "`$ARRAY`"
+              "h": "Active Deployment",
+              "n": "active_deployment",
+              "r": false,
+              "sh": "The most recent deployment whose build completed successfully.",
+              "t": "`$ANY`"
             },
-            "functions": {
+            "binding_status": {
               "a": true,
-              "h": "Functions",
-              "n": "functions",
+              "h": "Binding Status",
+              "n": "binding_status",
+              "r": false,
+              "sh": "Whether Neon's internal routing for the domain is published: `pending`, `present`, or `missing`.",
+              "t": "`$STRING`"
+            },
+            "cname_target": {
+              "a": true,
+              "h": "Cname Target",
+              "n": "cname_target",
               "r": true,
-              "t": "`$ARRAY`"
+              "sh": "The hostname the customer must point their custom domain at with a CNAME record.",
+              "t": "`$STRING`"
+            },
+            "created_at": {
+              "a": true,
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "current_deployment": {
+              "a": true,
+              "h": "Current Deployment",
+              "n": "current_deployment",
+              "r": false,
+              "sh": "The most recent deployment, regardless of build status.",
+              "t": "`$ANY`"
+            },
+            "dns_status": {
+              "a": true,
+              "h": "Dns Status",
+              "n": "dns_status",
+              "r": false,
+              "sh": "The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt).",
+              "t": "`$STRING`"
+            },
+            "domain": {
+              "a": true,
+              "h": "Domain",
+              "n": "domain",
+              "r": true,
+              "sh": "The registered custom domain (normalized, lowercase).",
+              "t": "`$STRING`"
+            },
+            "entity_id": {
+              "a": true,
+              "h": "Entity Id",
+              "n": "entity_id",
+              "r": true,
+              "sh": "The target entity's identifier within the branch.",
+              "t": "`$STRING`"
+            },
+            "entity_type": {
+              "a": true,
+              "h": "Entity Type",
+              "n": "entity_type",
+              "r": true,
+              "sh": "The kind of branch entity the domain targets.",
+              "t": "`$STRING`"
             },
             "id": {
               "a": true,
               "h": "Id",
               "n": "id",
-              "r": false,
+              "r": true,
+              "sh": "Opaque, stable function identifier.",
               "t": "`$STRING`"
             },
-            "pagination": {
+            "invocation_url": {
               "a": true,
-              "h": "Pagination",
-              "n": "pagination",
+              "h": "Invocation Url",
+              "n": "invocation_url",
+              "r": true,
+              "sh": "URL at which the function is invoked.",
+              "t": "`$STRING`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Free-form display name.",
+              "t": "`$STRING`"
+            },
+            "slug": {
+              "a": true,
+              "h": "Slug",
+              "n": "slug",
+              "r": true,
+              "sh": "Branch-unique, lowercase DNS-label.",
+              "t": "`$STRING`"
+            },
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
               "r": false,
-              "sh": "To paginate the response, issue an initial request with `limit` value.",
-              "t": "`$OBJECT`"
+              "sh": "The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error…",
+              "t": "`$STRING`"
+            },
+            "status_reason": {
+              "a": true,
+              "h": "Status Reason",
+              "n": "status_reason",
+              "r": false,
+              "sh": "A short, stable machine-readable reason for a non-active `status` (e.g.",
+              "t": "`$STRING`"
             }
           },
           "id": {
@@ -7012,7 +7389,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.custom_domains`"
                   }
                 },
                 {
@@ -7091,7 +7468,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.functions`"
                   }
                 }
               ]
@@ -11157,14 +11534,6 @@
               "r": true,
               "t": "`$ARRAY`"
             },
-            "pagination": {
-              "a": true,
-              "h": "Pagination",
-              "n": "pagination",
-              "r": true,
-              "sh": "Cursor-based pagination.",
-              "t": "`$OBJECT`"
-            },
             "project_id": {
               "a": true,
               "h": "Project Id",
@@ -11345,7 +11714,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.operations`"
                   }
                 }
               ]
@@ -12028,7 +12397,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.members`"
                   }
                 },
                 {
@@ -12407,6 +12776,15 @@
               "sh": "The `Content-Type` to bind into the signed request.",
               "t": "`$STRING`"
             },
+            "expires_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Expires At",
+              "n": "expires_at",
+              "r": true,
+              "sh": "When the presigned URL stops being valid.",
+              "t": "`$STRING`"
+            },
             "expires_in_seconds": {
               "a": true,
               "fo": "int64",
@@ -12416,12 +12794,36 @@
               "sh": "How long the presigned URL stays valid, in seconds.",
               "t": "`$INTEGER`"
             },
+            "headers": {
+              "a": true,
+              "h": "Headers",
+              "n": "headers",
+              "r": true,
+              "sh": "Headers the caller MUST send verbatim on the request (e.g.",
+              "t": "`$OBJECT`"
+            },
+            "method": {
+              "a": true,
+              "h": "Method",
+              "n": "method",
+              "r": true,
+              "sh": "The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download.",
+              "t": "`$STRING`"
+            },
             "operation": {
               "a": true,
               "h": "Operation",
               "n": "operation",
               "r": true,
               "sh": "The transfer direction.",
+              "t": "`$STRING`"
+            },
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "The presigned URL.",
               "t": "`$STRING`"
             }
           },
@@ -12521,7 +12923,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.headers`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -12543,6 +12945,15 @@
             "field": {}
           },
           "fields": {
+            "active_time": {
+              "a": true,
+              "fo": "int64",
+              "h": "Active Time",
+              "n": "active_time",
+              "r": true,
+              "sh": "Control plane observed endpoints of this project being active this amount of wall-clock time.",
+              "t": "`$INTEGER`"
+            },
             "active_time_seconds": {
               "a": true,
               "fo": "int64",
@@ -12551,14 +12962,6 @@
               "r": true,
               "sh": "Seconds.",
               "t": "`$INTEGER`"
-            },
-            "applications": {
-              "a": true,
-              "h": "Applications",
-              "n": "applications",
-              "r": true,
-              "sh": "Map of project IDs to their installed applications.",
-              "t": "`$OBJECT`"
             },
             "branch_logical_size_limit": {
               "a": true,
@@ -12667,6 +13070,15 @@
               "sh": "A collection of settings for a Neon endpoint",
               "t": "`$OBJECT`"
             },
+            "deleted_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Deleted At",
+              "n": "deleted_at",
+              "r": false,
+              "sh": "A timestamp indicating when the project was deleted",
+              "t": "`$STRING`"
+            },
             "effective_project_permission": {
               "a": true,
               "h": "Effective Project Permission",
@@ -12688,6 +13100,12 @@
               "fo": "int32",
               "h": "History Retention Seconds",
               "n": "history_retention_seconds",
+              "op": {
+                "list": {
+                  "req": false,
+                  "type": "`$INTEGER`"
+                }
+              },
               "r": true,
               "sh": "The number of seconds to retain the shared history for all branches in this project.",
               "t": "`$INTEGER`"
@@ -12699,14 +13117,6 @@
               "r": true,
               "sh": "The Neon project ID.",
               "t": "`$STRING`"
-            },
-            "integrations": {
-              "a": true,
-              "h": "Integrations",
-              "n": "integrations",
-              "r": true,
-              "sh": "Map of project IDs to their associated integration details.",
-              "t": "`$OBJECT`"
             },
             "label": {
               "a": true,
@@ -12750,6 +13160,14 @@
               "sh": "The Neon organization ID.",
               "t": "`$STRING`"
             },
+            "org_name": {
+              "a": true,
+              "h": "Org Name",
+              "n": "org_name",
+              "r": false,
+              "sh": "Name of the organization that owns the project.",
+              "t": "`$STRING`"
+            },
             "owner": {
               "a": true,
               "h": "Owner",
@@ -12765,14 +13183,6 @@
               "r": true,
               "sh": "ID of the organization that owns the project.",
               "t": "`$STRING`"
-            },
-            "pagination": {
-              "a": true,
-              "h": "Pagination",
-              "n": "pagination",
-              "r": true,
-              "sh": "Cursor-based pagination.",
-              "t": "`$OBJECT`"
             },
             "pg_version": {
               "a": true,
@@ -12798,14 +13208,6 @@
               "sh": "Configuration for the new project, including name, region, and Postgres compute and storage settings.",
               "t": "`$OBJECT`"
             },
-            "projects": {
-              "a": true,
-              "h": "Projects",
-              "n": "projects",
-              "r": true,
-              "sh": "List of projects accessible to the caller.",
-              "t": "`$ARRAY`"
-            },
             "provisioner": {
               "a": true,
               "h": "Provisioner",
@@ -12830,6 +13232,15 @@
               "n": "quota_reset_at",
               "r": false,
               "sh": "Deprecated.",
+              "t": "`$STRING`"
+            },
+            "recoverable_until": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Recoverable Until",
+              "n": "recoverable_until",
+              "r": false,
+              "sh": "A timestamp indicating the project will be recoverable until this date and time.",
               "t": "`$STRING`"
             },
             "region_id": {
@@ -12864,14 +13275,6 @@
               "r": false,
               "sh": "The current space occupied by the project in Postgres storage, in bytes.",
               "t": "`$INTEGER`"
-            },
-            "unavailable_project_ids": {
-              "a": true,
-              "h": "Unavailable Project Ids",
-              "n": "unavailable_project_ids",
-              "r": false,
-              "sh": "A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit",
-              "t": "`$ARRAY`"
             },
             "updated_at": {
               "a": true,
@@ -13033,7 +13436,7 @@
                     "req": {
                       "project": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.project`"
                   }
                 }
               ]
@@ -13124,7 +13527,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.projects`"
                   }
                 },
                 {
@@ -13281,7 +13684,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.projects`"
                   }
                 }
               ]
@@ -13385,7 +13788,7 @@
                     "req": {
                       "project": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.project`"
                   }
                 }
               ]
@@ -14233,7 +14636,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.project_members`"
                   }
                 }
               ]
@@ -15187,7 +15590,7 @@
                     "req": {
                       "role": "`reqdata`"
                     },
-                    "res": "`body`"
+                    "res": "`body.role`"
                   }
                 }
               ]
@@ -15414,7 +15817,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.role`"
                   }
                 }
               ]
@@ -18514,7 +18917,8 @@
               "i": {
                 "ref": "branch_ref01",
                 "srcdatavar": "branch_ref01_data",
-                "suffix": "_up0"
+                "suffix": "_up0",
+                "textfield": "created_at"
               },
               "m": {},
               "o": "update",

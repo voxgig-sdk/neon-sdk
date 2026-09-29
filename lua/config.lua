@@ -233,37 +233,60 @@ local function make_config()
       ["anonymize"] = {
         ["fields"] = {
           {
-            ["name"] = "completed_at",
-            ["title"] = "Completed At",
+            ["name"] = "branch_id",
+            ["title"] = "Branch Id",
             ["type"] = "`$STRING`",
-            ["short"] = "Timestamp indicating when the latest anonymization attempt completed.",
+            ["req"] = true,
+            ["short"] = "The ID of the anonymized branch.",
+          },
+          {
+            ["name"] = "created_at",
+            ["title"] = "Created At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A timestamp indicating when the anonymized branch was created",
             ["format"] = "date-time",
           },
           {
-            ["name"] = "masked_columns",
-            ["title"] = "Masked Columns",
-            ["type"] = "`$INTEGER`",
-            ["short"] = "Number of columns that had masking rules applied during the attempt.",
-          },
-          {
-            ["name"] = "started_at",
-            ["title"] = "Started At",
+            ["name"] = "failed_at",
+            ["title"] = "Failed At",
             ["type"] = "`$STRING`",
-            ["short"] = "Timestamp indicating when the latest anonymization attempt started.",
+            ["short"] = "A timestamp indicating when the anonymized branch operation failed (if applicable)",
             ["format"] = "date-time",
           },
           {
-            ["name"] = "triggered_by",
-            ["title"] = "Triggered By",
-            ["type"] = "`$STRING`",
-            ["short"] = "UUID of the user who triggered the latest anonymization attempt.",
-            ["format"] = "uuid",
+            ["name"] = "last_run",
+            ["title"] = "Last Run",
+            ["type"] = "`$OBJECT`",
+            ["short"] = "Metadata about the most recent anonymization attempt for the branch.",
           },
           {
-            ["name"] = "triggered_by_username",
-            ["title"] = "Triggered By Username",
+            ["name"] = "project_id",
+            ["title"] = "Project Id",
             ["type"] = "`$STRING`",
-            ["short"] = "Username of the user who triggered the latest anonymization attempt.",
+            ["req"] = true,
+            ["short"] = "The ID of the project this branch belongs to.",
+          },
+          {
+            ["name"] = "state",
+            ["title"] = "State",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The current state of the anonymized branch.",
+          },
+          {
+            ["name"] = "status_message",
+            ["title"] = "Status Message",
+            ["type"] = "`$STRING`",
+            ["short"] = "A descriptive message about the current status or any errors",
+          },
+          {
+            ["name"] = "updated_at",
+            ["title"] = "Updated At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A timestamp indicating when the anonymized branch status was last updated",
+            ["format"] = "date-time",
           },
         },
         ["name"] = "anonymize",
@@ -303,7 +326,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.last_run`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -345,37 +368,60 @@ local function make_config()
       ["anonymized_branch_status"] = {
         ["fields"] = {
           {
-            ["name"] = "completed_at",
-            ["title"] = "Completed At",
+            ["name"] = "branch_id",
+            ["title"] = "Branch Id",
             ["type"] = "`$STRING`",
-            ["short"] = "Timestamp indicating when the latest anonymization attempt completed.",
+            ["req"] = true,
+            ["short"] = "The ID of the anonymized branch.",
+          },
+          {
+            ["name"] = "created_at",
+            ["title"] = "Created At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A timestamp indicating when the anonymized branch was created",
             ["format"] = "date-time",
           },
           {
-            ["name"] = "masked_columns",
-            ["title"] = "Masked Columns",
-            ["type"] = "`$INTEGER`",
-            ["short"] = "Number of columns that had masking rules applied during the attempt.",
-          },
-          {
-            ["name"] = "started_at",
-            ["title"] = "Started At",
+            ["name"] = "failed_at",
+            ["title"] = "Failed At",
             ["type"] = "`$STRING`",
-            ["short"] = "Timestamp indicating when the latest anonymization attempt started.",
+            ["short"] = "A timestamp indicating when the anonymized branch operation failed (if applicable)",
             ["format"] = "date-time",
           },
           {
-            ["name"] = "triggered_by",
-            ["title"] = "Triggered By",
-            ["type"] = "`$STRING`",
-            ["short"] = "UUID of the user who triggered the latest anonymization attempt.",
-            ["format"] = "uuid",
+            ["name"] = "last_run",
+            ["title"] = "Last Run",
+            ["type"] = "`$OBJECT`",
+            ["short"] = "Metadata about the most recent anonymization attempt for the branch.",
           },
           {
-            ["name"] = "triggered_by_username",
-            ["title"] = "Triggered By Username",
+            ["name"] = "project_id",
+            ["title"] = "Project Id",
             ["type"] = "`$STRING`",
-            ["short"] = "Username of the user who triggered the latest anonymization attempt.",
+            ["req"] = true,
+            ["short"] = "The ID of the project this branch belongs to.",
+          },
+          {
+            ["name"] = "state",
+            ["title"] = "State",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The current state of the anonymized branch.",
+          },
+          {
+            ["name"] = "status_message",
+            ["title"] = "Status Message",
+            ["type"] = "`$STRING`",
+            ["short"] = "A descriptive message about the current status or any errors",
+          },
+          {
+            ["name"] = "updated_at",
+            ["title"] = "Updated At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A timestamp indicating when the anonymized branch status was last updated",
+            ["format"] = "date-time",
           },
         },
         ["name"] = "anonymized_branch_status",
@@ -415,7 +461,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.last_run`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -1565,18 +1611,19 @@ local function make_config()
       ["branch"] = {
         ["fields"] = {
           {
+            ["name"] = "active_time_seconds",
+            ["title"] = "Active Time Seconds",
+            ["type"] = "`$INTEGER`",
+            ["req"] = true,
+            ["short"] = "Total time this branch's compute has been active during the current billing period, in seconds (not weighted by compute size).",
+            ["format"] = "int64",
+          },
+          {
             ["name"] = "annotation",
             ["title"] = "Annotation",
             ["type"] = "`$OBJECT`",
             ["req"] = true,
             ["short"] = "Annotation data associated with the annotated object.",
-          },
-          {
-            ["name"] = "annotations",
-            ["title"] = "Annotations",
-            ["type"] = "`$OBJECT`",
-            ["req"] = true,
-            ["short"] = "Map of annotations keyed by resource identifier, where each value contains the annotation data for that resource.",
           },
           {
             ["name"] = "branch",
@@ -1586,22 +1633,212 @@ local function make_config()
             ["short"] = "Branch returned by the request.",
           },
           {
-            ["name"] = "branches",
-            ["title"] = "Branches",
-            ["type"] = "`$ARRAY`",
+            ["name"] = "compute_time_seconds",
+            ["title"] = "Compute Time Seconds",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
-            ["short"] = "Branches in the project.",
+            ["short"] = "Total Postgres compute time consumed by this branch during the current billing period, in CU-seconds (weighted by compute size).",
+            ["format"] = "int64",
+          },
+          {
+            ["name"] = "cpu_used_sec",
+            ["title"] = "Cpu Used Sec",
+            ["type"] = "`$INTEGER`",
+            ["req"] = true,
+            ["short"] = "Deprecated.",
+            ["deprecated"] = true,
+            ["format"] = "int64",
+          },
+          {
+            ["name"] = "created_at",
+            ["title"] = "Created At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A timestamp indicating when the branch was created",
+            ["format"] = "date-time",
+          },
+          {
+            ["name"] = "created_by",
+            ["title"] = "Created By",
+            ["type"] = "`$OBJECT`",
+            ["short"] = "The resolved user model that contains details of the user/org/integration/api_key used for branch creation.",
+          },
+          {
+            ["name"] = "creation_source",
+            ["title"] = "Creation Source",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The branch creation source",
+          },
+          {
+            ["name"] = "current_state",
+            ["title"] = "Current State",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The branch’s state, indicating if it is initializing, ready for use, or archived.",
+          },
+          {
+            ["name"] = "data_transfer_bytes",
+            ["title"] = "Data Transfer Bytes",
+            ["type"] = "`$INTEGER`",
+            ["req"] = true,
+            ["short"] = "Total data transferred out of the branch, in bytes.",
+            ["format"] = "int64",
+          },
+          {
+            ["name"] = "default",
+            ["title"] = "Default",
+            ["type"] = "`$BOOLEAN`",
+            ["req"] = true,
+            ["short"] = "Whether the branch is the project's default branch",
+          },
+          {
+            ["name"] = "expires_at",
+            ["title"] = "Expires At",
+            ["type"] = "`$STRING`",
+            ["short"] = "The timestamp when the branch is scheduled to expire and be automatically deleted.",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "id",
             ["title"] = "Id",
             ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The branch ID.",
           },
           {
-            ["name"] = "pagination",
-            ["title"] = "Pagination",
+            ["name"] = "init_source",
+            ["title"] = "Init Source",
+            ["type"] = "`$STRING`",
+            ["short"] = "Source of initialization for the branch.",
+          },
+          {
+            ["name"] = "last_reset_at",
+            ["title"] = "Last Reset At",
+            ["type"] = "`$STRING`",
+            ["short"] = "A timestamp indicating when the branch was last reset",
+            ["format"] = "date-time",
+          },
+          {
+            ["name"] = "logical_size",
+            ["title"] = "Logical Size",
+            ["type"] = "`$INTEGER`",
+            ["short"] = "The logical size of the branch, in bytes",
+            ["format"] = "int64",
+          },
+          {
+            ["name"] = "name",
+            ["title"] = "Name",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The branch name",
+          },
+          {
+            ["name"] = "parent_id",
+            ["title"] = "Parent Id",
+            ["type"] = "`$STRING`",
+            ["short"] = "The `branch_id` of the parent branch",
+          },
+          {
+            ["name"] = "parent_lsn",
+            ["title"] = "Parent Lsn",
+            ["type"] = "`$STRING`",
+            ["short"] = "The Log Sequence Number (LSN) on the parent branch from which this branch was created.",
+          },
+          {
+            ["name"] = "parent_timestamp",
+            ["title"] = "Parent Timestamp",
+            ["type"] = "`$STRING`",
+            ["short"] = "The point in time on the parent branch from which this branch was created.",
+            ["format"] = "date-time",
+          },
+          {
+            ["name"] = "pending_state",
+            ["title"] = "Pending State",
+            ["type"] = "`$STRING`",
+            ["short"] = "The branch’s state, indicating if it is initializing, ready for use, or archived.",
+          },
+          {
+            ["name"] = "primary",
+            ["title"] = "Primary",
+            ["type"] = "`$BOOLEAN`",
+            ["short"] = "Deprecated.",
+            ["deprecated"] = true,
+          },
+          {
+            ["name"] = "project_id",
+            ["title"] = "Project Id",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The ID of the project this branch belongs to.",
+          },
+          {
+            ["name"] = "protected",
+            ["title"] = "Protected",
+            ["type"] = "`$BOOLEAN`",
+            ["req"] = true,
+            ["short"] = "Whether the branch is protected.",
+          },
+          {
+            ["name"] = "recovery",
+            ["title"] = "Recovery",
             ["type"] = "`$OBJECT`",
-            ["short"] = "To paginate the response, issue an initial request with `limit` value.",
+            ["req"] = true,
+            ["short"] = "Recovery information for a deleted branch.",
+          },
+          {
+            ["name"] = "restore_status",
+            ["title"] = "Restore Status",
+            ["type"] = "`$STRING`",
+            ["short"] = "Could be `restored`, `finalized` or `detaching`.",
+          },
+          {
+            ["name"] = "restored_as",
+            ["title"] = "Restored As",
+            ["type"] = "`$STRING`",
+            ["short"] = "ID of the target branch which was replaced when this branch was restored",
+          },
+          {
+            ["name"] = "restored_from",
+            ["title"] = "Restored From",
+            ["type"] = "`$STRING`",
+            ["short"] = "ID of the snapshot that was the restore source for this branch",
+          },
+          {
+            ["name"] = "restricted_actions",
+            ["title"] = "Restricted Actions",
+            ["type"] = "`$ARRAY`",
+            ["short"] = "A list of actions that are currently restricted for this branch and the reason why.",
+          },
+          {
+            ["name"] = "state_changed_at",
+            ["title"] = "State Changed At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A UTC timestamp indicating when the `current_state` began",
+            ["format"] = "date-time",
+          },
+          {
+            ["name"] = "ttl_interval_seconds",
+            ["title"] = "Ttl Interval Seconds",
+            ["type"] = "`$INTEGER`",
+            ["short"] = "The time-to-live (TTL) duration originally configured for the branch, in seconds.",
+          },
+          {
+            ["name"] = "updated_at",
+            ["title"] = "Updated At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "A timestamp indicating when the branch was last updated",
+            ["format"] = "date-time",
+          },
+          {
+            ["name"] = "written_data_bytes",
+            ["title"] = "Written Data Bytes",
+            ["type"] = "`$INTEGER`",
+            ["req"] = true,
+            ["short"] = "Data written by this branch during the current billing period, in bytes.",
+            ["format"] = "int64",
           },
         },
         ["id"] = {
@@ -1637,7 +1874,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.branch`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -1685,7 +1922,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.branches`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -1788,7 +2025,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.branch`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -1908,7 +2145,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.branch`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -1974,7 +2211,7 @@ local function make_config()
                   ["req"] = {
                     ["branch"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.branch`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -2294,11 +2531,17 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
-            ["name"] = "tables",
-            ["title"] = "Tables",
-            ["type"] = "`$ARRAY`",
+            ["name"] = "json",
+            ["title"] = "Json",
+            ["type"] = "`$OBJECT`",
             ["req"] = true,
-            ["short"] = "Tables present in the branch schema.",
+            ["short"] = "Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`.",
+          },
+          {
+            ["name"] = "sql",
+            ["title"] = "Sql",
+            ["type"] = "`$STRING`",
+            ["short"] = "Branch schema expressed as SQL DDL statements.",
           },
         },
         ["id"] = {
@@ -2346,7 +2589,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.json`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -3485,25 +3728,25 @@ local function make_config()
       ["consumption"] = {
         ["fields"] = {
           {
-            ["name"] = "branches",
-            ["title"] = "Branches",
-            ["type"] = "`$ARRAY`",
+            ["name"] = "branch_id",
+            ["title"] = "Branch Id",
+            ["type"] = "`$STRING`",
             ["req"] = true,
-            ["short"] = "Per-branch consumption history records returned for the requested time range.",
+            ["short"] = "The Neon branch ID.",
           },
           {
-            ["name"] = "pagination",
-            ["title"] = "Pagination",
-            ["type"] = "`$OBJECT`",
-            ["req"] = true,
-            ["short"] = "Cursor-based pagination.",
-          },
-          {
-            ["name"] = "projects",
-            ["title"] = "Projects",
+            ["name"] = "periods",
+            ["title"] = "Periods",
             ["type"] = "`$ARRAY`",
             ["req"] = true,
-            ["short"] = "Per-project consumption history records included in the response.",
+            ["short"] = "Consumption history records for the branch, grouped by billing period.",
+          },
+          {
+            ["name"] = "project_id",
+            ["title"] = "Project Id",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The ID of the project that owns this branch.",
           },
         },
         ["name"] = "consumption",
@@ -3535,13 +3778,13 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.branches`",
                 },
                 ["args"] = {
                   ["query"] = {
                     {
                       ["name"] = "branch_id",
-                      ["orig"] = "branch_id",
+                      ["orig"] = "branch_ids",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -3574,7 +3817,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "metric",
-                      ["orig"] = "metric",
+                      ["orig"] = "metrics",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                       ["reqd"] = true,
@@ -3588,7 +3831,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "project_id",
-                      ["orig"] = "project_id",
+                      ["orig"] = "project_ids",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                       ["reqd"] = true,
@@ -3635,7 +3878,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.projects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -3661,7 +3904,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "include_v1_metric",
-                      ["orig"] = "include_v1_metric",
+                      ["orig"] = "include_v1_metrics",
                       ["type"] = "`$BOOLEAN`",
                       ["kind"] = "query",
                     },
@@ -3674,7 +3917,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "metric",
-                      ["orig"] = "metric",
+                      ["orig"] = "metrics",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -3686,7 +3929,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "project_id",
-                      ["orig"] = "project_id",
+                      ["orig"] = "project_ids",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -3736,7 +3979,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.projects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -3769,7 +4012,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "metric",
-                      ["orig"] = "metric",
+                      ["orig"] = "metrics",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                       ["reqd"] = true,
@@ -3783,7 +4026,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "project_id",
-                      ["orig"] = "project_id",
+                      ["orig"] = "project_ids",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -4996,7 +5239,7 @@ local function make_config()
                   ["req"] = {
                     ["database"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.database`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -5212,7 +5455,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.database`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -5294,7 +5537,7 @@ local function make_config()
                   ["req"] = {
                     ["database"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.database`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -5964,7 +6207,7 @@ local function make_config()
                   ["req"] = {
                     ["endpoint"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.endpoint`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -6190,7 +6433,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.endpoint`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -6256,7 +6499,7 @@ local function make_config()
                   ["req"] = {
                     ["endpoint"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.endpoint`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -6532,27 +6775,102 @@ local function make_config()
       ["function"] = {
         ["fields"] = {
           {
-            ["name"] = "custom_domains",
-            ["title"] = "Custom Domains",
-            ["type"] = "`$ARRAY`",
+            ["name"] = "active_deployment",
+            ["title"] = "Active Deployment",
+            ["type"] = "`$ANY`",
+            ["short"] = "The most recent deployment whose build completed successfully.",
+          },
+          {
+            ["name"] = "binding_status",
+            ["title"] = "Binding Status",
+            ["type"] = "`$STRING`",
+            ["short"] = "Whether Neon's internal routing for the domain is published: `pending`, `present`, or `missing`.",
+          },
+          {
+            ["name"] = "cname_target",
+            ["title"] = "Cname Target",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The hostname the customer must point their custom domain at with a CNAME record.",
+          },
+          {
+            ["name"] = "created_at",
+            ["title"] = "Created At",
+            ["type"] = "`$STRING`",
             ["req"] = true,
           },
           {
-            ["name"] = "functions",
-            ["title"] = "Functions",
-            ["type"] = "`$ARRAY`",
+            ["name"] = "current_deployment",
+            ["title"] = "Current Deployment",
+            ["type"] = "`$ANY`",
+            ["short"] = "The most recent deployment, regardless of build status.",
+          },
+          {
+            ["name"] = "dns_status",
+            ["title"] = "Dns Status",
+            ["type"] = "`$STRING`",
+            ["short"] = "The DNS + CAA portion of the check: `pending` (no records yet), `ok` (resolves to our edge and the CA is authorized), `misconfigured` (your CNAME does not resolve to our edge), or `caa_blocked` (your CAA records forbid Let's Encrypt).",
+          },
+          {
+            ["name"] = "domain",
+            ["title"] = "Domain",
+            ["type"] = "`$STRING`",
             ["req"] = true,
+            ["short"] = "The registered custom domain (normalized, lowercase).",
+          },
+          {
+            ["name"] = "entity_id",
+            ["title"] = "Entity Id",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The target entity's identifier within the branch.",
+          },
+          {
+            ["name"] = "entity_type",
+            ["title"] = "Entity Type",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The kind of branch entity the domain targets.",
           },
           {
             ["name"] = "id",
             ["title"] = "Id",
             ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "Opaque, stable function identifier.",
           },
           {
-            ["name"] = "pagination",
-            ["title"] = "Pagination",
-            ["type"] = "`$OBJECT`",
-            ["short"] = "To paginate the response, issue an initial request with `limit` value.",
+            ["name"] = "invocation_url",
+            ["title"] = "Invocation Url",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "URL at which the function is invoked.",
+          },
+          {
+            ["name"] = "name",
+            ["title"] = "Name",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "Free-form display name.",
+          },
+          {
+            ["name"] = "slug",
+            ["title"] = "Slug",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "Branch-unique, lowercase DNS-label.",
+          },
+          {
+            ["name"] = "status",
+            ["title"] = "Status",
+            ["type"] = "`$STRING`",
+            ["short"] = "The domain's current validity, computed by a background check: `pending` (still converging — point your CNAME at `cname_target` and wait), `active` (live: DNS resolves to the edge, the CA is authorized, and routing is published), or `error…",
+          },
+          {
+            ["name"] = "status_reason",
+            ["title"] = "Status Reason",
+            ["type"] = "`$STRING`",
+            ["short"] = "A short, stable machine-readable reason for a non-active `status` (e.g.",
           },
         },
         ["id"] = {
@@ -6596,7 +6914,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.custom_domains`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -6670,7 +6988,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.functions`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -10528,13 +10846,6 @@ local function make_config()
             ["req"] = true,
           },
           {
-            ["name"] = "pagination",
-            ["title"] = "Pagination",
-            ["type"] = "`$OBJECT`",
-            ["req"] = true,
-            ["short"] = "Cursor-based pagination.",
-          },
-          {
             ["name"] = "project_id",
             ["title"] = "Project Id",
             ["type"] = "`$STRING`",
@@ -10669,7 +10980,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.operations`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -11270,7 +11581,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.members`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -11674,6 +11985,14 @@ local function make_config()
             ["short"] = "The `Content-Type` to bind into the signed request.",
           },
           {
+            ["name"] = "expires_at",
+            ["title"] = "Expires At",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "When the presigned URL stops being valid.",
+            ["format"] = "date-time",
+          },
+          {
             ["name"] = "expires_in_seconds",
             ["title"] = "Expires In Seconds",
             ["type"] = "`$INTEGER`",
@@ -11681,11 +12000,32 @@ local function make_config()
             ["format"] = "int64",
           },
           {
+            ["name"] = "headers",
+            ["title"] = "Headers",
+            ["type"] = "`$OBJECT`",
+            ["req"] = true,
+            ["short"] = "Headers the caller MUST send verbatim on the request (e.g.",
+          },
+          {
+            ["name"] = "method",
+            ["title"] = "Method",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download.",
+          },
+          {
             ["name"] = "operation",
             ["title"] = "Operation",
             ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The transfer direction.",
+          },
+          {
+            ["name"] = "url",
+            ["title"] = "Url",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The presigned URL.",
           },
         },
         ["name"] = "presign",
@@ -11745,7 +12085,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.headers`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -11804,19 +12144,20 @@ local function make_config()
       ["project"] = {
         ["fields"] = {
           {
+            ["name"] = "active_time",
+            ["title"] = "Active Time",
+            ["type"] = "`$INTEGER`",
+            ["req"] = true,
+            ["short"] = "Control plane observed endpoints of this project being active this amount of wall-clock time.",
+            ["format"] = "int64",
+          },
+          {
             ["name"] = "active_time_seconds",
             ["title"] = "Active Time Seconds",
             ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Seconds.",
             ["format"] = "int64",
-          },
-          {
-            ["name"] = "applications",
-            ["title"] = "Applications",
-            ["type"] = "`$OBJECT`",
-            ["req"] = true,
-            ["short"] = "Map of project IDs to their installed applications.",
           },
           {
             ["name"] = "branch_logical_size_limit",
@@ -11912,6 +12253,13 @@ local function make_config()
             ["short"] = "A collection of settings for a Neon endpoint",
           },
           {
+            ["name"] = "deleted_at",
+            ["title"] = "Deleted At",
+            ["type"] = "`$STRING`",
+            ["short"] = "A timestamp indicating when the project was deleted",
+            ["format"] = "date-time",
+          },
+          {
             ["name"] = "effective_project_permission",
             ["title"] = "Effective Project Permission",
             ["type"] = "`$STRING`",
@@ -11928,6 +12276,11 @@ local function make_config()
             ["title"] = "History Retention Seconds",
             ["type"] = "`$INTEGER`",
             ["req"] = true,
+            ["op"] = {
+              ["list"] = {
+                ["type"] = "`$INTEGER`",
+              },
+            },
             ["short"] = "The number of seconds to retain the shared history for all branches in this project.",
             ["format"] = "int32",
           },
@@ -11937,13 +12290,6 @@ local function make_config()
             ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The Neon project ID.",
-          },
-          {
-            ["name"] = "integrations",
-            ["title"] = "Integrations",
-            ["type"] = "`$OBJECT`",
-            ["req"] = true,
-            ["short"] = "Map of project IDs to their associated integration details.",
           },
           {
             ["name"] = "label",
@@ -11980,6 +12326,12 @@ local function make_config()
             ["short"] = "The Neon organization ID.",
           },
           {
+            ["name"] = "org_name",
+            ["title"] = "Org Name",
+            ["type"] = "`$STRING`",
+            ["short"] = "Name of the organization that owns the project.",
+          },
+          {
             ["name"] = "owner",
             ["title"] = "Owner",
             ["type"] = "`$OBJECT`",
@@ -11992,13 +12344,6 @@ local function make_config()
             ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "ID of the organization that owns the project.",
-          },
-          {
-            ["name"] = "pagination",
-            ["title"] = "Pagination",
-            ["type"] = "`$OBJECT`",
-            ["req"] = true,
-            ["short"] = "Cursor-based pagination.",
           },
           {
             ["name"] = "pg_version",
@@ -12022,13 +12367,6 @@ local function make_config()
             ["short"] = "Configuration for the new project, including name, region, and Postgres compute and storage settings.",
           },
           {
-            ["name"] = "projects",
-            ["title"] = "Projects",
-            ["type"] = "`$ARRAY`",
-            ["req"] = true,
-            ["short"] = "List of projects accessible to the caller.",
-          },
-          {
             ["name"] = "provisioner",
             ["title"] = "Provisioner",
             ["type"] = "`$STRING`",
@@ -12048,6 +12386,13 @@ local function make_config()
             ["type"] = "`$STRING`",
             ["short"] = "Deprecated.",
             ["deprecated"] = true,
+            ["format"] = "date-time",
+          },
+          {
+            ["name"] = "recoverable_until",
+            ["title"] = "Recoverable Until",
+            ["type"] = "`$STRING`",
+            ["short"] = "A timestamp indicating the project will be recoverable until this date and time.",
             ["format"] = "date-time",
           },
           {
@@ -12076,12 +12421,6 @@ local function make_config()
             ["type"] = "`$INTEGER`",
             ["short"] = "The current space occupied by the project in Postgres storage, in bytes.",
             ["format"] = "int64",
-          },
-          {
-            ["name"] = "unavailable_project_ids",
-            ["title"] = "Unavailable Project Ids",
-            ["type"] = "`$ARRAY`",
-            ["short"] = "A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit",
           },
           {
             ["name"] = "updated_at",
@@ -12232,7 +12571,7 @@ local function make_config()
                   ["req"] = {
                     ["project"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.project`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -12258,7 +12597,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.projects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -12409,7 +12748,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.projects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -12529,7 +12868,7 @@ local function make_config()
                   ["req"] = {
                     ["project"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.project`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -13269,7 +13608,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.project_members`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -14132,7 +14471,7 @@ local function make_config()
                   ["req"] = {
                     ["role"] = "`reqdata`",
                   },
-                  ["res"] = "`body`",
+                  ["res"] = "`body.role`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -14348,7 +14687,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.role`",
                 },
                 ["args"] = {
                   ["params"] = {

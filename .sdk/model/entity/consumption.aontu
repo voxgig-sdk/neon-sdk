@@ -5,26 +5,26 @@ main: kit: entity: consumption: {
   alias: field: {}
 
   fields: {
-    branches: {
-      h: "Branches"
-      n: "branches"
+    branch_id: {
+      h: "Branch Id"
+      n: "branch_id"
       r: true
-      sh: "Per-branch consumption history records returned for the requested time range."
+      sh: "The Neon branch ID."
+      t: "`$STRING`"
+    }
+    periods: {
+      h: "Periods"
+      n: "periods"
+      r: true
+      sh: "Consumption history records for the branch, grouped by billing period."
       t: "`$ARRAY`"
     }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
       r: true
-      sh: "Cursor-based pagination."
-      t: "`$OBJECT`"
-    }
-    projects: {
-      h: "Projects"
-      n: "projects"
-      r: true
-      sh: "Per-project consumption history records included in the response."
-      t: "`$ARRAY`"
+      sh: "The ID of the project that owns this branch."
+      t: "`$STRING`"
     }
   }
 
@@ -44,7 +44,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "branch_id"
-                or: "branch_id"
+                or: "branch_ids"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -80,7 +80,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "metric"
-                or: "metric"
+                or: "metrics"
                 r: true
                 t: "`$ARRAY`"
               }
@@ -94,7 +94,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "project_id"
-                or: "project_id"
+                or: "project_ids"
                 r: true
                 t: "`$ARRAY`"
               }
@@ -135,7 +135,7 @@ main: kit: entity: consumption: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.branches`"
           }
         }
         {
@@ -170,7 +170,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "include_v1_metric"
-                or: "include_v1_metric"
+                or: "include_v1_metrics"
                 r: false
                 t: "`$BOOLEAN`"
               }
@@ -185,7 +185,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "metric"
-                or: "metric"
+                or: "metrics"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -199,7 +199,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "project_id"
-                or: "project_id"
+                or: "project_ids"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -237,7 +237,7 @@ main: kit: entity: consumption: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.projects`"
           }
         }
         {
@@ -280,7 +280,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "metric"
-                or: "metric"
+                or: "metrics"
                 r: true
                 t: "`$ARRAY`"
               }
@@ -294,7 +294,7 @@ main: kit: entity: consumption: {
               {
                 k: "query"
                 n: "project_id"
-                or: "project_id"
+                or: "project_ids"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -334,7 +334,7 @@ main: kit: entity: consumption: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.projects`"
           }
         }
       ]

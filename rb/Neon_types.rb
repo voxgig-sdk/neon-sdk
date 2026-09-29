@@ -10,26 +10,38 @@
 
 # Anonymize entity data model.
 #
-# @!attribute [rw] completed_at
+# @!attribute [rw] branch_id
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] failed_at
 #   @return [String, nil]
 #
-# @!attribute [rw] masked_columns
-#   @return [Integer, nil]
+# @!attribute [rw] last_run
+#   @return [Hash, nil]
 #
-# @!attribute [rw] started_at
+# @!attribute [rw] project_id
+#   @return [String]
+#
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] status_message
 #   @return [String, nil]
 #
-# @!attribute [rw] triggered_by
-#   @return [String, nil]
-#
-# @!attribute [rw] triggered_by_username
-#   @return [String, nil]
+# @!attribute [rw] updated_at
+#   @return [String]
 Anonymize = Struct.new(
-  :completed_at,
-  :masked_columns,
-  :started_at,
-  :triggered_by,
-  :triggered_by_username,
+  :branch_id,
+  :created_at,
+  :failed_at,
+  :last_run,
+  :project_id,
+  :state,
+  :status_message,
+  :updated_at,
   keyword_init: true
 )
 
@@ -41,53 +53,69 @@ Anonymize = Struct.new(
 # @!attribute [rw] project_id
 #   @return [String]
 #
-# @!attribute [rw] completed_at
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] failed_at
 #   @return [String, nil]
 #
-# @!attribute [rw] masked_columns
-#   @return [Integer, nil]
+# @!attribute [rw] last_run
+#   @return [Hash, nil]
 #
-# @!attribute [rw] started_at
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] status_message
 #   @return [String, nil]
 #
-# @!attribute [rw] triggered_by
-#   @return [String, nil]
-#
-# @!attribute [rw] triggered_by_username
-#   @return [String, nil]
+# @!attribute [rw] updated_at
+#   @return [String]
 AnonymizeCreateData = Struct.new(
   :branch_id,
   :project_id,
-  :completed_at,
-  :masked_columns,
-  :started_at,
-  :triggered_by,
-  :triggered_by_username,
+  :created_at,
+  :failed_at,
+  :last_run,
+  :state,
+  :status_message,
+  :updated_at,
   keyword_init: true
 )
 
 # AnonymizedBranchStatus entity data model.
 #
-# @!attribute [rw] completed_at
+# @!attribute [rw] branch_id
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] failed_at
 #   @return [String, nil]
 #
-# @!attribute [rw] masked_columns
-#   @return [Integer, nil]
+# @!attribute [rw] last_run
+#   @return [Hash, nil]
 #
-# @!attribute [rw] started_at
+# @!attribute [rw] project_id
+#   @return [String]
+#
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] status_message
 #   @return [String, nil]
 #
-# @!attribute [rw] triggered_by
-#   @return [String, nil]
-#
-# @!attribute [rw] triggered_by_username
-#   @return [String, nil]
+# @!attribute [rw] updated_at
+#   @return [String]
 AnonymizedBranchStatus = Struct.new(
-  :completed_at,
-  :masked_columns,
-  :started_at,
-  :triggered_by,
-  :triggered_by_username,
+  :branch_id,
+  :created_at,
+  :failed_at,
+  :last_run,
+  :project_id,
+  :state,
+  :status_message,
+  :updated_at,
   keyword_init: true
 )
 
@@ -429,30 +457,138 @@ BackupScheduleListMatch = Struct.new(
 
 # Branch entity data model.
 #
-# @!attribute [rw] annotation
-#   @return [Hash]
+# @!attribute [rw] active_time_seconds
+#   @return [Integer]
 #
-# @!attribute [rw] annotations
+# @!attribute [rw] annotation
 #   @return [Hash]
 #
 # @!attribute [rw] branch
 #   @return [Hash]
 #
-# @!attribute [rw] branches
-#   @return [Array]
+# @!attribute [rw] compute_time_seconds
+#   @return [Integer]
 #
-# @!attribute [rw] id
+# @!attribute [rw] cpu_used_sec
+#   @return [Integer]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] creation_source
+#   @return [String]
+#
+# @!attribute [rw] current_state
+#   @return [String]
+#
+# @!attribute [rw] data_transfer_bytes
+#   @return [Integer]
+#
+# @!attribute [rw] default
+#   @return [Boolean]
+#
+# @!attribute [rw] expires_at
 #   @return [String, nil]
 #
-# @!attribute [rw] pagination
-#   @return [Hash, nil]
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] init_source
+#   @return [String, nil]
+#
+# @!attribute [rw] last_reset_at
+#   @return [String, nil]
+#
+# @!attribute [rw] logical_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] parent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_lsn
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_timestamp
+#   @return [String, nil]
+#
+# @!attribute [rw] pending_state
+#   @return [String, nil]
+#
+# @!attribute [rw] primary
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] project_id
+#   @return [String]
+#
+# @!attribute [rw] protected
+#   @return [Boolean]
+#
+# @!attribute [rw] recovery
+#   @return [Hash]
+#
+# @!attribute [rw] restore_status
+#   @return [String, nil]
+#
+# @!attribute [rw] restored_as
+#   @return [String, nil]
+#
+# @!attribute [rw] restored_from
+#   @return [String, nil]
+#
+# @!attribute [rw] restricted_actions
+#   @return [Array, nil]
+#
+# @!attribute [rw] state_changed_at
+#   @return [String]
+#
+# @!attribute [rw] ttl_interval_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] written_data_bytes
+#   @return [Integer]
 Branch = Struct.new(
+  :active_time_seconds,
   :annotation,
-  :annotations,
   :branch,
-  :branches,
+  :compute_time_seconds,
+  :cpu_used_sec,
+  :created_at,
+  :created_by,
+  :creation_source,
+  :current_state,
+  :data_transfer_bytes,
+  :default,
+  :expires_at,
   :id,
-  :pagination,
+  :init_source,
+  :last_reset_at,
+  :logical_size,
+  :name,
+  :parent_id,
+  :parent_lsn,
+  :parent_timestamp,
+  :pending_state,
+  :primary,
+  :project_id,
+  :protected,
+  :recovery,
+  :restore_status,
+  :restored_as,
+  :restored_from,
+  :restricted_actions,
+  :state_changed_at,
+  :ttl_interval_seconds,
+  :updated_at,
+  :written_data_bytes,
   keyword_init: true
 )
 
@@ -507,31 +643,135 @@ BranchListMatch = Struct.new(
 # @!attribute [rw] project_id
 #   @return [String]
 #
-# @!attribute [rw] annotation
-#   @return [Hash]
+# @!attribute [rw] active_time_seconds
+#   @return [Integer]
 #
-# @!attribute [rw] annotations
+# @!attribute [rw] annotation
 #   @return [Hash]
 #
 # @!attribute [rw] branch
 #   @return [Hash]
 #
-# @!attribute [rw] branches
-#   @return [Array]
+# @!attribute [rw] compute_time_seconds
+#   @return [Integer]
 #
-# @!attribute [rw] id
+# @!attribute [rw] cpu_used_sec
+#   @return [Integer]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] creation_source
+#   @return [String]
+#
+# @!attribute [rw] current_state
+#   @return [String]
+#
+# @!attribute [rw] data_transfer_bytes
+#   @return [Integer]
+#
+# @!attribute [rw] default
+#   @return [Boolean]
+#
+# @!attribute [rw] expires_at
 #   @return [String, nil]
 #
-# @!attribute [rw] pagination
-#   @return [Hash, nil]
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] init_source
+#   @return [String, nil]
+#
+# @!attribute [rw] last_reset_at
+#   @return [String, nil]
+#
+# @!attribute [rw] logical_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] parent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_lsn
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_timestamp
+#   @return [String, nil]
+#
+# @!attribute [rw] pending_state
+#   @return [String, nil]
+#
+# @!attribute [rw] primary
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean]
+#
+# @!attribute [rw] recovery
+#   @return [Hash]
+#
+# @!attribute [rw] restore_status
+#   @return [String, nil]
+#
+# @!attribute [rw] restored_as
+#   @return [String, nil]
+#
+# @!attribute [rw] restored_from
+#   @return [String, nil]
+#
+# @!attribute [rw] restricted_actions
+#   @return [Array, nil]
+#
+# @!attribute [rw] state_changed_at
+#   @return [String]
+#
+# @!attribute [rw] ttl_interval_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] written_data_bytes
+#   @return [Integer]
 BranchCreateData = Struct.new(
   :project_id,
+  :active_time_seconds,
   :annotation,
-  :annotations,
   :branch,
-  :branches,
+  :compute_time_seconds,
+  :cpu_used_sec,
+  :created_at,
+  :created_by,
+  :creation_source,
+  :current_state,
+  :data_transfer_bytes,
+  :default,
+  :expires_at,
   :id,
-  :pagination,
+  :init_source,
+  :last_reset_at,
+  :logical_size,
+  :name,
+  :parent_id,
+  :parent_lsn,
+  :parent_timestamp,
+  :pending_state,
+  :primary,
+  :protected,
+  :recovery,
+  :restore_status,
+  :restored_as,
+  :restored_from,
+  :restricted_actions,
+  :state_changed_at,
+  :ttl_interval_seconds,
+  :updated_at,
+  :written_data_bytes,
   keyword_init: true
 )
 
@@ -543,28 +783,132 @@ BranchCreateData = Struct.new(
 # @!attribute [rw] project_id
 #   @return [String]
 #
-# @!attribute [rw] annotation
-#   @return [Hash, nil]
+# @!attribute [rw] active_time_seconds
+#   @return [Integer, nil]
 #
-# @!attribute [rw] annotations
+# @!attribute [rw] annotation
 #   @return [Hash, nil]
 #
 # @!attribute [rw] branch
 #   @return [Hash, nil]
 #
-# @!attribute [rw] branches
+# @!attribute [rw] compute_time_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] cpu_used_sec
+#   @return [Integer, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] creation_source
+#   @return [String, nil]
+#
+# @!attribute [rw] current_state
+#   @return [String, nil]
+#
+# @!attribute [rw] data_transfer_bytes
+#   @return [Integer, nil]
+#
+# @!attribute [rw] default
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] init_source
+#   @return [String, nil]
+#
+# @!attribute [rw] last_reset_at
+#   @return [String, nil]
+#
+# @!attribute [rw] logical_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_lsn
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_timestamp
+#   @return [String, nil]
+#
+# @!attribute [rw] pending_state
+#   @return [String, nil]
+#
+# @!attribute [rw] primary
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] recovery
+#   @return [Hash, nil]
+#
+# @!attribute [rw] restore_status
+#   @return [String, nil]
+#
+# @!attribute [rw] restored_as
+#   @return [String, nil]
+#
+# @!attribute [rw] restored_from
+#   @return [String, nil]
+#
+# @!attribute [rw] restricted_actions
 #   @return [Array, nil]
 #
-# @!attribute [rw] pagination
-#   @return [Hash, nil]
+# @!attribute [rw] state_changed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] ttl_interval_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] written_data_bytes
+#   @return [Integer, nil]
 BranchUpdateData = Struct.new(
   :id,
   :project_id,
+  :active_time_seconds,
   :annotation,
-  :annotations,
   :branch,
-  :branches,
-  :pagination,
+  :compute_time_seconds,
+  :cpu_used_sec,
+  :created_at,
+  :created_by,
+  :creation_source,
+  :current_state,
+  :data_transfer_bytes,
+  :default,
+  :expires_at,
+  :init_source,
+  :last_reset_at,
+  :logical_size,
+  :name,
+  :parent_id,
+  :parent_lsn,
+  :parent_timestamp,
+  :pending_state,
+  :primary,
+  :protected,
+  :recovery,
+  :restore_status,
+  :restored_as,
+  :restored_from,
+  :restricted_actions,
+  :state_changed_at,
+  :ttl_interval_seconds,
+  :updated_at,
+  :written_data_bytes,
   keyword_init: true
 )
 
@@ -654,11 +998,15 @@ BranchOperationCreateData = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] tables
-#   @return [Array]
+# @!attribute [rw] json
+#   @return [Hash]
+#
+# @!attribute [rw] sql
+#   @return [String, nil]
 BranchSchema = Struct.new(
   :id,
-  :tables,
+  :json,
+  :sql,
   keyword_init: true
 )
 
@@ -978,18 +1326,18 @@ ConnectionUriLoadMatch = Struct.new(
 
 # Consumption entity data model.
 #
-# @!attribute [rw] branches
+# @!attribute [rw] branch_id
+#   @return [String]
+#
+# @!attribute [rw] periods
 #   @return [Array]
 #
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
-# @!attribute [rw] projects
-#   @return [Array]
+# @!attribute [rw] project_id
+#   @return [String]
 Consumption = Struct.new(
-  :branches,
-  :pagination,
-  :projects,
+  :branch_id,
+  :periods,
+  :project_id,
   keyword_init: true
 )
 
@@ -2183,22 +2531,66 @@ EndpointOperationCreateData = Struct.new(
 
 # Function entity data model.
 #
-# @!attribute [rw] custom_domains
-#   @return [Array]
+# @!attribute [rw] active_deployment
+#   @return [Object, nil]
 #
-# @!attribute [rw] functions
-#   @return [Array]
-#
-# @!attribute [rw] id
+# @!attribute [rw] binding_status
 #   @return [String, nil]
 #
-# @!attribute [rw] pagination
-#   @return [Hash, nil]
+# @!attribute [rw] cname_target
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] current_deployment
+#   @return [Object, nil]
+#
+# @!attribute [rw] dns_status
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String]
+#
+# @!attribute [rw] entity_id
+#   @return [String]
+#
+# @!attribute [rw] entity_type
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] invocation_url
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] status_reason
+#   @return [String, nil]
 Function = Struct.new(
-  :custom_domains,
-  :functions,
+  :active_deployment,
+  :binding_status,
+  :cname_target,
+  :created_at,
+  :current_deployment,
+  :dns_status,
+  :domain,
+  :entity_id,
+  :entity_type,
   :id,
-  :pagination,
+  :invocation_url,
+  :name,
+  :slug,
+  :status,
+  :status_reason,
   keyword_init: true
 )
 
@@ -3404,9 +3796,6 @@ NeonFunctionDeploymentCreateData = Struct.new(
 # @!attribute [rw] operations
 #   @return [Array]
 #
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
 # @!attribute [rw] project_id
 #   @return [String]
 #
@@ -3431,7 +3820,6 @@ Operation = Struct.new(
   :id,
   :name,
   :operations,
-  :pagination,
   :project_id,
   :retry_at,
   :status,
@@ -3502,9 +3890,6 @@ OperationListMatch = Struct.new(
 # @!attribute [rw] operations
 #   @return [Array]
 #
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
 # @!attribute [rw] retry_at
 #   @return [String, nil]
 #
@@ -3527,7 +3912,6 @@ OperationCreateData = Struct.new(
   :id,
   :name,
   :operations,
-  :pagination,
   :retry_at,
   :status,
   :total_duration_ms,
@@ -3897,15 +4281,31 @@ OrganizationInvitationCreateData = Struct.new(
 # @!attribute [rw] content_type
 #   @return [String, nil]
 #
+# @!attribute [rw] expires_at
+#   @return [String]
+#
 # @!attribute [rw] expires_in_seconds
 #   @return [Integer, nil]
 #
+# @!attribute [rw] headers
+#   @return [Hash]
+#
+# @!attribute [rw] method
+#   @return [String]
+#
 # @!attribute [rw] operation
+#   @return [String]
+#
+# @!attribute [rw] url
 #   @return [String]
 Presign = Struct.new(
   :content_type,
+  :expires_at,
   :expires_in_seconds,
+  :headers,
+  :method,
   :operation,
+  :url,
   keyword_init: true
 )
 
@@ -3926,10 +4326,22 @@ Presign = Struct.new(
 # @!attribute [rw] content_type
 #   @return [String, nil]
 #
+# @!attribute [rw] expires_at
+#   @return [String]
+#
 # @!attribute [rw] expires_in_seconds
 #   @return [Integer, nil]
 #
+# @!attribute [rw] headers
+#   @return [Hash]
+#
+# @!attribute [rw] method
+#   @return [String]
+#
 # @!attribute [rw] operation
+#   @return [String]
+#
+# @!attribute [rw] url
 #   @return [String]
 PresignCreateData = Struct.new(
   :branch_id,
@@ -3937,18 +4349,22 @@ PresignCreateData = Struct.new(
   :object_key,
   :project_id,
   :content_type,
+  :expires_at,
   :expires_in_seconds,
+  :headers,
+  :method,
   :operation,
+  :url,
   keyword_init: true
 )
 
 # Project entity data model.
 #
-# @!attribute [rw] active_time_seconds
+# @!attribute [rw] active_time
 #   @return [Integer]
 #
-# @!attribute [rw] applications
-#   @return [Hash]
+# @!attribute [rw] active_time_seconds
+#   @return [Integer]
 #
 # @!attribute [rw] branch_logical_size_limit
 #   @return [Integer]
@@ -3986,6 +4402,9 @@ PresignCreateData = Struct.new(
 # @!attribute [rw] default_endpoint_settings
 #   @return [Hash, nil]
 #
+# @!attribute [rw] deleted_at
+#   @return [String, nil]
+#
 # @!attribute [rw] effective_project_permission
 #   @return [String, nil]
 #
@@ -3997,9 +4416,6 @@ PresignCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
-#
-# @!attribute [rw] integrations
-#   @return [Hash]
 #
 # @!attribute [rw] label
 #   @return [String]
@@ -4016,14 +4432,14 @@ PresignCreateData = Struct.new(
 # @!attribute [rw] org_id
 #   @return [String, nil]
 #
+# @!attribute [rw] org_name
+#   @return [String, nil]
+#
 # @!attribute [rw] owner
 #   @return [Hash]
 #
 # @!attribute [rw] owner_id
 #   @return [String]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
 #
 # @!attribute [rw] pg_version
 #   @return [Integer]
@@ -4034,9 +4450,6 @@ PresignCreateData = Struct.new(
 # @!attribute [rw] project
 #   @return [Hash]
 #
-# @!attribute [rw] projects
-#   @return [Array]
-#
 # @!attribute [rw] provisioner
 #   @return [String]
 #
@@ -4044,6 +4457,9 @@ PresignCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] quota_reset_at
+#   @return [String, nil]
+#
+# @!attribute [rw] recoverable_until
 #   @return [String, nil]
 #
 # @!attribute [rw] region_id
@@ -4058,17 +4474,14 @@ PresignCreateData = Struct.new(
 # @!attribute [rw] synthetic_storage_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] unavailable_project_ids
-#   @return [Array, nil]
-#
 # @!attribute [rw] updated_at
 #   @return [String]
 #
 # @!attribute [rw] written_data_bytes
 #   @return [Integer]
 Project = Struct.new(
+  :active_time,
   :active_time_seconds,
-  :applications,
   :branch_logical_size_limit,
   :branch_logical_size_limit_bytes,
   :compute_last_active_at,
@@ -4081,31 +4494,30 @@ Project = Struct.new(
   :data_storage_bytes_hour,
   :data_transfer_bytes,
   :default_endpoint_settings,
+  :deleted_at,
   :effective_project_permission,
   :hipaa_enabled_at,
   :history_retention_seconds,
   :id,
-  :integrations,
   :label,
   :maintenance_scheduled_for,
   :maintenance_starts_at,
   :name,
   :org_id,
+  :org_name,
   :owner,
   :owner_id,
-  :pagination,
   :pg_version,
   :platform_id,
   :project,
-  :projects,
   :provisioner,
   :proxy_host,
   :quota_reset_at,
+  :recoverable_until,
   :region_id,
   :settings,
   :store_passwords,
   :synthetic_storage_size,
-  :unavailable_project_ids,
   :updated_at,
   :written_data_bytes,
   keyword_init: true
@@ -4157,11 +4569,11 @@ ProjectListMatch = Struct.new(
 # @!attribute [rw] vpc_endpoint_id
 #   @return [String]
 #
-# @!attribute [rw] active_time_seconds
+# @!attribute [rw] active_time
 #   @return [Integer]
 #
-# @!attribute [rw] applications
-#   @return [Hash]
+# @!attribute [rw] active_time_seconds
+#   @return [Integer]
 #
 # @!attribute [rw] branch_logical_size_limit
 #   @return [Integer]
@@ -4199,6 +4611,9 @@ ProjectListMatch = Struct.new(
 # @!attribute [rw] default_endpoint_settings
 #   @return [Hash, nil]
 #
+# @!attribute [rw] deleted_at
+#   @return [String, nil]
+#
 # @!attribute [rw] effective_project_permission
 #   @return [String, nil]
 #
@@ -4207,9 +4622,6 @@ ProjectListMatch = Struct.new(
 #
 # @!attribute [rw] history_retention_seconds
 #   @return [Integer]
-#
-# @!attribute [rw] integrations
-#   @return [Hash]
 #
 # @!attribute [rw] label
 #   @return [String]
@@ -4226,14 +4638,14 @@ ProjectListMatch = Struct.new(
 # @!attribute [rw] org_id
 #   @return [String, nil]
 #
+# @!attribute [rw] org_name
+#   @return [String, nil]
+#
 # @!attribute [rw] owner
 #   @return [Hash]
 #
 # @!attribute [rw] owner_id
 #   @return [String]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
 #
 # @!attribute [rw] pg_version
 #   @return [Integer]
@@ -4244,9 +4656,6 @@ ProjectListMatch = Struct.new(
 # @!attribute [rw] project
 #   @return [Hash]
 #
-# @!attribute [rw] projects
-#   @return [Array]
-#
 # @!attribute [rw] provisioner
 #   @return [String]
 #
@@ -4254,6 +4663,9 @@ ProjectListMatch = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] quota_reset_at
+#   @return [String, nil]
+#
+# @!attribute [rw] recoverable_until
 #   @return [String, nil]
 #
 # @!attribute [rw] region_id
@@ -4268,9 +4680,6 @@ ProjectListMatch = Struct.new(
 # @!attribute [rw] synthetic_storage_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] unavailable_project_ids
-#   @return [Array, nil]
-#
 # @!attribute [rw] updated_at
 #   @return [String]
 #
@@ -4279,8 +4688,8 @@ ProjectListMatch = Struct.new(
 ProjectCreateData = Struct.new(
   :id,
   :vpc_endpoint_id,
+  :active_time,
   :active_time_seconds,
-  :applications,
   :branch_logical_size_limit,
   :branch_logical_size_limit_bytes,
   :compute_last_active_at,
@@ -4293,30 +4702,29 @@ ProjectCreateData = Struct.new(
   :data_storage_bytes_hour,
   :data_transfer_bytes,
   :default_endpoint_settings,
+  :deleted_at,
   :effective_project_permission,
   :hipaa_enabled_at,
   :history_retention_seconds,
-  :integrations,
   :label,
   :maintenance_scheduled_for,
   :maintenance_starts_at,
   :name,
   :org_id,
+  :org_name,
   :owner,
   :owner_id,
-  :pagination,
   :pg_version,
   :platform_id,
   :project,
-  :projects,
   :provisioner,
   :proxy_host,
   :quota_reset_at,
+  :recoverable_until,
   :region_id,
   :settings,
   :store_passwords,
   :synthetic_storage_size,
-  :unavailable_project_ids,
   :updated_at,
   :written_data_bytes,
   keyword_init: true
@@ -4330,11 +4738,11 @@ ProjectCreateData = Struct.new(
 # @!attribute [rw] request_id
 #   @return [String]
 #
-# @!attribute [rw] active_time_seconds
+# @!attribute [rw] active_time
 #   @return [Integer, nil]
 #
-# @!attribute [rw] applications
-#   @return [Hash, nil]
+# @!attribute [rw] active_time_seconds
+#   @return [Integer, nil]
 #
 # @!attribute [rw] branch_logical_size_limit
 #   @return [Integer, nil]
@@ -4372,6 +4780,9 @@ ProjectCreateData = Struct.new(
 # @!attribute [rw] default_endpoint_settings
 #   @return [Hash, nil]
 #
+# @!attribute [rw] deleted_at
+#   @return [String, nil]
+#
 # @!attribute [rw] effective_project_permission
 #   @return [String, nil]
 #
@@ -4380,9 +4791,6 @@ ProjectCreateData = Struct.new(
 #
 # @!attribute [rw] history_retention_seconds
 #   @return [Integer, nil]
-#
-# @!attribute [rw] integrations
-#   @return [Hash, nil]
 #
 # @!attribute [rw] label
 #   @return [String, nil]
@@ -4399,14 +4807,14 @@ ProjectCreateData = Struct.new(
 # @!attribute [rw] org_id
 #   @return [String, nil]
 #
+# @!attribute [rw] org_name
+#   @return [String, nil]
+#
 # @!attribute [rw] owner
 #   @return [Hash, nil]
 #
 # @!attribute [rw] owner_id
 #   @return [String, nil]
-#
-# @!attribute [rw] pagination
-#   @return [Hash, nil]
 #
 # @!attribute [rw] pg_version
 #   @return [Integer, nil]
@@ -4417,9 +4825,6 @@ ProjectCreateData = Struct.new(
 # @!attribute [rw] project
 #   @return [Hash, nil]
 #
-# @!attribute [rw] projects
-#   @return [Array, nil]
-#
 # @!attribute [rw] provisioner
 #   @return [String, nil]
 #
@@ -4427,6 +4832,9 @@ ProjectCreateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] quota_reset_at
+#   @return [String, nil]
+#
+# @!attribute [rw] recoverable_until
 #   @return [String, nil]
 #
 # @!attribute [rw] region_id
@@ -4441,9 +4849,6 @@ ProjectCreateData = Struct.new(
 # @!attribute [rw] synthetic_storage_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] unavailable_project_ids
-#   @return [Array, nil]
-#
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
@@ -4452,8 +4857,8 @@ ProjectCreateData = Struct.new(
 ProjectUpdateData = Struct.new(
   :id,
   :request_id,
+  :active_time,
   :active_time_seconds,
-  :applications,
   :branch_logical_size_limit,
   :branch_logical_size_limit_bytes,
   :compute_last_active_at,
@@ -4466,30 +4871,29 @@ ProjectUpdateData = Struct.new(
   :data_storage_bytes_hour,
   :data_transfer_bytes,
   :default_endpoint_settings,
+  :deleted_at,
   :effective_project_permission,
   :hipaa_enabled_at,
   :history_retention_seconds,
-  :integrations,
   :label,
   :maintenance_scheduled_for,
   :maintenance_starts_at,
   :name,
   :org_id,
+  :org_name,
   :owner,
   :owner_id,
-  :pagination,
   :pg_version,
   :platform_id,
   :project,
-  :projects,
   :provisioner,
   :proxy_host,
   :quota_reset_at,
+  :recoverable_until,
   :region_id,
   :settings,
   :store_passwords,
   :synthetic_storage_size,
-  :unavailable_project_ids,
   :updated_at,
   :written_data_bytes,
   keyword_init: true
